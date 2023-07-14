@@ -7,8 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2623C22C2A5EE24100F820E8 /* View+ConditionalModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2623C22B2A5EE24100F820E8 /* View+ConditionalModifier.swift */; };
+		2623C2322A5EF02200F820E8 /* VerticalPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2623C2312A5EF02200F820E8 /* VerticalPicker.swift */; };
+		2623C2342A5EF68400F820E8 /* UIKitPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2623C2332A5EF68400F820E8 /* UIKitPickerView.swift */; };
+		264846692A5E471400396575 /* COMMIT.md in Resources */ = {isa = PBXBuildFile; fileRef = 264846682A5E471400396575 /* COMMIT.md */; };
+		2648466B2A5E48BB00396575 /* UIScreen+Compact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2648466A2A5E48BB00396575 /* UIScreen+Compact.swift */; };
+		264846742A5E5CF300396575 /* OnboardingSecond.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264846732A5E5CF300396575 /* OnboardingSecond.swift */; };
+		264846762A5E5EB800396575 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264846752A5E5EB800396575 /* PrimaryButton.swift */; };
+		264846782A5E61C300396575 /* CancelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264846772A5E61C300396575 /* CancelButton.swift */; };
+		2648467A2A5E639D00396575 /* CounteredTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264846792A5E639D00396575 /* CounteredTextView.swift */; };
+		2648467C2A5E643300396575 /* CounterTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2648467B2A5E643300396575 /* CounterTextFieldStyle.swift */; };
+		2648467E2A5E6FA700396575 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2648467D2A5E6FA700396575 /* OnboardingViewModel.swift */; };
+		264846802A5E743500396575 /* OnboardingThird.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2648467F2A5E743500396575 /* OnboardingThird.swift */; };
+		2673E0122A5D014400429610 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 2673E0112A5D014400429610 /* README.md */; };
+		2673E0142A5D014900429610 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2673E0132A5D014900429610 /* LICENSE.txt */; };
+		2673E0272A5D056D00429610 /* GlobalEnvirontment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2673E0262A5D056D00429610 /* GlobalEnvirontment.swift */; };
+		2673E0292A5D05C400429610 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2673E0282A5D05C400429610 /* AppDelegate.swift */; };
+		26A77B012A5FAE6A00B1C3A7 /* OnboardingTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A77B002A5FAE6A00B1C3A7 /* OnboardingTimePicker.swift */; };
+		26BC97EC2A5D0ED0003125B5 /* Color+Extend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC97EB2A5D0ED0003125B5 /* Color+Extend.swift */; };
+		26BC97F22A5D102E003125B5 /* OnboardingFirst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC97F12A5D102E003125B5 /* OnboardingFirst.swift */; };
 		26C7A88E2A5D0014009F0EAF /* VitagochiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C7A88D2A5D0014009F0EAF /* VitagochiApp.swift */; };
-		26C7A8902A5D0014009F0EAF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C7A88F2A5D0014009F0EAF /* ContentView.swift */; };
 		26C7A8922A5D0015009F0EAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26C7A8912A5D0015009F0EAF /* Assets.xcassets */; };
 		26C7A8952A5D0015009F0EAF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26C7A8942A5D0015009F0EAF /* Preview Assets.xcassets */; };
 		26C7A89F2A5D0015009F0EAF /* VitagochiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C7A89E2A5D0015009F0EAF /* VitagochiTests.swift */; };
@@ -34,9 +52,32 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2623C22B2A5EE24100F820E8 /* View+ConditionalModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+ConditionalModifier.swift"; sourceTree = "<group>"; };
+		2623C2312A5EF02200F820E8 /* VerticalPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalPicker.swift; sourceTree = "<group>"; };
+		2623C2332A5EF68400F820E8 /* UIKitPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitPickerView.swift; sourceTree = "<group>"; };
+		264846682A5E471400396575 /* COMMIT.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = COMMIT.md; sourceTree = "<group>"; };
+		2648466A2A5E48BB00396575 /* UIScreen+Compact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+Compact.swift"; sourceTree = "<group>"; };
+		2648466D2A5E5AE800396575 /* ContentInfo.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = ContentInfo.txt; sourceTree = "<group>"; };
+		264846732A5E5CF300396575 /* OnboardingSecond.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSecond.swift; sourceTree = "<group>"; };
+		264846752A5E5EB800396575 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
+		264846772A5E61C300396575 /* CancelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelButton.swift; sourceTree = "<group>"; };
+		264846792A5E639D00396575 /* CounteredTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounteredTextView.swift; sourceTree = "<group>"; };
+		2648467B2A5E643300396575 /* CounterTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterTextFieldStyle.swift; sourceTree = "<group>"; };
+		2648467D2A5E6FA700396575 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
+		2648467F2A5E743500396575 /* OnboardingThird.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingThird.swift; sourceTree = "<group>"; };
+		2673E0112A5D014400429610 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		2673E0132A5D014900429610 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		2673E01C2A5D02CE00429610 /* ContentInfo.text */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ContentInfo.text; sourceTree = "<group>"; };
+		2673E01F2A5D030A00429610 /* ContentInfo.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = ContentInfo.txt; sourceTree = "<group>"; };
+		2673E0212A5D032E00429610 /* ContentInfo.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = ContentInfo.txt; sourceTree = "<group>"; };
+		2673E0232A5D033F00429610 /* ContentInfo.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = ContentInfo.txt; sourceTree = "<group>"; };
+		2673E0262A5D056D00429610 /* GlobalEnvirontment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalEnvirontment.swift; sourceTree = "<group>"; };
+		2673E0282A5D05C400429610 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		26A77B002A5FAE6A00B1C3A7 /* OnboardingTimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTimePicker.swift; sourceTree = "<group>"; };
+		26BC97EB2A5D0ED0003125B5 /* Color+Extend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extend.swift"; sourceTree = "<group>"; };
+		26BC97F12A5D102E003125B5 /* OnboardingFirst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFirst.swift; sourceTree = "<group>"; };
 		26C7A88A2A5D0014009F0EAF /* Vitagochi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vitagochi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26C7A88D2A5D0014009F0EAF /* VitagochiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VitagochiApp.swift; sourceTree = "<group>"; };
-		26C7A88F2A5D0014009F0EAF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		26C7A8912A5D0015009F0EAF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		26C7A8942A5D0015009F0EAF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		26C7A89A2A5D0015009F0EAF /* VitagochiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VitagochiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,9 +112,114 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2648466C2A5E572C00396575 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				264846752A5E5EB800396575 /* PrimaryButton.swift */,
+				264846772A5E61C300396575 /* CancelButton.swift */,
+				264846792A5E639D00396575 /* CounteredTextView.swift */,
+				2623C2312A5EF02200F820E8 /* VerticalPicker.swift */,
+				2623C2332A5EF68400F820E8 /* UIKitPickerView.swift */,
+				26A77B002A5FAE6A00B1C3A7 /* OnboardingTimePicker.swift */,
+				2648466D2A5E5AE800396575 /* ContentInfo.txt */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		2673E0162A5D021C00429610 /* Lifecycle */ = {
+			isa = PBXGroup;
+			children = (
+				2673E0282A5D05C400429610 /* AppDelegate.swift */,
+				2673E0262A5D056D00429610 /* GlobalEnvirontment.swift */,
+				26C7A88D2A5D0014009F0EAF /* VitagochiApp.swift */,
+				2673E01C2A5D02CE00429610 /* ContentInfo.text */,
+			);
+			path = Lifecycle;
+			sourceTree = "<group>";
+		};
+		2673E0172A5D022600429610 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		2673E0182A5D022A00429610 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				2648467D2A5E6FA700396575 /* OnboardingViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		2673E0192A5D023100429610 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2673E0252A5D055500429610 /* Onboarding */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		2673E01A2A5D024B00429610 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				26BC97EB2A5D0ED0003125B5 /* Color+Extend.swift */,
+				2648466A2A5E48BB00396575 /* UIScreen+Compact.swift */,
+				2623C22B2A5EE24100F820E8 /* View+ConditionalModifier.swift */,
+				2673E0232A5D033F00429610 /* ContentInfo.txt */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		2673E01B2A5D025500429610 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				2673E0212A5D032E00429610 /* ContentInfo.txt */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		2673E01E2A5D02F400429610 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				2648467B2A5E643300396575 /* CounterTextFieldStyle.swift */,
+				2673E01F2A5D030A00429610 /* ContentInfo.txt */,
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
+		2673E0252A5D055500429610 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				26BC97F12A5D102E003125B5 /* OnboardingFirst.swift */,
+				264846732A5E5CF300396575 /* OnboardingSecond.swift */,
+				2648467F2A5E743500396575 /* OnboardingThird.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		26BC97ED2A5D0FE4003125B5 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				26BC97EE2A5D0FEC003125B5 /* Fonts */,
+				26C7A8912A5D0015009F0EAF /* Assets.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		26BC97EE2A5D0FEC003125B5 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		26C7A8812A5D0014009F0EAF = {
 			isa = PBXGroup;
 			children = (
+				264846682A5E471400396575 /* COMMIT.md */,
+				2673E0132A5D014900429610 /* LICENSE.txt */,
+				2673E0112A5D014400429610 /* README.md */,
 				26C7A88C2A5D0014009F0EAF /* Vitagochi */,
 				26C7A89D2A5D0015009F0EAF /* VitagochiTests */,
 				26C7A8A72A5D0015009F0EAF /* VitagochiUITests */,
@@ -94,9 +240,15 @@
 		26C7A88C2A5D0014009F0EAF /* Vitagochi */ = {
 			isa = PBXGroup;
 			children = (
-				26C7A88D2A5D0014009F0EAF /* VitagochiApp.swift */,
-				26C7A88F2A5D0014009F0EAF /* ContentView.swift */,
-				26C7A8912A5D0015009F0EAF /* Assets.xcassets */,
+				26BC97ED2A5D0FE4003125B5 /* Assets */,
+				2648466C2A5E572C00396575 /* Components */,
+				2673E01A2A5D024B00429610 /* Extensions */,
+				2673E0162A5D021C00429610 /* Lifecycle */,
+				2673E0172A5D022600429610 /* Models */,
+				2673E01E2A5D02F400429610 /* Styles */,
+				2673E01B2A5D025500429610 /* Utilities */,
+				2673E0182A5D022A00429610 /* ViewModels */,
+				2673E0192A5D023100429610 /* Views */,
 				26C7A8932A5D0015009F0EAF /* Preview Content */,
 			);
 			path = Vitagochi;
@@ -231,6 +383,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2673E0142A5D014900429610 /* LICENSE.txt in Resources */,
+				2673E0122A5D014400429610 /* README.md in Resources */,
+				264846692A5E471400396575 /* COMMIT.md in Resources */,
 				26C7A8952A5D0015009F0EAF /* Preview Assets.xcassets in Resources */,
 				26C7A8922A5D0015009F0EAF /* Assets.xcassets in Resources */,
 			);
@@ -257,8 +412,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26C7A8902A5D0014009F0EAF /* ContentView.swift in Sources */,
+				264846762A5E5EB800396575 /* PrimaryButton.swift in Sources */,
+				264846742A5E5CF300396575 /* OnboardingSecond.swift in Sources */,
+				2623C22C2A5EE24100F820E8 /* View+ConditionalModifier.swift in Sources */,
+				264846782A5E61C300396575 /* CancelButton.swift in Sources */,
+				2648467C2A5E643300396575 /* CounterTextFieldStyle.swift in Sources */,
+				26BC97F22A5D102E003125B5 /* OnboardingFirst.swift in Sources */,
+				2673E0292A5D05C400429610 /* AppDelegate.swift in Sources */,
+				26BC97EC2A5D0ED0003125B5 /* Color+Extend.swift in Sources */,
+				26A77B012A5FAE6A00B1C3A7 /* OnboardingTimePicker.swift in Sources */,
+				2623C2322A5EF02200F820E8 /* VerticalPicker.swift in Sources */,
+				2648467E2A5E6FA700396575 /* OnboardingViewModel.swift in Sources */,
+				2648466B2A5E48BB00396575 /* UIScreen+Compact.swift in Sources */,
+				264846802A5E743500396575 /* OnboardingThird.swift in Sources */,
 				26C7A88E2A5D0014009F0EAF /* VitagochiApp.swift in Sources */,
+				2673E0272A5D056D00429610 /* GlobalEnvirontment.swift in Sources */,
+				2648467A2A5E639D00396575 /* CounteredTextView.swift in Sources */,
+				2623C2342A5EF68400F820E8 /* UIKitPickerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
