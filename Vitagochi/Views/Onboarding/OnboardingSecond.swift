@@ -11,8 +11,6 @@ import Combine
 struct OnboardingSecond: View {
     @EnvironmentObject var onboardingViewModel: OnboardingViewModel
     
-    @State var nickname: String = ""
-    @State private var isNicknameEmpty: Bool = false
     var body: some View {
         VStack(alignment: .leading) {
             Image("OnboardingUpperPrimary")
@@ -24,13 +22,13 @@ struct OnboardingSecond: View {
                         .font(.title)
                         .fontWeight(.bold)
                     
-                    CounteredTextView(input: $nickname)
-                        .onChange(of: Just(nickname), perform: { newValue in
-                            if !newValue.output.isEmpty {
-                                isNicknameEmpty = false
+                    CounteredTextView(input: $onboardingViewModel.nickname)
+                        .onChange(of: onboardingViewModel.nickname, perform: { newValue in
+                            if !newValue.isEmpty {
+                                onboardingViewModel.isNicknameEmpty = false
                             }
                         })
-                        .if(isNicknameEmpty, transform: { view in
+                        .if(onboardingViewModel.isNicknameEmpty, transform: { view in
                             view.overlay(Rectangle()
                                 .frame(width: nil, height: 1, alignment: .bottom)
                                 .foregroundColor(.red).opacity(1.0), alignment: .bottom)
@@ -40,18 +38,20 @@ struct OnboardingSecond: View {
                 Spacer()
                 
                 PrimaryButton(action: {
-                    if nickname.isEmpty {
-                        isNicknameEmpty = true
+                    if onboardingViewModel.nickname.isEmpty || onboardingViewModel.isNicknameEmpty {
+                        onboardingViewModel.isNicknameEmpty = true
                         return
                     }
-                    onboardingViewModel.setUsername(data: nickname)
-                    onboardingViewModel.navigate(route: .onboardingThird)
+                    onboardingViewModel.navigate(route: .OnboardingThird)
                 }, input: "Right, just call me that!")
                 
                 CancelButton(action: {
                     onboardingViewModel.back()
                 }, input: "Wait, go back please!")
-            }.padding([.horizontal], 32.0)
+                .padding(.top, 8.0)
+                .padding([.bottom], 32.0)
+            }
+            .padding([.horizontal], 32.0)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .edgesIgnoringSafeArea(.top)
