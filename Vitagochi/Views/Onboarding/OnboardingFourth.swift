@@ -23,7 +23,7 @@ struct OnboardingFourth: View {
                     .aspectRatio(contentMode: .fit)
             }
             .padding([.leading], 32.0)
-            .frame(maxWidth: .infinity)
+            .frame(maxWidth: .infinity, alignment: .trailing)
             .offset(y: 20)
             VStack {
                 Group {
