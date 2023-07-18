@@ -1,5 +1,5 @@
 //
-//  Color+Hex.swift
+//  Color+Extend.swift
 //  Vitagochi
 //
 //  Created by Dzulfikar on 11/07/23.

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import NavigationTransitions
 
 @main
 struct VitagochiApp: App {
@@ -21,17 +22,22 @@ struct VitagochiApp: App {
                         .environmentObject(onboardingViewModel)
                         .navigationDestination(for: OnboardingRoute.self, destination: { routes in
                             switch routes {
-                            case .onboardingSecond:
+                            case .OnboardingSecond:
                                 OnboardingSecond()
                                     .environmentObject(onboardingViewModel)
                                     .navigationBarBackButtonHidden()
-                            case .onboardingThird:
-                                OnboardingThird()
+                            case .OnboardingThird:
+                                OnboardingThirdRevision()
+                                    .environmentObject(onboardingViewModel)
+                                    .navigationBarBackButtonHidden()
+                            case .OnboardingFourth:
+                                OnboardingFourth()
                                     .environmentObject(onboardingViewModel)
                                     .navigationBarBackButtonHidden()
                             }
                         })
                 }
+                .navigationTransition(.slide(axis: .horizontal), interactivity: .disabled)
             } else {
                 Text("ASD")
             }

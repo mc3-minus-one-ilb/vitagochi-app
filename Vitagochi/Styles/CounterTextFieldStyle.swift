@@ -11,13 +11,13 @@ import Combine
 struct CounterTextFieldStyle: TextFieldStyle {
     @Binding var input: String
     @State var maxLength: Int = 0
-
+    
     func _body(configuration: TextField<Self._Label>) -> some View {
         HStack {
             Group {
                 configuration
                     .body
-                    .onReceive(Just(input), perform: { newInput in
+                    .onChange(of: input, perform: { newInput in
                         input = String(newInput.prefix(maxLength))
                     })
                 Text("\(input.count)/\(maxLength)")

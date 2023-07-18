@@ -17,6 +17,7 @@ struct OnboardingFirst: View {
                 .font(.title)
                 .multilineTextAlignment(.center)
                 .foregroundColor(.white)
+                .padding(.top, 16.0)
             
             Text("Do you need someone\n to remind you to eat \ngreens & fruits?")
                 .font(.title3)
@@ -24,13 +25,14 @@ struct OnboardingFirst: View {
                 .multilineTextAlignment(.center)
             
             Image("OnboardingPearGirl")
+                .resizable()
+                .scaledToFit()
             
             PrimaryButton(action: {
-                onboardingViewModel.navigate(route: .onboardingSecond)
+                onboardingViewModel.navigate(route: .OnboardingSecond)
             }, input: "Absolutely, yes!")
-            
+            .padding([.horizontal, .vertical], 32.0)
         }
-        .padding([.horizontal], 32.0)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .background(
             VStack {
@@ -47,5 +49,12 @@ struct OnboardingFirst: View {
 struct OnboardingFirst_Previews: PreviewProvider {
     static var previews: some View {
         OnboardingFirst()
+            .previewDevice(PreviewDevice(rawValue: "iPhone 14"))
+            .previewDisplayName("iPhone 14")
+        
+        OnboardingFirst()
+            .previewDevice(PreviewDevice(rawValue: "iPhone 14 Pro Max"))
+            .previewDisplayName("iPhone 14 Pro Max")
+        
     }
 }
