@@ -15,26 +15,27 @@ struct VitagochiApp: App {
     
     var body: some Scene {
         WindowGroup {
-            if !envObj.isOnboardingFinished {
-                NavigationStack(path: $onboardingViewModel.onboardingPath) {
-                    OnboardingFirst()
-                        .environmentObject(onboardingViewModel)
-                        .navigationDestination(for: OnboardingRoute.self, destination: { routes in
-                            switch routes {
-                            case .onboardingSecond:
-                                OnboardingSecond()
-                                    .environmentObject(onboardingViewModel)
-                                    .navigationBarBackButtonHidden()
-                            case .onboardingThird:
-                                OnboardingThird()
-                                    .environmentObject(onboardingViewModel)
-                                    .navigationBarBackButtonHidden()
-                            }
-                        })
-                }
-            } else {
-                Text("ASD")
-            }
+            RootView()
+//            if !envObj.isOnboardingFinished {
+//                NavigationStack(path: $onboardingViewModel.onboardingPath) {
+//                    OnboardingFirst()
+//                        .environmentObject(onboardingViewModel)
+//                        .navigationDestination(for: OnboardingRoute.self, destination: { routes in
+//                            switch routes {
+//                            case .onboardingSecond:
+//                                OnboardingSecond()
+//                                    .environmentObject(onboardingViewModel)
+//                                    .navigationBarBackButtonHidden()
+//                            case .onboardingThird:
+//                                OnboardingThird()
+//                                    .environmentObject(onboardingViewModel)
+//                                    .navigationBarBackButtonHidden()
+//                            }
+//                        })
+//                }
+//            } else {
+//                Text("ASD")
+//            }
         }
     }
 }
