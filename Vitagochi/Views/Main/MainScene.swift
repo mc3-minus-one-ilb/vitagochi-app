@@ -27,9 +27,33 @@ struct BackgroundArc: Shape {
     }
 }
 
+//struct AdaptiveView<Content: View>: View {
+//    var content: Content
+//    init(@ViewBuilder content: @escaping ()-> Content) {
+//        self.content = content()
+//    }
+//    
+//    var body: some View {
+//        ViewThatFits{
+//            content
+//
+//            ScrollView(.vertical) {
+//                content
+//            }
+//        }
+//    }
+//}
+
 struct MainSceneView: View {
-    @State var messageIndex: [String] = ["Welcome! \nTap me so I can speak to you", "hello"]
-    @State var isClicked: Bool = false
+    @StateObject var vitaModel = MainSceneViewModel()
+    @State var timer: Timer?
+    
+    let scaleSize: Double
+    
+    init() {
+        scaleSize = MainSceneView.ScaleContentBasedHeight()
+    }
+    
     var body: some View {
         VStack{
             HStack{
@@ -73,56 +97,71 @@ struct MainSceneView: View {
             .padding()
             .padding(.horizontal, 8)
             Spacer()
-            
-                //Change Offset Problem
-                
-                
-                
-                VStack(spacing: 0){
-                    //Change
-                    RectangleBubleTextView(text: messageIndex[isClicked ? 1 : 0])
-                    
-                    ZStack(alignment: .bottom){
-                        GeometryReader { geo in
-                            //Change Offset Problem
-                            BackgroundArc()
-                                .rotation(.degrees(180))
-                                .foregroundColor(Color.backgrounCurveColor)
-                                .offset(y: geo.size.height - 40)
-                                .frame(width: geo.size.width, height: geo.size.height, alignment: .bottom)
-                        }
-                        CircularProgressView(percentage: 33)
-                            .frame(width: 300, height: 300)
-                            .offset(y: -70)
-                        
-                        Ellipse()
-                            .fill(Color.shadowEclipseColor)
-                            .frame(width: 150, height: 40)
-                            .offset(y:15)
-                        //Change
-                        Image("MainVitaIdle")
-                            .resizable()
-                            .frame(width: 222, height: 390)
-                            .onTapGesture {
-                                isClicked.toggle()
-                            }
-                        
-                        
-                    }
-                    .frame(height: 390)
-                    //Change
-                    StatusLevelView(level: 1, exp: 2)
-                        .frame(width: 170, height: 8)
-                        .offset(y:30)
-                    
-                    Spacer()
+            ZStack(alignment: .bottom){
+                GeometryReader { geo in
+                    //Change Offset Problem
+                    BackgroundArc()
+                        .rotation(.degrees(180))
+                        .foregroundColor(Color.backgrounCurveColor)
+                        .offset(y: geo.size.height - 40)
+                        .frame(width: geo.size.width, height: geo.size.height, alignment: .bottom)
+                        .padding(.bottom, 100)
                 }
-            
-           
-            //            .padding(.top, 30)
-            
+                
+                CircularProgressView(percentage: CGFloat((vitaModel.isCompleted.filter{$0}.count - 1 ) * 33) )
+                    .frame(width: 300, height: 300)
+                    .offset(y: -90)
+                
+                Ellipse()
+                    .fill(Color.shadowEclipseColor)
+                    .frame(width: 150, height: 40)
+                    .offset(y:15)
+                //Change
+                VStack{
+                    RectangleBubleTextView(text: vitaModel.message)
+                        .frame(width: 300, height: 116)
+                    Image(vitaModel.mood.image)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 222, height: 390)
+                        .onTapGesture {
+                            vitaModel.isTapped.toggle()
+                            vitaModel.isCompleted[vitaModel.phase.completedIndex].toggle()
+                        }
+                    
+                }
+                StatusLevelView(level: 1, exp: 2)
+                    .frame(width: 170, height: 8)
+                    .offset(y:36)
+            }
+            .frame(height: 390)
+            .scaleEffect(scaleSize)
+            Spacer()
+            Spacer()
         }
         .background(Color.primaryWhite)
+        .onChange(of: vitaModel.phase) { _ in
+            vitaModel.GenerateMessage()
+        }
+        .onChange(of: vitaModel.isTapped) { _ in
+            vitaModel.GenerateMessage()
+        }
+        .onChange(of: vitaModel.isCompleted) { _ in
+            vitaModel.GenerateMessage()
+        }
+        
+    }
+    
+    static func ScaleContentBasedHeight() -> Double {
+        let heightScreen = UIScreen.main.bounds.height
+     
+        if heightScreen >= 932 {
+            return 1.15
+        } else if heightScreen >= 852 {
+            return 1.05
+        } else {
+            return 1
+        }
     }
     
 }
@@ -131,12 +170,17 @@ struct MainSceneView_Previews: PreviewProvider {
     static var previews: some View {
         MainSceneView()
         
-        MainSceneView()
-            .previewDevice(PreviewDevice(rawValue: "iPhone 14 Pro Max"))
-            .previewDisplayName("iPhone 14 Pro Max")
-        
-        MainSceneView()
-            .previewDevice(PreviewDevice(rawValue: "iPhone SE (3rd generation)"))
-            .previewDisplayName("iPhone SE (3rd generation)")
+//        MainSceneView()
+//            .previewDevice(PreviewDevice(rawValue: "iPhone 14 Pro Max"))
+//            .previewDisplayName("iPhone 14 Pro Max")
+//        
+//        MainSceneView()
+//            .previewDevice(PreviewDevice(rawValue: "iPhone 14 Pro"))
+//            .previewDisplayName("iPhone 14 Pro")
+//        
+//        // MARK: Need Fix
+//        MainSceneView()
+//            .previewDevice(PreviewDevice(rawValue: "iPhone SE (3rd generation)"))
+//            .previewDisplayName("iPhone SE (3rd generation)")
     }
 }

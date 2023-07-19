@@ -12,7 +12,12 @@ struct HourAndMinute {
     let minute: Int
 }
 
-enum VitachiPhase {
+struct VitaMessage {
+    let text: String
+    let soundName: String
+}
+
+enum VitachiTimePhase {
     case morning
     case afternoon
     case evening
@@ -31,7 +36,7 @@ enum VitachiPhase {
         }
     }
     
-    var defaultMessage: [String] {
+    var defaultMessage: [VitaMessage] {
         switch self {
         case.beforeDayStart:
             return [VitaDefaultMessage[0], VitaDefaultMessage[1]]
@@ -44,10 +49,10 @@ enum VitachiPhase {
         }
     }
     
-    var angryMessage: [String] {
+    var angryMessage: [VitaMessage] {
         switch self {
         case.beforeDayStart:
-            return ["",""]
+            return [VitaMessage(text: "", soundName: "")]
         case.morning:
             return [VitaAngryMessage[0], VitaAngryMessage[1]]
         case.afternoon:
@@ -57,10 +62,10 @@ enum VitachiPhase {
         }
     }
     
-    var happyMessage: [String] {
+    var happyMessage: [VitaMessage] {
         switch self {
         case.beforeDayStart:
-            return ["",""]
+            return [VitaMessage(text: "", soundName: "")]
         case.morning:
             return [VitaHappyMessage[0], VitaHappyMessage[1]]
         case.afternoon:
@@ -84,39 +89,41 @@ enum VitachiPhase {
     }
 }
 
-let VitaDefaultMessage: [String] = [
-    "Don’t forget to eat veggies and fruits or you will constipate!",
-    "Take a picture of your meals using the upper right camera icon when mealtime comes 📸",
-    "Rise and shine! It's time for you to fill that empty belly. Be sure to eat then take a picture of your meals 📸",
-    "I expected you to send me a picture of a healthy meal so that we can eat and be healthy together 🙌",
-    "What are you waiting for? Please eat now then add greens and fruits for the best!",
-    "I expected you to send me a picture of a healthy meal so that we can eat and be healthy together 🙌",
-    "Before the day ends, let’s enjoy a fulfilling, tasty, and healthy meal",
-    "I expected you to send me a picture of a healthy meal so that we can eat and be healthy together 🙌"
+let VitaDefaultMessage: [VitaMessage] = [
+    VitaMessage(text: "Don’t forget to eat veggies and fruits or you will constipate!", soundName: "default1"),
+    VitaMessage(text: "When it is time to eat, press the camera icon to take a picture of the meal. 📸", soundName: "default2"),
+    VitaMessage(text: "Rise and shine! It's time for you to fill that empty belly. Be sure to take a picture of your meal before eating it. 📸", soundName: "default3"),
+    VitaMessage(text: "Vita hopes that you will be able to take pictures of healthy meals. 😋", soundName: ""),
+    VitaMessage(text: "What are you waiting for? Please eat now then add greens and fruits for the best!", soundName: ""),
+    VitaMessage(text: "I expected you to send me a picture of a healthy meal so that we can eat and be healthy together 😋", soundName: ""),
+    VitaMessage(text: "Before the day ends, let’s enjoy a fulfilling, tasty, and healthy meal", soundName: ""),
+    VitaMessage(text: "I expected you to send me a picture of a healthy meal so that we can eat and be healthy together 😋", soundName: "")
 ]
 
-let VitaAngryMessage: [String] = [
-    "I did recommend you to start the day with breakfas right? It will be fuel to do the activity!",
-    "Please eat your meal and send a picture of it to me so I can ensure you're eating healthy meals 😠",
-    "No matter how busy you are, skipping lunch is a bad idea!",
-    "Please eat your meal and send a picture of it to me so I can ensure you're eating healthy meals 😠",
-    "It’s now or never for dinner! Eating late at night is a no-no for your health",
-    "Please eat your meal and send a picture of it to me so I can ensure you're eating healthy meals 😠"
+let VitaAngryMessage: [VitaMessage] = [
+    VitaMessage(text:  "I told you the day starts with breakfast. Otherwise you will be tired during the day. 🤕", soundName: ""),
+    VitaMessage(text:  "Please eat your meal and send a picture of it to me so I can ensure you're eating healthy meals 😠", soundName: ""),
+    VitaMessage(text:  "No matter how busy you are, skipping lunch is a bad idea!", soundName: ""),
+    VitaMessage(text:  "Please eat your meal and send a picture of it to me so I can ensure you're eating healthy meals 😠", soundName: ""),
+    VitaMessage(text:  "It’s now or never for dinner! Eating late at night is a no-no for your health", soundName: ""),
+    VitaMessage(text:  "Please eat your meal and send a picture of it to me so I can ensure you're eating healthy meals 😠", soundName: "")
+    
 ]
 
-let VitaHappyMessage: [String] = [
-    "Yum! Feels like I'm having a taste of what you're eating",
-    "Well done! Keep up the good work of improving your healthy dietary habits ✊🏻",
-    "A healthy lunch a day can keep the doctor away. Good job for not skipping lunch!",
-    "Well done! Keep up the good work of improving your healthy dietary habits. ✊🏻",
-    "Now, you are ready to wrap up the day after nourishing yourself with meals filled with greens and fruits",
-    "Well done! Keep up the good work of improving your healthy dietary habits. ✊🏻"
+let VitaHappyMessage: [VitaMessage] = [
+    VitaMessage(text:  "Yum! Feels like I'm having a taste of what you're eating", soundName: ""),
+    VitaMessage(text:  "Well done! Keep up the good work of improving your healthy dietary habits ✊🏻", soundName: ""),
+    VitaMessage(text:  "A healthy lunch a day can keep the doctor away. Good job for not skipping lunch!", soundName: ""),
+    VitaMessage(text: "Well done! Keep up the good work of improving your healthy dietary habits. ✊🏻", soundName: ""),
+    VitaMessage(text:  "Now, you are ready to wrap up the day after nourishing yourself with meals filled with greens and fruits", soundName: ""),
+    VitaMessage(text:  "Well done! Keep up the good work of improving your healthy dietary habits. ✊🏻", soundName: "")
+    
 ]
 
 
 struct VitachiMessageModel {
     let message: String
-    let phase: VitachiPhase
+    let phase: VitachiTimePhase
     let isCompleted: Bool
 }
 

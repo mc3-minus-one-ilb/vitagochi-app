@@ -8,7 +8,7 @@
 import SwiftUI
 
 extension Date {
-    func isPhaseGreaterThan(_ value: VitachiPhase) -> Bool {
+    func isPhaseGreaterThan(_ value: VitachiTimePhase) -> Bool {
         let calendar = Calendar.current
         let currentDateComponents = calendar.dateComponents([.year, .month, .day], from: self)
         
@@ -24,7 +24,7 @@ extension Date {
         return false
     }
     
-    func isPhaseAfterOneHour(_ value: VitachiPhase) -> Bool {
+    func isPhaseAfterOneHour(_ value: VitachiTimePhase) -> Bool {
         let calendar = Calendar.current
         let currentDateComponents = calendar.dateComponents([.year, .month, .day], from: self)
         

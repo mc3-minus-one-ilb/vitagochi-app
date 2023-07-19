@@ -33,12 +33,18 @@
 		26C7A8A92A5D0015009F0EAF /* VitagochiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C7A8A82A5D0015009F0EAF /* VitagochiUITests.swift */; };
 		26C7A8AB2A5D0015009F0EAF /* VitagochiUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C7A8AA2A5D0015009F0EAF /* VitagochiUITestsLaunchTests.swift */; };
 		CB05285A2A6531A000649F22 /* Date+Extend.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0528592A6531A000649F22 /* Date+Extend.swift */; };
-		CB05285C2A6531F600649F22 /* VitachiPhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB05285B2A6531F600649F22 /* VitachiPhase.swift */; };
+		CB05285C2A6531F600649F22 /* VitachiTimePhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB05285B2A6531F600649F22 /* VitachiTimePhase.swift */; };
 		CB05285E2A65323900649F22 /* MainScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB05285D2A65323900649F22 /* MainScene.swift */; };
 		CB0528612A653F9200649F22 /* RectangleBubleTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0528602A653F9200649F22 /* RectangleBubleTextView.swift */; };
 		CB0528632A6546BF00649F22 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0528622A6546BF00649F22 /* CircularProgressView.swift */; };
 		CB0528652A656BB500649F22 /* StatusLevelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0528642A656BB500649F22 /* StatusLevelView.swift */; };
 		CB0528672A65712500649F22 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0528662A65712500649F22 /* RootView.swift */; };
+		CB2B5D992A66A0BA0099D404 /* MainSceneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2B5D982A66A0BA0099D404 /* MainSceneViewModel.swift */; };
+		CB2B5D9B2A66B50B0099D404 /* VitachiMoodPhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2B5D9A2A66B50B0099D404 /* VitachiMoodPhase.swift */; };
+		CB2B5D9F2A66B96F0099D404 /* welcome.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB2B5D9E2A66B96F0099D404 /* welcome.wav */; };
+		CB2B5DA22A66BA7B0099D404 /* default1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB2B5DA12A66BA7B0099D404 /* default1.wav */; };
+		CB2B5DA42A66BABA0099D404 /* default2.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB2B5DA32A66BABA0099D404 /* default2.wav */; };
+		CB2B5DA72A66BAFC0099D404 /* default3.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB2B5DA62A66BAFC0099D404 /* default3.wav */; };
 		CBE7BA202A66072C00E87AAA /* TabBarIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE7BA1F2A66072C00E87AAA /* TabBarIconView.swift */; };
 /* End PBXBuildFile section */
 
@@ -94,12 +100,18 @@
 		26C7A8A82A5D0015009F0EAF /* VitagochiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VitagochiUITests.swift; sourceTree = "<group>"; };
 		26C7A8AA2A5D0015009F0EAF /* VitagochiUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VitagochiUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		CB0528592A6531A000649F22 /* Date+Extend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extend.swift"; sourceTree = "<group>"; };
-		CB05285B2A6531F600649F22 /* VitachiPhase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VitachiPhase.swift; path = Vitagochi/Extensions/VitachiPhase.swift; sourceTree = SOURCE_ROOT; };
+		CB05285B2A6531F600649F22 /* VitachiTimePhase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VitachiTimePhase.swift; path = Vitagochi/Extensions/VitachiTimePhase.swift; sourceTree = SOURCE_ROOT; };
 		CB05285D2A65323900649F22 /* MainScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScene.swift; sourceTree = "<group>"; };
 		CB0528602A653F9200649F22 /* RectangleBubleTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleBubleTextView.swift; sourceTree = "<group>"; };
 		CB0528622A6546BF00649F22 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		CB0528642A656BB500649F22 /* StatusLevelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusLevelView.swift; sourceTree = "<group>"; };
 		CB0528662A65712500649F22 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		CB2B5D982A66A0BA0099D404 /* MainSceneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSceneViewModel.swift; sourceTree = "<group>"; };
+		CB2B5D9A2A66B50B0099D404 /* VitachiMoodPhase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VitachiMoodPhase.swift; path = Vitagochi/ViewModels/VitachiMoodPhase.swift; sourceTree = SOURCE_ROOT; };
+		CB2B5D9E2A66B96F0099D404 /* welcome.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = welcome.wav; sourceTree = "<group>"; };
+		CB2B5DA12A66BA7B0099D404 /* default1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = default1.wav; sourceTree = "<group>"; };
+		CB2B5DA32A66BABA0099D404 /* default2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = default2.wav; sourceTree = "<group>"; };
+		CB2B5DA62A66BAFC0099D404 /* default3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = default3.wav; sourceTree = "<group>"; };
 		CBE7BA1F2A66072C00E87AAA /* TabBarIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarIconView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -160,7 +172,8 @@
 		2673E0172A5D022600429610 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				CB05285B2A6531F600649F22 /* VitachiPhase.swift */,
+				CB05285B2A6531F600649F22 /* VitachiTimePhase.swift */,
+				CB2B5D9A2A66B50B0099D404 /* VitachiMoodPhase.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -169,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				2648467D2A5E6FA700396575 /* OnboardingViewModel.swift */,
+				CB2B5D982A66A0BA0099D404 /* MainSceneViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -224,6 +238,7 @@
 		26BC97ED2A5D0FE4003125B5 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				CB2B5D9C2A66B8630099D404 /* Sound */,
 				26BC97EE2A5D0FEC003125B5 /* Fonts */,
 				26C7A8912A5D0015009F0EAF /* Assets.xcassets */,
 			);
@@ -309,6 +324,33 @@
 				CB0528662A65712500649F22 /* RootView.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		CB2B5D9C2A66B8630099D404 /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				CB2B5D9E2A66B96F0099D404 /* welcome.wav */,
+				CB2B5D9D2A66B9250099D404 /* BeforeDay */,
+				CB2B5DA52A66BAD60099D404 /* Morning */,
+			);
+			path = Sound;
+			sourceTree = "<group>";
+		};
+		CB2B5D9D2A66B9250099D404 /* BeforeDay */ = {
+			isa = PBXGroup;
+			children = (
+				CB2B5DA32A66BABA0099D404 /* default2.wav */,
+				CB2B5DA12A66BA7B0099D404 /* default1.wav */,
+			);
+			path = BeforeDay;
+			sourceTree = "<group>";
+		};
+		CB2B5DA52A66BAD60099D404 /* Morning */ = {
+			isa = PBXGroup;
+			children = (
+				CB2B5DA62A66BAFC0099D404 /* default3.wav */,
+			);
+			path = Morning;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -415,9 +457,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB2B5DA72A66BAFC0099D404 /* default3.wav in Resources */,
+				CB2B5DA22A66BA7B0099D404 /* default1.wav in Resources */,
 				2673E0142A5D014900429610 /* LICENSE.txt in Resources */,
 				2673E0122A5D014400429610 /* README.md in Resources */,
 				264846692A5E471400396575 /* COMMIT.md in Resources */,
+				CB2B5D9F2A66B96F0099D404 /* welcome.wav in Resources */,
+				CB2B5DA42A66BABA0099D404 /* default2.wav in Resources */,
 				26C7A8952A5D0015009F0EAF /* Preview Assets.xcassets in Resources */,
 				26C7A8922A5D0015009F0EAF /* Assets.xcassets in Resources */,
 			);
@@ -446,12 +492,14 @@
 			files = (
 				CBE7BA202A66072C00E87AAA /* TabBarIconView.swift in Sources */,
 				264846762A5E5EB800396575 /* PrimaryButton.swift in Sources */,
+				CB2B5D992A66A0BA0099D404 /* MainSceneViewModel.swift in Sources */,
 				CB0528672A65712500649F22 /* RootView.swift in Sources */,
+				CB2B5D9B2A66B50B0099D404 /* VitachiMoodPhase.swift in Sources */,
 				264846742A5E5CF300396575 /* OnboardingSecond.swift in Sources */,
 				2623C22C2A5EE24100F820E8 /* View+ConditionalModifier.swift in Sources */,
 				264846782A5E61C300396575 /* CancelButton.swift in Sources */,
 				CB0528652A656BB500649F22 /* StatusLevelView.swift in Sources */,
-				CB05285C2A6531F600649F22 /* VitachiPhase.swift in Sources */,
+				CB05285C2A6531F600649F22 /* VitachiTimePhase.swift in Sources */,
 				2648467C2A5E643300396575 /* CounterTextFieldStyle.swift in Sources */,
 				26BC97F22A5D102E003125B5 /* OnboardingFirst.swift in Sources */,
 				2673E0292A5D05C400429610 /* AppDelegate.swift in Sources */,
@@ -627,7 +675,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Vitagochi/Preview Content\"";
-				DEVELOPMENT_TEAM = 2W2FLHT9EF;
+				DEVELOPMENT_TEAM = BS6K64RQ23;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -656,7 +704,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Vitagochi/Preview Content\"";
-				DEVELOPMENT_TEAM = 2W2FLHT9EF;
+				DEVELOPMENT_TEAM = BS6K64RQ23;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

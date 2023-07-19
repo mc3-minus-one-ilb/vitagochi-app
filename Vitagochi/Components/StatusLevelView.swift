@@ -18,7 +18,7 @@ struct StatusLevelView: View {
             GeometryReader{ geo in
                 Rectangle()
                     .fill(Color.white)
-                    .frame(width: geo.frame(in: .global).width, height: geo.size.height)
+                    .frame(width: geo.frame(in: .local).width, height: geo.size.height)
                     .cornerRadius(200)
             }
             Text("\(exp)/22")

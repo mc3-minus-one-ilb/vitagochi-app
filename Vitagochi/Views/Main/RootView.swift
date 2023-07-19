@@ -45,12 +45,12 @@ struct RootView_Previews: PreviewProvider {
     static var previews: some View {
         RootView()
         
-        RootView()
-            .previewDevice(PreviewDevice(rawValue: "iPhone 14 Pro Max"))
-            .previewDisplayName("iPhone 14 Pro Max")
-        
-        RootView()
-            .previewDevice(PreviewDevice(rawValue: "iPhone SE (3rd generation)"))
-            .previewDisplayName("iPhone SE (3rd generation)")
+//        RootView()
+//            .previewDevice(PreviewDevice(rawValue: "iPhone 14 Pro Max"))
+//            .previewDisplayName("iPhone 14 Pro Max")
+//        
+//        RootView()
+//            .previewDevice(PreviewDevice(rawValue: "iPhone SE (3rd generation)"))
+//            .previewDisplayName("iPhone SE (3rd generation)")
     }
 }
