@@ -14,30 +14,33 @@ struct RootView: View {
         
         // BUG: Offset Problem
         // BUG: MainScene position is terrible
-        TabView(selection: $selection) {
-            MainSceneView()
-                .tag(0)
-            EmptyView()
-                .tag(1)
-            EmptyView()
-                .tag(2)
-        }
-        .overlay(
-            Color.primaryWhite
-                .edgesIgnoringSafeArea(.vertical)
-                .frame(height: 50)
-                .overlay {
-                    HStack{
-                        TabBarIconView(selection: $selection, value: 0, iconName: "heart.fill")
-                            .padding(.leading, 50)
-                        Spacer()
-                        TabBarIconView(selection: $selection, value: 1, iconName: "heart.text.square.fill")
-                        Spacer()
-                        TabBarIconView(selection: $selection, value: 2, iconName: "medal.fill")
-                            .padding(.trailing, 50)
+        NavigationStack{
+            TabView(selection: $selection) {
+                MainSceneView()
+                    .tag(0)
+                EmptyView()
+                    .tag(1)
+                EmptyView()
+                    .tag(2)
+            }
+            .overlay(
+                Color.primaryWhite
+                    .edgesIgnoringSafeArea(.vertical)
+                    .frame(height: 50)
+                    .overlay {
+                        HStack{
+                            TabBarIconView(selection: $selection, value: 0, iconName: "heart.fill")
+                                .padding(.leading, 50)
+                            Spacer()
+                            TabBarIconView(selection: $selection, value: 1, iconName: "heart.text.square.fill")
+                            Spacer()
+                            TabBarIconView(selection: $selection, value: 2, iconName: "medal.fill")
+                                .padding(.trailing, 50)
+                        }
                     }
-                }
-        ,alignment: .bottom)
+                ,alignment: .bottom)
+        }
+        
     }
 }
 
@@ -45,13 +48,13 @@ struct RootView_Previews: PreviewProvider {
     static var previews: some View {
         RootView()
         
-//        RootView()
-//            .previewDevice(PreviewDevice(rawValue: "iPhone 14 Pro Max"))
-//            .previewDisplayName("iPhone 14 Pro Max")
-//        
-//        RootView()
-//            .previewDevice(PreviewDevice(rawValue: "iPhone SE (3rd generation)"))
-//            .previewDisplayName("iPhone SE (3rd generation)")
+        //        RootView()
+        //            .previewDevice(PreviewDevice(rawValue: "iPhone 14 Pro Max"))
+        //            .previewDisplayName("iPhone 14 Pro Max")
+        //
+        //        RootView()
+        //            .previewDevice(PreviewDevice(rawValue: "iPhone SE (3rd generation)"))
+        //            .previewDisplayName("iPhone SE (3rd generation)")
         
     }
 }

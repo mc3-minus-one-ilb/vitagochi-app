@@ -10,8 +10,8 @@ import SwiftUI
 struct ChatBubble: View {
     var message: Message
     var isHorizontalScroll: Bool = false
+    
     var body: some View {
-        
         var uiImagePhoto = UIImage()
         var photoWidth = CGFloat()
         var photoHeight = CGFloat()
@@ -29,6 +29,7 @@ struct ChatBubble: View {
                 
                 if message.photo == nil {
                     Text(message.text)
+                        .font(.system(.subheadline, weight: .regular))
                         .kerning(-0.4)
                         .padding(.all)
                         .background(Color.black.opacity(0.06))
@@ -37,7 +38,7 @@ struct ChatBubble: View {
                     Image(uiImage: uiImagePhoto)
                         .resizable()
                         .frame(width: photoWidth > photoHeight ? UIScreen.main.bounds.width - 150 : 182,
-                               height: photoWidth > photoHeight ? 150 : 220)
+                               height: photoWidth > photoHeight ? 180 : 220)
                         .clipShape(BubbleArrow(isMyMessage: message.isMyMessage))
                 }
                 
@@ -49,16 +50,47 @@ struct ChatBubble: View {
             } else {
                 Image(message.profilPic)
                     .resizable()
-                    .frame(width: 35, height: 35)
+                    .background(Color.vitaProfileBackgroundColor)
+                    .frame(width: 52, height: 52)
                     .clipShape(Circle())
                 
                 if message.photo ==  nil {
-                    Text(message.text)
-                        .kerning(-0.4)
-                        .foregroundColor(.white)
+                    if message.vitaAnswer != nil {
+                        VStack {
+                            Text(message.text)
+                                .font(.system(.subheadline, weight: .regular))
+                                .kerning(-0.4)
+                                .foregroundColor(.white)
+                                .padding(.bottom, 12)
+                            
+                            Divider()
+                                .padding(.top,1)
+                            //                            .fontWidth(22)
+                                .background(Color.white)
+                            Button {
+                                
+                            } label: {
+                                Text("Thanks Vita! 👍")
+                                    .font(.system(.subheadline, weight: .bold))
+                                    .fontDesign(.rounded)
+                                    .foregroundColor(.white)
+                                    .padding(.top, 16)
+                                    .padding(.bottom, 12)
+                            }
+                        }
                         .padding(.all)
                         .background(Color.chatTopPinkColor)
                         .clipShape(BubbleArrow(isMyMessage: message.isMyMessage))
+                    } else {
+                        Text(message.text)
+                            .font(.system(.subheadline, weight: .regular))
+                            .kerning(-0.4)
+                            .foregroundColor(.white)
+                            .padding(.all)
+                            .background(Color.chatTopPinkColor)
+                            .clipShape(BubbleArrow(isMyMessage: message.isMyMessage))
+                    }
+
                 } else {
                     Image(uiImage: UIImage(data:  message.photo!)!)
                         .resizable()
@@ -92,3 +124,11 @@ struct RoundedShape: Shape {
     }
 }
 
+
+
+struct ChatBuble_Previews: PreviewProvider {
+    static var previews: some View {
+        //        ChatView(chatModel: ChatViewModel(photoData: Data()))
+        ChatView()
+    }
+}

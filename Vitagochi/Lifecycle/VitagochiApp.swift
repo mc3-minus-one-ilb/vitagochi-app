@@ -15,8 +15,8 @@ struct VitagochiApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ChatView()
-//            RootView()
+//            ChatView()
+            RootView()
 //            if !envObj.isOnboardingFinished {
 //                NavigationStack(path: $onboardingViewModel.onboardingPath) {
 //                    OnboardingFirst()

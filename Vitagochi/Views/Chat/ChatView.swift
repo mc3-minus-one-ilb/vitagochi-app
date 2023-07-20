@@ -57,7 +57,7 @@ struct ChatView: View {
                                             chatModel.writeMessage(message)
                                             chatModel.showMyOptions.toggle()
                                             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                                                chatModel.writeMessage(id: Date(), msg: message.vitaAnswer!.answer, photo: nil, myMsg: false, profilPic: "VitaChatIcon")
+                                                chatModel.writeMessage(Message(id: Date(), text: message.vitaAnswer!.answer, isMyMessage: false, profilPic: "VitaChatIcon", vitaAnswer: message.vitaAnswer!))
                                             }
                                         }
                                 }

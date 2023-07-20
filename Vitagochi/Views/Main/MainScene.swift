@@ -55,7 +55,6 @@ struct MainSceneView: View {
     }
     
     var body: some View {
-        NavigationStack{
             VStack{
                 HStack{
                     VStack(alignment: .leading, spacing: 6){
@@ -78,8 +77,9 @@ struct MainSceneView: View {
                     ZStack(alignment: .bottomLeading){
                         //Change
                         Button {
-                            //                            ChatView()
+                            //  ChatView()
                             vitaModel.isCameraClicked.toggle()
+                            
                         } label: {
                             Image(systemName: "camera.fill")
                                 .resizable()
@@ -173,7 +173,7 @@ struct MainSceneView: View {
                 
             }
             
-        }
+        
     }
     
     static func ScaleContentBasedHeight() -> Double {
