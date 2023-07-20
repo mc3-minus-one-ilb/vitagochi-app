@@ -39,7 +39,7 @@ struct VitagochiApp: App {
                 }
                 .navigationTransition(.slide(axis: .horizontal), interactivity: .disabled)
             } else {
-                Text("ASD")
+                RootView()
             }
         }
     }
