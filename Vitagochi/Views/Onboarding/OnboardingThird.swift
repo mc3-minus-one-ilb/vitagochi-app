@@ -35,7 +35,7 @@ struct OnboardingThird: View {
             
             Group {
                 Group {
-                    Text("In 66 days, Vita will\nremind \(onboardingViewModel.usernameValue.capitalized) on")
+                    Text("In 66 days, Vita will\nremind \(onboardingViewModel.nickname.capitalized) on")
                         .font(.title)
                         .fontWeight(.bold)
                 }.padding([.bottom], 16.0)
@@ -100,7 +100,7 @@ struct OnboardingThird: View {
                 Spacer()
                 
                 PrimaryButton(action: {
-                    onboardingViewModel.save(remindSet: true)
+                    onboardingViewModel.finishOnboarding()
                 }, input: "Ok, start to remind me!")
                 
                 CancelButton(action: {

@@ -19,11 +19,17 @@
 		2648467C2A5E643300396575 /* CounterTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2648467B2A5E643300396575 /* CounterTextFieldStyle.swift */; };
 		2648467E2A5E6FA700396575 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2648467D2A5E6FA700396575 /* OnboardingViewModel.swift */; };
 		264846802A5E743500396575 /* OnboardingThird.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2648467F2A5E743500396575 /* OnboardingThird.swift */; };
+		266354CD2A6643B600C9605E /* NavigationTransitions in Frameworks */ = {isa = PBXBuildFile; productRef = 266354CC2A6643B600C9605E /* NavigationTransitions */; };
 		2673E0122A5D014400429610 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 2673E0112A5D014400429610 /* README.md */; };
 		2673E0142A5D014900429610 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2673E0132A5D014900429610 /* LICENSE.txt */; };
 		2673E0272A5D056D00429610 /* GlobalEnvirontment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2673E0262A5D056D00429610 /* GlobalEnvirontment.swift */; };
 		2673E0292A5D05C400429610 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2673E0282A5D05C400429610 /* AppDelegate.swift */; };
 		26A77B012A5FAE6A00B1C3A7 /* OnboardingTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A77B002A5FAE6A00B1C3A7 /* OnboardingTimePicker.swift */; };
+		26B0A3202A6578BE0047FC6A /* OnboardingThirdRevision.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B0A31F2A6578BE0047FC6A /* OnboardingThirdRevision.swift */; };
+		26B0A3222A657C0A0047FC6A /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B0A3212A657C0A0047FC6A /* Color+Hex.swift */; };
+		26B0A3242A657CDC0047FC6A /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B0A3232A657CDC0047FC6A /* UIColor+Hex.swift */; };
+		26B0A3282A65893B0047FC6A /* CollectiveDayTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B0A3272A65893B0047FC6A /* CollectiveDayTimePicker.swift */; };
+		26B0A32A2A6595AD0047FC6A /* OnboardingFourth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B0A3292A6595AD0047FC6A /* OnboardingFourth.swift */; };
 		26BC97EC2A5D0ED0003125B5 /* Color+Extend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC97EB2A5D0ED0003125B5 /* Color+Extend.swift */; };
 		26BC97F22A5D102E003125B5 /* OnboardingFirst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC97F12A5D102E003125B5 /* OnboardingFirst.swift */; };
 		26C7A88E2A5D0014009F0EAF /* VitagochiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C7A88D2A5D0014009F0EAF /* VitagochiApp.swift */; };
@@ -93,6 +99,11 @@
 		2673E0262A5D056D00429610 /* GlobalEnvirontment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalEnvirontment.swift; sourceTree = "<group>"; };
 		2673E0282A5D05C400429610 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		26A77B002A5FAE6A00B1C3A7 /* OnboardingTimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTimePicker.swift; sourceTree = "<group>"; };
+		26B0A31F2A6578BE0047FC6A /* OnboardingThirdRevision.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingThirdRevision.swift; sourceTree = "<group>"; };
+		26B0A3212A657C0A0047FC6A /* Color+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Hex.swift"; sourceTree = "<group>"; };
+		26B0A3232A657CDC0047FC6A /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
+		26B0A3272A65893B0047FC6A /* CollectiveDayTimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectiveDayTimePicker.swift; sourceTree = "<group>"; };
+		26B0A3292A6595AD0047FC6A /* OnboardingFourth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFourth.swift; sourceTree = "<group>"; };
 		26BC97EB2A5D0ED0003125B5 /* Color+Extend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extend.swift"; sourceTree = "<group>"; };
 		26BC97F12A5D102E003125B5 /* OnboardingFirst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFirst.swift; sourceTree = "<group>"; };
 		26C7A88A2A5D0014009F0EAF /* Vitagochi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vitagochi.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -130,6 +141,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				266354CD2A6643B600C9605E /* NavigationTransitions in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,6 +176,7 @@
 				CB0528642A656BB500649F22 /* StatusLevelView.swift */,
 				CBE7BA1F2A66072C00E87AAA /* TabBarIconView.swift */,
 				CBD2D8C62A682FD900F603C7 /* ChatBubbleView.swift */,
+				26B0A3272A65893B0047FC6A /* CollectiveDayTimePicker.swift */,
 				2648466D2A5E5AE800396575 /* ContentInfo.txt */,
 			);
 			path = Components;
@@ -205,6 +218,8 @@
 			isa = PBXGroup;
 			children = (
 				26BC97EB2A5D0ED0003125B5 /* Color+Extend.swift */,
+				26B0A3212A657C0A0047FC6A /* Color+Hex.swift */,
+				26B0A3232A657CDC0047FC6A /* UIColor+Hex.swift */,
 				2648466A2A5E48BB00396575 /* UIScreen+Compact.swift */,
 				2623C22B2A5EE24100F820E8 /* View+ConditionalModifier.swift */,
 				CB0528592A6531A000649F22 /* Date+Extend.swift */,
@@ -236,6 +251,8 @@
 				26BC97F12A5D102E003125B5 /* OnboardingFirst.swift */,
 				264846732A5E5CF300396575 /* OnboardingSecond.swift */,
 				2648467F2A5E743500396575 /* OnboardingThird.swift */,
+				26B0A31F2A6578BE0047FC6A /* OnboardingThirdRevision.swift */,
+				26B0A3292A6595AD0047FC6A /* OnboardingFourth.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -392,6 +409,9 @@
 			dependencies = (
 			);
 			name = Vitagochi;
+			packageProductDependencies = (
+				266354CC2A6643B600C9605E /* NavigationTransitions */,
+			);
 			productName = Vitagochi;
 			productReference = 26C7A88A2A5D0014009F0EAF /* Vitagochi.app */;
 			productType = "com.apple.product-type.application";
@@ -464,6 +484,9 @@
 				Base,
 			);
 			mainGroup = 26C7A8812A5D0014009F0EAF;
+			packageReferences = (
+				266354CB2A6643B500C9605E /* XCRemoteSwiftPackageReference "swiftui-navigation-transitions" */,
+			);
 			productRefGroup = 26C7A88B2A5D0014009F0EAF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -531,6 +554,9 @@
 				CB05285E2A65323900649F22 /* MainScene.swift in Sources */,
 				CB0528612A653F9200649F22 /* RectangleBubleTextView.swift in Sources */,
 				CB0528632A6546BF00649F22 /* CircularProgressView.swift in Sources */,
+				26B0A3222A657C0A0047FC6A /* Color+Hex.swift in Sources */,
+				26B0A3202A6578BE0047FC6A /* OnboardingThirdRevision.swift in Sources */,
+				26B0A3242A657CDC0047FC6A /* UIColor+Hex.swift in Sources */,
 				26BC97EC2A5D0ED0003125B5 /* Color+Extend.swift in Sources */,
 				26A77B012A5FAE6A00B1C3A7 /* OnboardingTimePicker.swift in Sources */,
 				CBD2D8C52A682F8F00F603C7 /* Message.swift in Sources */,
@@ -540,8 +566,10 @@
 				2648466B2A5E48BB00396575 /* UIScreen+Compact.swift in Sources */,
 				264846802A5E743500396575 /* OnboardingThird.swift in Sources */,
 				26C7A88E2A5D0014009F0EAF /* VitagochiApp.swift in Sources */,
+				26B0A3282A65893B0047FC6A /* CollectiveDayTimePicker.swift in Sources */,
 				2673E0272A5D056D00429610 /* GlobalEnvirontment.swift in Sources */,
 				2648467A2A5E639D00396575 /* CounteredTextView.swift in Sources */,
+				26B0A32A2A6595AD0047FC6A /* OnboardingFourth.swift in Sources */,
 				2623C2342A5EF68400F820E8 /* UIKitPickerView.swift in Sources */,
 				CBD2D8C02A67C10E00F603C7 /* ChatViewModel.swift in Sources */,
 				CB05285A2A6531A000649F22 /* Date+Extend.swift in Sources */,
@@ -873,6 +901,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		266354CB2A6643B500C9605E /* XCRemoteSwiftPackageReference "swiftui-navigation-transitions" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/davdroman/swiftui-navigation-transitions";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.10.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		266354CC2A6643B600C9605E /* NavigationTransitions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 266354CB2A6643B500C9605E /* XCRemoteSwiftPackageReference "swiftui-navigation-transitions" */;
+			productName = NavigationTransitions;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 26C7A8822A5D0014009F0EAF /* Project object */;
 }

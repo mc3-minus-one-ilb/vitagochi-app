@@ -9,8 +9,9 @@ import Foundation
 import SwiftUI
 
 enum OnboardingRoute: String, Hashable {
-    case onboardingSecond
-    case onboardingThird
+    case OnboardingSecond
+    case OnboardingThird
+    case OnboardingFourth
 }
 
 class OnboardingViewModel: ObservableObject {
@@ -18,53 +19,54 @@ class OnboardingViewModel: ObservableObject {
     
     @Published var onboardingPath: NavigationPath = NavigationPath()
     
-    private var username: String = ""
-    public var usernameValue: String { get { return username } }
+    // Onboarding 2 States
+    @Published var nickname: String = ""
+    @Published var isNicknameEmpty: Bool = false
     
-    public func setUsername(data: String) {
-        self.username = data
-    }
+    // Onboarding 3 States
+    @Published var breakfastSelection = Calendar.current.date(bySettingHour: 7, minute: 0, second: 0, of: .now)!
+    @Published var lunchSelection = Calendar.current.date(bySettingHour: 12, minute: 0, second: 0, of: .now)!
+    @Published var dinnerSelection = Calendar.current.date(bySettingHour: 15, minute: 0, second: 0, of: .now)!
+    
     
     func navigate(route: OnboardingRoute) {
         onboardingPath.append(route)
     }
     
     func backToFirst() {
-        onboardingPath.removeLast(onboardingPath.count)
+        withAnimation(.easeInOut(duration: 1.0)) {
+            onboardingPath.removeLast(onboardingPath.count)
+        }
     }
     
     func back() {
         onboardingPath.removeLast(1)
     }
     
-    func save(remindSet: Bool) {
-        if remindSet {
-            let center = UNUserNotificationCenter.current()
-            center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
-                
-                if let error = error {
-                    // Handle the error here.
-                    print(error)
-                }
-                
-                // Enable or disable features based on the authorization.
-                if granted {
-                    // TODO: save the remind time.
-                    
-                }
-                
-                DispatchQueue.main.async {
-                    GlobalEnvirontment.singleton.setWillingToNotifyState(state: granted)
-                    GlobalEnvirontment.singleton.finishOnboarding()
-                    self.onboardingPath.removeLast(self.onboardingPath.count)
-                }
+    func handleReminderNotification() {
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+            if let error = error {
+                // Handle the error here.
+                print(error)
             }
-        } else {
+            
+            // Enable or disable features based on the authorization.
+            if granted {
+                // TODO: save the remind time.
+                
+            }
+            
             DispatchQueue.main.async {
-                GlobalEnvirontment.singleton.setWillingToNotifyState(state: false)
-                GlobalEnvirontment.singleton.finishOnboarding()
-                self.onboardingPath.removeLast(self.onboardingPath.count)
+                GlobalEnvirontment.singleton.setWillingToNotifyState(state: granted)
+                self.navigate(route: .OnboardingFourth)
             }
         }
     }
+    
+    func finishOnboarding() {
+        GlobalEnvirontment.singleton.finishOnboarding()
+        self.onboardingPath.removeLast(self.onboardingPath.count)
+    }
+    
 }

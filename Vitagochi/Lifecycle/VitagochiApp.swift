@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import NavigationTransitions
 
 @main
 struct VitagochiApp: App {
@@ -15,28 +16,31 @@ struct VitagochiApp: App {
     
     var body: some Scene {
         WindowGroup {
-//            ChatView()
-            RootView()
-//            if !envObj.isOnboardingFinished {
-//                NavigationStack(path: $onboardingViewModel.onboardingPath) {
-//                    OnboardingFirst()
-//                        .environmentObject(onboardingViewModel)
-//                        .navigationDestination(for: OnboardingRoute.self, destination: { routes in
-//                            switch routes {
-//                            case .onboardingSecond:
-//                                OnboardingSecond()
-//                                    .environmentObject(onboardingViewModel)
-//                                    .navigationBarBackButtonHidden()
-//                            case .onboardingThird:
-//                                OnboardingThird()
-//                                    .environmentObject(onboardingViewModel)
-//                                    .navigationBarBackButtonHidden()
-//                            }
-//                        })
-//                }
-//            } else {
-//                Text("ASD")
-//            }
+            if !envObj.isOnboardingFinished {
+                NavigationStack(path: $onboardingViewModel.onboardingPath) {
+                    OnboardingFirst()
+                        .environmentObject(onboardingViewModel)
+                        .navigationDestination(for: OnboardingRoute.self, destination: { routes in
+                            switch routes {
+                            case .OnboardingSecond:
+                                OnboardingSecond()
+                                    .environmentObject(onboardingViewModel)
+                                    .navigationBarBackButtonHidden()
+                            case .OnboardingThird:
+                                OnboardingThirdRevision()
+                                    .environmentObject(onboardingViewModel)
+                                    .navigationBarBackButtonHidden()
+                            case .OnboardingFourth:
+                                OnboardingFourth()
+                                    .environmentObject(onboardingViewModel)
+                                    .navigationBarBackButtonHidden()
+                            }
+                        })
+                }
+                .navigationTransition(.slide(axis: .horizontal), interactivity: .disabled)
+            } else {
+                RootView()
+            }
         }
     }
 }
