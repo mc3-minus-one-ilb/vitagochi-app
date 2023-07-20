@@ -35,4 +35,5 @@ extension Color {
     public static let shadowEclipseColor: Color = Color(0xDAFBF4)
     public static let activeIconTabBar: Color = Color(0x838383)
     public static let inActiveIconTabBar: Color = Color(0xD3D3D3)
+    public static let chatTopPinkColor: Color = Color(0xED476B)
 }

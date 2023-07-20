@@ -17,9 +17,9 @@ struct RootView: View {
         TabView(selection: $selection) {
             MainSceneView()
                 .tag(0)
-            MainSceneView()
+            EmptyView()
                 .tag(1)
-            MainSceneView()
+            EmptyView()
                 .tag(2)
         }
         .overlay(
@@ -52,5 +52,6 @@ struct RootView_Previews: PreviewProvider {
 //        RootView()
 //            .previewDevice(PreviewDevice(rawValue: "iPhone SE (3rd generation)"))
 //            .previewDisplayName("iPhone SE (3rd generation)")
+        
     }
 }

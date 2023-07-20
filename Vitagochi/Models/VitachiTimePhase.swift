@@ -14,7 +14,7 @@ struct HourAndMinute {
 
 struct VitaMessage {
     let text: String
-    let soundName: String
+    let soundFile: String
 }
 
 enum VitachiTimePhase {
@@ -28,9 +28,9 @@ enum VitachiTimePhase {
         case.beforeDayStart:
             return HourAndMinute(hour: 0, minute: 0)
         case.morning:
-            return HourAndMinute(hour: 7, minute: 0)
-        case.afternoon:
             return HourAndMinute(hour: 12, minute: 0)
+        case.afternoon:
+            return HourAndMinute(hour: 13, minute: 0)
         case.evening:
             return HourAndMinute(hour: 17, minute: 0)
         }
@@ -52,7 +52,7 @@ enum VitachiTimePhase {
     var angryMessage: [VitaMessage] {
         switch self {
         case.beforeDayStart:
-            return [VitaMessage(text: "", soundName: "")]
+            return [VitaMessage(text: "", soundFile: "")]
         case.morning:
             return [VitaAngryMessage[0], VitaAngryMessage[1]]
         case.afternoon:
@@ -65,7 +65,7 @@ enum VitachiTimePhase {
     var happyMessage: [VitaMessage] {
         switch self {
         case.beforeDayStart:
-            return [VitaMessage(text: "", soundName: "")]
+            return [VitaMessage(text: "", soundFile: "")]
         case.morning:
             return [VitaHappyMessage[0], VitaHappyMessage[1]]
         case.afternoon:
@@ -90,33 +90,33 @@ enum VitachiTimePhase {
 }
 
 let VitaDefaultMessage: [VitaMessage] = [
-    VitaMessage(text: "Don’t forget to eat veggies and fruits or you will constipate!", soundName: "default1"),
-    VitaMessage(text: "When it is time to eat, press the camera icon to take a picture of the meal. 📸", soundName: "default2"),
-    VitaMessage(text: "Rise and shine! It's time for you to fill that empty belly. Be sure to take a picture of your meal before eating it. 📸", soundName: "default3"),
-    VitaMessage(text: "Vita hopes that you will be able to take pictures of healthy meals. 😋", soundName: ""),
-    VitaMessage(text: "What are you waiting for? Please eat now then add greens and fruits for the best!", soundName: ""),
-    VitaMessage(text: "I expected you to send me a picture of a healthy meal so that we can eat and be healthy together 😋", soundName: ""),
-    VitaMessage(text: "Before the day ends, let’s enjoy a fulfilling, tasty, and healthy meal", soundName: ""),
-    VitaMessage(text: "I expected you to send me a picture of a healthy meal so that we can eat and be healthy together 😋", soundName: "")
+    VitaMessage(text: "Don’t forget to eat veggies and fruits or you will constipate!", soundFile: "default1"),
+    VitaMessage(text: "When it is time to eat, press the camera icon to take a picture of the meal. 📸", soundFile: "default2"),
+    VitaMessage(text: "Rise and shine! It's time for you to fill that empty belly. Be sure to take a picture of your meal before eating it. 📸", soundFile: "default3"),
+    VitaMessage(text: "Vita hopes that you will be able to take pictures of healthy meals. 😋", soundFile: ""),
+    VitaMessage(text: "What are you waiting for? Please eat now then add greens and fruits for the best!", soundFile: ""),
+    VitaMessage(text: "I expected you to send me a picture of a healthy meal so that we can eat and be healthy together 😋", soundFile: ""),
+    VitaMessage(text: "Before the day ends, let’s enjoy a fulfilling, tasty, and healthy meal", soundFile: ""),
+    VitaMessage(text: "I expected you to send me a picture of a healthy meal so that we can eat and be healthy together 😋", soundFile: "")
 ]
 
 let VitaAngryMessage: [VitaMessage] = [
-    VitaMessage(text:  "I told you the day starts with breakfast. Otherwise you will be tired during the day. 🤕", soundName: ""),
-    VitaMessage(text:  "Please eat your meal and send a picture of it to me so I can ensure you're eating healthy meals 😠", soundName: ""),
-    VitaMessage(text:  "No matter how busy you are, skipping lunch is a bad idea!", soundName: ""),
-    VitaMessage(text:  "Please eat your meal and send a picture of it to me so I can ensure you're eating healthy meals 😠", soundName: ""),
-    VitaMessage(text:  "It’s now or never for dinner! Eating late at night is a no-no for your health", soundName: ""),
-    VitaMessage(text:  "Please eat your meal and send a picture of it to me so I can ensure you're eating healthy meals 😠", soundName: "")
+    VitaMessage(text:  "I told you the day starts with breakfast. Otherwise you will be tired during the day. 🤕", soundFile: ""),
+    VitaMessage(text:  "Please eat your meal and send a picture of it to me so I can ensure you're eating healthy meals 😠", soundFile: ""),
+    VitaMessage(text:  "No matter how busy you are, skipping lunch is a bad idea!", soundFile: ""),
+    VitaMessage(text:  "Please eat your meal and send a picture of it to me so I can ensure you're eating healthy meals 😠", soundFile: ""),
+    VitaMessage(text:  "It’s now or never for dinner! Eating late at night is a no-no for your health", soundFile: ""),
+    VitaMessage(text:  "Please eat your meal and send a picture of it to me so I can ensure you're eating healthy meals 😠", soundFile: "")
     
 ]
 
 let VitaHappyMessage: [VitaMessage] = [
-    VitaMessage(text:  "Yum! Feels like I'm having a taste of what you're eating", soundName: ""),
-    VitaMessage(text:  "Well done! Keep up the good work of improving your healthy dietary habits ✊🏻", soundName: ""),
-    VitaMessage(text:  "A healthy lunch a day can keep the doctor away. Good job for not skipping lunch!", soundName: ""),
-    VitaMessage(text: "Well done! Keep up the good work of improving your healthy dietary habits. ✊🏻", soundName: ""),
-    VitaMessage(text:  "Now, you are ready to wrap up the day after nourishing yourself with meals filled with greens and fruits", soundName: ""),
-    VitaMessage(text:  "Well done! Keep up the good work of improving your healthy dietary habits. ✊🏻", soundName: "")
+    VitaMessage(text:  "Yum! Feels like I'm having a taste of what you're eating", soundFile: ""),
+    VitaMessage(text:  "Well done! Keep up the good work of improving your healthy dietary habits ✊🏻", soundFile: ""),
+    VitaMessage(text:  "A healthy lunch a day can keep the doctor away. Good job for not skipping lunch!", soundFile: ""),
+    VitaMessage(text: "Well done! Keep up the good work of improving your healthy dietary habits. ✊🏻", soundFile: ""),
+    VitaMessage(text:  "Now, you are ready to wrap up the day after nourishing yourself with meals filled with greens and fruits", soundFile: ""),
+    VitaMessage(text:  "Well done! Keep up the good work of improving your healthy dietary habits. ✊🏻", soundFile: "")
     
 ]
 
