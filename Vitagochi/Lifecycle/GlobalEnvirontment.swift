@@ -13,8 +13,15 @@ class GlobalEnvirontment: ObservableObject {
     @Published var isOnboardingFinished: Bool = false
     @Published var willingToNotify: Bool = false
     
+    @Published var breakfastReminder: HourAndMinute = HourAndMinute(hour: 7, minute: 0)
+    @Published var lunchReminder: HourAndMinute = HourAndMinute(hour: 12, minute: 0)
+    @Published var dinnerReminder: HourAndMinute = HourAndMinute(hour: 19, minute: 0)
+    
     init() {
         getOnboardingState()
+        getUsernameState()
+        getWillingToNotifyState()
+        getReminderTime()
     }
     
     private func getOnboardingState() {
@@ -55,5 +62,46 @@ class GlobalEnvirontment: ObservableObject {
         }
         
         willingToNotify = true
+    }
+    
+    public func setReminderTime(breakfastTime: HourAndMinute, lunchTime: HourAndMinute, dinnerTime: HourAndMinute) {
+        UserDefaults.standard.storeCodable(breakfastTime, key: "breakfastReminder")
+        UserDefaults.standard.storeCodable(lunchTime, key: "lunchReminder")
+        UserDefaults.standard.storeCodable(dinnerTime, key: "dinnerReminder")
+        
+        
+        DispatchQueue.main.async {
+            self.breakfastReminder = breakfastTime
+            self.lunchReminder = lunchTime
+            self.dinnerReminder = dinnerTime
+        }
+    }
+    
+    public func getReminderTime() {
+        let breakfastData: HourAndMinute? = UserDefaults.standard.retrieveCodable(for: "breakfastReminder")
+        if let breakfastData = breakfastData {
+            DispatchQueue.main.async {
+                self.breakfastReminder = breakfastData
+            }
+        }
+        
+        let lunchData: HourAndMinute? = UserDefaults.standard.retrieveCodable(for: "lunchReminder")
+        if let lunchData = lunchData {
+            DispatchQueue.main.async {
+                self.lunchReminder = lunchData
+            }
+        }
+        
+        let dinnerData: HourAndMinute? = UserDefaults.standard.retrieveCodable(for: "dinnerReminder")
+        if let dinnerData = dinnerData {
+            DispatchQueue.main.async {
+                self.dinnerReminder = dinnerData
+            }
+        }
+    
+        
+        print(breakfastData,
+              lunchData,
+              dinnerData)
     }
 }
