@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HourAndMinute {
+struct HourAndMinute: Codable {
     let hour: Int
     let minute: Int
 }

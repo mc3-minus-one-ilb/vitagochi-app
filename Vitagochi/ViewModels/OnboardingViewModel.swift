@@ -53,8 +53,8 @@ class OnboardingViewModel: ObservableObject {
             
             // Enable or disable features based on the authorization.
             if granted {
-                // TODO: save the remind time.
-                
+                let calendar = Calendar.current
+                GlobalEnvirontment.singleton.setReminderTime(breakfastTime: HourAndMinute(hour: calendar.component(.hour, from: self.breakfastSelection), minute: calendar.component(.minute, from: self.breakfastSelection)), lunchTime: HourAndMinute(hour: calendar.component(.hour, from: self.lunchSelection), minute: calendar.component(.minute, from: self.lunchSelection)), dinnerTime: HourAndMinute(hour: calendar.component(.hour, from: self.dinnerSelection), minute: calendar.component(.minute, from: self.dinnerSelection)))
             }
             
             DispatchQueue.main.async {
