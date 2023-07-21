@@ -24,6 +24,19 @@ extension Date {
         return false
     }
     
+    func increaseDate(by days: Int) -> Date? {
+        var calendar = Calendar.current
+        let dateComponent = DateComponents(day: days)
+        return calendar.date(byAdding: dateComponent, to: self)
+    }
+    
+    func isItToday(date: Date) -> Bool {
+        var calendar = Calendar.current
+        let currentDateComp =  calendar.dateComponents([.year, .month, .day], from: self)
+        let compareDateComp = calendar.dateComponents([.year, .month, .day], from: date)
+        return currentDateComp == compareDateComp
+    }
+    
     func isPhaseAfterOneHour(_ value: VitachiTimePhase) -> Bool {
         let calendar = Calendar.current
         let currentDateComponents = calendar.dateComponents([.year, .month, .day], from: self)

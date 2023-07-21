@@ -129,6 +129,6 @@ struct RoundedShape: Shape {
 struct ChatBuble_Previews: PreviewProvider {
     static var previews: some View {
         //        ChatView(chatModel: ChatViewModel(photoData: Data()))
-        ChatView()
+        ChatView(timePhase: .morning)
     }
 }

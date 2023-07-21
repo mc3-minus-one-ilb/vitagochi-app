@@ -13,6 +13,8 @@ struct VitagochiApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @StateObject var envObj: GlobalEnvirontment = GlobalEnvirontment.singleton
     @StateObject var onboardingViewModel: OnboardingViewModel = OnboardingViewModel.singleton
+    @StateObject var appCoreRepo: AppCoreRepo = AppCoreRepo()
+   
     
     var body: some Scene {
         WindowGroup {
@@ -40,7 +42,15 @@ struct VitagochiApp: App {
                 .navigationTransition(.slide(axis: .horizontal), interactivity: .disabled)
             } else {
                 RootView()
+                    .environmentObject(appCoreRepo)
             }
         }
     }
 }
+
+//struct AppView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        //        ChatView(chatModel: ChatViewModel(photoData: Data()))
+//        VitagochiApp()
+//    }
+//}

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct RootView: View {
+    @EnvironmentObject var appCoreRepo: AppCoreRepo
     @State var selection: Int = 0
     
     var body: some View {
@@ -40,13 +41,14 @@ struct RootView: View {
                     }
                 ,alignment: .bottom)
         }
-        
     }
 }
 
 struct RootView_Previews: PreviewProvider {
+    
     static var previews: some View {
-        RootView()
+        
+        return RootView().environmentObject(AppCoreRepo())
         
         //        RootView()
         //            .previewDevice(PreviewDevice(rawValue: "iPhone 14 Pro Max"))

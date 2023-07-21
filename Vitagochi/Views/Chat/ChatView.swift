@@ -10,6 +10,7 @@ import SwiftUI
 struct ChatView: View {
     //    @State var chatModel: ChatViewModel
     @StateObject var chatModel = ChatViewModel(message: Message(id: Date(), text: "Photo", isMyMessage: true, profilPic: ""))
+    var timePhase: VitachiTimePhase
     
     var body: some View {
         VStack{
@@ -88,6 +89,6 @@ struct ChatView: View {
 struct ChatView_Previews: PreviewProvider {
     static var previews: some View {
         //        ChatView(chatModel: ChatViewModel(photoData: Data()))
-        ChatView()
+        ChatView(timePhase: .morning)
     }
 }

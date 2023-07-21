@@ -45,6 +45,7 @@ struct BackgroundArc: Shape {
 //}
 
 struct MainSceneView: View {
+    @EnvironmentObject var appCoreRepo: AppCoreRepo
     @StateObject var vitaModel = MainSceneViewModel()
     @State var timer: Timer?
     @State var shouldNavigateToChat: Bool = false
@@ -148,7 +149,7 @@ struct MainSceneView: View {
                 Spacer()
                 Spacer()
 //                ChatView(chatModel: ChatViewModel(photoData: vitaModel.imageData)
-                NavigationLink(destination: ChatView(chatModel: ChatViewModel(message: Message(id: Date(), text: "", isMyMessage: true, profilPic: "", photo: vitaModel.imageData))), isActive: $shouldNavigateToChat) {
+                NavigationLink(destination: ChatView(chatModel: ChatViewModel(message: Message(id: Date(), text: "", isMyMessage: true, profilPic: "", photo: vitaModel.imageData)), timePhase: vitaModel.phase), isActive: $shouldNavigateToChat) {
                     EmptyView()
                 }
                 
@@ -172,8 +173,9 @@ struct MainSceneView: View {
                     .ignoresSafeArea()
                 
             }
-            
-        
+            .onAppear{
+                
+            }
     }
     
     static func ScaleContentBasedHeight() -> Double {
@@ -201,7 +203,7 @@ struct MainSceneView: View {
 struct MainSceneView_Previews: PreviewProvider {
     static var previews: some View {
         MainSceneView()
-        
+            .environmentObject(AppCoreRepo())
         //        MainSceneView()
         //            .previewDevice(PreviewDevice(rawValue: "iPhone 14 Pro Max"))
         //            .previewDisplayName("iPhone 14 Pro Max")

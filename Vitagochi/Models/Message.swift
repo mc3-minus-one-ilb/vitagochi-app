@@ -16,11 +16,11 @@ struct Message: Identifiable, Equatable {
     var vitaAnswer: VitaMessageAnswer?
 }
 
-enum VitaMessageAnswer: CaseIterable {
-    case exactly
-    case greensOnly
-    case fruitsOnly
-    case sadlyNo
+enum VitaMessageAnswer: Int16, CaseIterable {
+    case exactly = 0
+    case greensOnly = 1
+    case fruitsOnly = 2
+    case sadlyNo = 3
     
     var answer: String {
         switch self {
