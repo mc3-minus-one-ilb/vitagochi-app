@@ -12,10 +12,10 @@ import NavigationTransitions
 struct VitagochiApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @StateObject var envObj: GlobalEnvirontment = GlobalEnvirontment.singleton
+    @StateObject var coreDataEnv: CoreDataEnvirontment = CoreDataEnvirontment.singleton
     @StateObject var onboardingViewModel: OnboardingViewModel = OnboardingViewModel.singleton
-    @StateObject var appCoreRepo: AppCoreRepo = AppCoreRepo()
-   
     
+   
     var body: some Scene {
         WindowGroup {
             if !envObj.isOnboardingFinished {
@@ -42,7 +42,7 @@ struct VitagochiApp: App {
                 .navigationTransition(.slide(axis: .horizontal), interactivity: .disabled)
             } else {
                 RootView()
-                    .environmentObject(appCoreRepo)
+                    .environmentObject(coreDataEnv)
             }
         }
     }

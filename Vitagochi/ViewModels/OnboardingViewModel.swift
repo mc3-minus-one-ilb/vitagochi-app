@@ -65,6 +65,8 @@ class OnboardingViewModel: ObservableObject {
     }
     
     func finishOnboarding() {
+        CoreDataEnvirontment.singleton.add66DaysOfChallanges()
+        CoreDataEnvirontment.singleton.getTodayChallange()
         GlobalEnvirontment.singleton.finishOnboarding()
         self.onboardingPath.removeLast(self.onboardingPath.count)
     }

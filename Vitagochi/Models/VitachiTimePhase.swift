@@ -31,11 +31,11 @@ enum VitachiTimePhase: Int16 {
         case.morning:
             return HourAndMinute(hour: 7, minute: 0)
         case.afternoon:
-            return HourAndMinute(hour: 12, minute: 0)
+            return HourAndMinute(hour: 12, minute: 40)
         case.evening:
-            return HourAndMinute(hour: 17, minute: 0)
+            return HourAndMinute(hour: 17, minute: 50)
         case.afterDay:
-            return HourAndMinute(hour: 21, minute: 0)
+            return HourAndMinute(hour: 21, minute: 55)
         }
     }
     
@@ -50,13 +50,13 @@ enum VitachiTimePhase: Int16 {
         case.evening:
             return [VitaDefaultMessage[6], VitaDefaultMessage[7]]
         case.afterDay:
-            return [VitaDefaultMessage[8]]
+            return [VitaDefaultMessage[8], VitaDefaultMessage[0]]
         }
     }
     
     var angryMessage: [VitaMessage] {
         switch self {
-        case.beforeDayStart:
+        case.beforeDayStart, .afterDay:
             return [VitaMessage(text: "", soundFile: "")]
         case.morning:
             return [VitaAngryMessage[0], VitaAngryMessage[1]]
@@ -64,14 +64,12 @@ enum VitachiTimePhase: Int16 {
             return [VitaAngryMessage[2], VitaAngryMessage[3]]
         case.evening:
             return [VitaAngryMessage[4], VitaAngryMessage[5]]
-        case.afterDay:
-            return [VitaMessage(text: "", soundFile: "")]
         }
     }
     
     var happyMessage: [VitaMessage] {
         switch self {
-        case.beforeDayStart:
+        case.beforeDayStart, .afterDay:
             return [VitaMessage(text: "", soundFile: "")]
         case.morning:
             return [VitaHappyMessage[0], VitaHappyMessage[1]]
@@ -79,8 +77,19 @@ enum VitachiTimePhase: Int16 {
             return [VitaHappyMessage[2], VitaHappyMessage[3]]
         case.evening:
             return [VitaHappyMessage[4], VitaHappyMessage[5]]
-        case.afterDay:
-            return [VitaMessage(text: "", soundFile: "")]
+        }
+    }
+    
+    var icon: String {
+        switch self {
+        case.beforeDayStart, .afterDay:
+            return ""
+        case.morning:
+            return "sun.max.fill"
+        case.afternoon:
+            return "cloud.sun.fill"
+        case.evening:
+            return "moon.stars.fill"
         }
     }
     

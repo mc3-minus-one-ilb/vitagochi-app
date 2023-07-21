@@ -45,8 +45,8 @@ struct BackgroundArc: Shape {
 //}
 
 struct MainSceneView: View {
-    @EnvironmentObject var appCoreRepo: AppCoreRepo
-    @StateObject var vitaModel = MainSceneViewModel()
+    @EnvironmentObject var coreDataEnv: CoreDataEnvirontment
+    @StateObject var vitaModel: MainSceneViewModel = MainSceneViewModel()
     @State var timer: Timer?
     @State var shouldNavigateToChat: Bool = false
     let scaleSize: Double
@@ -75,32 +75,8 @@ struct MainSceneView: View {
                     }
                     .padding(.top, 24)
                     Spacer()
-                    ZStack(alignment: .bottomLeading){
-                        //Change
-                        Button {
-                            //  ChatView()
-                            vitaModel.isCameraClicked.toggle()
-                            
-                        } label: {
-                            Image(systemName: "camera.fill")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .foregroundColor(.gray)
-                                .frame(width: 46, height: 36, alignment: .center)
-                        }
-                        
-                        
-                        Circle()
-                            .foregroundColor(.red)
-                            .frame(width: 19)
-                            .overlay {
-                                //Change
-                                Text("3")
-                                    .font(.system(.caption2, design: .rounded))
-                                    .foregroundColor(.white)
-                            }
-                            .offset(x:-8,y: 8)
-                        
+                    if let records = coreDataEnv.todayChallange?.records?.allObjects as? [MealRecordEntity] {
+                        TakePitcureButton(isCameraClicked: $vitaModel.isCameraClicked, timePhase: vitaModel.phase, isCompleted: records.contains{$0.timeStatus == vitaModel.phase.rawValue})
                     }
                 }
                 .padding()
@@ -117,7 +93,7 @@ struct MainSceneView: View {
                             .padding(.bottom, 100)
                     }
                     
-                    CircularProgressView(percentage: CGFloat((vitaModel.isCompleted.filter{$0}.count - 1 ) * 33) )
+                    CircularProgressView(percentage: CGFloat((coreDataEnv.todayChallange!.records!.count) * 34) )
                         .frame(width: 300, height: 300)
                         .offset(y: -90)
                     
@@ -149,31 +125,31 @@ struct MainSceneView: View {
                 Spacer()
                 Spacer()
 //                ChatView(chatModel: ChatViewModel(photoData: vitaModel.imageData)
-                NavigationLink(destination: ChatView(chatModel: ChatViewModel(message: Message(id: Date(), text: "", isMyMessage: true, profilPic: "", photo: vitaModel.imageData)), timePhase: vitaModel.phase), isActive: $shouldNavigateToChat) {
+                NavigationLink(destination: ChatView(chatModel: ChatViewModel(message: Message(id: Date(), text: "", isMyMessage: true, profilPic: "", photo: vitaModel.imageData), photoData: vitaModel.imageData), timePhase: vitaModel.phase), isActive: $shouldNavigateToChat) {
                     EmptyView()
                 }
                 
             }
             .background(Color.primaryWhite)
             .onChange(of: vitaModel.phase) { _ in
-                vitaModel.GenerateMessage()
+                vitaModel.GenerateMessage(for: coreDataEnv.todayChallange!)
             }
             .onChange(of: vitaModel.isTapped) { _ in
-                vitaModel.GenerateMessage()
+                vitaModel.GenerateMessage(for: coreDataEnv.todayChallange!)
             }
             .onChange(of: vitaModel.isCompleted) { _ in
-                vitaModel.GenerateMessage()
+                vitaModel.GenerateMessage(for: coreDataEnv.todayChallange!)
             }
             .onChange(of: vitaModel.imageData, perform: { _ in
                 shouldNavigateToChat.toggle()
             })
+            .onAppear {
+                vitaModel.GenerateMessage(for: coreDataEnv.todayChallange!)
+            }
             .fullScreenCover(isPresented: $vitaModel.isCameraClicked) {
                 PhotoTakeView(showPicker: $vitaModel.isCameraClicked, imageData: $vitaModel.imageData)
                     .gesture(swipeDownGesture)
                     .ignoresSafeArea()
-                
-            }
-            .onAppear{
                 
             }
     }
@@ -203,7 +179,7 @@ struct MainSceneView: View {
 struct MainSceneView_Previews: PreviewProvider {
     static var previews: some View {
         MainSceneView()
-            .environmentObject(AppCoreRepo())
+            .environmentObject(CoreDataEnvirontment())
         //        MainSceneView()
         //            .previewDevice(PreviewDevice(rawValue: "iPhone 14 Pro Max"))
         //            .previewDisplayName("iPhone 14 Pro Max")

@@ -12,23 +12,35 @@ class MainSceneViewModel: ObservableObject {
     @Published var phase: VitachiTimePhase = .beforeDayStart
     @Published var mood: VitachiMoodPhase = .idle
     @Published var message: String = ""
-    @Published var isCompleted: [Bool] =  [true, false, false, false]
+    @Published var isCompleted: [Bool] =  [true, false, false, false, true]
     @Published var isTapped: Bool = false
     @Published var isCameraClicked: Bool = false
     @Published var imageData: Data = Data(count: 0)
 //    var charSound: AVAudioPlayer = AVAudioPlayer()
     var soundFileName: String = ""
     
+    @Published var mealDatas: [ChallangeEntity] = []
+    
+    
     
     init() {
         CheckPhaseTime()
         print("Init VitaViewModel.Phase \(self.phase)")
-        GenerateMessage()
     }
+    
+//    func getMealRecordData() {
+//        DispatchQueue.main.async {
+//            self.mealDatas = self.mealRecordRepository.getChallanges()
+//            print("REPOPATTERN")
+//            print(self.mealDatas)
+//        }
+//    }
     
     func CheckPhaseTime() {
         let now = Date()
-        if now.isPhaseGreaterThan(.evening) {
+        if now.isPhaseGreaterThan(.afterDay){
+            self.phase = .afterDay
+        } else if now.isPhaseGreaterThan(.evening) {
             self.phase = .evening
         } else if now.isPhaseGreaterThan(.afternoon) {
             self.phase = .afternoon
@@ -40,29 +52,40 @@ class MainSceneViewModel: ObservableObject {
         //        print("CheckPasheTime VitaViewModel.Phase \(self.phase)")
     }
     
-    func GenerateMessage() {
+    func GenerateMessage(for todayChallange: ChallangeEntity) {
 //        if charSound.isPlaying {
 //            return
 //        }
+        if phase == .afterDay {
+            self.message = phase.defaultMessage[isTapped ? 1 : 0].text
+            self.soundFileName = phase.defaultMessage[isTapped ? 1 : 0].soundFile
+            PlaySound()
+            return
+        }
         if phase == .beforeDayStart {
             self.message = phase.defaultMessage[isTapped ? 1 : 0].text
             self.soundFileName = phase.defaultMessage[isTapped ? 1 : 0].soundFile
             PlaySound()
             return
         }
-        if Date().isPhaseAfterOneHour(phase) && !isCompleted[phase.completedIndex] {
-            self.mood = .angry
-            self.message = phase.angryMessage[isTapped ? 1 : 0].text
-            self.soundFileName = phase.angryMessage[isTapped ? 1 : 0].soundFile
-        } else if isCompleted[phase.completedIndex] {
-            self.mood = .happy
-            self.message = phase.happyMessage[isTapped ? 1 : 0].text
-            self.soundFileName = phase.happyMessage[isTapped ? 1 : 0].soundFile
-        } else {
-            self.mood = .idle
-            self.message = phase.defaultMessage[isTapped ? 1 : 0].text
-            self.soundFileName = phase.defaultMessage[isTapped ? 1 : 0].soundFile
+        
+        if let records = todayChallange.records?.allObjects as? [MealRecordEntity] {
+            let isComplete = records.contains{$0.timeStatus == phase.rawValue}
+            if Date().isPhaseAfterOneHour(phase) && !isComplete {
+                self.mood = .angry
+                self.message = phase.angryMessage[isTapped ? 1 : 0].text
+                self.soundFileName = phase.angryMessage[isTapped ? 1 : 0].soundFile
+            } else if isComplete {
+                self.mood = .happy
+                self.message = phase.happyMessage[isTapped ? 1 : 0].text
+                self.soundFileName = phase.happyMessage[isTapped ? 1 : 0].soundFile
+            } else {
+                self.mood = .idle
+                self.message = phase.defaultMessage[isTapped ? 1 : 0].text
+                self.soundFileName = phase.defaultMessage[isTapped ? 1 : 0].soundFile
+            }
         }
+        
         PlaySound()
         //        print("message : \(message)")
     }

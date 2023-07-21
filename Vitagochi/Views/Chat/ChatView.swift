@@ -10,12 +10,11 @@ import SwiftUI
 struct ChatView: View {
     //    @State var chatModel: ChatViewModel
     @StateObject var chatModel = ChatViewModel(message: Message(id: Date(), text: "Photo", isMyMessage: true, profilPic: ""))
+    @State var isCompleted: Bool = false
     var timePhase: VitachiTimePhase
     
     var body: some View {
         VStack{
-            
-            
             VStack(spacing: 5) {
                 Text("My Vita")
                     .font(.system(.title, weight: .semibold))
@@ -32,7 +31,7 @@ struct ChatView: View {
                     ScrollViewReader{ reader in
                         VStack(spacing: 20) {
                             ForEach(chatModel.messages) { message in
-                                ChatBubble(message: message)
+                                ChatBubble(isCompleted: $isCompleted, message: message)
                             }
                             .onChange(of: chatModel.messages) { newValue in
                                 if newValue.last!.isMyMessage {
@@ -53,7 +52,7 @@ struct ChatView: View {
                             HStack {
                                 ForEach(chatModel.myOptionsMessages) {
                                     message in
-                                    ChatBubble(message: message, isHorizontalScroll: true)
+                                    ChatBubble(isCompleted: $isCompleted, message: message, isHorizontalScroll: true)
                                         .onTapGesture {
                                             chatModel.writeMessage(message)
                                             chatModel.showMyOptions.toggle()
@@ -75,6 +74,12 @@ struct ChatView: View {
             .padding(.bottom, UIApplication.shared.windows.first?.safeAreaInsets.bottom)
             .background(Color.white)
             .clipShape(RoundedShape())
+            .onChange(of: isCompleted) { newValue in
+                if newValue {
+                    guard let photoURI = chatModel.savePhoto() else {return}
+                    CoreDataEnvirontment.singleton.addMealRecordToTodayCallange(mealStatus: chatModel.vitaAnswer, timeStatus: timePhase, photoURI: photoURI)
+                }
+            }
             
         }
         .edgesIgnoringSafeArea(.bottom)

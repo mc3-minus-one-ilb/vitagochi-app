@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ChatBubble: View {
+    @Binding var isCompleted: Bool
     var message: Message
     var isHorizontalScroll: Bool = false
     
@@ -68,7 +69,7 @@ struct ChatBubble: View {
                             //                            .fontWidth(22)
                                 .background(Color.white)
                             Button {
-                                
+                                isCompleted.toggle()
                             } label: {
                                 Text("Thanks Vita! 👍")
                                     .font(.system(.subheadline, weight: .bold))

@@ -66,9 +66,11 @@
 		CB9AA21B2A69F1B500BF8D76 /* afterDayDefault1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB9AA2112A69F1B500BF8D76 /* afterDayDefault1.wav */; };
 		CB9AA21C2A69F1B500BF8D76 /* eveningHappy1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB9AA2122A69F1B500BF8D76 /* eveningHappy1.wav */; };
 		CB9AA21D2A69F1B500BF8D76 /* eveningAngry1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB9AA2132A69F1B500BF8D76 /* eveningAngry1.wav */; };
+		CB9AA2252A6A414400BF8D76 /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9AA2242A6A414400BF8D76 /* CoreDataRepository.swift */; };
+		CB9AA2272A6AC9AB00BF8D76 /* TakePitcureButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9AA2262A6AC9AB00BF8D76 /* TakePitcureButton.swift */; };
 		CB9FE2892A6932950091DE9C /* AppCoreContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CB9FE2872A6932950091DE9C /* AppCoreContainer.xcdatamodeld */; };
 		CB9FE28B2A6933950091DE9C /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9FE28A2A6933950091DE9C /* CoreDataManager.swift */; };
-		CB9FE28D2A6934BE0091DE9C /* AppCoreRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9FE28C2A6934BE0091DE9C /* AppCoreRepository.swift */; };
+		CB9FE28D2A6934BE0091DE9C /* CoreDataEnvirontment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9FE28C2A6934BE0091DE9C /* CoreDataEnvirontment.swift */; };
 		CBD2D8812A67BC6700F603C7 /* PhotoTakeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2D8802A67BC6700F603C7 /* PhotoTakeView.swift */; };
 		CBD2D8BE2A67C0FC00F603C7 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2D8BD2A67C0FC00F603C7 /* ChatView.swift */; };
 		CBD2D8C02A67C10E00F603C7 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2D8BF2A67C10E00F603C7 /* ChatViewModel.swift */; };
@@ -161,9 +163,11 @@
 		CB9AA2112A69F1B500BF8D76 /* afterDayDefault1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = afterDayDefault1.wav; sourceTree = "<group>"; };
 		CB9AA2122A69F1B500BF8D76 /* eveningHappy1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = eveningHappy1.wav; sourceTree = "<group>"; };
 		CB9AA2132A69F1B500BF8D76 /* eveningAngry1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = eveningAngry1.wav; sourceTree = "<group>"; };
+		CB9AA2242A6A414400BF8D76 /* CoreDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRepository.swift; sourceTree = "<group>"; };
+		CB9AA2262A6AC9AB00BF8D76 /* TakePitcureButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakePitcureButton.swift; sourceTree = "<group>"; };
 		CB9FE2882A6932950091DE9C /* AppCoreContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AppCoreContainer.xcdatamodel; sourceTree = "<group>"; };
 		CB9FE28A2A6933950091DE9C /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		CB9FE28C2A6934BE0091DE9C /* AppCoreRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoreRepository.swift; sourceTree = "<group>"; };
+		CB9FE28C2A6934BE0091DE9C /* CoreDataEnvirontment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataEnvirontment.swift; sourceTree = "<group>"; };
 		CBD2D8802A67BC6700F603C7 /* PhotoTakeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoTakeView.swift; sourceTree = "<group>"; };
 		CBD2D8BD2A67C0FC00F603C7 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		CBD2D8BF2A67C10E00F603C7 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatViewModel.swift; path = Vitagochi/ViewModels/ChatViewModel.swift; sourceTree = SOURCE_ROOT; };
@@ -213,6 +217,7 @@
 				CBE7BA1F2A66072C00E87AAA /* TabBarIconView.swift */,
 				CBD2D8C62A682FD900F603C7 /* ChatBubbleView.swift */,
 				26B0A3272A65893B0047FC6A /* CollectiveDayTimePicker.swift */,
+				CB9AA2262A6AC9AB00BF8D76 /* TakePitcureButton.swift */,
 				2648466D2A5E5AE800396575 /* ContentInfo.txt */,
 			);
 			path = Components;
@@ -231,6 +236,7 @@
 			children = (
 				2673E0282A5D05C400429610 /* AppDelegate.swift */,
 				2673E0262A5D056D00429610 /* GlobalEnvirontment.swift */,
+				CB9FE28C2A6934BE0091DE9C /* CoreDataEnvirontment.swift */,
 				26C7A88D2A5D0014009F0EAF /* VitagochiApp.swift */,
 				2673E01C2A5D02CE00429610 /* ContentInfo.text */,
 			);
@@ -488,7 +494,6 @@
 			children = (
 				CB9FE2872A6932950091DE9C /* AppCoreContainer.xcdatamodeld */,
 				CB9FE28A2A6933950091DE9C /* CoreDataManager.swift */,
-				CB9FE28C2A6934BE0091DE9C /* AppCoreRepository.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -504,6 +509,7 @@
 		CBD2D8C32A682F6C00F603C7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				CB9AA2242A6A414400BF8D76 /* CoreDataRepository.swift */,
 				CB05285B2A6531F600649F22 /* VitachiTimePhase.swift */,
 				CB2B5D9A2A66B50B0099D404 /* VitachiMoodPhase.swift */,
 				CBD2D8C42A682F8F00F603C7 /* Message.swift */,
@@ -690,10 +696,11 @@
 				26BC97EC2A5D0ED0003125B5 /* Color+Extend.swift in Sources */,
 				26A77B012A5FAE6A00B1C3A7 /* OnboardingTimePicker.swift in Sources */,
 				CBD2D8C52A682F8F00F603C7 /* Message.swift in Sources */,
-				CB9FE28D2A6934BE0091DE9C /* AppCoreRepository.swift in Sources */,
+				CB9FE28D2A6934BE0091DE9C /* CoreDataEnvirontment.swift in Sources */,
 				2623C2322A5EF02200F820E8 /* VerticalPicker.swift in Sources */,
 				CBD2D8C72A682FD900F603C7 /* ChatBubbleView.swift in Sources */,
 				26138BA82A69813600FEACBD /* LevelUpViewModel.swift in Sources */,
+				CB9AA2272A6AC9AB00BF8D76 /* TakePitcureButton.swift in Sources */,
 				2648467E2A5E6FA700396575 /* OnboardingViewModel.swift in Sources */,
 				2648466B2A5E48BB00396575 /* UIScreen+Compact.swift in Sources */,
 				264846802A5E743500396575 /* OnboardingThird.swift in Sources */,
@@ -705,6 +712,7 @@
 				2648467A2A5E639D00396575 /* CounteredTextView.swift in Sources */,
 				26B0A32A2A6595AD0047FC6A /* OnboardingFourth.swift in Sources */,
 				2618F0182A6A32A30008ED82 /* UserDefaults+Codable.swift in Sources */,
+				CB9AA2252A6A414400BF8D76 /* CoreDataRepository.swift in Sources */,
 				2651459A2A69698F00042519 /* RoundedCornerShape.swift in Sources */,
 				2623C2342A5EF68400F820E8 /* UIKitPickerView.swift in Sources */,
 				CBD2D8C02A67C10E00F603C7 /* ChatViewModel.swift in Sources */,

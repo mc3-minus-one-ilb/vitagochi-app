@@ -100,8 +100,5 @@ class GlobalEnvirontment: ObservableObject {
         }
     
         
-        print(breakfastData,
-              lunchData,
-              dinnerData)
     }
 }

@@ -12,8 +12,9 @@ class ChatViewModel: ObservableObject {
     @Published var vitaAnswer: VitaMessageAnswer = .exactly
     @Published var showMyOptions: Bool = false
     @Published var myOptionsMessages: [Message] = []
+    var photoData: Data?
     
-    init(message: Message) {
+    init(message: Message, photoData: Data? = nil) {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
             self.messages.append(message)
@@ -30,6 +31,8 @@ class ChatViewModel: ObservableObject {
         for answer in VitaMessageAnswer.allCases {
             myOptionsMessages.append(Message(id: Date(), text: answer.myAnswer, isMyMessage: true, profilPic: "", vitaAnswer: answer))
         }
+        
+        self.photoData = photoData
     }
     
     func writeMessage(id: Date, msg: String, photo: Data?, myMsg: Bool, profilPic: String) {
@@ -38,6 +41,21 @@ class ChatViewModel: ObservableObject {
     
     func writeMessage(_ value: Message) {
         messages.append(value)
+    }
+    
+    func savePhoto() -> URL? {
+        guard let photoData else { return nil }
+        do {
+            let storageURL = URL.documentsDirectory.appending(component: UUID().uuidString)
+            print(storageURL)
+            
+            try photoData.write(to: storageURL)
+            return storageURL
+            
+        } catch {
+            print("Failed to save image:", error.localizedDescription)
+            return nil
+        }
     }
 }
 
