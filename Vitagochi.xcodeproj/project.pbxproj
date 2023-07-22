@@ -83,6 +83,7 @@
 		CBD2D8C02A67C10E00F603C7 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2D8BF2A67C10E00F603C7 /* ChatViewModel.swift */; };
 		CBD2D8C52A682F8F00F603C7 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2D8C42A682F8F00F603C7 /* Message.swift */; };
 		CBD2D8C72A682FD900F603C7 /* ChatBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2D8C62A682FD900F603C7 /* ChatBubbleView.swift */; };
+		CBD3E6922A6C324000665980 /* TrackingProgressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD3E6912A6C324000665980 /* TrackingProgressViewModel.swift */; };
 		CBE7BA202A66072C00E87AAA /* TabBarIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE7BA1F2A66072C00E87AAA /* TabBarIconView.swift */; };
 /* End PBXBuildFile section */
 
@@ -187,6 +188,7 @@
 		CBD2D8BF2A67C10E00F603C7 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatViewModel.swift; path = Vitagochi/ViewModels/ChatViewModel.swift; sourceTree = SOURCE_ROOT; };
 		CBD2D8C42A682F8F00F603C7 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		CBD2D8C62A682FD900F603C7 /* ChatBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBubbleView.swift; sourceTree = "<group>"; };
+		CBD3E6912A6C324000665980 /* TrackingProgressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingProgressViewModel.swift; sourceTree = "<group>"; };
 		CBE7BA1F2A66072C00E87AAA /* TabBarIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarIconView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -268,6 +270,7 @@
 				CB2B5D982A66A0BA0099D404 /* MainSceneViewModel.swift */,
 				CBD2D8BF2A67C10E00F603C7 /* ChatViewModel.swift */,
 				26138BA72A69813600FEACBD /* LevelUpViewModel.swift */,
+				CBD3E6912A6C324000665980 /* TrackingProgressViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -736,6 +739,7 @@
 				CBD2D8C52A682F8F00F603C7 /* Message.swift in Sources */,
 				CB9FE28D2A6934BE0091DE9C /* CoreDataEnvirontment.swift in Sources */,
 				2623C2322A5EF02200F820E8 /* VerticalPicker.swift in Sources */,
+				CBD3E6922A6C324000665980 /* TrackingProgressViewModel.swift in Sources */,
 				CBB46C192A6B910200E9E0F8 /* VitaSkinModel.swift in Sources */,
 				CBD2D8C72A682FD900F603C7 /* ChatBubbleView.swift in Sources */,
 				26138BA82A69813600FEACBD /* LevelUpViewModel.swift in Sources */,

@@ -94,6 +94,21 @@ class CoreDataEnvirontment: ObservableObject {
         }
     }
     
+    func countHowManyDaySinceStart() -> Int {
+        let today = Date()
+        return challanges.filter{ (today.isItTodayOrPast(date: $0.date!)) }.count
+    }
+    
+    func getChallangeBasedOnSection(section: Int) -> [ChallangeEntity] {
+        if section == 2{
+            return challanges.filter{$0.day >= 45 && $0.day <= 66}.sorted{ $0.day < $1.day }
+        } else if section == 1{
+            return challanges.filter{$0.day >= 23 && $0.day <= 44}.sorted{ $0.day < $1.day }
+        } else {
+            return challanges.filter{$0.day >= 1 && $0.day <= 22}.sorted{ $0.day < $1.day }
+        }
+    }
+    
     func levelProgress() -> Double {
         let countChallange = challanges.filter{ ($0.records?.allObjects.count)! > 0 }.count
         if countChallange == 0 {return 0}

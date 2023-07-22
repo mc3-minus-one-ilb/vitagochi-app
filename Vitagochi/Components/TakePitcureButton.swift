@@ -17,11 +17,9 @@ struct TakePitcureButton: View {
         return ZStack(alignment: .bottomLeading){
             //Change
             Button {
-                //  ChatView()
-                // TODO: CHANGE
-//                if !isItPassMealTime && !isCompleted{
+                if !isItPassMealTime && !isCompleted{
                     isCameraClicked.toggle()
-//                }
+                }
                 
             } label: {
                 Image(systemName: "camera.fill")
@@ -37,7 +35,7 @@ struct TakePitcureButton: View {
                     .frame(width: 19)
                     .overlay {
                         //Change
-                        
+                        // TODO: Change
                         Image(systemName: timePhase.icon)
                             .font(.system(size:9))
                             .foregroundColor(.white)

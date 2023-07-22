@@ -24,6 +24,14 @@ extension Date {
         return false
     }
     
+    func isItTodayOrPast(date: Date) -> Bool {
+        var calendar = Calendar.current
+        let today = calendar.startOfDay(for: self)
+        let inputDate = calendar.startOfDay(for: date)
+        
+        return inputDate <= today
+    }
+    
     func increaseDate(by days: Int) -> Date? {
         var calendar = Calendar.current
         let dateComponent = DateComponents(day: days)

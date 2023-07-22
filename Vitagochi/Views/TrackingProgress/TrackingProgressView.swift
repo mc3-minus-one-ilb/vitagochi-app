@@ -7,30 +7,17 @@
 
 import SwiftUI
 
-enum RectPosition: Int {
-    case leading = 0
-    case center = 1
-    case trailing = 2
-    
-    var alignment: Alignment {
-        switch self {
-        case.leading:
-            return Alignment.leading
-        case.center:
-            return Alignment.center
-        case.trailing:
-            return Alignment.trailing
-        }
-    }
-}
+
 
 struct TrackingProgressView: View {
-    @State var selection: Int = 0
-    @State var rectPosition: RectPosition = .leading
+    @EnvironmentObject var coreDataEnv: CoreDataEnvirontment
+    
+    @StateObject var trackingModel = TrackingProgressViewModel()
+    
     var body: some View {
         VStack {
             VStack {
-                Text("63")
+                Text("\(trackingModel.daysCount)")
                     .font(.system(.largeTitle, weight: .semibold))
                     .fontDesign(.rounded)
                 Text("Day")
@@ -47,32 +34,32 @@ struct TrackingProgressView: View {
             Spacer()
             
             
-            TabView(selection: $selection) {
-                ProgressListView(selection: $selection)
+            TabView(selection: $trackingModel.selection) {
+                ProgressListView(selection: 0, daysCount: trackingModel.daysCount)
                     .tag(0)
-                ProgressListView(selection: $selection)
+                ProgressListView(selection: 1, daysCount: trackingModel.daysCount)
                     .tag(1)
-                ProgressListView(selection: $selection)
+                ProgressListView(selection: 2, daysCount: trackingModel.daysCount)
                     .tag(2)
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
-            .animation(.easeInOut(duration: 1.0), value: selection)
+//            .animation(.spring(), value: trackingModel.selection)
             .overlay(
                 VStack{
                     HStack {
-                        TabBarSection(selection: $selection, value: 0, text: "Part 1")
+                        TabBarSection(selection: $trackingModel.selection, value: 0, text: "Part 1")
                             .transition(.slide)
-                            .animation(.default, value: selection)
+                            .animation(.default, value: trackingModel.selection)
                         Spacer()
-                        TabBarSection(selection: $selection, value: 1, text: "Part 2")
+                        TabBarSection(selection: $trackingModel.selection, value: 1, text: "Part 2")
                             .transition(.slide)
-                            .animation(.default, value: selection)
+                            .animation(.default, value: trackingModel.selection)
                         Spacer()
-                        TabBarSection(selection: $selection, value: 2, text: "Part 3")
+                        TabBarSection(selection: $trackingModel.selection, value: 2, text: "Part 3")
                             .transition(.slide)
-                            .animation(.default, value: selection)
+                            .animation(.default, value: trackingModel.selection)
                     }
-                    ZStack(alignment: rectPosition.alignment){
+                    ZStack(alignment: trackingModel.rectPosition.alignment){
                         Rectangle()
                             .foregroundColor(.shadowEclipseColor)
                             .frame(height: 3)
@@ -82,6 +69,7 @@ struct TrackingProgressView: View {
                             .frame(width: UIScreen.main.bounds.size.width / 3, height: 6)
                     }
                 }
+                    .background(Color.primaryWhite)
                     .padding(.top, 8)
                 
                 , alignment: .top)
@@ -91,10 +79,11 @@ struct TrackingProgressView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Image("Background"))
-        .onChange(of: selection) { newValue in
-            withAnimation(.easeIn) {
-                rectPosition = RectPosition(rawValue: newValue)!
-            }
+        .onAppear{
+            trackingModel.daysCount = coreDataEnv.countHowManyDaySinceStart()
+        }
+        .onChange(of: trackingModel.selection) { newValue in
+            trackingModel.changeRectPosition(value: newValue)
         }
         .ignoresSafeArea()
     }
@@ -103,5 +92,6 @@ struct TrackingProgressView: View {
 struct TrackingProgressView_Previews: PreviewProvider {
     static var previews: some View {
         TrackingProgressView()
+            .environmentObject(CoreDataEnvirontment.singleton)
     }
 }
