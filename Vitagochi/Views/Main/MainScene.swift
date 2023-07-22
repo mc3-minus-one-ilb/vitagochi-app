@@ -82,6 +82,7 @@ struct MainSceneView: View {
                 }
                 .padding()
                 .padding(.horizontal, 8)
+                .padding(.top, 34)
                 Spacer()
                 ZStack(alignment: .bottom){
                     GeometryReader { geo in
@@ -94,7 +95,7 @@ struct MainSceneView: View {
                             .padding(.bottom, 100)
                     }
                     
-                    CircularProgressView(percentage: CGFloat((coreDataEnv.todayChallange!.records!.count) * 34) )
+                    CircularProgressView(pulsate: true, percentage: CGFloat((coreDataEnv.todayChallange!.records!.count) * 34))
                         .frame(width: 300, height: 300)
                         .offset(y: -90)
                     
@@ -127,7 +128,7 @@ struct MainSceneView: View {
                 Spacer()
 //                ChatView(chatModel: ChatViewModel(photoData: vitaModel.imageData)\
             }
-            .background(Color.primaryWhite)
+            .background(Image("Background"))
             .onChange(of: vitaModel.phase) { _ in
                 vitaModel.GenerateMessage(for: coreDataEnv.todayChallange!)
             }
@@ -152,6 +153,7 @@ struct MainSceneView: View {
                     .ignoresSafeArea()
                 
             }
+            .ignoresSafeArea()
     }
     
     static func ScaleContentBasedHeight() -> Double {

@@ -16,13 +16,14 @@ struct ChatView: View {
     
     var body: some View {
         VStack{
-            VStack(spacing: 5) {
+            VStack() {
                 Text("My Vita")
                     .font(.system(.title, weight: .semibold))
                     .fontDesign(.rounded)
             }
             .foregroundColor(.white)
             .padding()
+            .padding(.top, 34)
             
             Spacer()
             
@@ -77,18 +78,18 @@ struct ChatView: View {
                 LevelUpView()
             }
             .onChange(of: isCompleted) { newValue in
-                envObj.mainPath[1].toggle()
                 // TODO: CHANGE
-//                if newValue {
-//                    guard let photoURI = chatModel.savePhoto() else {return}
-//                    CoreDataEnvirontment.singleton.addMealRecordToTodayCallange(mealStatus: chatModel.vitaAnswer, timeStatus: timePhase, photoURI: photoURI)
-//                envObj.mainPath[1].toggle()
-//                }
+                if newValue {
+                    guard let photoURI = chatModel.savePhoto() else {return}
+                    CoreDataEnvirontment.singleton.addMealRecordToTodayCallange(mealStatus: chatModel.vitaAnswer, timeStatus: timePhase, photoURI: photoURI)
+                envObj.mainPath[1].toggle()
+                }
             }
             
         }
         .edgesIgnoringSafeArea(.bottom)
         .background(Color.chatTopPinkColor)
+        .edgesIgnoringSafeArea(.top)
         .navigationBarBackButtonHidden(true)
        
     }

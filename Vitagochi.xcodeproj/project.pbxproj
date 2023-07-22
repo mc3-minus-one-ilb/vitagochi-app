@@ -75,6 +75,9 @@
 		CBB46C172A6B719500E9E0F8 /* RoundedShapeBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB46C162A6B719500E9E0F8 /* RoundedShapeBackground.swift */; };
 		CBB46C192A6B910200E9E0F8 /* VitaSkinModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB46C182A6B910200E9E0F8 /* VitaSkinModel.swift */; };
 		CBB46C212A6BCA7700E9E0F8 /* TrackingProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB46C202A6BCA7700E9E0F8 /* TrackingProgressView.swift */; };
+		CBB46C232A6BDFFD00E9E0F8 /* TabBarSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB46C222A6BDFFD00E9E0F8 /* TabBarSection.swift */; };
+		CBB46C252A6BEA3800E9E0F8 /* ProgressListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB46C242A6BEA3800E9E0F8 /* ProgressListView.swift */; };
+		CBB46C272A6BEECF00E9E0F8 /* CircularProgressSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB46C262A6BEECF00E9E0F8 /* CircularProgressSection.swift */; };
 		CBD2D8812A67BC6700F603C7 /* PhotoTakeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2D8802A67BC6700F603C7 /* PhotoTakeView.swift */; };
 		CBD2D8BE2A67C0FC00F603C7 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2D8BD2A67C0FC00F603C7 /* ChatView.swift */; };
 		CBD2D8C02A67C10E00F603C7 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2D8BF2A67C10E00F603C7 /* ChatViewModel.swift */; };
@@ -176,6 +179,9 @@
 		CBB46C162A6B719500E9E0F8 /* RoundedShapeBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShapeBackground.swift; sourceTree = "<group>"; };
 		CBB46C182A6B910200E9E0F8 /* VitaSkinModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VitaSkinModel.swift; sourceTree = "<group>"; };
 		CBB46C202A6BCA7700E9E0F8 /* TrackingProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingProgressView.swift; sourceTree = "<group>"; };
+		CBB46C222A6BDFFD00E9E0F8 /* TabBarSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarSection.swift; sourceTree = "<group>"; };
+		CBB46C242A6BEA3800E9E0F8 /* ProgressListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressListView.swift; sourceTree = "<group>"; };
+		CBB46C262A6BEECF00E9E0F8 /* CircularProgressSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressSection.swift; sourceTree = "<group>"; };
 		CBD2D8802A67BC6700F603C7 /* PhotoTakeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoTakeView.swift; sourceTree = "<group>"; };
 		CBD2D8BD2A67C0FC00F603C7 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		CBD2D8BF2A67C10E00F603C7 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatViewModel.swift; path = Vitagochi/ViewModels/ChatViewModel.swift; sourceTree = SOURCE_ROOT; };
@@ -226,6 +232,8 @@
 				CBD2D8C62A682FD900F603C7 /* ChatBubbleView.swift */,
 				26B0A3272A65893B0047FC6A /* CollectiveDayTimePicker.swift */,
 				CB9AA2262A6AC9AB00BF8D76 /* TakePitcureButton.swift */,
+				CBB46C222A6BDFFD00E9E0F8 /* TabBarSection.swift */,
+				CBB46C262A6BEECF00E9E0F8 /* CircularProgressSection.swift */,
 				2648466D2A5E5AE800396575 /* ContentInfo.txt */,
 			);
 			path = Components;
@@ -521,6 +529,7 @@
 			isa = PBXGroup;
 			children = (
 				CBB46C202A6BCA7700E9E0F8 /* TrackingProgressView.swift */,
+				CBB46C242A6BEA3800E9E0F8 /* ProgressListView.swift */,
 			);
 			path = TrackingProgress;
 			sourceTree = "<group>";
@@ -733,6 +742,7 @@
 				CB9AA2272A6AC9AB00BF8D76 /* TakePitcureButton.swift in Sources */,
 				2648467E2A5E6FA700396575 /* OnboardingViewModel.swift in Sources */,
 				2648466B2A5E48BB00396575 /* UIScreen+Compact.swift in Sources */,
+				CBB46C252A6BEA3800E9E0F8 /* ProgressListView.swift in Sources */,
 				264846802A5E743500396575 /* OnboardingThird.swift in Sources */,
 				26C7A88E2A5D0014009F0EAF /* VitagochiApp.swift in Sources */,
 				26B0A3282A65893B0047FC6A /* CollectiveDayTimePicker.swift in Sources */,
@@ -745,10 +755,12 @@
 				2618F0182A6A32A30008ED82 /* UserDefaults+Codable.swift in Sources */,
 				CB9AA2252A6A414400BF8D76 /* CoreDataRepository.swift in Sources */,
 				2651459A2A69698F00042519 /* RoundedCornerShape.swift in Sources */,
+				CBB46C232A6BDFFD00E9E0F8 /* TabBarSection.swift in Sources */,
 				2623C2342A5EF68400F820E8 /* UIKitPickerView.swift in Sources */,
 				CBD2D8C02A67C10E00F603C7 /* ChatViewModel.swift in Sources */,
 				CB05285A2A6531A000649F22 /* Date+Extend.swift in Sources */,
 				CBB46C152A6B716500E9E0F8 /* BublbleArrow.swift in Sources */,
+				CBB46C272A6BEECF00E9E0F8 /* CircularProgressSection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -41,6 +41,7 @@ struct VitagochiApp: App {
                 }
                 .navigationTransition(.slide(axis: .horizontal), interactivity: .disabled)
             } else {
+                
                     RootView()
                         .environmentObject(coreDataEnv)
                         .environmentObject(envObj)

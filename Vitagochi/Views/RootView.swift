@@ -17,30 +17,33 @@ struct RootView: View {
         // BUG: MainScene position is terrible
         
         NavigationStack{
-            TabView(selection: $selection) {
-                MainSceneView()
-                    .tag(0)
-                TrackingProgressView()
-                    .tag(1)
-                EmptyView()
-                    .tag(2)
-            }
-            .overlay(
-                Color.primaryWhite
-                    .edgesIgnoringSafeArea(.vertical)
-                    .frame(height: 50)
-                    .overlay {
-                        HStack{
-                            TabBarIconView(selection: $selection, value: 0, iconName: "heart.fill")
-                                .padding(.leading, 50)
-                            Spacer()
-                            TabBarIconView(selection: $selection, value: 1, iconName: "heart.text.square.fill")
-                            Spacer()
-                            TabBarIconView(selection: $selection, value: 2, iconName: "medal.fill")
-                                .padding(.trailing, 50)
-                        }
+            ScrollView(.init()){
+                ZStack(alignment: .bottom){
+                    TabView(selection: $selection) {
+                        MainSceneView()
+                            .tag(0)
+                        TrackingProgressView()
+                            .tag(1)
+                        ChatView(timePhase: .morning)
+                            .tag(2)
                     }
-                ,alignment: .bottom)
+                    .tabViewStyle(.page(indexDisplayMode: .never))
+                    .animation(.easeOut(duration: 1.0), value: selection)
+                }
+            }
+            .ignoresSafeArea()
+            .safeAreaInset(edge: .bottom) {
+                HStack{
+                    TabBarIconView(selection: $selection, value: 0, iconName: "heart.fill")
+                        .padding(.leading, 50)
+                    Spacer()
+                    TabBarIconView(selection: $selection, value: 1, iconName: "heart.text.square.fill")
+                    Spacer()
+                    TabBarIconView(selection: $selection, value: 2, iconName: "medal.fill")
+                        .padding(.trailing, 50)
+                }
+                .background(Color.primaryWhite)
+            }
         }
     }
 }
