@@ -14,12 +14,14 @@ class CoreDataEnvirontment: ObservableObject {
     @Published var challanges: [ChallangeEntity] = []
     @Published var mealRecords: [MealRecordEntity] = []
     @Published var todayChallange: ChallangeEntity?
+    @Published var vitaSkinModel: VitaSkinModel = .casual
     
     init() {
         fetchChallanges()
         fetchMealRecords()
         if challanges.count > 0 {
             getTodayChallange()
+//            getVitaModel()
         }
     }
     
@@ -72,6 +74,35 @@ class CoreDataEnvirontment: ObservableObject {
             }
             save()
         }
+    }
+    
+    func getVitaModel() {
+        let countChallange = challanges.filter{ ($0.records?.allObjects.count)! > 0 }.count
+        
+        if countChallange % 20 == 0 && countChallange > 0 {
+            let level = countChallange / 20
+            if level >= 3 {
+                vitaSkinModel = .white
+            } else if level >= 2 {
+                vitaSkinModel = .green
+            } else if level >= 1 {
+                vitaSkinModel = .orange
+            } else {
+                vitaSkinModel = .casual
+            }
+            
+        }
+    }
+    
+    func levelProgress() -> Double {
+        let countChallange = challanges.filter{ ($0.records?.allObjects.count)! > 0 }.count
+        if countChallange == 0 {return 0}
+        let progress = Double(countChallange % 20)
+        return progress == 0.0 ? 20.0 : progress
+    }
+    
+    func isAnotherTodayMealRecord() -> Bool {
+        return (todayChallange?.records!.count)! > 1
     }
     
     func save() {

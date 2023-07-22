@@ -109,23 +109,6 @@ struct ChatBubble: View {
     }
 }
 
-struct BubbleArrow: Shape {
-    var isMyMessage: Bool
-    func path(in rect: CGRect) -> Path {
-        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: isMyMessage ? [.topLeft, .topRight, .bottomLeft] : [.topRight, .topLeft, .bottomRight], cornerRadii: .init(width: 10, height: 10))
-        
-        return Path(path.cgPath)
-    }
-}
-
-struct RoundedShape: Shape {
-    func path(in rect: CGRect) -> Path {
-        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: [.topLeft, .topRight], cornerRadii: .init(width: 35, height: 35))
-        return Path(path.cgPath)
-    }
-}
-
-
 
 struct ChatBuble_Previews: PreviewProvider {
     static var previews: some View {

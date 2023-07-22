@@ -18,9 +18,10 @@ struct TakePitcureButton: View {
             //Change
             Button {
                 //  ChatView()
-                if !isItPassMealTime && !isCompleted{
+                // TODO: CHANGE
+//                if !isItPassMealTime && !isCompleted{
                     isCameraClicked.toggle()
-                }
+//                }
                 
             } label: {
                 Image(systemName: "camera.fill")

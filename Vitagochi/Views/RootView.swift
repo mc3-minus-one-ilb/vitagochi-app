@@ -8,17 +8,19 @@
 import SwiftUI
 
 struct RootView: View {
-    @State var selection: Int = 0
+    @EnvironmentObject private var envObj: GlobalEnvirontment
+    @State private var selection: Int = 0
     
     var body: some View {
         
         // BUG: Offset Problem
         // BUG: MainScene position is terrible
+        
         NavigationStack{
             TabView(selection: $selection) {
                 MainSceneView()
                     .tag(0)
-                EmptyView()
+                TrackingProgressView()
                     .tag(1)
                 EmptyView()
                     .tag(2)
@@ -48,7 +50,8 @@ struct RootView_Previews: PreviewProvider {
     static var previews: some View {
         
         return RootView()
-            .environmentObject(CoreDataEnvirontment())
+            .environmentObject(GlobalEnvirontment.singleton)
+            .environmentObject(CoreDataEnvirontment.singleton)
         
         //        RootView()
         //            .previewDevice(PreviewDevice(rawValue: "iPhone 14 Pro Max"))

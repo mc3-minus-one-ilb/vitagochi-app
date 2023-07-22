@@ -46,6 +46,7 @@ struct BackgroundArc: Shape {
 
 struct MainSceneView: View {
     @EnvironmentObject var coreDataEnv: CoreDataEnvirontment
+    @EnvironmentObject private var envObj: GlobalEnvirontment
     @StateObject var vitaModel: MainSceneViewModel = MainSceneViewModel()
     @State var timer: Timer?
     @State var shouldNavigateToChat: Bool = false
@@ -124,11 +125,7 @@ struct MainSceneView: View {
                 .scaleEffect(scaleSize)
                 Spacer()
                 Spacer()
-//                ChatView(chatModel: ChatViewModel(photoData: vitaModel.imageData)
-                NavigationLink(destination: ChatView(chatModel: ChatViewModel(message: Message(id: Date(), text: "", isMyMessage: true, profilPic: "", photo: vitaModel.imageData), photoData: vitaModel.imageData), timePhase: vitaModel.phase), isActive: $shouldNavigateToChat) {
-                    EmptyView()
-                }
-                
+//                ChatView(chatModel: ChatViewModel(photoData: vitaModel.imageData)\
             }
             .background(Color.primaryWhite)
             .onChange(of: vitaModel.phase) { _ in
@@ -141,10 +138,13 @@ struct MainSceneView: View {
                 vitaModel.GenerateMessage(for: coreDataEnv.todayChallange!)
             }
             .onChange(of: vitaModel.imageData, perform: { _ in
-                shouldNavigateToChat.toggle()
+                envObj.mainPath[0].toggle()
             })
             .onAppear {
                 vitaModel.GenerateMessage(for: coreDataEnv.todayChallange!)
+            }
+            .navigationDestination(isPresented: $envObj.mainPath[0]) {
+                 ChatView(chatModel: ChatViewModel(message: Message(id: Date(), text: "", isMyMessage: true, profilPic: "", photo: vitaModel.imageData), photoData: vitaModel.imageData), timePhase: vitaModel.phase)
             }
             .fullScreenCover(isPresented: $vitaModel.isCameraClicked) {
                 PhotoTakeView(showPicker: $vitaModel.isCameraClicked, imageData: $vitaModel.imageData)
@@ -179,7 +179,8 @@ struct MainSceneView: View {
 struct MainSceneView_Previews: PreviewProvider {
     static var previews: some View {
         MainSceneView()
-            .environmentObject(CoreDataEnvirontment())
+            .environmentObject(GlobalEnvirontment.singleton)
+            .environmentObject(CoreDataEnvirontment.singleton)
         //        MainSceneView()
         //            .previewDevice(PreviewDevice(rawValue: "iPhone 14 Pro Max"))
         //            .previewDisplayName("iPhone 14 Pro Max")
