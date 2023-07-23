@@ -9,25 +9,28 @@ import SwiftUI
 
 struct TakePitcureButton: View {
     @Binding var isCameraClicked: Bool
+    @State var disable: Bool = true
     var timePhase: VitachiTimePhase
     var isCompleted: Bool
+    
     
     var body: some View {
         let isItPassMealTime = timePhase.icon == ""
         return ZStack(alignment: .bottomLeading){
             //Change
             Button {
-                if !isItPassMealTime && !isCompleted{
+//                if !isItPassMealTime && !isCompleted{
                     isCameraClicked.toggle()
-                }
+//                }
                 
             } label: {
                 Image(systemName: "camera.fill")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .foregroundColor(.gray)
+                    .foregroundColor(disable ? .inactiveIconTabBar : .gray)
                     .frame(width: 46, height: 36, alignment: .center)
             }
+            .disabled(disable)
             
             if !isItPassMealTime && !isCompleted{
                 Circle()
@@ -43,6 +46,11 @@ struct TakePitcureButton: View {
                     .offset(x:-8,y: 8)
             }
             
+        }
+        .onAppear{
+            if !isItPassMealTime && !isCompleted {
+                disable.toggle()
+            }
         }
     }
 }

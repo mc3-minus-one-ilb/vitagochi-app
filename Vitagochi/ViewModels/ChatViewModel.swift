@@ -43,15 +43,21 @@ class ChatViewModel: ObservableObject {
         messages.append(value)
     }
     
-    func savePhoto() -> URL? {
+    func savePhoto() -> String? {
         guard let photoData else { return nil }
         do {
-            let storageURL = URL.documentsDirectory.appending(component: UUID().uuidString)
+            let id = UUID().uuidString
+            
+            guard let storageURL = FileManager.default
+                .urls(for: .documentDirectory, in: .userDomainMask)
+                .first?.appendingPathComponent(id)
+            else { return nil }
+            
             print(storageURL)
             
             try photoData.write(to: storageURL)
-            return storageURL
             
+            return id
         } catch {
             print("Failed to save image:", error.localizedDescription)
             return nil

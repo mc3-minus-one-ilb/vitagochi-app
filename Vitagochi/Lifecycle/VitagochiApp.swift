@@ -51,7 +51,7 @@ struct VitagochiApp: App {
 }
 
 //struct AppView_Previews: PreviewProvider {
-//    static var previews: some View {
+//    static var previews: some Scene {
 //        //        ChatView(chatModel: ChatViewModel(photoData: Data()))
 //        VitagochiApp()
 //    }

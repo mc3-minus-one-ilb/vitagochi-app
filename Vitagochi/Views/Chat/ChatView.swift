@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ChatView: View {
-    //    @State var chatModel: ChatViewModel
     @EnvironmentObject private var envObj: GlobalEnvirontment
     @StateObject var chatModel = ChatViewModel(message: Message(id: Date(), text: "Photo", isMyMessage: true, profilPic: ""))
     @State var isCompleted: Bool = false
@@ -58,7 +57,7 @@ struct ChatView: View {
                                             chatModel.writeMessage(message)
                                             chatModel.showMyOptions.toggle()
                                             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                                                chatModel.writeMessage(Message(id: Date(), text: message.vitaAnswer!.answer, isMyMessage: false, profilPic: "VitaChatIcon", vitaAnswer: message.vitaAnswer!))
+                                                chatModel.writeMessage(Message(id: Date(), text: message.vitaAnswer!.answer(name: envObj.username), isMyMessage: false, profilPic: "VitaChatIcon", vitaAnswer: message.vitaAnswer!))
                                             }
                                         }
                                 }
@@ -80,8 +79,8 @@ struct ChatView: View {
             .onChange(of: isCompleted) { newValue in
                 // TODO: CHANGE
                 if newValue {
-                    guard let photoURI = chatModel.savePhoto() else {return}
-                    CoreDataEnvirontment.singleton.addMealRecordToTodayCallange(mealStatus: chatModel.vitaAnswer, timeStatus: timePhase, photoURI: photoURI)
+                    guard let photoName = chatModel.savePhoto() else {return}
+                    CoreDataEnvirontment.singleton.addMealRecordToTodayCallange(name:envObj.username,mealStatus: chatModel.vitaAnswer, timeStatus: timePhase, photoName: photoName)
                 envObj.mainPath[1].toggle()
                 }
             }

@@ -50,6 +50,8 @@
 		CB0528632A6546BF00649F22 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0528622A6546BF00649F22 /* CircularProgressView.swift */; };
 		CB0528652A656BB500649F22 /* StatusLevelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0528642A656BB500649F22 /* StatusLevelView.swift */; };
 		CB0528672A65712500649F22 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0528662A65712500649F22 /* RootView.swift */; };
+		CB0ACBFB2A6D615C00D5DF4D /* GalleryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0ACBFA2A6D615C00D5DF4D /* GalleryCard.swift */; };
+		CB0ACBFD2A6D7D8600D5DF4D /* BackgroundArc.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0ACBFC2A6D7D8600D5DF4D /* BackgroundArc.swift */; };
 		CB2B5D992A66A0BA0099D404 /* MainSceneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2B5D982A66A0BA0099D404 /* MainSceneViewModel.swift */; };
 		CB2B5D9B2A66B50B0099D404 /* VitachiMoodPhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2B5D9A2A66B50B0099D404 /* VitachiMoodPhase.swift */; };
 		CB2B5D9F2A66B96F0099D404 /* welcome.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB2B5D9E2A66B96F0099D404 /* welcome.wav */; };
@@ -71,6 +73,7 @@
 		CB9FE2892A6932950091DE9C /* AppCoreContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CB9FE2872A6932950091DE9C /* AppCoreContainer.xcdatamodeld */; };
 		CB9FE28B2A6933950091DE9C /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9FE28A2A6933950091DE9C /* CoreDataManager.swift */; };
 		CB9FE28D2A6934BE0091DE9C /* CoreDataEnvirontment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9FE28C2A6934BE0091DE9C /* CoreDataEnvirontment.swift */; };
+		CBA6418B2A6CCB530067D0F4 /* DetailTrackingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA6418A2A6CCB530067D0F4 /* DetailTrackingView.swift */; };
 		CBB46C152A6B716500E9E0F8 /* BublbleArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB46C142A6B716500E9E0F8 /* BublbleArrow.swift */; };
 		CBB46C172A6B719500E9E0F8 /* RoundedShapeBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB46C162A6B719500E9E0F8 /* RoundedShapeBackground.swift */; };
 		CBB46C192A6B910200E9E0F8 /* VitaSkinModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB46C182A6B910200E9E0F8 /* VitaSkinModel.swift */; };
@@ -155,6 +158,8 @@
 		CB0528622A6546BF00649F22 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		CB0528642A656BB500649F22 /* StatusLevelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusLevelView.swift; sourceTree = "<group>"; };
 		CB0528662A65712500649F22 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		CB0ACBFA2A6D615C00D5DF4D /* GalleryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCard.swift; sourceTree = "<group>"; };
+		CB0ACBFC2A6D7D8600D5DF4D /* BackgroundArc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundArc.swift; sourceTree = "<group>"; };
 		CB2B5D982A66A0BA0099D404 /* MainSceneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSceneViewModel.swift; sourceTree = "<group>"; };
 		CB2B5D9A2A66B50B0099D404 /* VitachiMoodPhase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VitachiMoodPhase.swift; path = Vitagochi/Models/VitachiMoodPhase.swift; sourceTree = SOURCE_ROOT; };
 		CB2B5D9E2A66B96F0099D404 /* welcome.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = welcome.wav; sourceTree = "<group>"; };
@@ -176,6 +181,7 @@
 		CB9FE2882A6932950091DE9C /* AppCoreContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AppCoreContainer.xcdatamodel; sourceTree = "<group>"; };
 		CB9FE28A2A6933950091DE9C /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		CB9FE28C2A6934BE0091DE9C /* CoreDataEnvirontment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataEnvirontment.swift; sourceTree = "<group>"; };
+		CBA6418A2A6CCB530067D0F4 /* DetailTrackingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTrackingView.swift; sourceTree = "<group>"; };
 		CBB46C142A6B716500E9E0F8 /* BublbleArrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BublbleArrow.swift; sourceTree = "<group>"; };
 		CBB46C162A6B719500E9E0F8 /* RoundedShapeBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShapeBackground.swift; sourceTree = "<group>"; };
 		CBB46C182A6B910200E9E0F8 /* VitaSkinModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VitaSkinModel.swift; sourceTree = "<group>"; };
@@ -236,6 +242,7 @@
 				CB9AA2262A6AC9AB00BF8D76 /* TakePitcureButton.swift */,
 				CBB46C222A6BDFFD00E9E0F8 /* TabBarSection.swift */,
 				CBB46C262A6BEECF00E9E0F8 /* CircularProgressSection.swift */,
+				CB0ACBFA2A6D615C00D5DF4D /* GalleryCard.swift */,
 				2648466D2A5E5AE800396575 /* ContentInfo.txt */,
 			);
 			path = Components;
@@ -247,6 +254,7 @@
 				265145992A69698F00042519 /* RoundedCornerShape.swift */,
 				CBB46C142A6B716500E9E0F8 /* BublbleArrow.swift */,
 				CBB46C162A6B719500E9E0F8 /* RoundedShapeBackground.swift */,
+				CB0ACBFC2A6D7D8600D5DF4D /* BackgroundArc.swift */,
 			);
 			path = Shapes;
 			sourceTree = "<group>";
@@ -284,6 +292,7 @@
 				CBD2D87F2A67BBE600F603C7 /* Chat */,
 				CBB46C1C2A6BCA0300E9E0F8 /* LevelUp */,
 				CBB46C1D2A6BCA2600E9E0F8 /* TrackingProgress */,
+				CBA641892A6CCAFE0067D0F4 /* DetailTrackingProgress */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -520,6 +529,14 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
+		CBA641892A6CCAFE0067D0F4 /* DetailTrackingProgress */ = {
+			isa = PBXGroup;
+			children = (
+				CBA6418A2A6CCB530067D0F4 /* DetailTrackingView.swift */,
+			);
+			path = DetailTrackingProgress;
+			sourceTree = "<group>";
+		};
 		CBB46C1C2A6BCA0300E9E0F8 /* LevelUp */ = {
 			isa = PBXGroup;
 			children = (
@@ -727,6 +744,7 @@
 				26BC97F22A5D102E003125B5 /* OnboardingFirst.swift in Sources */,
 				2673E0292A5D05C400429610 /* AppDelegate.swift in Sources */,
 				CB05285E2A65323900649F22 /* MainScene.swift in Sources */,
+				CB0ACBFB2A6D615C00D5DF4D /* GalleryCard.swift in Sources */,
 				CB0528612A653F9200649F22 /* RectangleBubleTextView.swift in Sources */,
 				CB0528632A6546BF00649F22 /* CircularProgressView.swift in Sources */,
 				CB9FE2892A6932950091DE9C /* AppCoreContainer.xcdatamodeld in Sources */,
@@ -741,6 +759,7 @@
 				2623C2322A5EF02200F820E8 /* VerticalPicker.swift in Sources */,
 				CBD3E6922A6C324000665980 /* TrackingProgressViewModel.swift in Sources */,
 				CBB46C192A6B910200E9E0F8 /* VitaSkinModel.swift in Sources */,
+				CB0ACBFD2A6D7D8600D5DF4D /* BackgroundArc.swift in Sources */,
 				CBD2D8C72A682FD900F603C7 /* ChatBubbleView.swift in Sources */,
 				26138BA82A69813600FEACBD /* LevelUpViewModel.swift in Sources */,
 				CB9AA2272A6AC9AB00BF8D76 /* TakePitcureButton.swift in Sources */,
@@ -754,6 +773,7 @@
 				2673E0272A5D056D00429610 /* GlobalEnvirontment.swift in Sources */,
 				CBB46C212A6BCA7700E9E0F8 /* TrackingProgressView.swift in Sources */,
 				CB9FE28B2A6933950091DE9C /* CoreDataManager.swift in Sources */,
+				CBA6418B2A6CCB530067D0F4 /* DetailTrackingView.swift in Sources */,
 				2648467A2A5E639D00396575 /* CounteredTextView.swift in Sources */,
 				26B0A32A2A6595AD0047FC6A /* OnboardingFourth.swift in Sources */,
 				2618F0182A6A32A30008ED82 /* UserDefaults+Codable.swift in Sources */,

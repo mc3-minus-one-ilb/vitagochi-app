@@ -48,14 +48,15 @@ class CoreDataRepository {
     }
     
     func addMealRecord(challange: ChallangeEntity,
+                       name: String,
                        mealStatus: VitaMessageAnswer,
                        timeStatus: VitachiTimePhase,
-                       photoURI: URL) {
+                       photoName: String) {
         let newMealRecord = MealRecordEntity(context: coreDataManager.context)
         newMealRecord.mealStatus = mealStatus.rawValue
         newMealRecord.timeStatus = timeStatus.rawValue
-        newMealRecord.photo = photoURI
-        newMealRecord.vitaMessage =  mealStatus.answer
+        newMealRecord.photo = photoName
+        newMealRecord.vitaMessage =  mealStatus.answer(name: name)
         newMealRecord.challange = challange
         newMealRecord.time = Date()
         print(newMealRecord)

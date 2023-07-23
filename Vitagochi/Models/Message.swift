@@ -22,7 +22,7 @@ enum VitaMessageAnswer: Int16, CaseIterable {
     case fruitsOnly = 2
     case sadlyNo = 3
     
-    var answer: String {
+    func answer(name: String = "") -> String {
         switch self {
         case.exactly:
             return "Excelent! Way to go, your fruit and veggie virtouso. Congratulation on take a lil step of embracing a healthy dietary habit 🎉"
@@ -31,7 +31,7 @@ enum VitaMessageAnswer: Int16, CaseIterable {
         case.fruitsOnly:
             return "Yumm... fruits always be tasty but believe greens can be tasty too! Sot eat it later okay? 😉"
         case.sadlyNo:
-            return "Huft... haris can be disappointing at times, Just promise me you'll munch on greens and fruits next time, alright ? 😔"
+            return "Huft... \(name=="" ? "you" : name) can be disappointing at times, Just promise me you'll munch on greens and fruits next time, alright ? 😔"
         }
     }
     

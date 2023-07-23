@@ -11,12 +11,13 @@ struct RootView: View {
     @EnvironmentObject private var envObj: GlobalEnvirontment
     @State private var selection: Int = 0
     
+    
     var body: some View {
         
         // BUG: Offset Problem
         // BUG: MainScene position is terrible
         
-        NavigationStack{
+        NavigationStack(path: $envObj.path){
             ScrollView(.init()){
                 
                 TabView(selection: $selection) {
@@ -30,6 +31,7 @@ struct RootView: View {
                 .tabViewStyle(.page(indexDisplayMode: .never))
                 .animation(.easeOut(duration: 1.0), value: selection)
             }
+            .background(Image("Background"))
             .ignoresSafeArea()
             .safeAreaInset(edge: .bottom) {
                 HStack{

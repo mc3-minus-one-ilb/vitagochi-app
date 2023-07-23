@@ -29,13 +29,65 @@ enum VitachiTimePhase: Int16 {
         case.beforeDayStart:
             return HourAndMinute(hour: 0, minute: 0)
         case.morning:
-            return HourAndMinute(hour: 12, minute: 0)
+            return HourAndMinute(hour: 7, minute: 0)
         case.afternoon:
-            return HourAndMinute(hour: 14, minute: 40)
+            return HourAndMinute(hour: 12, minute: 40)
         case.evening:
             return HourAndMinute(hour: 17, minute: 50)
         case.afterDay:
             return HourAndMinute(hour: 21, minute: 55)
+        }
+    }
+    
+    var mealTime: String {
+        switch self {
+        case .beforeDayStart, .afterDay:
+            return ""
+        case.morning:
+            return "Breakfast"
+        case.afternoon:
+            return "Lunch"
+        case.evening:
+            return "Dinner"
+        }
+    }
+    
+    var mealTimeIcon: String {
+        switch self {
+        case .beforeDayStart, .afterDay:
+            return ""
+        case.morning:
+            return "☀️🍽️"
+        case.afternoon:
+            return "🌤️🍽️"
+        case.evening:
+            return "🌙🍽️"
+        }
+    }
+    
+    var mealBackground: String {
+        switch self {
+        case .beforeDayStart, .afterDay:
+            return ""
+        case.morning:
+            return "CardBreakfastBackground"
+        case.afternoon:
+            return "CardLunchBackground"
+        case.evening:
+            return "CardDinnerBackground"
+        }
+    }
+    
+    var mealQuote: String {
+        switch self {
+        case .beforeDayStart, .afterDay:
+            return ""
+        case.morning:
+            return "Rise and dine, it’s a perfect act \nto start the day with healthy \nfood!"
+        case.afternoon:
+            return "Here we go! Noontime feast! \nIt's a midday delight in hectic \ntimes"
+        case.evening:
+            return "A delicious finale, perfect way \nto end today’s journey!"
         }
     }
     

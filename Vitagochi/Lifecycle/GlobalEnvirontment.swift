@@ -25,6 +25,7 @@ class GlobalEnvirontment: ObservableObject {
     @Published var dinnerReminder: HourAndMinute = HourAndMinute(hour: 19, minute: 0)
     
     @Published var mainPath: [Bool] = [false,false,false]
+    @Published var path: NavigationPath = NavigationPath()
     
     init() {
         getOnboardingState()
@@ -55,7 +56,7 @@ class GlobalEnvirontment: ObservableObject {
             return
         }
         
-        username = ""
+        username = state as! String
     }
     
     public func setWillingToNotifyState(state: Bool) {

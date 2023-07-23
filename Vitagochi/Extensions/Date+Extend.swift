@@ -25,21 +25,34 @@ extension Date {
     }
     
     func isItTodayOrPast(date: Date) -> Bool {
-        var calendar = Calendar.current
+        let calendar = Calendar.current
         let today = calendar.startOfDay(for: self)
         let inputDate = calendar.startOfDay(for: date)
         
         return inputDate <= today
     }
     
+    func getFormattedTime() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm a"
+        return formatter.string(from: self)
+    }
+    
+    func getFormattedDate() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE, MMMM d yyyy"
+
+        return dateFormatter.string(from: self)
+    }
+    
     func increaseDate(by days: Int) -> Date? {
-        var calendar = Calendar.current
+        let calendar = Calendar.current
         let dateComponent = DateComponents(day: days)
         return calendar.date(byAdding: dateComponent, to: self)
     }
     
     func isItToday(date: Date) -> Bool {
-        var calendar = Calendar.current
+        let calendar = Calendar.current
         let currentDateComp =  calendar.dateComponents([.year, .month, .day], from: self)
         let compareDateComp = calendar.dateComponents([.year, .month, .day], from: date)
         return currentDateComp == compareDateComp

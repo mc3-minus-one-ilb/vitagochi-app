@@ -7,26 +7,6 @@
 
 import SwiftUI
 
-struct BackgroundArc: Shape {
-    var yOffset: CGFloat = -50
-    
-    var animatableData: CGFloat {
-        get { return yOffset }
-        set { yOffset = newValue}
-    }
-    func path(in rect: CGRect) -> Path {
-        var path = Path()
-        
-        path.move(to: .zero)
-        path.addLine(to: CGPoint(x: rect.maxX, y: 0))
-        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY - yOffset))
-        path.addQuadCurve(to: CGPoint(x: 0, y: rect.maxY - yOffset), control: CGPoint(x: rect.midX, y: rect.maxY + yOffset))
-        path.closeSubpath()
-        
-        return path
-    }
-}
-
 //struct AdaptiveView<Content: View>: View {
 //    var content: Content
 //    init(@ViewBuilder content: @escaping ()-> Content) {
@@ -48,8 +28,7 @@ struct MainSceneView: View {
     @EnvironmentObject var coreDataEnv: CoreDataEnvirontment
     @EnvironmentObject private var envObj: GlobalEnvirontment
     @StateObject var vitaModel: MainSceneViewModel = MainSceneViewModel()
-    @State var timer: Timer?
-    @State var shouldNavigateToChat: Bool = false
+    
     let scaleSize: Double
     
     init() {
@@ -57,11 +36,12 @@ struct MainSceneView: View {
     }
     
     var body: some View {
-            VStack{
+        let progress = coreDataEnv.levelProgress()
+            return VStack{
                 HStack{
                     VStack(alignment: .leading, spacing: 6){
                         //Change
-                        Text("Hi, Haris!")
+                        Text("Hi, \(envObj.username)!")
                             .font(.system(.title, design: .rounded))
                             .fontWeight(.bold)
                         
@@ -69,7 +49,7 @@ struct MainSceneView: View {
                             Text("It's")
                                 .font(.system(.body, design: .rounded))
                             //Change
-                            Text("06.00 am")
+                            Text(vitaModel.currentTime.getFormattedTime())
                                 .font(.system(.headline, design: .rounded))
                                 .fontWeight(.semibold)
                         }
@@ -118,17 +98,18 @@ struct MainSceneView: View {
                             }
                         
                     }
-                    StatusLevelView(level: 1, exp: 2)
-                        .frame(width: 170, height: 8)
-                        .offset(y:36)
+                    StatusLevelView(level: coreDataEnv.vitaSkinModel.rawValue + 1, exp: Int(progress))
+                        .frame(width: 200, height: 10)
+                        .offset(y:50)
                 }
+                .padding(.bottom, 34)
                 .frame(height: 390)
                 .scaleEffect(scaleSize)
                 Spacer()
                 Spacer()
 //                ChatView(chatModel: ChatViewModel(photoData: vitaModel.imageData)\
             }
-            .background(Image("Background"))
+            
             .onChange(of: vitaModel.phase) { _ in
                 vitaModel.GenerateMessage(for: coreDataEnv.todayChallange!)
             }
@@ -143,6 +124,14 @@ struct MainSceneView: View {
             })
             .onAppear {
                 vitaModel.GenerateMessage(for: coreDataEnv.todayChallange!)
+                
+                vitaModel.timer?.invalidate()
+                vitaModel.timer = nil
+                
+                vitaModel.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
+                    vitaModel.CheckPhaseTime()
+                    vitaModel.currentTime = Date()
+                }
             }
             .navigationDestination(isPresented: $envObj.mainPath[0]) {
                  ChatView(chatModel: ChatViewModel(message: Message(id: Date(), text: "", isMyMessage: true, profilPic: "", photo: vitaModel.imageData), photoData: vitaModel.imageData), timePhase: vitaModel.phase)
@@ -153,7 +142,7 @@ struct MainSceneView: View {
                     .ignoresSafeArea()
                 
             }
-            .ignoresSafeArea()
+            .edgesIgnoringSafeArea([.top,.horizontal])
     }
     
     static func ScaleContentBasedHeight() -> Double {
@@ -176,6 +165,7 @@ struct MainSceneView: View {
                 }
             }
     }
+    
 }
 
 struct MainSceneView_Previews: PreviewProvider {

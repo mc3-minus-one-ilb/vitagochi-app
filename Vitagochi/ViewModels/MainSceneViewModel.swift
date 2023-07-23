@@ -16,6 +16,8 @@ class MainSceneViewModel: ObservableObject {
     @Published var isTapped: Bool = false
     @Published var isCameraClicked: Bool = false
     @Published var imageData: Data = Data(count: 0)
+    @Published var currentTime: Date = Date()
+    @Published var timer: Timer?
 //    var charSound: AVAudioPlayer = AVAudioPlayer()
     var soundFileName: String = ""
     
@@ -35,6 +37,8 @@ class MainSceneViewModel: ObservableObject {
 //            print(self.mealDatas)
 //        }
 //    }
+    
+    
     
     func CheckPhaseTime() {
         let now = Date()

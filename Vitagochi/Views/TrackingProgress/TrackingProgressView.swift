@@ -78,7 +78,6 @@ struct TrackingProgressView: View {
             
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Image("Background"))
         .onAppear{
             trackingModel.daysCount = coreDataEnv.countHowManyDaySinceStart()
         }

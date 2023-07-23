@@ -21,7 +21,10 @@ class CoreDataEnvirontment: ObservableObject {
         fetchMealRecords()
         if challanges.count > 0 {
             getTodayChallange()
-//            getVitaModel()
+            //            getVitaModel()
+        }
+        if challanges.count == 0 {
+            add66DaysOfChallanges()
         }
     }
     
@@ -55,11 +58,15 @@ class CoreDataEnvirontment: ObservableObject {
         }
     }
     
-    func addMealRecordToTodayCallange(mealStatus: VitaMessageAnswer,
+    func addMealRecordToTodayCallange(name: String,
+                                      mealStatus: VitaMessageAnswer,
                                       timeStatus: VitachiTimePhase,
-                                      photoURI: URL) {
+                                      photoName: String) {
         if let todayChallange = todayChallange {
-            appCoreRepository.addMealRecord(challange: todayChallange, mealStatus: mealStatus, timeStatus: timeStatus, photoURI: photoURI)
+            appCoreRepository
+                .addMealRecord(challange: todayChallange,
+                               name: name, mealStatus: mealStatus,
+                               timeStatus: timeStatus, photoName: photoName)
             save()
         } else {
             print("Error addMealRecordToTodayCallange todayChallange is NIL")

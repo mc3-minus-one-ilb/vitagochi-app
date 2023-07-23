@@ -12,6 +12,7 @@ struct ChatBubble: View {
     var message: Message
     var isHorizontalScroll: Bool = false
     
+    
     var body: some View {
         var uiImagePhoto = UIImage()
         var photoWidth = CGFloat()
