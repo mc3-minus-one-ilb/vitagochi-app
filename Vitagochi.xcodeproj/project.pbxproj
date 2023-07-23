@@ -52,6 +52,7 @@
 		CB0528672A65712500649F22 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0528662A65712500649F22 /* RootView.swift */; };
 		CB0ACBFB2A6D615C00D5DF4D /* GalleryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0ACBFA2A6D615C00D5DF4D /* GalleryCard.swift */; };
 		CB0ACBFD2A6D7D8600D5DF4D /* BackgroundArc.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0ACBFC2A6D7D8600D5DF4D /* BackgroundArc.swift */; };
+		CB0ACC002A6D9F4100D5DF4D /* BadgesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0ACBFF2A6D9F4100D5DF4D /* BadgesView.swift */; };
 		CB2B5D992A66A0BA0099D404 /* MainSceneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2B5D982A66A0BA0099D404 /* MainSceneViewModel.swift */; };
 		CB2B5D9B2A66B50B0099D404 /* VitachiMoodPhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2B5D9A2A66B50B0099D404 /* VitachiMoodPhase.swift */; };
 		CB2B5D9F2A66B96F0099D404 /* welcome.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB2B5D9E2A66B96F0099D404 /* welcome.wav */; };
@@ -160,6 +161,7 @@
 		CB0528662A65712500649F22 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		CB0ACBFA2A6D615C00D5DF4D /* GalleryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCard.swift; sourceTree = "<group>"; };
 		CB0ACBFC2A6D7D8600D5DF4D /* BackgroundArc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundArc.swift; sourceTree = "<group>"; };
+		CB0ACBFF2A6D9F4100D5DF4D /* BadgesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgesView.swift; sourceTree = "<group>"; };
 		CB2B5D982A66A0BA0099D404 /* MainSceneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSceneViewModel.swift; sourceTree = "<group>"; };
 		CB2B5D9A2A66B50B0099D404 /* VitachiMoodPhase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VitachiMoodPhase.swift; path = Vitagochi/Models/VitachiMoodPhase.swift; sourceTree = SOURCE_ROOT; };
 		CB2B5D9E2A66B96F0099D404 /* welcome.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = welcome.wav; sourceTree = "<group>"; };
@@ -293,6 +295,7 @@
 				CBB46C1C2A6BCA0300E9E0F8 /* LevelUp */,
 				CBB46C1D2A6BCA2600E9E0F8 /* TrackingProgress */,
 				CBA641892A6CCAFE0067D0F4 /* DetailTrackingProgress */,
+				CB0ACBFE2A6D9F1A00D5DF4D /* Badges */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -434,6 +437,14 @@
 				CBD2D8802A67BC6700F603C7 /* PhotoTakeView.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		CB0ACBFE2A6D9F1A00D5DF4D /* Badges */ = {
+			isa = PBXGroup;
+			children = (
+				CB0ACBFF2A6D9F4100D5DF4D /* BadgesView.swift */,
+			);
+			path = Badges;
 			sourceTree = "<group>";
 		};
 		CB2B5D9C2A66B8630099D404 /* Sound */ = {
@@ -761,6 +772,7 @@
 				CBB46C192A6B910200E9E0F8 /* VitaSkinModel.swift in Sources */,
 				CB0ACBFD2A6D7D8600D5DF4D /* BackgroundArc.swift in Sources */,
 				CBD2D8C72A682FD900F603C7 /* ChatBubbleView.swift in Sources */,
+				CB0ACC002A6D9F4100D5DF4D /* BadgesView.swift in Sources */,
 				26138BA82A69813600FEACBD /* LevelUpViewModel.swift in Sources */,
 				CB9AA2272A6AC9AB00BF8D76 /* TakePitcureButton.swift in Sources */,
 				2648467E2A5E6FA700396575 /* OnboardingViewModel.swift in Sources */,

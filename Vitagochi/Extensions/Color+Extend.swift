@@ -37,4 +37,5 @@ extension Color {
     public static let inactiveIconTabBar: Color = Color(0xD3D3D3)
     public static let chatTopPinkColor: Color = Color(0xED476B)
     public static let vitaProfileBackgroundColor: Color = Color(0xFBDAE1)
+    public static let backgroundBadge: Color = Color(0xC3FAEE)
 }

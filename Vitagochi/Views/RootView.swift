@@ -25,7 +25,7 @@ struct RootView: View {
                         .tag(0)
                     TrackingProgressView()
                         .tag(1)
-                    ChatView(timePhase: .morning)
+                    BadgesView()
                         .tag(2)
                 }
                 .tabViewStyle(.page(indexDisplayMode: .never))
