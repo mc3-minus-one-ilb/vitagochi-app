@@ -12,10 +12,14 @@ struct GalleryCard: View {
     var timePhase: VitachiTimePhase = .morning
     var time: Date?
     var isFlipped: Bool = true
+    var cardDate: Date = Date()
     var vitaMessage: String = ""
     
     var body: some View {
-        GeometryReader{ geometry in
+        let now = Date()
+        let isItPast = now.isItPast(date: cardDate)
+        let isItPassMealTime = !isItPast && now.isPhaseGreaterThan(timePhase.nextPhase)
+        return GeometryReader{ geometry in
             VStack(alignment: .leading) {
                 if !isFlipped{
                     if let photo = photo {
@@ -27,7 +31,7 @@ struct GalleryCard: View {
                             .clipped()
                             .contentShape(Rectangle())
                     } else  {
-                        Image("NoPhoto")
+                        Image(isItPast || isItPassMealTime ? "AngryVitaPhoto" : "NoPhoto")
                             .resizable()
                             .scaledToFill()
                             .frame(width: geometry.size.width,
@@ -67,9 +71,10 @@ struct GalleryCard: View {
                         .foregroundColor(.white)
                         .padding(.top, 4)
                         .padding(.horizontal)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
             }
-            .padding(.bottom, 70)
+            .padding(.bottom, 50)
             .background(isFlipped ? Color.chatTopPinkColor : Color.white)
             .cornerRadius(16)
             

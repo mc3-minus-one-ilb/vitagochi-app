@@ -85,7 +85,7 @@
 		CBD2D8812A67BC6700F603C7 /* PhotoTakeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2D8802A67BC6700F603C7 /* PhotoTakeView.swift */; };
 		CBD2D8BE2A67C0FC00F603C7 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2D8BD2A67C0FC00F603C7 /* ChatView.swift */; };
 		CBD2D8C02A67C10E00F603C7 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2D8BF2A67C10E00F603C7 /* ChatViewModel.swift */; };
-		CBD2D8C52A682F8F00F603C7 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2D8C42A682F8F00F603C7 /* Message.swift */; };
+		CBD2D8C52A682F8F00F603C7 /* VitaMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2D8C42A682F8F00F603C7 /* VitaMessage.swift */; };
 		CBD2D8C72A682FD900F603C7 /* ChatBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2D8C62A682FD900F603C7 /* ChatBubbleView.swift */; };
 		CBD3E6922A6C324000665980 /* TrackingProgressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD3E6912A6C324000665980 /* TrackingProgressViewModel.swift */; };
 		CBE7BA202A66072C00E87AAA /* TabBarIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE7BA1F2A66072C00E87AAA /* TabBarIconView.swift */; };
@@ -194,7 +194,7 @@
 		CBD2D8802A67BC6700F603C7 /* PhotoTakeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoTakeView.swift; sourceTree = "<group>"; };
 		CBD2D8BD2A67C0FC00F603C7 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		CBD2D8BF2A67C10E00F603C7 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatViewModel.swift; path = Vitagochi/ViewModels/ChatViewModel.swift; sourceTree = SOURCE_ROOT; };
-		CBD2D8C42A682F8F00F603C7 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		CBD2D8C42A682F8F00F603C7 /* VitaMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VitaMessage.swift; sourceTree = "<group>"; };
 		CBD2D8C62A682FD900F603C7 /* ChatBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBubbleView.swift; sourceTree = "<group>"; };
 		CBD3E6912A6C324000665980 /* TrackingProgressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingProgressViewModel.swift; sourceTree = "<group>"; };
 		CBE7BA1F2A66072C00E87AAA /* TabBarIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarIconView.swift; sourceTree = "<group>"; };
@@ -580,7 +580,7 @@
 				CB05285B2A6531F600649F22 /* VitachiTimePhase.swift */,
 				CB2B5D9A2A66B50B0099D404 /* VitachiMoodPhase.swift */,
 				CBB46C182A6B910200E9E0F8 /* VitaSkinModel.swift */,
-				CBD2D8C42A682F8F00F603C7 /* Message.swift */,
+				CBD2D8C42A682F8F00F603C7 /* VitaMessage.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -765,7 +765,7 @@
 				26B0A3242A657CDC0047FC6A /* UIColor+Hex.swift in Sources */,
 				26BC97EC2A5D0ED0003125B5 /* Color+Extend.swift in Sources */,
 				26A77B012A5FAE6A00B1C3A7 /* OnboardingTimePicker.swift in Sources */,
-				CBD2D8C52A682F8F00F603C7 /* Message.swift in Sources */,
+				CBD2D8C52A682F8F00F603C7 /* VitaMessage.swift in Sources */,
 				CB9FE28D2A6934BE0091DE9C /* CoreDataEnvirontment.swift in Sources */,
 				2623C2322A5EF02200F820E8 /* VerticalPicker.swift in Sources */,
 				CBD3E6922A6C324000665980 /* TrackingProgressViewModel.swift in Sources */,

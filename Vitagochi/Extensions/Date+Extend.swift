@@ -32,6 +32,14 @@ extension Date {
         return inputDate <= today
     }
     
+    func isItPast(date: Date) -> Bool {
+        let calendar = Calendar.current
+        let today = calendar.startOfDay(for: self)
+        let inputDate = calendar.startOfDay(for: date)
+        print("\(inputDate) < \(date)")
+        return inputDate < today
+    }
+    
     func getFormattedTime() -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm a"

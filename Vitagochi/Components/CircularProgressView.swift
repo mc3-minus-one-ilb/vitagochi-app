@@ -11,13 +11,14 @@ struct CircularProgressView: View {
     @State var pulsate = false
     var percentage: CGFloat
     var lineWitdh: CGFloat = 20
-    var isBackgroundColor: Bool = true
+    var whiteBackgroundColor: Bool = false
+    var whiteOutlineColor: Bool = false
     
     var body: some View {
         GeometryReader { geometry in
             ZStack{
     //            Pulsation()
-                Track(size: geometry.size, lineWidth: lineWitdh, isBackgroundColor: isBackgroundColor)
+                Track(size: geometry.size, lineWidth: lineWitdh, defaultBackgroundColor: whiteBackgroundColor, defaultTrackColor: whiteOutlineColor)
                 Outline(percentage: percentage, size: geometry.size, lineWidth: lineWitdh)
                 
             }
@@ -60,19 +61,20 @@ struct Outline: View {
 
 struct Track: View {
     var size: CGSize
-    var colors: [Color] = [Color.white]
+    var colors: [Color] = [Color.circularProgressTrack]
     var lineWidth: CGFloat
-    var isBackgroundColor: Bool
+    var defaultBackgroundColor: Bool
+    var defaultTrackColor: Bool
     
     var body: some View {
         ZStack{
             Circle()
-                .fill(isBackgroundColor ? Color.circularProgressBackground : Color.clear)
+                .fill(defaultBackgroundColor ?  Color.clear : Color.circularProgressBackground)
                 .frame(width: size.width, height: size.height)
                 .overlay {
                     Circle()
                         .stroke(style:  StrokeStyle(lineWidth: lineWidth))
-                        .fill(AngularGradient(gradient: .init(colors: colors), center: .center ))
+                        .fill(AngularGradient(gradient: .init(colors: defaultTrackColor ? [Color.white] : colors), center: .center ))
                 }
         }
     }

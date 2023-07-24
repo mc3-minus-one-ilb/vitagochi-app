@@ -84,7 +84,7 @@ class CoreDataEnvirontment: ObservableObject {
     }
     
     func getVitaModel() {
-        let countChallange = 20
+        let countChallange = challanges.filter{ ($0.records?.allObjects.count)! > 0 }.count
         
         if countChallange % 20 == 0 && countChallange > 0 {
             let level = countChallange / 20
@@ -102,7 +102,7 @@ class CoreDataEnvirontment: ObservableObject {
     }
     
     func levelProgress() -> Double {
-        let countChallange = 20
+        let countChallange = challanges.filter{ ($0.records?.allObjects.count)! > 0 }.count
         if countChallange == 0 {return 0}
         let progress = Double(countChallange % 20)
         return progress == 0.0 ? 20.0 : progress

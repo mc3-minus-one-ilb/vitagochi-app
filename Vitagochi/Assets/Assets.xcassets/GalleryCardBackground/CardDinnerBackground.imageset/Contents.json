@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Card-7.png",
+      "filename" : "CardC.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Card-8.png",
+      "filename" : "CardC-2.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Card-9.png",
+      "filename" : "CardC-3.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

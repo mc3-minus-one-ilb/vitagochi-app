@@ -12,17 +12,41 @@ struct ChatView: View {
     @StateObject var chatModel = ChatViewModel(message: Message(id: Date(), text: "Photo", isMyMessage: true, profilPic: ""))
     @State var isCompleted: Bool = false
     var timePhase: VitachiTimePhase
+    var vitaChatIcon: String = "VitaChatIcon"
     
     var body: some View {
         VStack{
-            VStack() {
-                Text("My Vita")
-                    .font(.system(.title, weight: .semibold))
-                    .fontDesign(.rounded)
+            HStack() {
+                Button {
+                    envObj.mainPath[0].toggle()
+                } label: {
+                    Image(systemName: "chevron.left")
+                        .font(.system(size:17))
+                        .fontWeight(.semibold)
+                }
+                .padding(.trailing, 2)
+                
+                Image(vitaChatIcon)
+                    .resizable()
+                    .background(Color.vitaProfileBackgroundColor)
+                    .frame(width: 32, height: 32)
+                    .clipShape(Circle())
+                VStack(alignment: .leading){
+                    Text("My Vita 🍎🥬")
+                        .font(.system(size:17, weight: .semibold))
+                        .fontDesign(.rounded)
+                    Text("Online")
+                        .font(.system(.caption, weight: .semibold))
+                        .fontDesign(.rounded)
+                }
+                Spacer()
             }
-            .foregroundColor(.white)
+            .foregroundColor(.black)
             .padding()
             .padding(.top, 34)
+            .background(Color.primaryWhite)
+            .clipped()
+            .shadow(color: Color.black.opacity(0.05), radius: 8, x: 0, y: 4)
             
             Spacer()
             
@@ -57,7 +81,7 @@ struct ChatView: View {
                                             chatModel.writeMessage(message)
                                             chatModel.showMyOptions.toggle()
                                             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                                                chatModel.writeMessage(Message(id: Date(), text: message.vitaAnswer!.answer(name: envObj.username), isMyMessage: false, profilPic: "VitaChatIcon", vitaAnswer: message.vitaAnswer!))
+                                                chatModel.writeMessage(Message(id: Date(), text: message.vitaAnswer!.answer(name: envObj.username), isMyMessage: false, profilPic: vitaChatIcon, vitaAnswer: message.vitaAnswer!))
                                             }
                                         }
                                 }
@@ -71,8 +95,7 @@ struct ChatView: View {
                 .padding(.horizontal)
             }
             .padding(.bottom, UIApplication.shared.windows.first?.safeAreaInsets.bottom)
-            .background(Color.white)
-            .clipShape(RoundedShape())
+            .clipShape(Rectangle())
             .navigationDestination(isPresented: $envObj.mainPath[1]){
                 LevelUpView()
             }
@@ -87,7 +110,7 @@ struct ChatView: View {
             
         }
         .edgesIgnoringSafeArea(.bottom)
-        .background(Color.chatTopPinkColor)
+        .background(Color.primaryWhite)
         .edgesIgnoringSafeArea(.top)
         .navigationBarBackButtonHidden(true)
        

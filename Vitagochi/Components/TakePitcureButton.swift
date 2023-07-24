@@ -10,13 +10,14 @@ import SwiftUI
 struct TakePitcureButton: View {
     @Binding var isCameraClicked: Bool
     @State var disable: Bool = true
+    @State var animation: Bool = false
     var timePhase: VitachiTimePhase
     var isCompleted: Bool
     
     
     var body: some View {
         let isItPassMealTime = timePhase.icon == ""
-        return ZStack(alignment: .bottomLeading){
+        return ZStack(alignment: .center){
             //Change
             Button {
 //                if !isItPassMealTime && !isCompleted{
@@ -34,22 +35,21 @@ struct TakePitcureButton: View {
             
             if !isItPassMealTime && !isCompleted{
                 Circle()
-                    .foregroundColor(.bubleTextBackgroundColor)
-                    .frame(width: 19)
-                    .overlay {
-                        //Change
-                        // TODO: Change
-                        Image(systemName: timePhase.icon)
-                            .font(.system(size:9))
-                            .foregroundColor(.white)
+                    .stroke(style: .init(lineWidth: 4, dash: [30,1]))
+                    .foregroundColor(.chatTopPinkColor)
+                    .frame(width: 70)
+                    .rotationEffect(animation ? Angle(degrees: 360.0) : .zero)
+                    .animation(.linear(duration: 20).repeatForever(autoreverses: false), value: animation)
+                    .onAppear {
+                        animation.toggle()
                     }
-                    .offset(x:-8,y: 8)
+//                    .rotationEffect()
             }
             
         }
         .onAppear{
             if !isItPassMealTime && !isCompleted {
-                disable.toggle()
+                disable = false
             }
         }
     }
@@ -57,6 +57,6 @@ struct TakePitcureButton: View {
 
 struct TakePitcureButton_Previews: PreviewProvider {
     static var previews: some View {
-        TakePitcureButton(isCameraClicked: .constant(false), timePhase: .morning, isCompleted: true)
+        TakePitcureButton(isCameraClicked: .constant(false), timePhase: .afternoon, isCompleted: false)
     }
 }

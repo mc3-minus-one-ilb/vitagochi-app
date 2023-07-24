@@ -91,6 +91,21 @@ enum VitachiTimePhase: Int16 {
         }
     }
     
+    var nextPhase: VitachiTimePhase {
+        switch self {
+        case.beforeDayStart:
+            return .morning
+        case.morning:
+            return .afternoon
+        case.afternoon:
+            return .evening
+        case.evening:
+            return .afterDay
+        case.afterDay:
+            return .beforeDayStart
+        }
+    }
+    
     var defaultMessage: [VitaMessage] {
         switch self {
         case.beforeDayStart:
