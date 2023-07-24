@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct ChatBubble: View {
+    @Binding var isCompleted: Bool
     var message: Message
     var isHorizontalScroll: Bool = false
+    
     
     var body: some View {
         var uiImagePhoto = UIImage()
@@ -68,7 +70,7 @@ struct ChatBubble: View {
                             //                            .fontWidth(22)
                                 .background(Color.white)
                             Button {
-                                
+                                isCompleted.toggle()
                             } label: {
                                 Text("Thanks Vita! 👍")
                                     .font(.system(.subheadline, weight: .bold))
@@ -108,27 +110,10 @@ struct ChatBubble: View {
     }
 }
 
-struct BubbleArrow: Shape {
-    var isMyMessage: Bool
-    func path(in rect: CGRect) -> Path {
-        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: isMyMessage ? [.topLeft, .topRight, .bottomLeft] : [.topRight, .topLeft, .bottomRight], cornerRadii: .init(width: 10, height: 10))
-        
-        return Path(path.cgPath)
-    }
-}
-
-struct RoundedShape: Shape {
-    func path(in rect: CGRect) -> Path {
-        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: [.topLeft, .topRight], cornerRadii: .init(width: 35, height: 35))
-        return Path(path.cgPath)
-    }
-}
-
-
 
 struct ChatBuble_Previews: PreviewProvider {
     static var previews: some View {
         //        ChatView(chatModel: ChatViewModel(photoData: Data()))
-        ChatView()
+        ChatView(timePhase: .morning)
     }
 }

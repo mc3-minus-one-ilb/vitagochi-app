@@ -25,5 +25,18 @@ enum VitachiMoodPhase {
             return "MainVitaSick"
         }
     }
+    
+    var skin: String {
+        switch self {
+        case.idle:
+            return "Def"
+        case.happy:
+            return "Hap"
+        case.angry:
+            return "Ang"
+        case.sick:
+            return "Acne"
+        }
+    }
 }
 

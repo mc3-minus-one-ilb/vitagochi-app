@@ -27,7 +27,7 @@ struct TabBarIconView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 23, height: 21, alignment: .center)
-                    .foregroundColor(selection == value ? Color.activeIconTabBar : Color.inActiveIconTabBar)
+                    .foregroundColor(selection == value ? Color.activeIconTabBar : Color.inactiveIconTabBar)
             }
         }
         .frame(width: 70, height: 50)

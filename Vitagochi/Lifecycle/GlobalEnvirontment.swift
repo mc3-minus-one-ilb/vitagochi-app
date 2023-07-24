@@ -5,7 +5,14 @@
 //  Created by Dzulfikar on 11/07/23.
 //
 
-import Foundation
+import SwiftUI
+
+enum MainRoute: String, Hashable {
+    case Root
+    case Chat
+    case Level
+}
+
 class GlobalEnvirontment: ObservableObject {
     static var singleton = GlobalEnvirontment()
     
@@ -16,6 +23,9 @@ class GlobalEnvirontment: ObservableObject {
     @Published var breakfastReminder: HourAndMinute = HourAndMinute(hour: 7, minute: 0)
     @Published var lunchReminder: HourAndMinute = HourAndMinute(hour: 12, minute: 0)
     @Published var dinnerReminder: HourAndMinute = HourAndMinute(hour: 19, minute: 0)
+    
+    @Published var mainPath: [Bool] = [false,false,false]
+    @Published var path: NavigationPath = NavigationPath()
     
     init() {
         getOnboardingState()
@@ -46,7 +56,7 @@ class GlobalEnvirontment: ObservableObject {
             return
         }
         
-        username = ""
+        username = state as! String
     }
     
     public func setWillingToNotifyState(state: Bool) {
@@ -100,8 +110,5 @@ class GlobalEnvirontment: ObservableObject {
         }
     
         
-        print(breakfastData,
-              lunchData,
-              dinnerData)
     }
 }
