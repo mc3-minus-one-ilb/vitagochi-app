@@ -62,7 +62,7 @@ struct DetailTrackingView: View {
                             }
                             .frame(width: 269,height: 508, alignment: .center)
                             .padding()
-                            .shadow(color: Color.black.opacity(0.2),radius: 10, x: 0, y: 0)
+                            .shadow(color: Color.black.opacity(0.08),radius: 12, x: -4, y: 4)
                             .rotation3DEffect(flipped[index] ? Angle(degrees: 180) : .zero, axis: (x: 0.0, y: 1.0, z: 0.0))
                             .animation(.default, value: flipped[index])
                             .onTapGesture {

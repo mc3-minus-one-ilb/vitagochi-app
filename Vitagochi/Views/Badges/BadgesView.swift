@@ -22,12 +22,15 @@ struct Badge: View {
                 .frame(width: 152)
             Text(badgeModel.title)
                 .font(.headline)
+                .fontDesign(.rounded)
                 .fontWeight(.medium)
                 .padding(.top, 5)
+                .padding(.bottom, 1)
             Text(badgeModel.subTitle)
                 .font(.caption2)
+                .fontDesign(.rounded)
                 .multilineTextAlignment(.center)
-                .padding(.top, 1)
+//                .padding(.top, 1)
         }
         .padding(.top, 20)
     }
@@ -52,7 +55,9 @@ struct BadgesView: View {
         VStack(alignment: .leading){
             Text("Badges ✨")
                 .font(.title)
+                .fontDesign(.rounded)
                 .bold()
+                .padding(.leading, 16)
             ScrollView(.vertical, showsIndicators: false) {
                 LazyVGrid(columns: gridItems) {
                     ForEach(items) { item in

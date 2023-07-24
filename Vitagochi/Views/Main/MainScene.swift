@@ -75,7 +75,7 @@ struct MainSceneView: View {
                             .padding(.bottom, 100)
                     }
                     
-                    CircularProgressView(pulsate: true, percentage: CGFloat((coreDataEnv.todayChallange!.records!.count) * 34))
+                    CircularProgressView(pulsate: false, percentage: CGFloat((coreDataEnv.todayChallange!.records!.count) * 34))
                         .frame(width: 300, height: 300)
                         .offset(y: -90)
                     
@@ -88,10 +88,11 @@ struct MainSceneView: View {
                         RectangleBubleTextView(text: vitaModel.message)
                             .frame(width: 300, height: 116)
                             .animation(.easeInOut, value: vitaModel.message)
-                        Image(vitaModel.mood.image)
+                        Image(vitaModel.skin)
                             .resizable()
-                            .aspectRatio(contentMode: .fit)
+                            .aspectRatio(contentMode: .fill)
                             .frame(width: 222, height: 390)
+                            .scaleEffect(1.08)
                             .onTapGesture {
                                 vitaModel.isTapped.toggle()
                                 vitaModel.isCompleted[vitaModel.phase.completedIndex].toggle()
@@ -100,7 +101,7 @@ struct MainSceneView: View {
                     }
                     StatusLevelView(level: coreDataEnv.vitaSkinModel.rawValue + 1, exp: Int(progress))
                         .frame(width: 200, height: 10)
-                        .offset(y:50)
+                        .offset(y:40)
                 }
                 .padding(.bottom, 34)
                 .frame(height: 390)
@@ -119,6 +120,9 @@ struct MainSceneView: View {
             .onChange(of: vitaModel.isCompleted) { _ in
                 vitaModel.GenerateMessage(for: coreDataEnv.todayChallange!)
             }
+            .onChange(of: vitaModel.mood, perform: { _ in
+                vitaModel.runAnimation()
+            })
             .onChange(of: vitaModel.imageData, perform: { _ in
                 envObj.mainPath[0].toggle()
             })

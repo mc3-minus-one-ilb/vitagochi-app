@@ -35,7 +35,7 @@ struct ProgressListView: View {
                 }
             }
             .padding(.horizontal,16)
-            .padding(.top, 94)
+            .padding(.top, 92)
         }
         .navigationDestination(for: ChallangeEntity.self) { challange in
             DetailTrackingView(challange: challange)

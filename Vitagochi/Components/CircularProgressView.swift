@@ -60,7 +60,7 @@ struct Outline: View {
 
 struct Track: View {
     var size: CGSize
-    var colors: [Color] = [Color.circularProgressTrack]
+    var colors: [Color] = [Color.white]
     var lineWidth: CGFloat
     var isBackgroundColor: Bool
     

@@ -31,6 +31,7 @@ struct TrackingProgressView: View {
                     .padding(.bottom, 20)
             }
             .padding(.top, 90)
+            .padding(.bottom, 16)
             Spacer()
             
             

@@ -56,7 +56,6 @@ struct LevelUpView: View {
                     }).progressViewStyle(LevelUpProgressStyle( height: 16))
                         .padding([.horizontal], 48.0)
                         .padding([.vertical], 32.0)
-                        .transition(.push(from: .top).combined(with: .scale))
                     if coreDataEnv.isAnotherTodayMealRecord() {
                         // TODO: Fix this
                         Text("You already get EXP from today")
@@ -64,13 +63,17 @@ struct LevelUpView: View {
                     }
                 } else  {
                     ProgressView(value: 0, total:20, label: {
-                        Text("Level \(level)")
+                        VStack(alignment: .leading) {
+                            Text("Level \(level) ⬆️")
+                        }
                     }, currentValueLabel: {
                         Text("\(0)/20")
                     }).progressViewStyle(LevelUpProgressStyle( height: 16))
                         .padding([.horizontal], 48.0)
                         .padding([.vertical], 32.0)
-                        .transition(.push(from: .top).combined(with: .scale))
+                        .animation(.easeIn(duration: 1.0), value: isLevelUp)
+                    
+
                 }
                 
                 PrimaryButton(action: {
