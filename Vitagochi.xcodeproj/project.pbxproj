@@ -23,6 +23,8 @@
 		06E47BB52A66A36A00EEC8AE /* VitaWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 06E47BB12A66A36900EEC8AE /* VitaWidget.intentdefinition */; };
 		06E47BB62A66A36A00EEC8AE /* VitaWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 06E47BB12A66A36900EEC8AE /* VitaWidget.intentdefinition */; };
 		06E47BB92A66A36A00EEC8AE /* VitaWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 06E47BA42A66A36900EEC8AE /* VitaWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		26138BA82A69813600FEACBD /* LevelUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26138BA72A69813600FEACBD /* LevelUpViewModel.swift */; };
+		2618F0182A6A32A30008ED82 /* UserDefaults+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2618F0172A6A32A30008ED82 /* UserDefaults+Codable.swift */; };
 		2623C22C2A5EE24100F820E8 /* View+ConditionalModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2623C22B2A5EE24100F820E8 /* View+ConditionalModifier.swift */; };
 		2623C2322A5EF02200F820E8 /* VerticalPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2623C2312A5EF02200F820E8 /* VerticalPicker.swift */; };
 		2623C2342A5EF68400F820E8 /* UIKitPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2623C2332A5EF68400F820E8 /* UIKitPickerView.swift */; };
@@ -35,6 +37,9 @@
 		2648467C2A5E643300396575 /* CounterTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2648467B2A5E643300396575 /* CounterTextFieldStyle.swift */; };
 		2648467E2A5E6FA700396575 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2648467D2A5E6FA700396575 /* OnboardingViewModel.swift */; };
 		264846802A5E743500396575 /* OnboardingThird.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2648467F2A5E743500396575 /* OnboardingThird.swift */; };
+		265145942A69646F00042519 /* LevelUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265145932A69646F00042519 /* LevelUpView.swift */; };
+		2651459A2A69698F00042519 /* RoundedCornerShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265145992A69698F00042519 /* RoundedCornerShape.swift */; };
+		2651459C2A697AF900042519 /* LevelUpProgressStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2651459B2A697AF900042519 /* LevelUpProgressStyle.swift */; };
 		266354CD2A6643B600C9605E /* NavigationTransitions in Frameworks */ = {isa = PBXBuildFile; productRef = 266354CC2A6643B600C9605E /* NavigationTransitions */; };
 		2673E0122A5D014400429610 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 2673E0112A5D014400429610 /* README.md */; };
 		2673E0142A5D014900429610 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2673E0132A5D014900429610 /* LICENSE.txt */; };
@@ -54,6 +59,52 @@
 		26C7A89F2A5D0015009F0EAF /* VitagochiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C7A89E2A5D0015009F0EAF /* VitagochiTests.swift */; };
 		26C7A8A92A5D0015009F0EAF /* VitagochiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C7A8A82A5D0015009F0EAF /* VitagochiUITests.swift */; };
 		26C7A8AB2A5D0015009F0EAF /* VitagochiUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C7A8AA2A5D0015009F0EAF /* VitagochiUITestsLaunchTests.swift */; };
+		CB05285A2A6531A000649F22 /* Date+Extend.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0528592A6531A000649F22 /* Date+Extend.swift */; };
+		CB05285C2A6531F600649F22 /* VitachiTimePhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB05285B2A6531F600649F22 /* VitachiTimePhase.swift */; };
+		CB05285E2A65323900649F22 /* MainScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB05285D2A65323900649F22 /* MainScene.swift */; };
+		CB0528612A653F9200649F22 /* RectangleBubleTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0528602A653F9200649F22 /* RectangleBubleTextView.swift */; };
+		CB0528632A6546BF00649F22 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0528622A6546BF00649F22 /* CircularProgressView.swift */; };
+		CB0528652A656BB500649F22 /* StatusLevelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0528642A656BB500649F22 /* StatusLevelView.swift */; };
+		CB0528672A65712500649F22 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0528662A65712500649F22 /* RootView.swift */; };
+		CB0ACBFB2A6D615C00D5DF4D /* GalleryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0ACBFA2A6D615C00D5DF4D /* GalleryCard.swift */; };
+		CB0ACBFD2A6D7D8600D5DF4D /* BackgroundArc.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0ACBFC2A6D7D8600D5DF4D /* BackgroundArc.swift */; };
+		CB0ACC002A6D9F4100D5DF4D /* BadgesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0ACBFF2A6D9F4100D5DF4D /* BadgesView.swift */; };
+		CB2B5D992A66A0BA0099D404 /* MainSceneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2B5D982A66A0BA0099D404 /* MainSceneViewModel.swift */; };
+		CB2B5D9B2A66B50B0099D404 /* VitachiMoodPhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2B5D9A2A66B50B0099D404 /* VitachiMoodPhase.swift */; };
+		CB2B5D9F2A66B96F0099D404 /* welcome.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB2B5D9E2A66B96F0099D404 /* welcome.wav */; };
+		CB2B5DA22A66BA7B0099D404 /* beforeDayDefault1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB2B5DA12A66BA7B0099D404 /* beforeDayDefault1.wav */; };
+		CB2B5DA42A66BABA0099D404 /* beforeDayDefault2.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB2B5DA32A66BABA0099D404 /* beforeDayDefault2.wav */; };
+		CB2B5DA72A66BAFC0099D404 /* morningDefault1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB2B5DA62A66BAFC0099D404 /* morningDefault1.wav */; };
+		CB9AA2142A69F1B500BF8D76 /* eveningDefault1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB9AA20A2A69F1B500BF8D76 /* eveningDefault1.wav */; };
+		CB9AA2152A69F1B500BF8D76 /* afternoonHappy1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB9AA20B2A69F1B500BF8D76 /* afternoonHappy1.wav */; };
+		CB9AA2162A69F1B500BF8D76 /* happy1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB9AA20C2A69F1B500BF8D76 /* happy1.wav */; };
+		CB9AA2172A69F1B500BF8D76 /* afternoonDefault1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB9AA20D2A69F1B500BF8D76 /* afternoonDefault1.wav */; };
+		CB9AA2182A69F1B500BF8D76 /* afternoonAngry1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB9AA20E2A69F1B500BF8D76 /* afternoonAngry1.wav */; };
+		CB9AA2192A69F1B500BF8D76 /* morningHappy1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB9AA20F2A69F1B500BF8D76 /* morningHappy1.wav */; };
+		CB9AA21A2A69F1B500BF8D76 /* angry1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB9AA2102A69F1B500BF8D76 /* angry1.wav */; };
+		CB9AA21B2A69F1B500BF8D76 /* afterDayDefault1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB9AA2112A69F1B500BF8D76 /* afterDayDefault1.wav */; };
+		CB9AA21C2A69F1B500BF8D76 /* eveningHappy1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB9AA2122A69F1B500BF8D76 /* eveningHappy1.wav */; };
+		CB9AA21D2A69F1B500BF8D76 /* eveningAngry1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB9AA2132A69F1B500BF8D76 /* eveningAngry1.wav */; };
+		CB9AA2252A6A414400BF8D76 /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9AA2242A6A414400BF8D76 /* CoreDataRepository.swift */; };
+		CB9AA2272A6AC9AB00BF8D76 /* TakePitcureButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9AA2262A6AC9AB00BF8D76 /* TakePitcureButton.swift */; };
+		CB9FE2892A6932950091DE9C /* AppCoreContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CB9FE2872A6932950091DE9C /* AppCoreContainer.xcdatamodeld */; };
+		CB9FE28B2A6933950091DE9C /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9FE28A2A6933950091DE9C /* CoreDataManager.swift */; };
+		CB9FE28D2A6934BE0091DE9C /* CoreDataEnvirontment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9FE28C2A6934BE0091DE9C /* CoreDataEnvirontment.swift */; };
+		CBA6418B2A6CCB530067D0F4 /* DetailTrackingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA6418A2A6CCB530067D0F4 /* DetailTrackingView.swift */; };
+		CBB46C152A6B716500E9E0F8 /* BublbleArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB46C142A6B716500E9E0F8 /* BublbleArrow.swift */; };
+		CBB46C172A6B719500E9E0F8 /* RoundedShapeBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB46C162A6B719500E9E0F8 /* RoundedShapeBackground.swift */; };
+		CBB46C192A6B910200E9E0F8 /* VitaSkinModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB46C182A6B910200E9E0F8 /* VitaSkinModel.swift */; };
+		CBB46C212A6BCA7700E9E0F8 /* TrackingProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB46C202A6BCA7700E9E0F8 /* TrackingProgressView.swift */; };
+		CBB46C232A6BDFFD00E9E0F8 /* TabBarSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB46C222A6BDFFD00E9E0F8 /* TabBarSection.swift */; };
+		CBB46C252A6BEA3800E9E0F8 /* ProgressListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB46C242A6BEA3800E9E0F8 /* ProgressListView.swift */; };
+		CBB46C272A6BEECF00E9E0F8 /* CircularProgressSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB46C262A6BEECF00E9E0F8 /* CircularProgressSection.swift */; };
+		CBD2D8812A67BC6700F603C7 /* PhotoTakeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2D8802A67BC6700F603C7 /* PhotoTakeView.swift */; };
+		CBD2D8BE2A67C0FC00F603C7 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2D8BD2A67C0FC00F603C7 /* ChatView.swift */; };
+		CBD2D8C02A67C10E00F603C7 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2D8BF2A67C10E00F603C7 /* ChatViewModel.swift */; };
+		CBD2D8C52A682F8F00F603C7 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2D8C42A682F8F00F603C7 /* Message.swift */; };
+		CBD2D8C72A682FD900F603C7 /* ChatBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2D8C62A682FD900F603C7 /* ChatBubbleView.swift */; };
+		CBD3E6922A6C324000665980 /* TrackingProgressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD3E6912A6C324000665980 /* TrackingProgressViewModel.swift */; };
+		CBE7BA202A66072C00E87AAA /* TabBarIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE7BA1F2A66072C00E87AAA /* TabBarIconView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +156,8 @@
 		06E47BB12A66A36900EEC8AE /* VitaWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = VitaWidget.intentdefinition; sourceTree = "<group>"; };
 		06E47BB22A66A36A00EEC8AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		06E47BB42A66A36A00EEC8AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		26138BA72A69813600FEACBD /* LevelUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelUpViewModel.swift; sourceTree = "<group>"; };
+		2618F0172A6A32A30008ED82 /* UserDefaults+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Codable.swift"; sourceTree = "<group>"; };
 		2623C22B2A5EE24100F820E8 /* View+ConditionalModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+ConditionalModifier.swift"; sourceTree = "<group>"; };
 		2623C2312A5EF02200F820E8 /* VerticalPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalPicker.swift; sourceTree = "<group>"; };
 		2623C2332A5EF68400F820E8 /* UIKitPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitPickerView.swift; sourceTree = "<group>"; };
@@ -118,6 +171,9 @@
 		2648467B2A5E643300396575 /* CounterTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterTextFieldStyle.swift; sourceTree = "<group>"; };
 		2648467D2A5E6FA700396575 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		2648467F2A5E743500396575 /* OnboardingThird.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingThird.swift; sourceTree = "<group>"; };
+		265145932A69646F00042519 /* LevelUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelUpView.swift; sourceTree = "<group>"; };
+		265145992A69698F00042519 /* RoundedCornerShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornerShape.swift; sourceTree = "<group>"; };
+		2651459B2A697AF900042519 /* LevelUpProgressStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelUpProgressStyle.swift; sourceTree = "<group>"; };
 		2673E0112A5D014400429610 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		2673E0132A5D014900429610 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		2673E01C2A5D02CE00429610 /* ContentInfo.text */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ContentInfo.text; sourceTree = "<group>"; };
@@ -143,6 +199,52 @@
 		26C7A8A42A5D0015009F0EAF /* VitagochiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VitagochiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		26C7A8A82A5D0015009F0EAF /* VitagochiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VitagochiUITests.swift; sourceTree = "<group>"; };
 		26C7A8AA2A5D0015009F0EAF /* VitagochiUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VitagochiUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		CB0528592A6531A000649F22 /* Date+Extend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extend.swift"; sourceTree = "<group>"; };
+		CB05285B2A6531F600649F22 /* VitachiTimePhase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VitachiTimePhase.swift; path = Vitagochi/Models/VitachiTimePhase.swift; sourceTree = SOURCE_ROOT; };
+		CB05285D2A65323900649F22 /* MainScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScene.swift; sourceTree = "<group>"; };
+		CB0528602A653F9200649F22 /* RectangleBubleTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleBubleTextView.swift; sourceTree = "<group>"; };
+		CB0528622A6546BF00649F22 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
+		CB0528642A656BB500649F22 /* StatusLevelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusLevelView.swift; sourceTree = "<group>"; };
+		CB0528662A65712500649F22 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		CB0ACBFA2A6D615C00D5DF4D /* GalleryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCard.swift; sourceTree = "<group>"; };
+		CB0ACBFC2A6D7D8600D5DF4D /* BackgroundArc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundArc.swift; sourceTree = "<group>"; };
+		CB0ACBFF2A6D9F4100D5DF4D /* BadgesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgesView.swift; sourceTree = "<group>"; };
+		CB2B5D982A66A0BA0099D404 /* MainSceneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSceneViewModel.swift; sourceTree = "<group>"; };
+		CB2B5D9A2A66B50B0099D404 /* VitachiMoodPhase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VitachiMoodPhase.swift; path = Vitagochi/Models/VitachiMoodPhase.swift; sourceTree = SOURCE_ROOT; };
+		CB2B5D9E2A66B96F0099D404 /* welcome.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = welcome.wav; sourceTree = "<group>"; };
+		CB2B5DA12A66BA7B0099D404 /* beforeDayDefault1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = beforeDayDefault1.wav; sourceTree = "<group>"; };
+		CB2B5DA32A66BABA0099D404 /* beforeDayDefault2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = beforeDayDefault2.wav; sourceTree = "<group>"; };
+		CB2B5DA62A66BAFC0099D404 /* morningDefault1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = morningDefault1.wav; sourceTree = "<group>"; };
+		CB9AA20A2A69F1B500BF8D76 /* eveningDefault1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = eveningDefault1.wav; sourceTree = "<group>"; };
+		CB9AA20B2A69F1B500BF8D76 /* afternoonHappy1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = afternoonHappy1.wav; sourceTree = "<group>"; };
+		CB9AA20C2A69F1B500BF8D76 /* happy1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = happy1.wav; sourceTree = "<group>"; };
+		CB9AA20D2A69F1B500BF8D76 /* afternoonDefault1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = afternoonDefault1.wav; sourceTree = "<group>"; };
+		CB9AA20E2A69F1B500BF8D76 /* afternoonAngry1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = afternoonAngry1.wav; sourceTree = "<group>"; };
+		CB9AA20F2A69F1B500BF8D76 /* morningHappy1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = morningHappy1.wav; sourceTree = "<group>"; };
+		CB9AA2102A69F1B500BF8D76 /* angry1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = angry1.wav; sourceTree = "<group>"; };
+		CB9AA2112A69F1B500BF8D76 /* afterDayDefault1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = afterDayDefault1.wav; sourceTree = "<group>"; };
+		CB9AA2122A69F1B500BF8D76 /* eveningHappy1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = eveningHappy1.wav; sourceTree = "<group>"; };
+		CB9AA2132A69F1B500BF8D76 /* eveningAngry1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = eveningAngry1.wav; sourceTree = "<group>"; };
+		CB9AA2242A6A414400BF8D76 /* CoreDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRepository.swift; sourceTree = "<group>"; };
+		CB9AA2262A6AC9AB00BF8D76 /* TakePitcureButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakePitcureButton.swift; sourceTree = "<group>"; };
+		CB9FE2882A6932950091DE9C /* AppCoreContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AppCoreContainer.xcdatamodel; sourceTree = "<group>"; };
+		CB9FE28A2A6933950091DE9C /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		CB9FE28C2A6934BE0091DE9C /* CoreDataEnvirontment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataEnvirontment.swift; sourceTree = "<group>"; };
+		CBA6418A2A6CCB530067D0F4 /* DetailTrackingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTrackingView.swift; sourceTree = "<group>"; };
+		CBB46C142A6B716500E9E0F8 /* BublbleArrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BublbleArrow.swift; sourceTree = "<group>"; };
+		CBB46C162A6B719500E9E0F8 /* RoundedShapeBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShapeBackground.swift; sourceTree = "<group>"; };
+		CBB46C182A6B910200E9E0F8 /* VitaSkinModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VitaSkinModel.swift; sourceTree = "<group>"; };
+		CBB46C202A6BCA7700E9E0F8 /* TrackingProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingProgressView.swift; sourceTree = "<group>"; };
+		CBB46C222A6BDFFD00E9E0F8 /* TabBarSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarSection.swift; sourceTree = "<group>"; };
+		CBB46C242A6BEA3800E9E0F8 /* ProgressListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressListView.swift; sourceTree = "<group>"; };
+		CBB46C262A6BEECF00E9E0F8 /* CircularProgressSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressSection.swift; sourceTree = "<group>"; };
+		CBD2D8802A67BC6700F603C7 /* PhotoTakeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoTakeView.swift; sourceTree = "<group>"; };
+		CBD2D8BD2A67C0FC00F603C7 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		CBD2D8BF2A67C10E00F603C7 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatViewModel.swift; path = Vitagochi/ViewModels/ChatViewModel.swift; sourceTree = SOURCE_ROOT; };
+		CBD2D8C42A682F8F00F603C7 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		CBD2D8C62A682FD900F603C7 /* ChatBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBubbleView.swift; sourceTree = "<group>"; };
+		CBD3E6912A6C324000665980 /* TrackingProgressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingProgressViewModel.swift; sourceTree = "<group>"; };
+		CBE7BA1F2A66072C00E87AAA /* TabBarIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarIconView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,10 +314,30 @@
 				2623C2312A5EF02200F820E8 /* VerticalPicker.swift */,
 				2623C2332A5EF68400F820E8 /* UIKitPickerView.swift */,
 				26A77B002A5FAE6A00B1C3A7 /* OnboardingTimePicker.swift */,
+				CB0528602A653F9200649F22 /* RectangleBubleTextView.swift */,
+				CB0528622A6546BF00649F22 /* CircularProgressView.swift */,
+				CB0528642A656BB500649F22 /* StatusLevelView.swift */,
+				CBE7BA1F2A66072C00E87AAA /* TabBarIconView.swift */,
+				CBD2D8C62A682FD900F603C7 /* ChatBubbleView.swift */,
 				26B0A3272A65893B0047FC6A /* CollectiveDayTimePicker.swift */,
+				CB9AA2262A6AC9AB00BF8D76 /* TakePitcureButton.swift */,
+				CBB46C222A6BDFFD00E9E0F8 /* TabBarSection.swift */,
+				CBB46C262A6BEECF00E9E0F8 /* CircularProgressSection.swift */,
+				CB0ACBFA2A6D615C00D5DF4D /* GalleryCard.swift */,
 				2648466D2A5E5AE800396575 /* ContentInfo.txt */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		265145982A69697900042519 /* Shapes */ = {
+			isa = PBXGroup;
+			children = (
+				265145992A69698F00042519 /* RoundedCornerShape.swift */,
+				CBB46C142A6B716500E9E0F8 /* BublbleArrow.swift */,
+				CBB46C162A6B719500E9E0F8 /* RoundedShapeBackground.swift */,
+				CB0ACBFC2A6D7D8600D5DF4D /* BackgroundArc.swift */,
+			);
+			path = Shapes;
 			sourceTree = "<group>";
 		};
 		2673E0162A5D021C00429610 /* Lifecycle */ = {
@@ -223,23 +345,21 @@
 			children = (
 				2673E0282A5D05C400429610 /* AppDelegate.swift */,
 				2673E0262A5D056D00429610 /* GlobalEnvirontment.swift */,
+				CB9FE28C2A6934BE0091DE9C /* CoreDataEnvirontment.swift */,
 				26C7A88D2A5D0014009F0EAF /* VitagochiApp.swift */,
 				2673E01C2A5D02CE00429610 /* ContentInfo.text */,
 			);
 			path = Lifecycle;
 			sourceTree = "<group>";
 		};
-		2673E0172A5D022600429610 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		2673E0182A5D022A00429610 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 				2648467D2A5E6FA700396575 /* OnboardingViewModel.swift */,
+				CB2B5D982A66A0BA0099D404 /* MainSceneViewModel.swift */,
+				CBD2D8BF2A67C10E00F603C7 /* ChatViewModel.swift */,
+				26138BA72A69813600FEACBD /* LevelUpViewModel.swift */,
+				CBD3E6912A6C324000665980 /* TrackingProgressViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -247,7 +367,14 @@
 		2673E0192A5D023100429610 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CB0528662A65712500649F22 /* RootView.swift */,
 				2673E0252A5D055500429610 /* Onboarding */,
+				CB05285F2A65325A00649F22 /* Main */,
+				CBD2D87F2A67BBE600F603C7 /* Chat */,
+				CBB46C1C2A6BCA0300E9E0F8 /* LevelUp */,
+				CBB46C1D2A6BCA2600E9E0F8 /* TrackingProgress */,
+				CBA641892A6CCAFE0067D0F4 /* DetailTrackingProgress */,
+				CB0ACBFE2A6D9F1A00D5DF4D /* Badges */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -260,6 +387,8 @@
 				26B0A3232A657CDC0047FC6A /* UIColor+Hex.swift */,
 				2648466A2A5E48BB00396575 /* UIScreen+Compact.swift */,
 				2623C22B2A5EE24100F820E8 /* View+ConditionalModifier.swift */,
+				CB0528592A6531A000649F22 /* Date+Extend.swift */,
+				2618F0172A6A32A30008ED82 /* UserDefaults+Codable.swift */,
 				2673E0232A5D033F00429610 /* ContentInfo.txt */,
 			);
 			path = Extensions;
@@ -278,6 +407,7 @@
 			children = (
 				2648467B2A5E643300396575 /* CounterTextFieldStyle.swift */,
 				2673E01F2A5D030A00429610 /* ContentInfo.txt */,
+				2651459B2A697AF900042519 /* LevelUpProgressStyle.swift */,
 			);
 			path = Styles;
 			sourceTree = "<group>";
@@ -297,6 +427,8 @@
 		26BC97ED2A5D0FE4003125B5 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				CB9AA2092A69F1B500BF8D76 /* Audio-2 */,
+				CB2B5D9C2A66B8630099D404 /* Sound */,
 				26BC97EE2A5D0FEC003125B5 /* Fonts */,
 				26C7A8912A5D0015009F0EAF /* Assets.xcassets */,
 			);
@@ -341,9 +473,11 @@
 			children = (
 				26BC97ED2A5D0FE4003125B5 /* Assets */,
 				2648466C2A5E572C00396575 /* Components */,
+				CB9FE2862A6932630091DE9C /* CoreData */,
 				2673E01A2A5D024B00429610 /* Extensions */,
 				2673E0162A5D021C00429610 /* Lifecycle */,
-				2673E0172A5D022600429610 /* Models */,
+				CBD2D8C32A682F6C00F603C7 /* Models */,
+				265145982A69697900042519 /* Shapes */,
 				2673E01E2A5D02F400429610 /* Styles */,
 				2673E01B2A5D025500429610 /* Utilities */,
 				2673E0182A5D022A00429610 /* ViewModels */,
@@ -376,6 +510,161 @@
 				26C7A8AA2A5D0015009F0EAF /* VitagochiUITestsLaunchTests.swift */,
 			);
 			path = VitagochiUITests;
+			sourceTree = "<group>";
+		};
+		CB05285F2A65325A00649F22 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				CB05285D2A65323900649F22 /* MainScene.swift */,
+				CBD2D8802A67BC6700F603C7 /* PhotoTakeView.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		CB0ACBFE2A6D9F1A00D5DF4D /* Badges */ = {
+			isa = PBXGroup;
+			children = (
+				CB0ACBFF2A6D9F4100D5DF4D /* BadgesView.swift */,
+			);
+			path = Badges;
+			sourceTree = "<group>";
+		};
+		CB2B5D9C2A66B8630099D404 /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				CB2B5D9E2A66B96F0099D404 /* welcome.wav */,
+				CB9AA21E2A69F20C00BF8D76 /* Angry */,
+				CB9AA21F2A69F2A300BF8D76 /* Happy */,
+				CB2B5D9D2A66B9250099D404 /* BeforeDay */,
+				CB2B5DA52A66BAD60099D404 /* Morning */,
+				CB9AA2202A69F36A00BF8D76 /* Afternoon */,
+				CB9AA2212A69F43D00BF8D76 /* Evening */,
+				CB9AA2222A69F51500BF8D76 /* AfterDay */,
+			);
+			path = Sound;
+			sourceTree = "<group>";
+		};
+		CB2B5D9D2A66B9250099D404 /* BeforeDay */ = {
+			isa = PBXGroup;
+			children = (
+				CB2B5DA12A66BA7B0099D404 /* beforeDayDefault1.wav */,
+				CB2B5DA32A66BABA0099D404 /* beforeDayDefault2.wav */,
+			);
+			path = BeforeDay;
+			sourceTree = "<group>";
+		};
+		CB2B5DA52A66BAD60099D404 /* Morning */ = {
+			isa = PBXGroup;
+			children = (
+				CB2B5DA62A66BAFC0099D404 /* morningDefault1.wav */,
+				CB9AA20F2A69F1B500BF8D76 /* morningHappy1.wav */,
+			);
+			path = Morning;
+			sourceTree = "<group>";
+		};
+		CB9AA2092A69F1B500BF8D76 /* Audio-2 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Audio-2";
+			sourceTree = "<group>";
+		};
+		CB9AA21E2A69F20C00BF8D76 /* Angry */ = {
+			isa = PBXGroup;
+			children = (
+				CB9AA2102A69F1B500BF8D76 /* angry1.wav */,
+			);
+			path = Angry;
+			sourceTree = "<group>";
+		};
+		CB9AA21F2A69F2A300BF8D76 /* Happy */ = {
+			isa = PBXGroup;
+			children = (
+				CB9AA20C2A69F1B500BF8D76 /* happy1.wav */,
+			);
+			path = Happy;
+			sourceTree = "<group>";
+		};
+		CB9AA2202A69F36A00BF8D76 /* Afternoon */ = {
+			isa = PBXGroup;
+			children = (
+				CB9AA20D2A69F1B500BF8D76 /* afternoonDefault1.wav */,
+				CB9AA20E2A69F1B500BF8D76 /* afternoonAngry1.wav */,
+				CB9AA20B2A69F1B500BF8D76 /* afternoonHappy1.wav */,
+			);
+			path = Afternoon;
+			sourceTree = "<group>";
+		};
+		CB9AA2212A69F43D00BF8D76 /* Evening */ = {
+			isa = PBXGroup;
+			children = (
+				CB9AA20A2A69F1B500BF8D76 /* eveningDefault1.wav */,
+				CB9AA2132A69F1B500BF8D76 /* eveningAngry1.wav */,
+				CB9AA2122A69F1B500BF8D76 /* eveningHappy1.wav */,
+			);
+			path = Evening;
+			sourceTree = "<group>";
+		};
+		CB9AA2222A69F51500BF8D76 /* AfterDay */ = {
+			isa = PBXGroup;
+			children = (
+				CB9AA2112A69F1B500BF8D76 /* afterDayDefault1.wav */,
+			);
+			path = AfterDay;
+			sourceTree = "<group>";
+		};
+		CB9FE2862A6932630091DE9C /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				CB9FE2872A6932950091DE9C /* AppCoreContainer.xcdatamodeld */,
+				CB9FE28A2A6933950091DE9C /* CoreDataManager.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		CBA641892A6CCAFE0067D0F4 /* DetailTrackingProgress */ = {
+			isa = PBXGroup;
+			children = (
+				CBA6418A2A6CCB530067D0F4 /* DetailTrackingView.swift */,
+			);
+			path = DetailTrackingProgress;
+			sourceTree = "<group>";
+		};
+		CBB46C1C2A6BCA0300E9E0F8 /* LevelUp */ = {
+			isa = PBXGroup;
+			children = (
+				265145932A69646F00042519 /* LevelUpView.swift */,
+			);
+			path = LevelUp;
+			sourceTree = "<group>";
+		};
+		CBB46C1D2A6BCA2600E9E0F8 /* TrackingProgress */ = {
+			isa = PBXGroup;
+			children = (
+				CBB46C202A6BCA7700E9E0F8 /* TrackingProgressView.swift */,
+				CBB46C242A6BEA3800E9E0F8 /* ProgressListView.swift */,
+			);
+			path = TrackingProgress;
+			sourceTree = "<group>";
+		};
+		CBD2D87F2A67BBE600F603C7 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				CBD2D8BD2A67C0FC00F603C7 /* ChatView.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		CBD2D8C32A682F6C00F603C7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CB9AA2242A6A414400BF8D76 /* CoreDataRepository.swift */,
+				CB05285B2A6531F600649F22 /* VitachiTimePhase.swift */,
+				CB2B5D9A2A66B50B0099D404 /* VitachiMoodPhase.swift */,
+				CBB46C182A6B910200E9E0F8 /* VitaSkinModel.swift */,
+				CBD2D8C42A682F8F00F603C7 /* Message.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -519,11 +808,25 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB9AA2172A69F1B500BF8D76 /* afternoonDefault1.wav in Resources */,
+				CB9AA2142A69F1B500BF8D76 /* eveningDefault1.wav in Resources */,
+				CB9AA21B2A69F1B500BF8D76 /* afterDayDefault1.wav in Resources */,
+				CB9AA2152A69F1B500BF8D76 /* afternoonHappy1.wav in Resources */,
+				CB2B5DA72A66BAFC0099D404 /* morningDefault1.wav in Resources */,
+				CB9AA2182A69F1B500BF8D76 /* afternoonAngry1.wav in Resources */,
+				CB9AA2162A69F1B500BF8D76 /* happy1.wav in Resources */,
+				CB2B5DA22A66BA7B0099D404 /* beforeDayDefault1.wav in Resources */,
 				2673E0142A5D014900429610 /* LICENSE.txt in Resources */,
 				2673E0122A5D014400429610 /* README.md in Resources */,
+				CB9AA21A2A69F1B500BF8D76 /* angry1.wav in Resources */,
+				CB9AA2192A69F1B500BF8D76 /* morningHappy1.wav in Resources */,
 				264846692A5E471400396575 /* COMMIT.md in Resources */,
+				CB2B5D9F2A66B96F0099D404 /* welcome.wav in Resources */,
+				CB2B5DA42A66BABA0099D404 /* beforeDayDefault2.wav in Resources */,
+				CB9AA21C2A69F1B500BF8D76 /* eveningHappy1.wav in Resources */,
 				26C7A8952A5D0015009F0EAF /* Preview Assets.xcassets in Resources */,
 				26C7A8922A5D0015009F0EAF /* Assets.xcassets in Resources */,
+				CB9AA21D2A69F1B500BF8D76 /* eveningAngry1.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -565,30 +868,67 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBE7BA202A66072C00E87AAA /* TabBarIconView.swift in Sources */,
+				CBD2D8BE2A67C0FC00F603C7 /* ChatView.swift in Sources */,
 				264846762A5E5EB800396575 /* PrimaryButton.swift in Sources */,
+				CBB46C172A6B719500E9E0F8 /* RoundedShapeBackground.swift in Sources */,
+				CB2B5D992A66A0BA0099D404 /* MainSceneViewModel.swift in Sources */,
+				CB0528672A65712500649F22 /* RootView.swift in Sources */,
+				CBD2D8812A67BC6700F603C7 /* PhotoTakeView.swift in Sources */,
+				CB2B5D9B2A66B50B0099D404 /* VitachiMoodPhase.swift in Sources */,
 				264846742A5E5CF300396575 /* OnboardingSecond.swift in Sources */,
 				2623C22C2A5EE24100F820E8 /* View+ConditionalModifier.swift in Sources */,
 				264846782A5E61C300396575 /* CancelButton.swift in Sources */,
 				06E47BB62A66A36A00EEC8AE /* VitaWidget.intentdefinition in Sources */,
+				CB0528652A656BB500649F22 /* StatusLevelView.swift in Sources */,
+				CB05285C2A6531F600649F22 /* VitachiTimePhase.swift in Sources */,
 				2648467C2A5E643300396575 /* CounterTextFieldStyle.swift in Sources */,
 				26BC97F22A5D102E003125B5 /* OnboardingFirst.swift in Sources */,
 				2673E0292A5D05C400429610 /* AppDelegate.swift in Sources */,
+				CB05285E2A65323900649F22 /* MainScene.swift in Sources */,
+				CB0ACBFB2A6D615C00D5DF4D /* GalleryCard.swift in Sources */,
+				CB0528612A653F9200649F22 /* RectangleBubleTextView.swift in Sources */,
+				CB0528632A6546BF00649F22 /* CircularProgressView.swift in Sources */,
+				CB9FE2892A6932950091DE9C /* AppCoreContainer.xcdatamodeld in Sources */,
 				26B0A3222A657C0A0047FC6A /* Color+Hex.swift in Sources */,
 				26B0A3202A6578BE0047FC6A /* OnboardingThirdRevision.swift in Sources */,
+				265145942A69646F00042519 /* LevelUpView.swift in Sources */,
 				26B0A3242A657CDC0047FC6A /* UIColor+Hex.swift in Sources */,
 				26BC97EC2A5D0ED0003125B5 /* Color+Extend.swift in Sources */,
 				26A77B012A5FAE6A00B1C3A7 /* OnboardingTimePicker.swift in Sources */,
+				CBD2D8C52A682F8F00F603C7 /* Message.swift in Sources */,
+				CB9FE28D2A6934BE0091DE9C /* CoreDataEnvirontment.swift in Sources */,
 				2623C2322A5EF02200F820E8 /* VerticalPicker.swift in Sources */,
+				CBD3E6922A6C324000665980 /* TrackingProgressViewModel.swift in Sources */,
+				CBB46C192A6B910200E9E0F8 /* VitaSkinModel.swift in Sources */,
+				CB0ACBFD2A6D7D8600D5DF4D /* BackgroundArc.swift in Sources */,
+				CBD2D8C72A682FD900F603C7 /* ChatBubbleView.swift in Sources */,
+				CB0ACC002A6D9F4100D5DF4D /* BadgesView.swift in Sources */,
+				26138BA82A69813600FEACBD /* LevelUpViewModel.swift in Sources */,
+				CB9AA2272A6AC9AB00BF8D76 /* TakePitcureButton.swift in Sources */,
 				2648467E2A5E6FA700396575 /* OnboardingViewModel.swift in Sources */,
 				2648466B2A5E48BB00396575 /* UIScreen+Compact.swift in Sources */,
 				067CB90A2A6D3BAD00D1B0C3 /* VitaMoodConfig.swift in Sources */,
+				CBB46C252A6BEA3800E9E0F8 /* ProgressListView.swift in Sources */,
 				264846802A5E743500396575 /* OnboardingThird.swift in Sources */,
 				26C7A88E2A5D0014009F0EAF /* VitagochiApp.swift in Sources */,
 				26B0A3282A65893B0047FC6A /* CollectiveDayTimePicker.swift in Sources */,
+				2651459C2A697AF900042519 /* LevelUpProgressStyle.swift in Sources */,
 				2673E0272A5D056D00429610 /* GlobalEnvirontment.swift in Sources */,
+				CBB46C212A6BCA7700E9E0F8 /* TrackingProgressView.swift in Sources */,
+				CB9FE28B2A6933950091DE9C /* CoreDataManager.swift in Sources */,
+				CBA6418B2A6CCB530067D0F4 /* DetailTrackingView.swift in Sources */,
 				2648467A2A5E639D00396575 /* CounteredTextView.swift in Sources */,
 				26B0A32A2A6595AD0047FC6A /* OnboardingFourth.swift in Sources */,
+				2618F0182A6A32A30008ED82 /* UserDefaults+Codable.swift in Sources */,
+				CB9AA2252A6A414400BF8D76 /* CoreDataRepository.swift in Sources */,
+				2651459A2A69698F00042519 /* RoundedCornerShape.swift in Sources */,
+				CBB46C232A6BDFFD00E9E0F8 /* TabBarSection.swift in Sources */,
 				2623C2342A5EF68400F820E8 /* UIKitPickerView.swift in Sources */,
+				CBD2D8C02A67C10E00F603C7 /* ChatViewModel.swift in Sources */,
+				CB05285A2A6531A000649F22 /* Date+Extend.swift in Sources */,
+				CBB46C152A6B716500E9E0F8 /* BublbleArrow.swift in Sources */,
+				CBB46C272A6BEECF00E9E0F8 /* CircularProgressSection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -807,14 +1147,16 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Vitagochi/Preview Content\"";
-				DEVELOPMENT_TEAM = 2W2FLHT9EF;
+				DEVELOPMENT_TEAM = BS6K64RQ23;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "For Taking Picture";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -837,14 +1179,16 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Vitagochi/Preview Content\"";
-				DEVELOPMENT_TEAM = 2W2FLHT9EF;
+				DEVELOPMENT_TEAM = BS6K64RQ23;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "For Taking Picture";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1002,6 +1346,19 @@
 			productName = NavigationTransitions;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		CB9FE2872A6932950091DE9C /* AppCoreContainer.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				CB9FE2882A6932950091DE9C /* AppCoreContainer.xcdatamodel */,
+			);
+			currentVersion = CB9FE2882A6932950091DE9C /* AppCoreContainer.xcdatamodel */;
+			path = AppCoreContainer.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 26C7A8822A5D0014009F0EAF /* Project object */;
 }

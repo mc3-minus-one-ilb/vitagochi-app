@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22F82" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="ChallangeEntity" representedClassName="ChallangeEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="day" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="records" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MealRecordEntity" inverseName="challange" inverseEntity="MealRecordEntity"/>
+    </entity>
+    <entity name="MealRecordEntity" representedClassName="MealRecordEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="mealStatus" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="photo" optional="YES" attributeType="String"/>
+        <attribute name="time" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="timeStatus" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="vitaMessage" optional="YES" attributeType="String"/>
+        <relationship name="challange" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ChallangeEntity" inverseName="records" inverseEntity="ChallangeEntity"/>
+    </entity>
+</model>

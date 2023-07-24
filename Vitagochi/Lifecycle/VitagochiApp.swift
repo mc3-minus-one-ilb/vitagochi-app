@@ -12,8 +12,10 @@ import NavigationTransitions
 struct VitagochiApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @StateObject var envObj: GlobalEnvirontment = GlobalEnvirontment.singleton
+    @StateObject var coreDataEnv: CoreDataEnvirontment = CoreDataEnvirontment.singleton
     @StateObject var onboardingViewModel: OnboardingViewModel = OnboardingViewModel.singleton
     
+   
     var body: some Scene {
         WindowGroup {
             if !envObj.isOnboardingFinished {
@@ -39,8 +41,18 @@ struct VitagochiApp: App {
                 }
                 .navigationTransition(.slide(axis: .horizontal), interactivity: .disabled)
             } else {
-                Text("ASD")
+                
+                    RootView()
+                        .environmentObject(coreDataEnv)
+                        .environmentObject(envObj)
             }
         }
     }
 }
+
+//struct AppView_Previews: PreviewProvider {
+//    static var previews: some Scene {
+//        //        ChatView(chatModel: ChatViewModel(photoData: Data()))
+//        VitagochiApp()
+//    }
+//}
