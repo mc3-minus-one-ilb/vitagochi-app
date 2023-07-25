@@ -36,7 +36,6 @@ extension Date {
         let calendar = Calendar.current
         let today = calendar.startOfDay(for: self)
         let inputDate = calendar.startOfDay(for: date)
-        print("\(inputDate) < \(date)")
         return inputDate < today
     }
     

@@ -13,12 +13,8 @@ struct RootView: View {
     
     
     var body: some View {
-        
-        // BUG: Offset Problem
-        // BUG: MainScene position is terrible
-        
         NavigationStack(path: $envObj.path){
-            ScrollView(.init()){
+//            ScrollView(.init()){
                 
                 TabView(selection: $selection) {
                     MainSceneView()
@@ -28,9 +24,11 @@ struct RootView: View {
                     BadgesView()
                         .tag(2)
                 }
-                .tabViewStyle(.page(indexDisplayMode: .never))
                 .animation(.easeOut(duration: 1.0), value: selection)
-            }
+                .transition(.slide)
+                .tabViewStyle(.page(indexDisplayMode: .never))
+                
+//            }
             .background(Image("Background"))
             .ignoresSafeArea()
             .safeAreaInset(edge: .bottom) {

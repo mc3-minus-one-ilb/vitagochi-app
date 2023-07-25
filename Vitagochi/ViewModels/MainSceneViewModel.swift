@@ -11,7 +11,7 @@ import AVFoundation
 class MainSceneViewModel: ObservableObject {
     @Published var phase: VitachiTimePhase = .beforeDayStart
     @Published var mood: VitachiMoodPhase = .idle
-    @Published var vitaSkinModel: VitaSkinModel = .casual
+    @Published var vitaSkin: VitaSkinModel = .orange
     @Published var message: String = ""
     @Published var isCompleted: [Bool] =  [true, false, false, false, true]
     @Published var isTapped: Bool = false
@@ -19,7 +19,7 @@ class MainSceneViewModel: ObservableObject {
     @Published var imageData: Data = Data(count: 0)
     @Published var currentTime: Date = Date()
     @Published var timer: Timer?
-    @Published var skinTimer: Timer? =  Timer()
+    @Published var skinTimer: Timer?
     @Published var skin: String = ""
 //    var charSound: AVAudioPlayer = AVAudioPlayer()
     var soundFileName: String = ""
@@ -46,13 +46,14 @@ class MainSceneViewModel: ObservableObject {
         skinTimer?.invalidate()
         skinTimer = nil
         
+        var index = 1
+        
         DispatchQueue.main.async {
-            var index = 1
             self.skinTimer = Timer.scheduledTimer(withTimeInterval: 0.083, repeats: true) { (Timer) in
-                self.skin = "\(self.vitaSkinModel.skin)-\(self.mood.skin)-\(index)"
+                self.skin = "\(self.vitaSkin.skin)-\(self.mood.skin)-\(index)"
                
                 index += 1
-                if (index > self.vitaSkinModel.maxFrame(mood: self.mood)) {
+                if (index > self.vitaSkin.maxFrame(mood: self.mood)) {
                     index = 1
                 }
             }

@@ -11,7 +11,7 @@ struct GalleryCard: View {
     var photo: UIImage?
     var timePhase: VitachiTimePhase = .morning
     var time: Date?
-    var isFlipped: Bool = true
+    var isFlipped: Bool = false
     var cardDate: Date = Date()
     var vitaMessage: String = ""
     
@@ -38,12 +38,16 @@ struct GalleryCard: View {
                                    height: geometry.size.height * 0.75)
                             .clipped()
                             .contentShape(Rectangle())
+                        
                     }
+                        
                     
                     Text(timePhase.mealTime)
                         .font(.system(size: 20))
                         .fontWeight(.medium)
+                        .padding(.top, 8)
                         .padding(.horizontal)
+                        .padding(.bottom,1)
                     Text(time?.getFormattedTime() ?? timePhase.mealTimeIcon)
                         .font(.system(size: 15))
                         .fontWeight(.medium)

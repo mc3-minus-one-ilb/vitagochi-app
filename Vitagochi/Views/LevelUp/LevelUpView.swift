@@ -56,7 +56,7 @@ struct LevelUpView: View {
                     }).progressViewStyle(LevelUpProgressStyle( height: 16))
                         .padding([.horizontal], 48.0)
                         .padding([.vertical], 32.0)
-                    if coreDataEnv.isAnotherTodayMealRecord() {
+                    if true {
                         // TODO: Fix this
                         Text("You already get EXP from today")
                             .padding([.bottom], 32.0)
@@ -109,7 +109,8 @@ struct LevelUpView: View {
                 }
             }
             
-            if !coreDataEnv.isAnotherTodayMealRecord() {
+            
+            if !true {
                 withAnimation(.easeInOut(duration: 1.5)) {
                     levelUpViewModel.levelProgress += progress
                 }

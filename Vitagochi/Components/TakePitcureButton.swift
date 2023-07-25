@@ -39,7 +39,7 @@ struct TakePitcureButton: View {
                     .foregroundColor(.chatTopPinkColor)
                     .frame(width: 70)
                     .rotationEffect(animation ? Angle(degrees: 360.0) : .zero)
-                    .animation(.linear(duration: 20).repeatForever(autoreverses: false), value: animation)
+                    .animation(.linear(duration: 20).repeatForever(autoreverses: true), value: animation)
                     .onAppear {
                         animation.toggle()
                     }

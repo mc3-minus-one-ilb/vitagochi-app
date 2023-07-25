@@ -31,7 +31,7 @@ enum VitachiTimePhase: Int16 {
         case.morning:
             return HourAndMinute(hour: 7, minute: 0)
         case.afternoon:
-            return HourAndMinute(hour: 12, minute: 40)
+            return HourAndMinute(hour: 9, minute: 40)
         case.evening:
             return HourAndMinute(hour: 17, minute: 50)
         case.afterDay:
