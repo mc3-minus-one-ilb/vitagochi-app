@@ -15,6 +15,11 @@ class CoreDataManager {
     
     init() {
         container = NSPersistentContainer(name: "AppCoreContainer")
+        let url = URL.storeURL(for: "group.com.minusone.Vitagochi", databaseName: "AppCoreContainer")
+        let storeDescription = NSPersistentStoreDescription(url: url)
+        
+        container.persistentStoreDescriptions = [storeDescription]
+        
         container.loadPersistentStores { description, error  in
             if let error = error {
                 print("Error loading Core Data. \(error)")

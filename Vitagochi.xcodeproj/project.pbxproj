@@ -80,6 +80,7 @@
 		CB2B5DA22A66BA7B0099D404 /* beforeDayDefault1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB2B5DA12A66BA7B0099D404 /* beforeDayDefault1.wav */; };
 		CB2B5DA42A66BABA0099D404 /* beforeDayDefault2.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB2B5DA32A66BABA0099D404 /* beforeDayDefault2.wav */; };
 		CB2B5DA72A66BAFC0099D404 /* morningDefault1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB2B5DA62A66BAFC0099D404 /* morningDefault1.wav */; };
+		CB84A9CF2A6FCE17003F1251 /* URL+Extend.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB84A9CE2A6FCE17003F1251 /* URL+Extend.swift */; };
 		CB9AA2142A69F1B500BF8D76 /* eveningDefault1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB9AA20A2A69F1B500BF8D76 /* eveningDefault1.wav */; };
 		CB9AA2152A69F1B500BF8D76 /* afternoonHappy1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB9AA20B2A69F1B500BF8D76 /* afternoonHappy1.wav */; };
 		CB9AA2162A69F1B500BF8D76 /* happy1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB9AA20C2A69F1B500BF8D76 /* happy1.wav */; };
@@ -224,6 +225,9 @@
 		CB2B5DA12A66BA7B0099D404 /* beforeDayDefault1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = beforeDayDefault1.wav; sourceTree = "<group>"; };
 		CB2B5DA32A66BABA0099D404 /* beforeDayDefault2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = beforeDayDefault2.wav; sourceTree = "<group>"; };
 		CB2B5DA62A66BAFC0099D404 /* morningDefault1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = morningDefault1.wav; sourceTree = "<group>"; };
+		CB84A9CC2A6FCD05003F1251 /* Vitagochi.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Vitagochi.entitlements; sourceTree = "<group>"; };
+		CB84A9CD2A6FCD75003F1251 /* VitaWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VitaWidgetExtension.entitlements; sourceTree = "<group>"; };
+		CB84A9CE2A6FCE17003F1251 /* URL+Extend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extend.swift"; sourceTree = "<group>"; };
 		CB9AA20A2A69F1B500BF8D76 /* eveningDefault1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = eveningDefault1.wav; sourceTree = "<group>"; };
 		CB9AA20B2A69F1B500BF8D76 /* afternoonHappy1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = afternoonHappy1.wav; sourceTree = "<group>"; };
 		CB9AA20C2A69F1B500BF8D76 /* happy1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = happy1.wav; sourceTree = "<group>"; };
@@ -400,6 +404,7 @@
 				2623C22B2A5EE24100F820E8 /* View+ConditionalModifier.swift */,
 				CB0528592A6531A000649F22 /* Date+Extend.swift */,
 				2618F0172A6A32A30008ED82 /* UserDefaults+Codable.swift */,
+				CB84A9CE2A6FCE17003F1251 /* URL+Extend.swift */,
 				2673E0232A5D033F00429610 /* ContentInfo.txt */,
 			);
 			path = Extensions;
@@ -456,6 +461,7 @@
 		26C7A8812A5D0014009F0EAF = {
 			isa = PBXGroup;
 			children = (
+				CB84A9CD2A6FCD75003F1251 /* VitaWidgetExtension.entitlements */,
 				264846682A5E471400396575 /* COMMIT.md */,
 				2673E0132A5D014900429610 /* LICENSE.txt */,
 				2673E0112A5D014400429610 /* README.md */,
@@ -482,6 +488,7 @@
 		26C7A88C2A5D0014009F0EAF /* Vitagochi */ = {
 			isa = PBXGroup;
 			children = (
+				CB84A9CC2A6FCD05003F1251 /* Vitagochi.entitlements */,
 				264FA0632A6EA4EF006758A3 /* Info.plist */,
 				26BC97ED2A5D0FE4003125B5 /* Assets */,
 				2648466C2A5E572C00396575 /* Components */,
@@ -918,6 +925,7 @@
 				CBB46C192A6B910200E9E0F8 /* VitaSkinModel.swift in Sources */,
 				CB0ACBFD2A6D7D8600D5DF4D /* BackgroundArc.swift in Sources */,
 				CBD2D8C72A682FD900F603C7 /* ChatBubbleView.swift in Sources */,
+				CB84A9CF2A6FCE17003F1251 /* URL+Extend.swift in Sources */,
 				CB0ACC002A6D9F4100D5DF4D /* BadgesView.swift in Sources */,
 				26138BA82A69813600FEACBD /* LevelUpViewModel.swift in Sources */,
 				CB9AA2272A6AC9AB00BF8D76 /* TakePitcureButton.swift in Sources */,
@@ -993,9 +1001,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = VitaWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2W2FLHT9EF;
+				DEVELOPMENT_TEAM = BS6K64RQ23;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = VitaWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = VitaWidget;
@@ -1020,9 +1029,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = VitaWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2W2FLHT9EF;
+				DEVELOPMENT_TEAM = BS6K64RQ23;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = VitaWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = VitaWidget;
@@ -1162,6 +1172,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Vitagochi/Vitagochi.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Vitagochi/Preview Content\"";
@@ -1195,6 +1206,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Vitagochi/Vitagochi.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Vitagochi/Preview Content\"";
