@@ -7,6 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0679306D2A6F9B64008F853E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2673E0282A5D05C400429610 /* AppDelegate.swift */; };
+		0679306E2A6F9C0A008F853E /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264FA0642A6EB54A006758A3 /* NotificationHandler.swift */; };
+		0679306F2A6F9C10008F853E /* GlobalEnvirontment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2673E0262A5D056D00429610 /* GlobalEnvirontment.swift */; };
+		067930702A6F9C1A008F853E /* VitachiTimePhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB05285B2A6531F600649F22 /* VitachiTimePhase.swift */; };
+		067930712A6F9C30008F853E /* UserDefaults+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2618F0172A6A32A30008ED82 /* UserDefaults+Codable.swift */; };
+		067930722A6F9C49008F853E /* ReminderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264FA0662A6EBB46006758A3 /* ReminderType.swift */; };
+		067930732A6F9D8E008F853E /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9AA2242A6A414400BF8D76 /* CoreDataRepository.swift */; };
+		067930742A6F9D97008F853E /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9FE28A2A6933950091DE9C /* CoreDataManager.swift */; };
+		067930752A6F9DA0008F853E /* CoreDataEnvirontment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9FE28C2A6934BE0091DE9C /* CoreDataEnvirontment.swift */; };
+		067930762A6F9DC3008F853E /* Date+Extend.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0528592A6531A000649F22 /* Date+Extend.swift */; };
+		067930772A6F9DF9008F853E /* AppCoreContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CB9FE2872A6932950091DE9C /* AppCoreContainer.xcdatamodeld */; };
+		067930782A6F9E2B008F853E /* VitaSkinModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB46C182A6B910200E9E0F8 /* VitaSkinModel.swift */; };
+		067930792A6F9E31008F853E /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2D8C42A682F8F00F603C7 /* Message.swift */; };
+		0679307A2A6F9E4C008F853E /* VitachiMoodPhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2B5D9A2A66B50B0099D404 /* VitachiMoodPhase.swift */; };
 		067CB9042A68E57A00D1B0C3 /* Color+Extend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC97EB2A5D0ED0003125B5 /* Color+Extend.swift */; };
 		067CB9052A68E57A00D1B0C3 /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B0A3212A657C0A0047FC6A /* Color+Hex.swift */; };
 		067CB9062A68E57A00D1B0C3 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B0A3232A657CDC0047FC6A /* UIColor+Hex.swift */; };
@@ -178,7 +192,6 @@
 		2648467D2A5E6FA700396575 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		2648467F2A5E743500396575 /* OnboardingThird.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingThird.swift; sourceTree = "<group>"; };
 		264FA0612A6E9124006758A3 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
-		264FA0632A6EA4EF006758A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		264FA0642A6EB54A006758A3 /* NotificationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHandler.swift; sourceTree = "<group>"; };
 		264FA0662A6EBB46006758A3 /* ReminderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderType.swift; sourceTree = "<group>"; };
 		265145932A69646F00042519 /* LevelUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelUpView.swift; sourceTree = "<group>"; };
@@ -370,9 +383,9 @@
 			isa = PBXGroup;
 			children = (
 				2648467D2A5E6FA700396575 /* OnboardingViewModel.swift */,
+				26138BA72A69813600FEACBD /* LevelUpViewModel.swift */,
 				CB2B5D982A66A0BA0099D404 /* MainSceneViewModel.swift */,
 				CBD2D8BF2A67C10E00F603C7 /* ChatViewModel.swift */,
-				26138BA72A69813600FEACBD /* LevelUpViewModel.swift */,
 				CBD3E6912A6C324000665980 /* TrackingProgressViewModel.swift */,
 			);
 			path = ViewModels;
@@ -488,8 +501,6 @@
 		26C7A88C2A5D0014009F0EAF /* Vitagochi */ = {
 			isa = PBXGroup;
 			children = (
-				CB84A9CC2A6FCD05003F1251 /* Vitagochi.entitlements */,
-				264FA0632A6EA4EF006758A3 /* Info.plist */,
 				26BC97ED2A5D0FE4003125B5 /* Assets */,
 				2648466C2A5E572C00396575 /* Components */,
 				CB9FE2862A6932630091DE9C /* CoreData */,
@@ -871,6 +882,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0679307A2A6F9E4C008F853E /* VitachiMoodPhase.swift in Sources */,
+				067930792A6F9E31008F853E /* Message.swift in Sources */,
+				067930782A6F9E2B008F853E /* VitaSkinModel.swift in Sources */,
+				067930772A6F9DF9008F853E /* AppCoreContainer.xcdatamodeld in Sources */,
+				067930762A6F9DC3008F853E /* Date+Extend.swift in Sources */,
+				067930752A6F9DA0008F853E /* CoreDataEnvirontment.swift in Sources */,
+				067930742A6F9D97008F853E /* CoreDataManager.swift in Sources */,
+				067930732A6F9D8E008F853E /* CoreDataRepository.swift in Sources */,
+				067930722A6F9C49008F853E /* ReminderType.swift in Sources */,
+				067930712A6F9C30008F853E /* UserDefaults+Codable.swift in Sources */,
+				067930702A6F9C1A008F853E /* VitachiTimePhase.swift in Sources */,
+				0679306F2A6F9C10008F853E /* GlobalEnvirontment.swift in Sources */,
+				0679306E2A6F9C0A008F853E /* NotificationHandler.swift in Sources */,
+				0679306D2A6F9B64008F853E /* AppDelegate.swift in Sources */,
 				067CB9042A68E57A00D1B0C3 /* Color+Extend.swift in Sources */,
 				067CB9052A68E57A00D1B0C3 /* Color+Hex.swift in Sources */,
 				067CB9062A68E57A00D1B0C3 /* UIColor+Hex.swift in Sources */,
@@ -1008,6 +1033,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = VitaWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = VitaWidget;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1036,6 +1062,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = VitaWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = VitaWidget;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

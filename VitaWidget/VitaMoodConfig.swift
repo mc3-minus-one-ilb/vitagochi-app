@@ -20,6 +20,14 @@ enum VitaMood {
         }
     }
     
+    var imageMedium: String {
+        switch self {
+        case.idle: return "MWDefault"
+        case.happy: return "MWHappy"
+        case.angry: return "MWAngry"
+        }
+    }
+    
     var message:String {
         switch self {
         case.idle: return "eat your food!"
@@ -27,15 +35,48 @@ enum VitaMood {
         case.happy: return "whos that good boy"
         }
     }
+    
 }
 struct VitaMoodConfig {
-    let widgetBackground : String
-    let vitaSpeech : String
-//    let
-    static func determineConfig(from date: Date, mood: VitaMood) -> VitaMoodConfig {
-        let _ = Calendar.current.dateComponents([.hour, .minute], from: date)
+    public static var singleton = VitaMoodConfig()
+    var coreData: CoreDataEnvirontment =  CoreDataEnvirontment.singleton
+    var mood: VitaMood = .angry
+    var phase: VitachiTimePhase = .beforeDayStart
+    var challange: ChallangeEntity?
+    var mealCompletion: Int = 0
+    
+    
+    init() {
+        self.challange = CoreDataEnvirontment.singleton.todayChallange
         
-        return VitaMoodConfig(widgetBackground: mood.image, vitaSpeech: mood.message)
+        let now = Date()
+        
+        if now.isPhaseGreaterThan(.afterDay){
+            self.phase = .afterDay
+        } else if now.isPhaseGreaterThan(.evening) {
+            self.phase = .evening
+        } else if now.isPhaseGreaterThan(.afternoon) {
+            self.phase = .afternoon
+        } else if now.isPhaseGreaterThan(.morning) {
+            self.phase = .morning
+        } else if now.isPhaseGreaterThan(.beforeDayStart) {
+            self.phase = .beforeDayStart
+        }
+        
+        
+        self.mealCompletion = challange?.records?.count ?? 0
+        
+        if let records = challange?.records?.allObjects as? [MealRecordEntity] {
+            let isComplete = records.contains{$0.timeStatus == phase.rawValue}
+            if Date().isPhaseAfterOneHour(phase) && !isComplete {
+                self.mood = .angry
+            } else if isComplete {
+                self.mood = .happy
+            } else {
+                self.mood = .idle
+            }
+        }
+        
     }
 }
 
