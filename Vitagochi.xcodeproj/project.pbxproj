@@ -95,6 +95,7 @@
 		CB2B5DA42A66BABA0099D404 /* beforeDayDefault2.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB2B5DA32A66BABA0099D404 /* beforeDayDefault2.wav */; };
 		CB2B5DA72A66BAFC0099D404 /* morningDefault1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB2B5DA62A66BAFC0099D404 /* morningDefault1.wav */; };
 		CB84A9CF2A6FCE17003F1251 /* URL+Extend.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB84A9CE2A6FCE17003F1251 /* URL+Extend.swift */; };
+		CB84A9D02A6FD18F003F1251 /* URL+Extend.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB84A9CE2A6FCE17003F1251 /* URL+Extend.swift */; };
 		CB9AA2142A69F1B500BF8D76 /* eveningDefault1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB9AA20A2A69F1B500BF8D76 /* eveningDefault1.wav */; };
 		CB9AA2152A69F1B500BF8D76 /* afternoonHappy1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB9AA20B2A69F1B500BF8D76 /* afternoonHappy1.wav */; };
 		CB9AA2162A69F1B500BF8D76 /* happy1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB9AA20C2A69F1B500BF8D76 /* happy1.wav */; };
@@ -238,7 +239,6 @@
 		CB2B5DA12A66BA7B0099D404 /* beforeDayDefault1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = beforeDayDefault1.wav; sourceTree = "<group>"; };
 		CB2B5DA32A66BABA0099D404 /* beforeDayDefault2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = beforeDayDefault2.wav; sourceTree = "<group>"; };
 		CB2B5DA62A66BAFC0099D404 /* morningDefault1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = morningDefault1.wav; sourceTree = "<group>"; };
-		CB84A9CC2A6FCD05003F1251 /* Vitagochi.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Vitagochi.entitlements; sourceTree = "<group>"; };
 		CB84A9CD2A6FCD75003F1251 /* VitaWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VitaWidgetExtension.entitlements; sourceTree = "<group>"; };
 		CB84A9CE2A6FCE17003F1251 /* URL+Extend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extend.swift"; sourceTree = "<group>"; };
 		CB9AA20A2A69F1B500BF8D76 /* eveningDefault1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = eveningDefault1.wav; sourceTree = "<group>"; };
@@ -906,6 +906,7 @@
 				06E47BAE2A66A36900EEC8AE /* VitaWidgetLiveActivity.swift in Sources */,
 				067CB90B2A6D3BAD00D1B0C3 /* VitaMoodConfig.swift in Sources */,
 				06E47BAC2A66A36900EEC8AE /* VitaWidgetBundle.swift in Sources */,
+				CB84A9D02A6FD18F003F1251 /* URL+Extend.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
