@@ -9,35 +9,52 @@ import WidgetKit
 import SwiftUI
 import Intents
 
-struct Provider: IntentTimelineProvider {
+struct Provider: TimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: ConfigurationIntent())
+        let mealCount = (try? getData()?.count) ?? 0
+        return SimpleEntry(date: Date(), mealCount: mealCount)
     }
 
-    func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), configuration: configuration)
-        completion(entry)
-    }
-
-    func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-        var entries: [SimpleEntry] = []
-
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-        let currentDate = Date()
-        for hourOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate, configuration: configuration)
-            entries.append(entry)
+    func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
+        do {
+            let meals = try getData()
+            let entry = SimpleEntry(date: Date(), mealCount: meals?.count ?? 0)
+            completion(entry)
+        } catch {
+            print(error)
         }
+    }
 
-        let timeline = Timeline(entries: entries, policy: .atEnd)
-        completion(timeline)
+    func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
+//        var entries: [SimpleEntry] = []
+//
+//        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
+//        let currentDate = Date()
+//        for hourOffset in 0 ..< 5 {
+//            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
+//            let entry = SimpleEntry(date: entryDate, mealCount: me)
+//            entries.append(entry)
+//        }
+        do {
+            let items = try getData()
+            let entry = SimpleEntry(date: Date(), mealCount: items?.count ?? 0)
+            
+            let timeline = Timeline(entries: [entry], policy: .atEnd)
+            completion(timeline)
+        } catch {
+            print(error)
+        }
+    }
+    
+    private func getData() throws -> [MealRecordEntity]? {
+        let coreData = CoreDataEnvirontment()
+        return coreData.todayChallange?.records?.allObjects as? [MealRecordEntity]
     }
 }
 
 struct SimpleEntry: TimelineEntry {
     let date: Date
-    let configuration: ConfigurationIntent
+    let mealCount: Int
 }
 
 struct VitaWidgetEntryView : View {
@@ -65,7 +82,7 @@ struct VitaWidget: Widget {
     let kind: String = "VitaWidget"
 
     var body: some WidgetConfiguration {
-        IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
+        StaticConfiguration(kind: kind, provider: Provider()) { entry in
 //            if entry.widgetFamily == .systemSmall {
 //                SmallWidgetView(text: "Small Widget")
 //            } else if entry.widgetFamily == .systemMedium {
@@ -191,9 +208,9 @@ struct MediumWidgetView: View {
 struct VitaWidget_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            VitaWidgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
+            VitaWidgetEntryView(entry: SimpleEntry(date: Date(), mealCount: 0))
                 .previewContext(WidgetPreviewContext(family: .systemSmall))
-            VitaWidgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
+            VitaWidgetEntryView(entry: SimpleEntry(date: Date(), mealCount: 0))
                 .previewContext(WidgetPreviewContext(family: .systemMedium))
         }
     }
