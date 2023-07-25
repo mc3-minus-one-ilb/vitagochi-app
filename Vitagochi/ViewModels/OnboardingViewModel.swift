@@ -16,6 +16,9 @@ enum OnboardingRoute: String, Hashable {
 
 class OnboardingViewModel: ObservableObject {
     public static let singleton: OnboardingViewModel = OnboardingViewModel()
+    private let globalEnv: GlobalEnvirontment = GlobalEnvirontment.singleton
+    private let notificationHandler: NotificationHandler = NotificationHandler.singleton
+    private let coreDataEnv: CoreDataEnvirontment = CoreDataEnvirontment.singleton
     
     @Published var onboardingPath: NavigationPath = NavigationPath()
     
@@ -43,6 +46,17 @@ class OnboardingViewModel: ObservableObject {
         onboardingPath.removeLast(1)
     }
     
+    func saveUsername() {
+        if nickname.isEmpty || isNicknameEmpty {
+            self.isNicknameEmpty = true
+            return
+        }
+        
+        DispatchQueue.main.async {
+            self.globalEnv.setUsername(username: self.nickname)
+        }
+    }
+     
     func handleReminderNotification() {
         let center = UNUserNotificationCenter.current()
         center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
@@ -54,20 +68,22 @@ class OnboardingViewModel: ObservableObject {
             // Enable or disable features based on the authorization.
             if granted {
                 let calendar = Calendar.current
-                GlobalEnvirontment.singleton.setReminderTime(breakfastTime: HourAndMinute(hour: calendar.component(.hour, from: self.breakfastSelection), minute: calendar.component(.minute, from: self.breakfastSelection)), lunchTime: HourAndMinute(hour: calendar.component(.hour, from: self.lunchSelection), minute: calendar.component(.minute, from: self.lunchSelection)), dinnerTime: HourAndMinute(hour: calendar.component(.hour, from: self.dinnerSelection), minute: calendar.component(.minute, from: self.dinnerSelection)))
+                self.globalEnv.setReminderTime(breakfastTime: HourAndMinute(hour: calendar.component(.hour, from: self.breakfastSelection), minute: calendar.component(.minute, from: self.breakfastSelection)), lunchTime: HourAndMinute(hour: calendar.component(.hour, from: self.lunchSelection), minute: calendar.component(.minute, from: self.lunchSelection)), dinnerTime: HourAndMinute(hour: calendar.component(.hour, from: self.dinnerSelection), minute: calendar.component(.minute, from: self.dinnerSelection)))
             }
             
             DispatchQueue.main.async {
-                GlobalEnvirontment.singleton.setWillingToNotifyState(state: granted)
+                self.globalEnv.setWillingToNotifyState(state: granted)
                 self.navigate(route: .OnboardingFourth)
             }
         }
     }
     
     func finishOnboarding() {
-        CoreDataEnvirontment.singleton.add66DaysOfChallanges()
-        CoreDataEnvirontment.singleton.getTodayChallange()
-        GlobalEnvirontment.singleton.finishOnboarding()
+        self.coreDataEnv.add66DaysOfChallanges()
+        self.coreDataEnv.getTodayChallange()
+        self.globalEnv.finishOnboarding()
+        self.notificationHandler.scheduleAppReminderNotification()
+
         self.onboardingPath.removeLast(self.onboardingPath.count)
     }
     
