@@ -42,11 +42,8 @@ struct LevelUpProgressStyle: ProgressViewStyle {
                         currentValueLabel
                             .fontDesign(.rounded)
                     }
-                    
                 }
-                
             }
-            
         }
     }
 }
@@ -164,8 +161,8 @@ struct WidgetMediumMealProgressStyle: ProgressViewStyle {
                 .offset(y: 4)
                 RoundedRectangle(cornerRadius: 20.0)
                     .fill(Color.toHex(hexCode: "FBECF0"))
-                    .frame(height: height)
-                    .frame(width: geometry.size.width)
+//                    .frame(height: height)
+                    .frame(width: geometry.size.width, height: height)
                     .overlay(alignment: .leading) {
                         RoundedRectangle(cornerRadius: 20.0)
                             .fill(LinearGradient(gradient: Gradient(colors: [Color.toHex(hexCode: "F6A3B5"), Color.toHex(hexCode: "F06684"), Color.toHex(hexCode: "ED476B")]), startPoint: .leading, endPoint: .trailing))

@@ -19,13 +19,13 @@ enum VitaWidgetTimePhase: Int16, CaseIterable {
         case.beforeDayStart:
             return HourAndMinute(hour: 0, minute: 0)
         case.morning:
-            return HourAndMinute(hour: 2, minute: 32)
+            return HourAndMinute(hour: 7, minute: 32)
         case.afternoon:
-            return HourAndMinute(hour: 3, minute: 52)
+            return HourAndMinute(hour: 12, minute: 21)
         case.evening:
-            return HourAndMinute(hour: 4, minute: 55)
+            return HourAndMinute(hour: 19, minute: 03)
         case.afterDay:
-            return HourAndMinute(hour: 8, minute: 46)
+            return HourAndMinute(hour: 21, minute: 12)
         }
     }
     

@@ -143,16 +143,16 @@ struct SmallWidgetView: View {
         }
         if entry.timePhase == .afterDay {
             if mealCount == 3 {
-                self.smallMessage = "Excelent Work!"
+                self.smallMessage = "You Did It! 🎉"
                 self.mood = .happy
             } else if mealCount == 2 {
-                self.smallMessage = "Good Job!"
+                self.smallMessage = "Well Done!"
                 self.mood = .idle
             } else if mealCount == 1 {
-                self.smallMessage = "Good Progress!"
+                self.smallMessage = "Not Bad!"
                 self.mood = .idle
             } else {
-                self.smallMessage = "Didn't Progress!"
+                self.smallMessage = "Huft, Too Bad ..."
                 self.mood = .angry
             }
         }
@@ -162,20 +162,20 @@ struct SmallWidgetView: View {
         VStack {
             VStack{
                 Text(smallMessage)
-                    .font(.system(size: 15, weight: .semibold))
-                    .fontDesign(.rounded)
+                    .font(.system(size: 15, weight: .semibold, design: .rounded))
+//                    .fontDesign(.rounded)
                     .kerning(-0.4)
                     .foregroundColor(.widgetFontColor)
                 ProgressView(value: CGFloat(mealCount), total: 3, label:  {
                     Text("Meals\(entry.timePhase.mealTimeIcon)")
-                        .font(.system(size: 11, weight: .medium))
-                        .fontDesign(.rounded)
+                        .font(.system(size: 11, weight: .medium, design: .rounded))
+//                        .fontDesign(.rounded)
                         .kerning(-0.4)
                         .foregroundColor(.widgetDarkerFontColor)
                 }, currentValueLabel:  {
                     Text("\(mealCount)/3")
-                        .font(.system(size: 11, weight: .medium))
-                        .fontDesign(.rounded)
+                        .font(.system(size: 11, weight: .medium, design: .rounded))
+//                        .fontDesign(.rounded)
                         .foregroundColor(.widgetDarkerFontColor)
                         
                 }).progressViewStyle(WidgetSmallMealProgressStyle(height: 8))
@@ -248,20 +248,20 @@ struct MediumWidgetView: View {
         self.mediumMessage = mood.mediumMessage(phase: entry.timePhase)
         if entry.timePhase == .afterDay {
             if mealCount == 3 {
-                self.mediumTitle = "Excelent Work!"
-                self.mediumMessage = "Good work for today"
+                self.mediumTitle = "You Did It! 🎉"
+                self.mediumMessage = "Excellent! Way to Go to be a healthier version of you! 🥰"
                 self.mood = .happy
             } else if mealCount == 2 {
-                self.mediumTitle = "Good Job!"
-                self.mediumMessage = "Good work for today"
+                self.mediumTitle = "Well Done!"
+                self.mediumMessage = "Cool! Just a ‘lil bit more step to have better dietary habit ☺️"
                 self.mood = .idle
             } else if mealCount == 1 {
-                self.mediumTitle = "Good Progress!"
-                self.mediumMessage = "Good work for today"
+                self.mediumTitle = "Not Bad!"
+                self.mediumMessage = "Please do better in eating healthy food for tomorrow 😉"
                 self.mood = .idle
             } else {
-                self.mediumTitle = "Didn't Progress!"
-                self.mediumMessage = "Good work for today"
+                self.mediumTitle = "Huft, Too Bad ..."
+                self.mediumMessage = "You can be sick if for a whole day you didn’t eat any food"
                 self.mood = .angry
             }
         }
@@ -273,15 +273,15 @@ struct MediumWidgetView: View {
             VStack(alignment: .leading){
                 Group {
                     Text(mediumTitle)
-                        .font(.system(size: 15, weight: .semibold))
-                        .fontDesign(.rounded)
+                        .font(.system(size: 15, weight: .semibold, design: .rounded))
+//                        .fontDesign(.rounded)
                         .kerning(-0.4)
                         .foregroundColor(.widgetFontColor)
                     HStack {
                         Text(mediumMessage)
-                            .font(.system(size: 10))
-                            .fontDesign(.rounded)
-                            .fontWeight(.regular)
+                            .font(.system(size: 10, weight: .regular, design: .rounded))
+//                            .fontDesign(.rounded)
+//                            .fontWeight(.regular)
                             .foregroundColor(.widgetFontColor)
                             .multilineTextAlignment(.leading)
                             .lineLimit(2)
@@ -295,14 +295,14 @@ struct MediumWidgetView: View {
 //                    .multilineTextAlignment(.leading)
                 ProgressView(value: CGFloat(mealCount), total: 3, label:  {
                     Text("Meals\(entry.timePhase.mealTimeIcon)")
-                        .font(.system(size: 11, weight: .medium))
-                        .fontDesign(.rounded)
+                        .font(.system(size: 11, weight: .medium, design: .rounded))
+//                        .fontDesign(.rounded)
                         .kerning(-0.4)
                         .foregroundColor(.widgetDarkerFontColor)
                 }, currentValueLabel:  {
                     Text("\(mealCount)/3")
-                        .font(.system(size: 11, weight: .medium))
-                        .fontDesign(.rounded)
+                        .font(.system(size: 11, weight: .medium, design: .rounded))
+//                        .fontDesign(.rounded)
                         .foregroundColor(.widgetDarkerFontColor)
                         
                 }).progressViewStyle(WidgetMediumMealProgressStyle(height: 6))
