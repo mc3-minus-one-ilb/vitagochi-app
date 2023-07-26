@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import WidgetKit
 
 struct ChatView: View {
     @EnvironmentObject private var envObj: GlobalEnvirontment
@@ -98,7 +99,8 @@ struct ChatView: View {
                     
                     print(notificationHandler.showScheduledNotifications())
                     
-                envObj.mainPath[1].toggle()
+                    envObj.mainPath[1].toggle()
+                    WidgetCenter.shared.reloadAllTimelines()
                 }
             }
             

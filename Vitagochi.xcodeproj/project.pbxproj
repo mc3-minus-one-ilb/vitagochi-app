@@ -7,6 +7,36 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0679306D2A6F9B64008F853E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2673E0282A5D05C400429610 /* AppDelegate.swift */; };
+		0679306E2A6F9C0A008F853E /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264FA0642A6EB54A006758A3 /* NotificationHandler.swift */; };
+		0679306F2A6F9C10008F853E /* GlobalEnvirontment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2673E0262A5D056D00429610 /* GlobalEnvirontment.swift */; };
+		067930702A6F9C1A008F853E /* VitachiTimePhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB05285B2A6531F600649F22 /* VitachiTimePhase.swift */; };
+		067930712A6F9C30008F853E /* UserDefaults+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2618F0172A6A32A30008ED82 /* UserDefaults+Codable.swift */; };
+		067930722A6F9C49008F853E /* ReminderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264FA0662A6EBB46006758A3 /* ReminderType.swift */; };
+		067930732A6F9D8E008F853E /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9AA2242A6A414400BF8D76 /* CoreDataRepository.swift */; };
+		067930742A6F9D97008F853E /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9FE28A2A6933950091DE9C /* CoreDataManager.swift */; };
+		067930752A6F9DA0008F853E /* CoreDataEnvirontment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9FE28C2A6934BE0091DE9C /* CoreDataEnvirontment.swift */; };
+		067930762A6F9DC3008F853E /* Date+Extend.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0528592A6531A000649F22 /* Date+Extend.swift */; };
+		067930772A6F9DF9008F853E /* AppCoreContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CB9FE2872A6932950091DE9C /* AppCoreContainer.xcdatamodeld */; };
+		067930782A6F9E2B008F853E /* VitaSkinModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB46C182A6B910200E9E0F8 /* VitaSkinModel.swift */; };
+		067930792A6F9E31008F853E /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2D8C42A682F8F00F603C7 /* Message.swift */; };
+		0679307A2A6F9E4C008F853E /* VitachiMoodPhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2B5D9A2A66B50B0099D404 /* VitachiMoodPhase.swift */; };
+		067CB9042A68E57A00D1B0C3 /* Color+Extend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC97EB2A5D0ED0003125B5 /* Color+Extend.swift */; };
+		067CB9052A68E57A00D1B0C3 /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B0A3212A657C0A0047FC6A /* Color+Hex.swift */; };
+		067CB9062A68E57A00D1B0C3 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B0A3232A657CDC0047FC6A /* UIColor+Hex.swift */; };
+		067CB9072A68E57A00D1B0C3 /* UIScreen+Compact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2648466A2A5E48BB00396575 /* UIScreen+Compact.swift */; };
+		067CB9082A68E57A00D1B0C3 /* View+ConditionalModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2623C22B2A5EE24100F820E8 /* View+ConditionalModifier.swift */; };
+		067CB90A2A6D3BAD00D1B0C3 /* VitaMoodConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067CB9092A6D3BAD00D1B0C3 /* VitaMoodConfig.swift */; };
+		067CB90B2A6D3BAD00D1B0C3 /* VitaMoodConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067CB9092A6D3BAD00D1B0C3 /* VitaMoodConfig.swift */; };
+		06E47BA72A66A36900EEC8AE /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06E47BA62A66A36900EEC8AE /* WidgetKit.framework */; };
+		06E47BA92A66A36900EEC8AE /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06E47BA82A66A36900EEC8AE /* SwiftUI.framework */; };
+		06E47BAC2A66A36900EEC8AE /* VitaWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E47BAB2A66A36900EEC8AE /* VitaWidgetBundle.swift */; };
+		06E47BAE2A66A36900EEC8AE /* VitaWidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E47BAD2A66A36900EEC8AE /* VitaWidgetLiveActivity.swift */; };
+		06E47BB02A66A36900EEC8AE /* VitaWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E47BAF2A66A36900EEC8AE /* VitaWidget.swift */; };
+		06E47BB32A66A36A00EEC8AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06E47BB22A66A36A00EEC8AE /* Assets.xcassets */; };
+		06E47BB52A66A36A00EEC8AE /* VitaWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 06E47BB12A66A36900EEC8AE /* VitaWidget.intentdefinition */; };
+		06E47BB62A66A36A00EEC8AE /* VitaWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 06E47BB12A66A36900EEC8AE /* VitaWidget.intentdefinition */; };
+		06E47BB92A66A36A00EEC8AE /* VitaWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 06E47BA42A66A36900EEC8AE /* VitaWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		26138BA82A69813600FEACBD /* LevelUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26138BA72A69813600FEACBD /* LevelUpViewModel.swift */; };
 		2618F0182A6A32A30008ED82 /* UserDefaults+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2618F0172A6A32A30008ED82 /* UserDefaults+Codable.swift */; };
 		2623C22C2A5EE24100F820E8 /* View+ConditionalModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2623C22B2A5EE24100F820E8 /* View+ConditionalModifier.swift */; };
@@ -64,6 +94,9 @@
 		CB2B5DA22A66BA7B0099D404 /* beforeDayDefault1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB2B5DA12A66BA7B0099D404 /* beforeDayDefault1.wav */; };
 		CB2B5DA42A66BABA0099D404 /* beforeDayDefault2.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB2B5DA32A66BABA0099D404 /* beforeDayDefault2.wav */; };
 		CB2B5DA72A66BAFC0099D404 /* morningDefault1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB2B5DA62A66BAFC0099D404 /* morningDefault1.wav */; };
+		CB84A9CF2A6FCE17003F1251 /* URL+Extend.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB84A9CE2A6FCE17003F1251 /* URL+Extend.swift */; };
+		CB84A9D02A6FD18F003F1251 /* URL+Extend.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB84A9CE2A6FCE17003F1251 /* URL+Extend.swift */; };
+		CB84A9D12A6FF6C8003F1251 /* LevelUpProgressStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2651459B2A697AF900042519 /* LevelUpProgressStyle.swift */; };
 		CB9AA2142A69F1B500BF8D76 /* eveningDefault1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB9AA20A2A69F1B500BF8D76 /* eveningDefault1.wav */; };
 		CB9AA2152A69F1B500BF8D76 /* afternoonHappy1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB9AA20B2A69F1B500BF8D76 /* afternoonHappy1.wav */; };
 		CB9AA2162A69F1B500BF8D76 /* happy1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB9AA20C2A69F1B500BF8D76 /* happy1.wav */; };
@@ -97,6 +130,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		06E47BB72A66A36A00EEC8AE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 26C7A8822A5D0014009F0EAF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 06E47BA32A66A36900EEC8AE;
+			remoteInfo = VitaWidgetExtension;
+		};
 		26C7A89B2A5D0015009F0EAF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 26C7A8822A5D0014009F0EAF /* Project object */;
@@ -113,7 +153,31 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		06E47BBA2A66A36A00EEC8AE /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				06E47BB92A66A36A00EEC8AE /* VitaWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		067CB9092A6D3BAD00D1B0C3 /* VitaMoodConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VitaMoodConfig.swift; sourceTree = "<group>"; };
+		06E47BA42A66A36900EEC8AE /* VitaWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = VitaWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		06E47BA62A66A36900EEC8AE /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		06E47BA82A66A36900EEC8AE /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		06E47BAB2A66A36900EEC8AE /* VitaWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VitaWidgetBundle.swift; sourceTree = "<group>"; };
+		06E47BAD2A66A36900EEC8AE /* VitaWidgetLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VitaWidgetLiveActivity.swift; sourceTree = "<group>"; };
+		06E47BAF2A66A36900EEC8AE /* VitaWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VitaWidget.swift; sourceTree = "<group>"; };
+		06E47BB12A66A36900EEC8AE /* VitaWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = VitaWidget.intentdefinition; sourceTree = "<group>"; };
+		06E47BB22A66A36A00EEC8AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		06E47BB42A66A36A00EEC8AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		26138BA72A69813600FEACBD /* LevelUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelUpViewModel.swift; sourceTree = "<group>"; };
 		2618F0172A6A32A30008ED82 /* UserDefaults+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Codable.swift"; sourceTree = "<group>"; };
 		2623C22B2A5EE24100F820E8 /* View+ConditionalModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+ConditionalModifier.swift"; sourceTree = "<group>"; };
@@ -130,7 +194,6 @@
 		2648467D2A5E6FA700396575 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		2648467F2A5E743500396575 /* OnboardingThird.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingThird.swift; sourceTree = "<group>"; };
 		264FA0612A6E9124006758A3 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
-		264FA0632A6EA4EF006758A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		264FA0642A6EB54A006758A3 /* NotificationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHandler.swift; sourceTree = "<group>"; };
 		264FA0662A6EBB46006758A3 /* ReminderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderType.swift; sourceTree = "<group>"; };
 		265145932A69646F00042519 /* LevelUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelUpView.swift; sourceTree = "<group>"; };
@@ -177,6 +240,8 @@
 		CB2B5DA12A66BA7B0099D404 /* beforeDayDefault1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = beforeDayDefault1.wav; sourceTree = "<group>"; };
 		CB2B5DA32A66BABA0099D404 /* beforeDayDefault2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = beforeDayDefault2.wav; sourceTree = "<group>"; };
 		CB2B5DA62A66BAFC0099D404 /* morningDefault1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = morningDefault1.wav; sourceTree = "<group>"; };
+		CB84A9CD2A6FCD75003F1251 /* VitaWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VitaWidgetExtension.entitlements; sourceTree = "<group>"; };
+		CB84A9CE2A6FCE17003F1251 /* URL+Extend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extend.swift"; sourceTree = "<group>"; };
 		CB9AA20A2A69F1B500BF8D76 /* eveningDefault1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = eveningDefault1.wav; sourceTree = "<group>"; };
 		CB9AA20B2A69F1B500BF8D76 /* afternoonHappy1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = afternoonHappy1.wav; sourceTree = "<group>"; };
 		CB9AA20C2A69F1B500BF8D76 /* happy1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = happy1.wav; sourceTree = "<group>"; };
@@ -210,6 +275,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		06E47BA12A66A36900EEC8AE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				06E47BA92A66A36900EEC8AE /* SwiftUI.framework in Frameworks */,
+				06E47BA72A66A36900EEC8AE /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		26C7A8872A5D0014009F0EAF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -235,6 +309,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		06E47BA52A66A36900EEC8AE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				06E47BA62A66A36900EEC8AE /* WidgetKit.framework */,
+				06E47BA82A66A36900EEC8AE /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		06E47BAA2A66A36900EEC8AE /* VitaWidget */ = {
+			isa = PBXGroup;
+			children = (
+				06E47BAB2A66A36900EEC8AE /* VitaWidgetBundle.swift */,
+				06E47BAD2A66A36900EEC8AE /* VitaWidgetLiveActivity.swift */,
+				06E47BAF2A66A36900EEC8AE /* VitaWidget.swift */,
+				067CB9092A6D3BAD00D1B0C3 /* VitaMoodConfig.swift */,
+				06E47BB12A66A36900EEC8AE /* VitaWidget.intentdefinition */,
+				06E47BB22A66A36A00EEC8AE /* Assets.xcassets */,
+				06E47BB42A66A36A00EEC8AE /* Info.plist */,
+			);
+			path = VitaWidget;
+			sourceTree = "<group>";
+		};
 		2648466C2A5E572C00396575 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -287,9 +384,9 @@
 			isa = PBXGroup;
 			children = (
 				2648467D2A5E6FA700396575 /* OnboardingViewModel.swift */,
+				26138BA72A69813600FEACBD /* LevelUpViewModel.swift */,
 				CB2B5D982A66A0BA0099D404 /* MainSceneViewModel.swift */,
 				CBD2D8BF2A67C10E00F603C7 /* ChatViewModel.swift */,
-				26138BA72A69813600FEACBD /* LevelUpViewModel.swift */,
 				CBD3E6912A6C324000665980 /* TrackingProgressViewModel.swift */,
 			);
 			path = ViewModels;
@@ -321,6 +418,7 @@
 				2623C22B2A5EE24100F820E8 /* View+ConditionalModifier.swift */,
 				CB0528592A6531A000649F22 /* Date+Extend.swift */,
 				2618F0172A6A32A30008ED82 /* UserDefaults+Codable.swift */,
+				CB84A9CE2A6FCE17003F1251 /* URL+Extend.swift */,
 				2673E0232A5D033F00429610 /* ContentInfo.txt */,
 			);
 			path = Extensions;
@@ -377,12 +475,15 @@
 		26C7A8812A5D0014009F0EAF = {
 			isa = PBXGroup;
 			children = (
+				CB84A9CD2A6FCD75003F1251 /* VitaWidgetExtension.entitlements */,
 				264846682A5E471400396575 /* COMMIT.md */,
 				2673E0132A5D014900429610 /* LICENSE.txt */,
 				2673E0112A5D014400429610 /* README.md */,
 				26C7A88C2A5D0014009F0EAF /* Vitagochi */,
 				26C7A89D2A5D0015009F0EAF /* VitagochiTests */,
 				26C7A8A72A5D0015009F0EAF /* VitagochiUITests */,
+				06E47BAA2A66A36900EEC8AE /* VitaWidget */,
+				06E47BA52A66A36900EEC8AE /* Frameworks */,
 				26C7A88B2A5D0014009F0EAF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -393,6 +494,7 @@
 				26C7A88A2A5D0014009F0EAF /* Vitagochi.app */,
 				26C7A89A2A5D0015009F0EAF /* VitagochiTests.xctest */,
 				26C7A8A42A5D0015009F0EAF /* VitagochiUITests.xctest */,
+				06E47BA42A66A36900EEC8AE /* VitaWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -400,7 +502,6 @@
 		26C7A88C2A5D0014009F0EAF /* Vitagochi */ = {
 			isa = PBXGroup;
 			children = (
-				264FA0632A6EA4EF006758A3 /* Info.plist */,
 				26BC97ED2A5D0FE4003125B5 /* Assets */,
 				2648466C2A5E572C00396575 /* Components */,
 				CB9FE2862A6932630091DE9C /* CoreData */,
@@ -601,6 +702,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		06E47BA32A66A36900EEC8AE /* VitaWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 06E47BBD2A66A36A00EEC8AE /* Build configuration list for PBXNativeTarget "VitaWidgetExtension" */;
+			buildPhases = (
+				06E47BA02A66A36900EEC8AE /* Sources */,
+				06E47BA12A66A36900EEC8AE /* Frameworks */,
+				06E47BA22A66A36900EEC8AE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VitaWidgetExtension;
+			productName = VitaWidgetExtension;
+			productReference = 06E47BA42A66A36900EEC8AE /* VitaWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		26C7A8892A5D0014009F0EAF /* Vitagochi */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 26C7A8AE2A5D0015009F0EAF /* Build configuration list for PBXNativeTarget "Vitagochi" */;
@@ -608,10 +726,12 @@
 				26C7A8862A5D0014009F0EAF /* Sources */,
 				26C7A8872A5D0014009F0EAF /* Frameworks */,
 				26C7A8882A5D0014009F0EAF /* Resources */,
+				06E47BBA2A66A36A00EEC8AE /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				06E47BB82A66A36A00EEC8AE /* PBXTargetDependency */,
 			);
 			name = Vitagochi;
 			packageProductDependencies = (
@@ -667,6 +787,9 @@
 				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					06E47BA32A66A36900EEC8AE = {
+						CreatedOnToolsVersion = 14.3;
+					};
 					26C7A8892A5D0014009F0EAF = {
 						CreatedOnToolsVersion = 14.3.1;
 					};
@@ -699,11 +822,20 @@
 				26C7A8892A5D0014009F0EAF /* Vitagochi */,
 				26C7A8992A5D0015009F0EAF /* VitagochiTests */,
 				26C7A8A32A5D0015009F0EAF /* VitagochiUITests */,
+				06E47BA32A66A36900EEC8AE /* VitaWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		06E47BA22A66A36900EEC8AE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				06E47BB32A66A36A00EEC8AE /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		26C7A8882A5D0014009F0EAF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -747,6 +879,39 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		06E47BA02A66A36900EEC8AE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0679307A2A6F9E4C008F853E /* VitachiMoodPhase.swift in Sources */,
+				067930792A6F9E31008F853E /* Message.swift in Sources */,
+				067930782A6F9E2B008F853E /* VitaSkinModel.swift in Sources */,
+				067930772A6F9DF9008F853E /* AppCoreContainer.xcdatamodeld in Sources */,
+				067930762A6F9DC3008F853E /* Date+Extend.swift in Sources */,
+				067930752A6F9DA0008F853E /* CoreDataEnvirontment.swift in Sources */,
+				067930742A6F9D97008F853E /* CoreDataManager.swift in Sources */,
+				067930732A6F9D8E008F853E /* CoreDataRepository.swift in Sources */,
+				067930722A6F9C49008F853E /* ReminderType.swift in Sources */,
+				067930712A6F9C30008F853E /* UserDefaults+Codable.swift in Sources */,
+				067930702A6F9C1A008F853E /* VitachiTimePhase.swift in Sources */,
+				0679306F2A6F9C10008F853E /* GlobalEnvirontment.swift in Sources */,
+				0679306E2A6F9C0A008F853E /* NotificationHandler.swift in Sources */,
+				0679306D2A6F9B64008F853E /* AppDelegate.swift in Sources */,
+				067CB9042A68E57A00D1B0C3 /* Color+Extend.swift in Sources */,
+				067CB9052A68E57A00D1B0C3 /* Color+Hex.swift in Sources */,
+				067CB9062A68E57A00D1B0C3 /* UIColor+Hex.swift in Sources */,
+				067CB9072A68E57A00D1B0C3 /* UIScreen+Compact.swift in Sources */,
+				067CB9082A68E57A00D1B0C3 /* View+ConditionalModifier.swift in Sources */,
+				06E47BB52A66A36A00EEC8AE /* VitaWidget.intentdefinition in Sources */,
+				CB84A9D12A6FF6C8003F1251 /* LevelUpProgressStyle.swift in Sources */,
+				06E47BB02A66A36900EEC8AE /* VitaWidget.swift in Sources */,
+				06E47BAE2A66A36900EEC8AE /* VitaWidgetLiveActivity.swift in Sources */,
+				067CB90B2A6D3BAD00D1B0C3 /* VitaMoodConfig.swift in Sources */,
+				06E47BAC2A66A36900EEC8AE /* VitaWidgetBundle.swift in Sources */,
+				CB84A9D02A6FD18F003F1251 /* URL+Extend.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		26C7A8862A5D0014009F0EAF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -763,6 +928,7 @@
 				264846742A5E5CF300396575 /* OnboardingSecond.swift in Sources */,
 				2623C22C2A5EE24100F820E8 /* View+ConditionalModifier.swift in Sources */,
 				264846782A5E61C300396575 /* CancelButton.swift in Sources */,
+				06E47BB62A66A36A00EEC8AE /* VitaWidget.intentdefinition in Sources */,
 				CB0528652A656BB500649F22 /* StatusLevelView.swift in Sources */,
 				CB05285C2A6531F600649F22 /* VitachiTimePhase.swift in Sources */,
 				2648467C2A5E643300396575 /* CounterTextFieldStyle.swift in Sources */,
@@ -787,11 +953,13 @@
 				CBB46C192A6B910200E9E0F8 /* VitaSkinModel.swift in Sources */,
 				CB0ACBFD2A6D7D8600D5DF4D /* BackgroundArc.swift in Sources */,
 				CBD2D8C72A682FD900F603C7 /* ChatBubbleView.swift in Sources */,
+				CB84A9CF2A6FCE17003F1251 /* URL+Extend.swift in Sources */,
 				CB0ACC002A6D9F4100D5DF4D /* BadgesView.swift in Sources */,
 				26138BA82A69813600FEACBD /* LevelUpViewModel.swift in Sources */,
 				CB9AA2272A6AC9AB00BF8D76 /* TakePitcureButton.swift in Sources */,
 				2648467E2A5E6FA700396575 /* OnboardingViewModel.swift in Sources */,
 				2648466B2A5E48BB00396575 /* UIScreen+Compact.swift in Sources */,
+				067CB90A2A6D3BAD00D1B0C3 /* VitaMoodConfig.swift in Sources */,
 				CBB46C252A6BEA3800E9E0F8 /* ProgressListView.swift in Sources */,
 				264846802A5E743500396575 /* OnboardingThird.swift in Sources */,
 				26C7A88E2A5D0014009F0EAF /* VitagochiApp.swift in Sources */,
@@ -838,6 +1006,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		06E47BB82A66A36A00EEC8AE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 06E47BA32A66A36900EEC8AE /* VitaWidgetExtension */;
+			targetProxy = 06E47BB72A66A36A00EEC8AE /* PBXContainerItemProxy */;
+		};
 		26C7A89C2A5D0015009F0EAF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 26C7A8892A5D0014009F0EAF /* Vitagochi */;
@@ -851,6 +1024,64 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		06E47BBB2A66A36A00EEC8AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = VitaWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BS6K64RQ23;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = VitaWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = VitaWidget;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.minusone.Vitagochi.VitaWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		06E47BBC2A66A36A00EEC8AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = VitaWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BS6K64RQ23;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = VitaWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = VitaWidget;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.minusone.Vitagochi.VitaWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		26C7A8AC2A5D0015009F0EAF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -968,8 +1199,10 @@
 		26C7A8AF2A5D0015009F0EAF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Vitagochi/Vitagochi.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Vitagochi/Preview Content\"";
@@ -1000,8 +1233,10 @@
 		26C7A8B02A5D0015009F0EAF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Vitagochi/Vitagochi.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Vitagochi/Preview Content\"";
@@ -1108,6 +1343,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		06E47BBD2A66A36A00EEC8AE /* Build configuration list for PBXNativeTarget "VitaWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				06E47BBB2A66A36A00EEC8AE /* Debug */,
+				06E47BBC2A66A36A00EEC8AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		26C7A8852A5D0014009F0EAF /* Build configuration list for PBXProject "Vitagochi" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
