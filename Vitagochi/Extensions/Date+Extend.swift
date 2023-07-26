@@ -18,7 +18,23 @@ extension Date {
         
         if let inputDate = calendar.date(byAdding: inputDateComponent, to: calendar.date(from: currentDateComponents)!) {
 //            print("Date \(inputDate) and \(self)")
-            return self > inputDate
+            return self >= inputDate
+        }
+        
+        return false
+    }
+    
+    func isWidgetPhaseGreaterThan(_ value: VitaWidgetTimePhase) -> Bool {
+        let calendar = Calendar.current
+        let currentDateComponents = calendar.dateComponents([.year, .month, .day], from: self)
+        
+        var inputDateComponent = DateComponents()
+        inputDateComponent.hour = value.time.hour
+        inputDateComponent.minute = value.time.minute
+        
+        if let inputDate = calendar.date(byAdding: inputDateComponent, to: calendar.date(from: currentDateComponents)!) {
+//            print("Date \(inputDate) and \(self)")
+            return self >= inputDate
         }
         
         return false
@@ -68,9 +84,47 @@ extension Date {
         
         if let inputDate = calendar.date(byAdding: inputDateComponent, to: calendar.date(from: currentDateComponents)!) {
 //            print("Date \(inputDate) and \(self)")
-            return self > inputDate
+            return self >= inputDate
         }
         
         return false
+    }
+    
+    func isWidgetPhaseAfterOneHour(_ value: VitaWidgetTimePhase) -> Bool {
+        let calendar = Calendar.current
+        let currentDateComponents = calendar.dateComponents([.year, .month, .day], from: self)
+        
+        var inputDateComponent = DateComponents()
+        inputDateComponent.hour = value.time.hour + 1
+        inputDateComponent.minute = value.time.minute
+        
+        if let inputDate = calendar.date(byAdding: inputDateComponent, to: calendar.date(from: currentDateComponents)!) {
+//            print("Date \(inputDate) and \(self)")
+            return self >= inputDate
+        }
+        
+        return false
+    }
+    
+    func makeDateFromTimePhasePlusHour(_ value: VitaWidgetTimePhase) -> Date {
+        let calendar = Calendar.current
+        let currentDateComponents = calendar.dateComponents([.year, .month, .day], from: self)
+        
+        var inputDateComponent = DateComponents()
+        inputDateComponent.hour = value.time.hour + 1
+        inputDateComponent.minute = value.time.minute
+        
+        return calendar.date(byAdding: inputDateComponent, to: calendar.date(from: currentDateComponents)!)!
+    }
+    
+    func makeDateFromTimePhase(_ value: VitaWidgetTimePhase) -> Date {
+        let calendar = Calendar.current
+        let currentDateComponents = calendar.dateComponents([.year, .month, .day], from: self)
+        
+        var inputDateComponent = DateComponents()
+        inputDateComponent.hour = value.time.hour
+        inputDateComponent.minute = value.time.minute
+        
+        return calendar.date(byAdding: inputDateComponent, to: calendar.date(from: currentDateComponents)!)!
     }
 }

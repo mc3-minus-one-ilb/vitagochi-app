@@ -11,14 +11,14 @@ import Intents
 
 struct Provider: TimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
-        let mealCount = (try? getData()?.count) ?? 0
-        return SimpleEntry(date: Date(), mealCount: mealCount)
+        let mealCount = (try? getData()) ?? nil
+        return SimpleEntry(date: Date(), challange: mealCount, timePhase: .morning)
     }
 
     func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
         do {
             let meals = try getData()
-            let entry = SimpleEntry(date: Date(), mealCount: meals?.count ?? 0)
+            let entry = SimpleEntry(date: Date(), challange: meals, timePhase: .morning)
             completion(entry)
         } catch {
             print(error)
@@ -36,25 +36,40 @@ struct Provider: TimelineProvider {
 //            entries.append(entry)
 //        }
         do {
-            let items = try getData()
-            let entry = SimpleEntry(date: Date(), mealCount: items?.count ?? 0)
+            var entries: [SimpleEntry] = []
+            let challange = try getData()
+//            let entry = SimpleEntry(date: Date(), mealCount: items?.count ?? 0)
+            let endDate = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
             
-            let timeline = Timeline(entries: [entry], policy: .atEnd)
+            for timePhase in VitaWidgetTimePhase.allCases {
+                let entryDate = Date().makeDateFromTimePhase(timePhase)
+                let entry = SimpleEntry(date: entryDate, challange: challange ?? nil, timePhase: timePhase)
+                entries.append(entry)
+                if timePhase == .morning || timePhase == .afternoon || timePhase == .evening {
+                    let entryDate = Date().makeDateFromTimePhasePlusHour(timePhase)
+                    let entry = SimpleEntry(date: entryDate, challange: challange ?? nil, timePhase: timePhase, isPassOneHour: true)
+                    entries.append(entry)
+                }
+            }
+            
+            let timeline = Timeline(entries: entries, policy: .after(endDate))
             completion(timeline)
         } catch {
             print(error)
         }
     }
     
-    private func getData() throws -> [MealRecordEntity]? {
+    private func getData() throws -> ChallangeEntity? {
         let coreData = CoreDataEnvirontment()
-        return coreData.todayChallange?.records?.allObjects as? [MealRecordEntity]
+        return coreData.todayChallange
     }
 }
 
 struct SimpleEntry: TimelineEntry {
     let date: Date
-    let mealCount: Int
+    let challange: ChallangeEntity?
+    let timePhase: VitaWidgetTimePhase
+    var isPassOneHour: Bool = false
 }
 
 struct VitaWidgetEntryView : View {
@@ -99,41 +114,101 @@ struct VitaWidget: Widget {
 struct SmallWidgetView: View {
     
     var entry: Provider.Entry
+    var mealCount: Int
+    var isComplete: Bool = false
+    var smallMessage: String = ""
+    var mood: VitaWidgetMood = .idle
+    
+    init(entry: Provider.Entry) {
+        self.entry = entry
+        self.mealCount = entry.challange?.records?.count ?? 0
+            if let records = entry.challange?.records?.allObjects as? [MealRecordEntity] {
+                for record in records {
+                    if record.timeStatus == entry.timePhase.rawValue {
+                        self.isComplete = true
+                        break
+                    }
+                }
+            }
+        if isComplete {
+            self.smallMessage = "Excelent"
+            self.mood = .happy
+        } else {
+            if entry.isPassOneHour {
+                self.smallMessage = "Don't Forget!"
+                self.mood = .angry
+            } else {
+                self.smallMessage = entry.timePhase.titleIdleText
+            }
+        }
+        if entry.timePhase == .afterDay {
+            if mealCount == 3 {
+                self.smallMessage = "Excelent Work!"
+                self.mood = .happy
+            } else if mealCount == 2 {
+                self.smallMessage = "Good Job!"
+                self.mood = .idle
+            } else if mealCount == 1 {
+                self.smallMessage = "Good Progress!"
+                self.mood = .idle
+            } else {
+                self.smallMessage = "Didn't Progress!"
+                self.mood = .angry
+            }
+        }
+    }
     
     var body: some View {
         VStack {
-            
             VStack{
-                Text(entry.date, style: .time)
-                    .font(.system(size: 20, weight: .semibold))
-                    .foregroundColor(Color.toHex(hexCode: "184F43"))
-                ZStack {
-                    Rectangle()
-                        .fill(Color.white)
-                        .frame(width: 78, height: 6)
-                        .cornerRadius(12)
-                    HStack {
-                        Rectangle()
-                            .fill(LinearGradient(
-                                gradient: Gradient(colors: [(Color.toHex(hexCode: "F9C2CE")),(Color.toHex(hexCode: "ED476B"))]),
-                                startPoint: .leading,
-                                endPoint: .trailing))
-                            .frame(width: 0, height: 6)
-                            .cornerRadius(12)
-                        Spacer()
-                    }.frame(width: 78, height: 6)
-                }
-                Text(("Meals 🍽️") + ("   ") + ("0/3"))
-                    .font(.system(size: 11, weight: .medium))
-                    .foregroundColor(Color.toHex(hexCode: "184F43"))
-                    .frame(width: 78, height: 6)
+                Text(smallMessage)
+                    .font(.system(size: 15, weight: .semibold))
+                    .fontDesign(.rounded)
+                    .kerning(-0.4)
+                    .foregroundColor(.widgetFontColor)
+                ProgressView(value: CGFloat(mealCount), total: 3, label:  {
+                    Text("Meals\(entry.timePhase.mealTimeIcon)")
+                        .font(.system(size: 11, weight: .medium))
+                        .fontDesign(.rounded)
+                        .kerning(-0.4)
+                        .foregroundColor(.widgetDarkerFontColor)
+                }, currentValueLabel:  {
+                    Text("\(mealCount)/3")
+                        .font(.system(size: 11, weight: .medium))
+                        .fontDesign(.rounded)
+                        .foregroundColor(.widgetDarkerFontColor)
+                        
+                }).progressViewStyle(WidgetSmallMealProgressStyle(height: 8))
+                    .padding(.horizontal)
                 
-                Spacer()
+                
+//                ZStack {
+//                    Rectangle()
+//                        .fill(Color.white)
+//                        .frame(width: 78, height: 6)
+//                        .cornerRadius(12)
+//                    HStack {
+//                        Rectangle()
+//                            .fill(LinearGradient(
+//                                gradient: Gradient(colors: [(Color.toHex(hexCode: "F9C2CE")),(Color.toHex(hexCode: "ED476B"))]),
+//                                startPoint: .leading,
+//                                endPoint: .trailing))
+//                            .frame(width: 0, height: 6)
+//                            .cornerRadius(12)
+//                        Spacer()
+//                    }.frame(width: 78, height: 6)
+//                }
+//                Text(("Meals 🍽️") + ("   ") + ("\(entry.mealCount)/3"))
+//                    .font(.system(size: 11, weight: .medium))
+//                    .foregroundColor(Color.toHex(hexCode: "184F43"))
+//                    .frame(width: 78, height: 6)
+                
+                
             }.padding()
             Spacer()
        //            Image("VitaAngryWidget")
         }
-        .background(Image("SWDefault").ignoresSafeArea())
+        .background(Image(mood.image).ignoresSafeArea())
 
     }
 }
@@ -141,66 +216,138 @@ struct SmallWidgetView: View {
 struct MediumWidgetView: View {
     
     var entry: Provider.Entry
+    var mealCount: Int = 0
+    var isComplete: Bool = false
+    var mediumMessage: String = "Let’s eat together when the times comes! ✊🏻"
+    var mediumTitle: String = "It’s a New Day"
+    var mood: VitaWidgetMood = .idle
+    
+    init(entry: Provider.Entry) {
+        self.entry = entry
+        self.mealCount = entry.challange?.records?.count ?? 0
+            if let records = entry.challange?.records?.allObjects as? [MealRecordEntity] {
+                for record in records {
+                    if record.timeStatus == entry.timePhase.rawValue {
+                        self.isComplete = true
+                        break
+                    }
+                }
+            }
+        if isComplete {
+            self.mediumTitle = "Way to Go, Buddy!"
+            self.mood = .happy
+        } else {
+            if entry.isPassOneHour {
+                self.mediumTitle = "Did You Forget?"
+                self.mood = .angry
+                
+            } else {
+                self.mediumTitle = entry.timePhase.titleIdleText
+            }
+        }
+        self.mediumMessage = mood.mediumMessage(phase: entry.timePhase)
+        if entry.timePhase == .afterDay {
+            if mealCount == 3 {
+                self.mediumTitle = "Excelent Work!"
+                self.mediumMessage = "Good work for today"
+                self.mood = .happy
+            } else if mealCount == 2 {
+                self.mediumTitle = "Good Job!"
+                self.mediumMessage = "Good work for today"
+                self.mood = .idle
+            } else if mealCount == 1 {
+                self.mediumTitle = "Good Progress!"
+                self.mediumMessage = "Good work for today"
+                self.mood = .idle
+            } else {
+                self.mediumTitle = "Didn't Progress!"
+                self.mediumMessage = "Good work for today"
+                self.mood = .angry
+            }
+        }
+        
+    }
     
     var body: some View {
         HStack {
-            VStack{
-                HStack(spacing: 4) {
-                    Text("It's")
-                    Text(entry.date, style: .time)
-                    Spacer()
-                }.frame(width: 142, height: 26)
-                    .font(.system(size: 20, weight: .semibold, design: .rounded))
-                    .foregroundColor(Color.toHex(hexCode: "184F43"))
-                Text("Let’s eat together when the times comes! ✊🏻")
-                    .font(.caption2)
-                    .font(.system(size: 11, design: .rounded))
-                    .foregroundColor(Color.toHex(hexCode: "184F43"))
-                    .multilineTextAlignment(.leading)
-                    .lineLimit(2)
-                    .frame(width: 142, height: 26)
-//                    .multilineTextAlignment(.leading)
-                    
-                
-                HStack {
-                    HStack{
-                        Text("Meals 🍽️")
+            VStack(alignment: .leading){
+                Group {
+                    Text(mediumTitle)
+                        .font(.system(size: 15, weight: .semibold))
+                        .fontDesign(.rounded)
+                        .kerning(-0.4)
+                        .foregroundColor(.widgetFontColor)
+                    HStack {
+                        Text(mediumMessage)
+                            .font(.system(size: 10))
+                            .fontDesign(.rounded)
+                            .fontWeight(.regular)
+                            .foregroundColor(.widgetFontColor)
+                            .multilineTextAlignment(.leading)
+                            .lineLimit(2)
                         Spacer()
-                        Text("2/3")
-                    }.font(.system(size: 11, weight: .medium))
-                    .foregroundColor(Color.toHex(hexCode: "0E2F28"))
-                    .frame(width: 103, height: 6)
-                   Spacer()
-                }
-                HStack {
-                    ZStack {
-                        Rectangle()
-                            .fill(Color.white)
-                            .frame(width: 103, height: 6)
-                            .cornerRadius(12)
-                        HStack {
-                            Rectangle()
-                                .fill(LinearGradient(
-                                    gradient: Gradient(colors: [(Color.toHex(hexCode: "F9C2CE")),(Color.toHex(hexCode: "ED476B"))]),
-                                    startPoint: .leading,
-                                    endPoint: .trailing))
-                                .frame(width: 66, height: 6)
-                                .cornerRadius(12)
-                            Spacer()
-                        }.frame(width: 103, height: 6)
                     }
-                    Spacer()
+                    .offset(y: -10)
+                    .frame(width: 150, height: 26)
                 }
+                .offset(y: 5)
+               
+//                    .multilineTextAlignment(.leading)
+                ProgressView(value: CGFloat(mealCount), total: 3, label:  {
+                    Text("Meals\(entry.timePhase.mealTimeIcon)")
+                        .font(.system(size: 11, weight: .medium))
+                        .fontDesign(.rounded)
+                        .kerning(-0.4)
+                        .foregroundColor(.widgetDarkerFontColor)
+                }, currentValueLabel:  {
+                    Text("\(mealCount)/3")
+                        .font(.system(size: 11, weight: .medium))
+                        .fontDesign(.rounded)
+                        .foregroundColor(.widgetDarkerFontColor)
+                        
+                }).progressViewStyle(WidgetMediumMealProgressStyle(height: 6))
+                    .padding(.trailing)
+                
+//                HStack {
+//                    HStack{
+//                        Text("Meals 🍽️")
+//                        Spacer()
+//                        Text("2/3")
+//                    }.font(.system(size: 11, weight: .medium))
+//                    .foregroundColor(Color.toHex(hexCode: "0E2F28"))
+//                    .frame(width: 103, height: 6)
+//                   Spacer()
+//                }
+//                HStack {
+//                    ZStack {
+//                        Rectangle()
+//                            .fill(Color.white)
+//                            .frame(width: 103, height: 6)
+//                            .cornerRadius(12)
+//                        HStack {
+//                            Rectangle()
+//                                .fill(LinearGradient(
+//                                    gradient: Gradient(colors: [(Color.toHex(hexCode: "F9C2CE")),(Color.toHex(hexCode: "ED476B"))]),
+//                                    startPoint: .leading,
+//                                    endPoint: .trailing))
+//                                .frame(width: 66, height: 6)
+//                                .cornerRadius(12)
+//                            Spacer()
+//                        }.frame(width: 103, height: 6)
+//                    }
+//                    Spacer()
+//                }
                 
             }.frame(width: 142, height: 93)
             .padding()
+            .padding(.leading, 12)
             
 
             Image("VitaAngryWidget")
                 .resizable()
                 .hidden()
         }
-        .background(Image("MWDefault").ignoresSafeArea())
+        .background(Image(mood.imageMedium).ignoresSafeArea())
 
     }
 }
@@ -208,9 +355,9 @@ struct MediumWidgetView: View {
 struct VitaWidget_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            VitaWidgetEntryView(entry: SimpleEntry(date: Date(), mealCount: 0))
+            VitaWidgetEntryView(entry: SimpleEntry(date: Date(), challange: nil, timePhase: .morning))
                 .previewContext(WidgetPreviewContext(family: .systemSmall))
-            VitaWidgetEntryView(entry: SimpleEntry(date: Date(), mealCount: 0))
+            VitaWidgetEntryView(entry: SimpleEntry(date: Date(), challange: nil, timePhase: .morning))
                 .previewContext(WidgetPreviewContext(family: .systemMedium))
         }
     }

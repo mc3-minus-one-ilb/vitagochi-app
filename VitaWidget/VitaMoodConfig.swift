@@ -7,7 +7,58 @@
 
 import SwiftUI
 
-enum VitaMood {
+enum VitaWidgetTimePhase: Int16, CaseIterable {
+    case morning = 0
+    case afternoon = 1
+    case evening = 2
+    case beforeDayStart = 3
+    case afterDay = 4
+    
+    var time: HourAndMinute {
+        switch self {
+        case.beforeDayStart:
+            return HourAndMinute(hour: 0, minute: 0)
+        case.morning:
+            return HourAndMinute(hour: 2, minute: 32)
+        case.afternoon:
+            return HourAndMinute(hour: 3, minute: 52)
+        case.evening:
+            return HourAndMinute(hour: 4, minute: 55)
+        case.afterDay:
+            return HourAndMinute(hour: 8, minute: 46)
+        }
+    }
+    
+    var mealTimeIcon: String {
+        switch self {
+        case .beforeDayStart, .afterDay:
+            return "🍽️"
+        case.morning:
+            return "☀️🍽️"
+        case.afternoon:
+            return "🌤️🍽️"
+        case.evening:
+            return "🌙🍽️"
+        }
+    }
+    
+    var titleIdleText: String {
+        switch self {
+        case.beforeDayStart:
+            return "It's a New Day!"
+        case.morning:
+            return "Breakfast Time!"
+        case.afternoon:
+            return "Lunch Time!"
+        case.evening:
+            return "Dinner Time!"
+        case.afterDay:
+            return ""
+        }
+    }
+}
+
+enum VitaWidgetMood {
     case idle
     case angry
     case happy
@@ -36,49 +87,90 @@ enum VitaMood {
         }
     }
     
-}
-struct VitaMoodConfig {
-    public static var singleton = VitaMoodConfig()
-    var coreData: CoreDataEnvirontment =  CoreDataEnvirontment.singleton
-    var mood: VitaMood = .angry
-    var phase: VitachiTimePhase = .beforeDayStart
-    var challange: ChallangeEntity?
-    var mealCompletion: Int = 0
-    
-    
-    init() {
-        self.challange = CoreDataEnvirontment.singleton.todayChallange
-        
-        let now = Date()
-        
-        if now.isPhaseGreaterThan(.afterDay){
-            self.phase = .afterDay
-        } else if now.isPhaseGreaterThan(.evening) {
-            self.phase = .evening
-        } else if now.isPhaseGreaterThan(.afternoon) {
-            self.phase = .afternoon
-        } else if now.isPhaseGreaterThan(.morning) {
-            self.phase = .morning
-        } else if now.isPhaseGreaterThan(.beforeDayStart) {
-            self.phase = .beforeDayStart
-        }
-        
-        
-        self.mealCompletion = challange?.records?.count ?? 0
-        
-        if let records = challange?.records?.allObjects as? [MealRecordEntity] {
-            let isComplete = records.contains{$0.timeStatus == phase.rawValue}
-            if Date().isPhaseAfterOneHour(phase) && !isComplete {
-                self.mood = .angry
-            } else if isComplete {
-                self.mood = .happy
-            } else {
-                self.mood = .idle
+    func mediumMessage(phase: VitaWidgetTimePhase) -> String {
+        switch self {
+        case.idle:
+            switch phase {
+            case.beforeDayStart:
+                return "Let’s eat together when the times comes!✊🏻"
+            case.morning:
+                return "Rise and shine! Time for you to have breakfast☀️"
+            case.afternoon:
+                return "It’s noontime feast! Let’s have lunch!🌤️"
+            case.evening:
+                return "Finally! End this day with healthy dinner!🌙✨"
+            case.afterDay:
+                return ""
+            }
+        case.angry:
+            switch phase {
+            case.beforeDayStart, .afterDay:
+                return ""
+            case.morning:
+                return "Knock knock! Please eat, so you can be energize!"
+            case.afternoon:
+                return "Let’s have lunch first, then you can continue your day!"
+            case.evening:
+                return "Don’t you feel hungry after this long day?"
+            }
+        case.happy:
+            switch phase {
+            case.beforeDayStart, .afterDay:
+                return ""
+            case.morning:
+                return "Yeay! You are ready to ride this day!🥰"
+            case.afternoon:
+                return "Yumm! That’s such a healthy and fulfilling meals🥰"
+            case.evening:
+                return "I’m so full! Looking forward for tomorrow meals🥰"
             }
         }
-        
     }
+    
 }
+
+//struct VitaMoodConfig {
+//    public static var singleton = VitaMoodConfig()
+//    var coreData: CoreDataEnvirontment =  CoreDataEnvirontment.singleton
+//    var mood: VitaMood = .angry
+//    var phase: VitachiWidgetTimePhase = .beforeDayStart
+//    var challange: ChallangeEntity?
+//    var mealCompletion: Int = 0
+//
+//
+//    init() {
+//        self.challange = CoreDataEnvirontment.singleton.todayChallange
+//
+//        let now = Date()
+//
+//        if now.isWidgetPhaseGreaterThan(.afterDay){
+//            self.phase = .afterDay
+//        } else if now.isWidgetPhaseGreaterThan(.evening) {
+//            self.phase = .evening
+//        } else if now.isWidgetPhaseGreaterThan(.afternoon) {
+//            self.phase = .afternoon
+//        } else if now.isWidgetPhaseGreaterThan(.morning) {
+//            self.phase = .morning
+//        } else if now.isWidgetPhaseGreaterThan(.beforeDayStart) {
+//            self.phase = .beforeDayStart
+//        }
+//
+//
+//        self.mealCompletion = challange?.records?.count ?? 0
+//
+//        if let records = challange?.records?.allObjects as? [MealRecordEntity] {
+//            let isComplete = records.contains{$0.timeStatus == phase.rawValue}
+//            if Date().isWidgetPhaseAfterOneHour(phase) && !isComplete {
+//                self.mood = .angry
+//            } else if isComplete {
+//                self.mood = .happy
+//            } else {
+//                self.mood = .idle
+//            }
+//        }
+//
+//    }
+//}
 
 
 

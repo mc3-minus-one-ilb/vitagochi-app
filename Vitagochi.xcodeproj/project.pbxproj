@@ -96,6 +96,7 @@
 		CB2B5DA72A66BAFC0099D404 /* morningDefault1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB2B5DA62A66BAFC0099D404 /* morningDefault1.wav */; };
 		CB84A9CF2A6FCE17003F1251 /* URL+Extend.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB84A9CE2A6FCE17003F1251 /* URL+Extend.swift */; };
 		CB84A9D02A6FD18F003F1251 /* URL+Extend.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB84A9CE2A6FCE17003F1251 /* URL+Extend.swift */; };
+		CB84A9D12A6FF6C8003F1251 /* LevelUpProgressStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2651459B2A697AF900042519 /* LevelUpProgressStyle.swift */; };
 		CB9AA2142A69F1B500BF8D76 /* eveningDefault1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB9AA20A2A69F1B500BF8D76 /* eveningDefault1.wav */; };
 		CB9AA2152A69F1B500BF8D76 /* afternoonHappy1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB9AA20B2A69F1B500BF8D76 /* afternoonHappy1.wav */; };
 		CB9AA2162A69F1B500BF8D76 /* happy1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB9AA20C2A69F1B500BF8D76 /* happy1.wav */; };
@@ -902,6 +903,7 @@
 				067CB9072A68E57A00D1B0C3 /* UIScreen+Compact.swift in Sources */,
 				067CB9082A68E57A00D1B0C3 /* View+ConditionalModifier.swift in Sources */,
 				06E47BB52A66A36A00EEC8AE /* VitaWidget.intentdefinition in Sources */,
+				CB84A9D12A6FF6C8003F1251 /* LevelUpProgressStyle.swift in Sources */,
 				06E47BB02A66A36900EEC8AE /* VitaWidget.swift in Sources */,
 				06E47BAE2A66A36900EEC8AE /* VitaWidgetLiveActivity.swift in Sources */,
 				067CB90B2A6D3BAD00D1B0C3 /* VitaMoodConfig.swift in Sources */,
