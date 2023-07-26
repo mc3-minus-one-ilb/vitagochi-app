@@ -101,6 +101,14 @@ class CoreDataEnvirontment: ObservableObject {
         }
     }
     
+    func checkYesterdayHasNoRecord() -> Bool {
+        let today = Date()
+        let countRecordYesterday = challanges.filter { today.isDateYesterday($0.date) }.first?.records?.count ?? 0
+        if countRecordYesterday == 0 {
+            return true
+        }
+        return false
+    }
     func levelProgress() -> Double {
         let countChallange = challanges.filter{ ($0.records?.allObjects.count)! > 0 }.count
         if countChallange == 0 {return 0}

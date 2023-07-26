@@ -159,7 +159,7 @@ enum VitachiTimePhase: Int16 {
             return "moon.stars.fill"
         }
     }
-    
+//
     var completedIndex: Int {
         switch self {
         case.beforeDayStart:
@@ -180,16 +180,16 @@ let VitaDefaultMessage: [VitaMessage] = [
     VitaMessage(text: "Don’t forget to eat veggies and fruits or you will constipate!", soundFile: "beforeDayDefault1"),
     VitaMessage(text: "When it is time to eat, press the camera icon to take a picture of the meal. 📸", soundFile: "beforeDayDefault2"),
     VitaMessage(text: "Rise and shine! It's time for you to fill that empty belly. Be sure to take a picture of your meal before eating it. 📸", soundFile: "morningDefault1"),
-    VitaMessage(text: "Vita hopes that you will be able to take pictures of healthy meals. 😋", soundFile: ""),
+    VitaMessage(text: "Vita hopes that you will be able to take pictures of healthy meals. 😋", soundFile: "default1"),
     VitaMessage(text: "What are you waiting for? Go eat now, make sure to have greens and fruits in it.", soundFile: "afternoonDefault1"),
-    VitaMessage(text: "Vita hopes that you will be able to take pictures of healthy meals! 😋", soundFile: ""),
+    VitaMessage(text: "Vita hopes that you will be able to take pictures of healthy meals! 😋", soundFile: "default1"),
     VitaMessage(text: "Enjoy a full, delicious, and healthy meal before the day is over!", soundFile: "eveningDefault1"),
-    VitaMessage(text: "Vita hopes that you will be able to take pictures of healthy meals! 😋", soundFile: ""),
+    VitaMessage(text: "Vita hopes that you will be able to take pictures of healthy meals! 😋", soundFile: "default1"),
     VitaMessage(text: "Wow, the day went by so fast! I can't wait for the day when we can enjoy another meal together!", soundFile: "afterDayDefault1")
 ]
 
 let VitaAngryMessage: [VitaMessage] = [
-    VitaMessage(text:  "I told you the day starts with breakfast. Otherwise you will be tired during the day. 🤕", soundFile: ""),
+    VitaMessage(text:  "I told you the day starts with breakfast. Otherwise you will be tired during the day. 🤕", soundFile: "morningAngry1"),
     VitaMessage(text:  "To make sure you are eating a healthy diet, please take a picture.", soundFile: "angry1"),
     VitaMessage(text:  "No matter how busy you are. it is not a good idea to skip lunch!", soundFile: "afternoonAngry1"),
     VitaMessage(text:  "To make sure you are eating a healthy diet, please take a picture.", soundFile: "angry1"),

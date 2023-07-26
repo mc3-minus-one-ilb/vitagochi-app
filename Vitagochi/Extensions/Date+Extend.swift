@@ -24,6 +24,15 @@ extension Date {
         return false
     }
     
+    func isDateYesterday(_ date: Date?) -> Bool {
+        let calendar = Calendar.current
+        let yesterday = calendar.date(byAdding: .day, value: -1, to: self)!
+        if let date = date {
+            return calendar.isDate(date, inSameDayAs: yesterday)
+        }
+        return false
+    }
+    
     func isItTodayOrPast(date: Date) -> Bool {
         let calendar = Calendar.current
         let today = calendar.startOfDay(for: self)

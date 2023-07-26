@@ -35,6 +35,7 @@ struct Badge: View {
         .padding(.top, 20)
     }
 }
+
 struct BadgesView: View {
     var items = [BadgeModel(title: "Energize Lunch",
                             subTitle: "Eat Healthy Lunch\nfor 22 times"),
@@ -64,6 +65,7 @@ struct BadgesView: View {
                         Badge(badgeModel: item)
                     }
                 }
+                .padding(.bottom, 90)
             }
         }
         .padding()
