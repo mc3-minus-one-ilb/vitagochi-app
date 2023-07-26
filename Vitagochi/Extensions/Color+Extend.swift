@@ -38,4 +38,6 @@ extension Color {
     public static let chatTopPinkColor: Color = Color(0xED476B)
     public static let vitaProfileBackgroundColor: Color = Color(0xFBDAE1)
     public static let backgroundBadge: Color = Color(0xC3FAEE)
+    public static let widgetFontColor: Color = Color(0x184F43)
+    public static let widgetDarkerFontColor: Color = Color(0x0E2F28)
 }

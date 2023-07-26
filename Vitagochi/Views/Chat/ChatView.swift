@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import WidgetKit
 
 struct ChatView: View {
     @EnvironmentObject private var envObj: GlobalEnvirontment
@@ -104,7 +105,25 @@ struct ChatView: View {
                 if newValue {
                     guard let photoName = chatModel.savePhoto() else {return}
                     CoreDataEnvirontment.singleton.addMealRecordToTodayCallange(name:envObj.username,mealStatus: chatModel.vitaAnswer, timeStatus: timePhase, photoName: photoName)
-                envObj.mainPath[1].toggle()
+                    
+                    let notificationHandler = NotificationHandler.singleton
+                    switch timePhase {
+                    case .morning:
+                        notificationHandler.removeNotificationById(identifier: ReminderType.BREAKFAST_NOT_YET.getString())
+                    case .afternoon:
+                        notificationHandler.removeNotificationById(identifier: ReminderType.LUNCH_NOT_YET.getString())
+                    case .evening:
+                        notificationHandler.removeNotificationById(identifier: ReminderType.DINNER_NOT_YET.getString())
+                    case .beforeDayStart: break
+                        
+                    case .afterDay: break
+                        
+                    }
+                    
+                    print(notificationHandler.showScheduledNotifications())
+                    
+                    envObj.mainPath[1].toggle()
+                    WidgetCenter.shared.reloadAllTimelines()
                 }
             }
             

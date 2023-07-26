@@ -38,10 +38,7 @@ struct OnboardingSecond: View {
                 Spacer()
                 
                 PrimaryButton(action: {
-                    if onboardingViewModel.nickname.isEmpty || onboardingViewModel.isNicknameEmpty {
-                        onboardingViewModel.isNicknameEmpty = true
-                        return
-                    }
+                    onboardingViewModel.saveUsername()
                     onboardingViewModel.navigate(route: .OnboardingThird)
                 }, input: "Right, just call me that!")
                 

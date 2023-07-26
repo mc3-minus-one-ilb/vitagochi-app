@@ -49,6 +49,14 @@ class GlobalEnvirontment: ObservableObject {
         isOnboardingFinished = true
     }
     
+    public func setUsername(username: String) {
+        UserDefaults.standard.set(username, forKey: "username")
+        
+        DispatchQueue.main.async {
+            self.username = username
+        }
+    }
+    
     private func getUsernameState() {
         guard let state = try UserDefaults.standard.value(forKey: "username") else {
             UserDefaults.standard.set("", forKey: "username")
@@ -58,6 +66,7 @@ class GlobalEnvirontment: ObservableObject {
         
         username = state as! String
     }
+    
     
     public func setWillingToNotifyState(state: Bool) {
         UserDefaults.standard.set(state, forKey: "willingToNotify")
@@ -78,7 +87,6 @@ class GlobalEnvirontment: ObservableObject {
         UserDefaults.standard.storeCodable(breakfastTime, key: "breakfastReminder")
         UserDefaults.standard.storeCodable(lunchTime, key: "lunchReminder")
         UserDefaults.standard.storeCodable(dinnerTime, key: "dinnerReminder")
-        
         
         DispatchQueue.main.async {
             self.breakfastReminder = breakfastTime

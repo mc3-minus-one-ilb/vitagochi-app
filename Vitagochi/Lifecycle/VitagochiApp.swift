@@ -7,6 +7,7 @@
 
 import SwiftUI
 import NavigationTransitions
+import WidgetKit
 
 @main
 struct VitagochiApp: App {
@@ -14,7 +15,7 @@ struct VitagochiApp: App {
     @StateObject var envObj: GlobalEnvirontment = GlobalEnvirontment.singleton
     @StateObject var coreDataEnv: CoreDataEnvirontment = CoreDataEnvirontment.singleton
     @StateObject var onboardingViewModel: OnboardingViewModel = OnboardingViewModel.singleton
-    
+    @State private var isSplashFinished: Bool = false
    
     var body: some Scene {
         WindowGroup {
@@ -36,15 +37,31 @@ struct VitagochiApp: App {
                                 OnboardingFourth()
                                     .environmentObject(onboardingViewModel)
                                     .navigationBarBackButtonHidden()
+                                    .onDisappear {
+                                        isSplashFinished = true
+                                    }
                             }
                         })
                 }
                 .navigationTransition(.slide(axis: .horizontal), interactivity: .disabled)
             } else {
-                
+                if self.isSplashFinished {
                     RootView()
                         .environmentObject(coreDataEnv)
                         .environmentObject(envObj)
+                        .onAppear{
+                            WidgetCenter.shared.reloadTimelines(ofKind: "VitaWidget")
+                        }
+                } else {
+                    SplashScreen()
+                        .onAppear {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                                withAnimation {
+                                    self.isSplashFinished = true
+                                }
+                            }
+                        }
+                }
             }
         }
     }
