@@ -19,6 +19,7 @@ class GlobalEnvirontment: ObservableObject {
     @Published var username: String = ""
     @Published var isOnboardingFinished: Bool = false
     @Published var willingToNotify: Bool = false
+    @Published var isFisrtTime: Bool = false
     
     @Published var breakfastReminder: HourAndMinute = HourAndMinute(hour: 7, minute: 0)
     @Published var lunchReminder: HourAndMinute = HourAndMinute(hour: 12, minute: 0)
@@ -47,6 +48,7 @@ class GlobalEnvirontment: ObservableObject {
     public func finishOnboarding() {
         UserDefaults.standard.set(true, forKey: "isOnboardingFinished")
         isOnboardingFinished = true
+        isFisrtTime = true
     }
     
     public func setUsername(username: String) {

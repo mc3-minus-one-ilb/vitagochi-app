@@ -16,7 +16,7 @@ struct OnboardingThirdRevision: View {
                 Text("Set your meals schedule!")
                     .font(.title)
                     .fontWeight(.bold)
-                Text("Vita will remind Haris to eat greens and fruit on ...")
+                Text("Vita will remind \(onboardingViewModel.nickname.capitalized) to eat greens and fruit on ...")
                     .font(.title3)
             }
             .padding(.top, 8.0)

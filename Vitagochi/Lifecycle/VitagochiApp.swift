@@ -47,6 +47,7 @@ struct VitagochiApp: App {
             } else {
                 if self.isSplashFinished {
                     RootView()
+                        .defaultAppStorage(UserDefaults(suiteName: "group.com.minusone.Vitagochi")!)
                         .environmentObject(coreDataEnv)
                         .environmentObject(envObj)
                         .onAppear{

@@ -108,7 +108,7 @@ struct DetailTrackingView: View {
                     .padding(.top, geo.size.height * 0.70)
             }
         }
-        .padding(.top, 50)
+        .padding(.top, 24)
     }
     
     func isRecordExist(timeStatus: Int) -> (valid:Bool,index:Int) {

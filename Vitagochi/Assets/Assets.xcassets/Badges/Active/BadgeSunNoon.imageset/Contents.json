@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "BGFull.png",
+      "filename" : "Sun & Noon Feast.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "BGFull-2.png",
+      "filename" : "Sun & Noon Feast 2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "BGFull-3.png",
+      "filename" : "Sun & Noon Feast 3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

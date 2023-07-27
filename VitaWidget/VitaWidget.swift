@@ -63,6 +63,17 @@ struct Provider: TimelineProvider {
         let coreData = CoreDataEnvirontment()
         return coreData.todayChallange
     }
+    
+//    private func getTimeFromUserDefault(phase: VitaWidgetTimePhase) -> HourAndMinute {
+//        let globalEnv = GlobalEnvirontment.singleton
+//        if phase == .morning {
+//            return globalEnv.breakfastReminder
+//        } else if phase == .afternoon {
+//            return globalEnv.lunchReminder
+//        } else {
+//            return globalEnv.dinnerReminder
+//        }
+//    }
 }
 
 struct SimpleEntry: TimelineEntry {

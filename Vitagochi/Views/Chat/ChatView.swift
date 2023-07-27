@@ -10,6 +10,7 @@ import WidgetKit
 
 struct ChatView: View {
     @EnvironmentObject private var envObj: GlobalEnvirontment
+    @EnvironmentObject private var coreData: CoreDataEnvirontment
     @StateObject var chatModel = ChatViewModel(message: Message(id: Date(), text: "Photo", isMyMessage: true, profilPic: ""))
     @State var isCompleted: Bool = false
     var timePhase: VitachiTimePhase
@@ -44,7 +45,7 @@ struct ChatView: View {
             }
             .foregroundColor(.black)
             .padding()
-            .padding(.top, 34)
+            .padding(.top, 44)
             .background(Color.primaryWhite)
             .clipped()
             .shadow(color: Color.black.opacity(0.05), radius: 8, x: 0, y: 4)
@@ -101,11 +102,13 @@ struct ChatView: View {
                 LevelUpView()
             }
             .onChange(of: isCompleted) { newValue in
-                // TODO: CHANGE
                 if newValue {
                     guard let photoName = chatModel.savePhoto() else {return}
-                    CoreDataEnvirontment.singleton.addMealRecordToTodayCallange(name:envObj.username,mealStatus: chatModel.vitaAnswer, timeStatus: timePhase, photoName: photoName)
-                    
+
+                   coreData.addMealRecordToTodayCallange(name:envObj.username,mealStatus: chatModel.vitaAnswer, timeStatus: timePhase, photoName: photoName)
+
+                    coreData.checkAndAddBadge()
+
                     let notificationHandler = NotificationHandler.singleton
                     switch timePhase {
                     case .morning:
@@ -115,15 +118,15 @@ struct ChatView: View {
                     case .evening:
                         notificationHandler.removeNotificationById(identifier: ReminderType.DINNER_NOT_YET.getString())
                     case .beforeDayStart: break
-                        
+
                     case .afterDay: break
-                        
+
                     }
-                    
+
                     print(notificationHandler.showScheduledNotifications())
-                    
-                    envObj.mainPath[1].toggle()
                     WidgetCenter.shared.reloadAllTimelines()
+                    envObj.mainPath[1].toggle()
+                    
                 }
             }
             
@@ -143,5 +146,6 @@ struct ChatView_Previews: PreviewProvider {
         //        ChatView(chatModel: ChatViewModel(photoData: Data()))
         ChatView(timePhase: .morning)
             .environmentObject(GlobalEnvirontment.singleton)
+            .environmentObject(CoreDataEnvirontment.singleton)
     }
 }

@@ -36,7 +36,7 @@ struct OnboardingFourth: View {
                             Text("Vita will remind you")
                                 .font(.title3)
                                 .fontWeight(.bold)
-                            Text("In 66 days, Vita will reminds Haris to eat greens and fruits for every breakfast, lunch, and dinner 🍛")
+                            Text("In 66 days, Vita will reminds \(onboardingViewModel.nickname.capitalized) to eat greens and fruits for every breakfast, lunch, and dinner 🍛")
                         }
                     }
                     
@@ -48,7 +48,7 @@ struct OnboardingFourth: View {
                             Text("Vita receive the meal pictures")
                                 .font(.title3)
                                 .fontWeight(.bold)
-                            Text("Haris should take a picture of the meals eaten and send it on time to Vita, so that Vita can check it 📸")
+                            Text("\(onboardingViewModel.nickname.capitalized) should take a picture of the meals eaten and send it on time to Vita, so that Vita can check it 📸")
                         }
                     }
                     
@@ -90,5 +90,6 @@ struct OnboardingFourth: View {
 struct OnboardingFourth_Previews: PreviewProvider {
     static var previews: some View {
         OnboardingFourth()
+            .environmentObject(OnboardingViewModel.singleton)
     }
 }

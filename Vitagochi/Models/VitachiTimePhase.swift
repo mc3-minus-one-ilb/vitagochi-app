@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HourAndMinute: Codable {
+struct HourAndMinute: Codable, Equatable {
     let hour: Int
     let minute: Int
 }
@@ -17,7 +17,7 @@ struct VitaMessage {
     let soundFile: String
 }
 
-enum VitachiTimePhase: Int16 {
+enum VitachiTimePhase: Int16, CaseIterable {
     case morning = 0
     case afternoon = 1
     case evening = 2
@@ -25,17 +25,18 @@ enum VitachiTimePhase: Int16 {
     case afterDay = 4
     
     var time: HourAndMinute {
+        let envObj: GlobalEnvirontment = GlobalEnvirontment.singleton
         switch self {
         case.beforeDayStart:
             return HourAndMinute(hour: 0, minute: 0)
         case.morning:
-            return HourAndMinute(hour: 3, minute: 40)
+            return envObj.breakfastReminder
         case.afternoon:
-            return HourAndMinute(hour: 3, minute: 52)
+            return envObj.lunchReminder
         case.evening:
-            return HourAndMinute(hour: 3, minute: 55)
+            return envObj.dinnerReminder
         case.afterDay:
-            return HourAndMinute(hour: 4, minute: 57)
+            return HourAndMinute(hour: 21, minute: 0)
         }
     }
     
@@ -175,6 +176,8 @@ enum VitachiTimePhase: Int16 {
         }
     }
 }
+
+let VitaFirstTimeApp: VitaMessage = VitaMessage(text: "Welcome! I'm Vita, i'm here to support your healthy eating. Tap me to speak to you.", soundFile: "welcome")
 
 let VitaDefaultMessage: [VitaMessage] = [
     VitaMessage(text: "Don’t forget to eat veggies and fruits or you will constipate!", soundFile: "beforeDayDefault1"),

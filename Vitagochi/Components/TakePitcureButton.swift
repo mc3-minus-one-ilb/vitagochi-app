@@ -20,37 +20,52 @@ struct TakePitcureButton: View {
         return ZStack(alignment: .center){
             //Change
             Button {
-//                if !isItPassMealTime && !isCompleted{
+                if !isItPassMealTime && !isCompleted{
                     isCameraClicked.toggle()
-//                }
+                }
                 
             } label: {
                 Image(systemName: "camera.fill")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .foregroundColor(disable ? .inactiveIconTabBar : .gray)
+                    .foregroundColor(!isItPassMealTime && !isCompleted ? .gray : .inactiveIconTabBar )
                     .frame(width: 46, height: 36, alignment: .center)
             }
-            .disabled(disable)
-            
-            if !isItPassMealTime && !isCompleted{
-                Circle()
-                    .stroke(style: .init(lineWidth: 4, dash: [30,1]))
-                    .foregroundColor(.chatTopPinkColor)
-                    .frame(width: 70)
-                    .rotationEffect(animation ? Angle(degrees: 360.0) : .zero)
-                    .animation(.linear(duration: 20).repeatForever(autoreverses: true), value: animation)
-                    .onAppear {
-                        animation.toggle()
+            .overlay(alignment: .bottomTrailing) {
+                if !isItPassMealTime && !isCompleted{
+                    ZStack{
+                        Circle()
+                            .foregroundColor(.chatTopPinkColor)
+                            .frame(width: 19, height: 19)
+                        Circle()
+                        
+                            .stroke(style: .init(lineWidth: 2, dash: [8,8]))
+                            .foregroundColor(.chatTopPinkColor)
+                            .frame(width: 80)
+                            .rotationEffect(animation ? Angle(degrees: 360.0) : .zero)
+                            .animation(.linear(duration: 20).repeatForever(autoreverses: true), value: animation)
+                            .onAppear {
+                                animation.toggle()
+                            }
                     }
-//                    .rotationEffect()
+                    .offset(x:-6, y:15)
+                }
             }
             
-        }
-        .onAppear{
-            if !isItPassMealTime && !isCompleted {
-                disable = false
-            }
+          
+                //                Circle()
+                
+                //                    .stroke(style: .init(lineWidth: 4, dash: [30,1]))
+                //                    .foregroundColor(.chatTopPinkColor)
+                //                    .frame(width: 70)
+                //                    .rotationEffect(animation ? Angle(degrees: 360.0) : .zero)
+                //                    .animation(.linear(duration: 20).repeatForever(autoreverses: true), value: animation)
+                //                    .onAppear {
+                //                        animation.toggle()
+                //                    }
+                //                    .rotationEffect()
+            
+            
         }
     }
 }

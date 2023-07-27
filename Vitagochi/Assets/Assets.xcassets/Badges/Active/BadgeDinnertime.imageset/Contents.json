@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "BGFull.png",
+      "filename" : "Dinnertime Delight.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "BGFull-2.png",
+      "filename" : "Dinnertime Delight 2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "BGFull-3.png",
+      "filename" : "Dinnertime Delight 3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
