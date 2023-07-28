@@ -58,6 +58,8 @@ struct MainSceneView: View {
                     Spacer()
                     if let records = coreDataEnv.todayChallange?.records?.allObjects as? [MealRecordEntity] {
                         TakePitcureButton(isCameraClicked: $vitaModel.isCameraClicked, timePhase: vitaModel.phase, isCompleted: records.contains{$0.timeStatus == vitaModel.phase.rawValue})
+                    } else {
+                        TakePitcureButton(isCameraClicked: $vitaModel.isCameraClicked, timePhase: vitaModel.phase, isCompleted: false)
                     }
                 }
                 .padding()
@@ -75,7 +77,7 @@ struct MainSceneView: View {
                             .padding(.bottom, 100)
                     }
                     
-                    CircularProgressView(pulsate: false, percentage: CGFloat((coreDataEnv.todayChallange!.records!.count) * 34))
+                    CircularProgressView(pulsate: false, percentage: CGFloat((coreDataEnv.todayChallange?.records?.count ?? 0) * 34))
                         .frame(width: 300, height: 300)
                         .offset(y: -90)
                     
@@ -112,13 +114,13 @@ struct MainSceneView: View {
             }
             
             .onChange(of: vitaModel.phase) { _ in
-                vitaModel.GenerateMessage(for: coreDataEnv.todayChallange!)
+                vitaModel.GenerateMessage(for: coreDataEnv.todayChallange)
             }
             .onChange(of: vitaModel.isTapped) { _ in
-                vitaModel.GenerateMessage(for: coreDataEnv.todayChallange!)
+                vitaModel.GenerateMessage(for: coreDataEnv.todayChallange)
             }
             .onChange(of: vitaModel.isCompleted) { _ in
-                vitaModel.GenerateMessage(for: coreDataEnv.todayChallange!)
+                vitaModel.GenerateMessage(for: coreDataEnv.todayChallange)
             }
             .onChange(of: vitaModel.mood, perform: { _ in
                 vitaModel.runAnimation()
@@ -127,8 +129,7 @@ struct MainSceneView: View {
                 envObj.mainPath[0].toggle()
             })
             .onAppear {
-                vitaModel.GenerateMessage(for: coreDataEnv.todayChallange!)
-                
+                vitaModel.GenerateMessage(for: coreDataEnv.todayChallange, isFirstTime: envObj.isFisrtTime)
                 vitaModel.timer?.invalidate()
                 vitaModel.timer = nil
                 

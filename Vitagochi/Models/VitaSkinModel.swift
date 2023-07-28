@@ -18,7 +18,7 @@ enum VitaSkinModel: Int {
         case.casual:
             return "Pink"
         case.orange:
-            return "Orange"
+            return "Oren"
         case.green:
             return "Green"
         case.white:
@@ -39,8 +39,39 @@ enum VitaSkinModel: Int {
             case.sick:
                 return 18
             }
-        default:
-            return 0
+        case.orange:
+            switch mood {
+            case.idle:
+                return 16
+            case.happy:
+                return 19
+            case.angry:
+                return 16
+            case.sick:
+                return 18
+            }
+        case.green:
+            switch mood {
+            case.idle:
+                return 16
+            case.happy:
+                return 20
+            case.angry:
+                return 16
+            case.sick:
+                return 18
+            }
+        case.white:
+            switch mood {
+            case.idle:
+                return 16
+            case.happy:
+                return 19
+            case.angry:
+                return 16
+            case.sick:
+                return 18
+            }
         }
     }
 }

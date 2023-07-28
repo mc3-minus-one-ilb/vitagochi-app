@@ -23,7 +23,7 @@ class CoreDataRepository {
         do {
             return try coreDataManager.context.fetch(request)
         } catch {
-            print("Error fetching. \(error.localizedDescription)")
+            print("Error fetching challange. \(error.localizedDescription)")
         }
         
         return []
@@ -35,16 +35,36 @@ class CoreDataRepository {
         do {
             return try coreDataManager.context.fetch(request)
         } catch {
-            print("Error fetching. \(error.localizedDescription)")
+            print("Error fetching mealRecord. \(error.localizedDescription)")
         }
         
         return []
     }
     
-    func addChallange(date: Date, day: Int16) {
+    func getBadges() -> [BadgeEntity] {
+        let request = NSFetchRequest<BadgeEntity>(entityName: "BadgeEntity")
+        
+        do {
+            return try coreDataManager.context.fetch(request)
+        } catch {
+            print("Error fetching badge. \(error.localizedDescription)")
+        }
+        
+        return []
+    }
+    
+    func addBadge(for type: BadgeType) -> BadgeEntity {
+        let newBadge = BadgeEntity(context: coreDataManager.context)
+        newBadge.badgeId = type.rawValue
+        newBadge.achievedDate = Date()
+        return newBadge
+    }
+    
+    func addChallange(date: Date, day: Int16) -> ChallangeEntity {
         let newChallange = ChallangeEntity(context: coreDataManager.context)
         newChallange.date = date
         newChallange.day = day
+        return newChallange
     }
     
     func addMealRecord(challange: ChallangeEntity,

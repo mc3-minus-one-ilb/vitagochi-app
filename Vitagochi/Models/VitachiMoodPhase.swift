@@ -40,3 +40,10 @@ enum VitachiMoodPhase {
     }
 }
 
+let VitaSickMessage: [VitaMessage] = [
+    VitaMessage(text: "Yesterday, you didn’t eat any healthy meals, that’s why my condition become like this 😭", soundFile: "sickDefault1"),
+    VitaMessage(text: "For today, please eat healthy food! It will be good for you and me 🥺", soundFile: "sickDefault2"),
+    VitaMessage(text: "As expected from healthy food! Let’s keep the pace like this!", soundFile: "sickAfter1")
+    
+]
+

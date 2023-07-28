@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct DetailTrackingView: View {
+    @EnvironmentObject var envObj: GlobalEnvirontment
     @State private var flipped: [Bool] = [false, false, false]
     @State private var waitFlipped: Bool = false
     var challange: ChallangeEntity
@@ -34,6 +35,7 @@ struct DetailTrackingView: View {
                 .fontWeight(.semibold)
                 .padding(.horizontal)
             
+            
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(alignment: .center, spacing: 260) {
                     ForEach(0..<3) { index in
@@ -42,20 +44,21 @@ struct DetailTrackingView: View {
                                 let recordExist = isRecordExist(timeStatus: index)
                                 if recordExist.valid {
                                     if flipped[index] {
-                                        GalleryCard(timePhase: VitachiTimePhase(rawValue: Int16(index))! ,isFlipped: true)
+                                        GalleryCard(timePhase: VitachiTimePhase(rawValue: Int16(index))! ,isFlipped: true, vitaMessage: records[recordExist.index].vitaMessage!)
                                             .rotation3DEffect(flipped[index]  ? Angle(degrees: 180) : .zero, axis: (x: 0.0 , y: 1.0, z: 0.0))
                                     } else {
-                                        GalleryCard(photo: photos[recordExist.index], timePhase: VitachiTimePhase(rawValue: Int16(index))!, time: records[isRecordExist(timeStatus: index).1].time! ,isFlipped: false)
+                                        GalleryCard(photo: photos[recordExist.index], timePhase: VitachiTimePhase(rawValue: Int16(index))!, time: records[recordExist.index].time! ,isFlipped: false)
                                         
                                     }
                                 } else {
                                     if flipped[index] {
-                                        GalleryCard(timePhase: VitachiTimePhase(rawValue: Int16(index))! ,isFlipped: true)
+                                        GalleryCard(timePhase: VitachiTimePhase(rawValue: Int16(index))! ,isFlipped: true,
+                                                    cardDate: challange.date!)
                                             .rotation3DEffect(flipped[index]  ? Angle(degrees: 180) : .zero, axis: (x: 0.0 , y: 1.0, z: 0.0))
                                         
                                     } else {
                                         
-                                        GalleryCard(timePhase: VitachiTimePhase(rawValue: Int16(index))! ,isFlipped: false)
+                                        GalleryCard(timePhase: VitachiTimePhase(rawValue: Int16(index))! ,isFlipped: false, cardDate: challange.date!)
                                         
                                     }
                                 }
@@ -82,7 +85,20 @@ struct DetailTrackingView: View {
             }
             
         }
+        .navigationBarBackButtonHidden(true)
         .navigationTitle("Today's Meal")
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                    self.envObj.path.removeLast(1)
+                } label: {
+                    Image(systemName: "chevron.left")
+                        .font(.system(size:17))
+                        .fontWeight(.semibold)
+                        .foregroundColor(.black)
+                }
+            }
+        }
         .background {
             GeometryReader { geo in
                 BackgroundArc()
@@ -92,7 +108,7 @@ struct DetailTrackingView: View {
                     .padding(.top, geo.size.height * 0.70)
             }
         }
-        .padding(.top, 50)
+        .padding(.top, 24)
     }
     
     func isRecordExist(timeStatus: Int) -> (valid:Bool,index:Int) {
@@ -118,5 +134,6 @@ struct DetailTrackingView: View {
 struct DetailTrackingView_Previews: PreviewProvider {
     static var previews: some View {
         DetailTrackingView(challange: CoreDataEnvirontment.singleton.todayChallange!)
+            .environmentObject(GlobalEnvirontment.singleton)
     }
 }

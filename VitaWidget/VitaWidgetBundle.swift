@@ -12,6 +12,6 @@ import SwiftUI
 struct VitaWidgetBundle: WidgetBundle {
     var body: some Widget {
         VitaWidget()
-        VitaWidgetLiveActivity()
+//        VitaWidgetLiveActivity()
     }
 }

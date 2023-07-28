@@ -29,7 +29,7 @@ class OnboardingViewModel: ObservableObject {
     // Onboarding 3 States
     @Published var breakfastSelection = Calendar.current.date(bySettingHour: 7, minute: 0, second: 0, of: .now)!
     @Published var lunchSelection = Calendar.current.date(bySettingHour: 12, minute: 0, second: 0, of: .now)!
-    @Published var dinnerSelection = Calendar.current.date(bySettingHour: 15, minute: 0, second: 0, of: .now)!
+    @Published var dinnerSelection = Calendar.current.date(bySettingHour: 17, minute: 0, second: 0, of: .now)!
     
     
     func navigate(route: OnboardingRoute) {

@@ -15,17 +15,18 @@ enum VitaWidgetTimePhase: Int16, CaseIterable {
     case afterDay = 4
     
     var time: HourAndMinute {
+        let envObj: GlobalEnvirontment = GlobalEnvirontment.singleton
         switch self {
         case.beforeDayStart:
             return HourAndMinute(hour: 0, minute: 0)
         case.morning:
-            return HourAndMinute(hour: 7, minute: 32)
+            return envObj.breakfastReminder
         case.afternoon:
-            return HourAndMinute(hour: 12, minute: 21)
+            return envObj.lunchReminder
         case.evening:
-            return HourAndMinute(hour: 19, minute: 03)
+            return envObj.dinnerReminder
         case.afterDay:
-            return HourAndMinute(hour: 21, minute: 12)
+            return HourAndMinute(hour: 21, minute: 0)
         }
     }
     

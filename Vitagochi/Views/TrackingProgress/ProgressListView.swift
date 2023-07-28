@@ -23,8 +23,8 @@ struct ProgressListView: View {
         ScrollView{
             LazyVGrid(columns: gridItems) {
                 ForEach(items) { item in
-                    
-                    CircularProgressSection(dayNumber: Int(item.day), progress: item.records?.count ?? 0, isLocked: Int(item.day) > daysCount)
+                    let day = Int(item.day)
+                    CircularProgressSection(dayNumber: day, progress: item.records?.count ?? 0, isLocked: day > daysCount, isHighlighted: day == daysCount)
                         .padding(.vertical, 10)
                         .onTapGesture {
                             if !(Int(item.day) > daysCount) {

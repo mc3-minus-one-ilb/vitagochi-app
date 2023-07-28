@@ -19,7 +19,7 @@
 		067930762A6F9DC3008F853E /* Date+Extend.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0528592A6531A000649F22 /* Date+Extend.swift */; };
 		067930772A6F9DF9008F853E /* AppCoreContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CB9FE2872A6932950091DE9C /* AppCoreContainer.xcdatamodeld */; };
 		067930782A6F9E2B008F853E /* VitaSkinModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB46C182A6B910200E9E0F8 /* VitaSkinModel.swift */; };
-		067930792A6F9E31008F853E /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2D8C42A682F8F00F603C7 /* Message.swift */; };
+		067930792A6F9E31008F853E /* VitaMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2D8C42A682F8F00F603C7 /* VitaMessage.swift */; };
 		0679307A2A6F9E4C008F853E /* VitachiMoodPhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2B5D9A2A66B50B0099D404 /* VitachiMoodPhase.swift */; };
 		067CB9042A68E57A00D1B0C3 /* Color+Extend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC97EB2A5D0ED0003125B5 /* Color+Extend.swift */; };
 		067CB9052A68E57A00D1B0C3 /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B0A3212A657C0A0047FC6A /* Color+Hex.swift */; };
@@ -90,29 +90,38 @@
 		CB0ACC002A6D9F4100D5DF4D /* BadgesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0ACBFF2A6D9F4100D5DF4D /* BadgesView.swift */; };
 		CB2B5D992A66A0BA0099D404 /* MainSceneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2B5D982A66A0BA0099D404 /* MainSceneViewModel.swift */; };
 		CB2B5D9B2A66B50B0099D404 /* VitachiMoodPhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2B5D9A2A66B50B0099D404 /* VitachiMoodPhase.swift */; };
-		CB2B5D9F2A66B96F0099D404 /* welcome.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB2B5D9E2A66B96F0099D404 /* welcome.wav */; };
-		CB2B5DA22A66BA7B0099D404 /* beforeDayDefault1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB2B5DA12A66BA7B0099D404 /* beforeDayDefault1.wav */; };
-		CB2B5DA42A66BABA0099D404 /* beforeDayDefault2.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB2B5DA32A66BABA0099D404 /* beforeDayDefault2.wav */; };
-		CB2B5DA72A66BAFC0099D404 /* morningDefault1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB2B5DA62A66BAFC0099D404 /* morningDefault1.wav */; };
 		CB84A9CF2A6FCE17003F1251 /* URL+Extend.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB84A9CE2A6FCE17003F1251 /* URL+Extend.swift */; };
 		CB84A9D02A6FD18F003F1251 /* URL+Extend.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB84A9CE2A6FCE17003F1251 /* URL+Extend.swift */; };
 		CB84A9D12A6FF6C8003F1251 /* LevelUpProgressStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2651459B2A697AF900042519 /* LevelUpProgressStyle.swift */; };
-		CB9AA2142A69F1B500BF8D76 /* eveningDefault1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB9AA20A2A69F1B500BF8D76 /* eveningDefault1.wav */; };
-		CB9AA2152A69F1B500BF8D76 /* afternoonHappy1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB9AA20B2A69F1B500BF8D76 /* afternoonHappy1.wav */; };
-		CB9AA2162A69F1B500BF8D76 /* happy1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB9AA20C2A69F1B500BF8D76 /* happy1.wav */; };
-		CB9AA2172A69F1B500BF8D76 /* afternoonDefault1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB9AA20D2A69F1B500BF8D76 /* afternoonDefault1.wav */; };
-		CB9AA2182A69F1B500BF8D76 /* afternoonAngry1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB9AA20E2A69F1B500BF8D76 /* afternoonAngry1.wav */; };
-		CB9AA2192A69F1B500BF8D76 /* morningHappy1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB9AA20F2A69F1B500BF8D76 /* morningHappy1.wav */; };
-		CB9AA21A2A69F1B500BF8D76 /* angry1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB9AA2102A69F1B500BF8D76 /* angry1.wav */; };
-		CB9AA21B2A69F1B500BF8D76 /* afterDayDefault1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB9AA2112A69F1B500BF8D76 /* afterDayDefault1.wav */; };
-		CB9AA21C2A69F1B500BF8D76 /* eveningHappy1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB9AA2122A69F1B500BF8D76 /* eveningHappy1.wav */; };
-		CB9AA21D2A69F1B500BF8D76 /* eveningAngry1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB9AA2132A69F1B500BF8D76 /* eveningAngry1.wav */; };
 		CB9AA2252A6A414400BF8D76 /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9AA2242A6A414400BF8D76 /* CoreDataRepository.swift */; };
 		CB9AA2272A6AC9AB00BF8D76 /* TakePitcureButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9AA2262A6AC9AB00BF8D76 /* TakePitcureButton.swift */; };
 		CB9FE2892A6932950091DE9C /* AppCoreContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CB9FE2872A6932950091DE9C /* AppCoreContainer.xcdatamodeld */; };
 		CB9FE28B2A6933950091DE9C /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9FE28A2A6933950091DE9C /* CoreDataManager.swift */; };
 		CB9FE28D2A6934BE0091DE9C /* CoreDataEnvirontment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9FE28C2A6934BE0091DE9C /* CoreDataEnvirontment.swift */; };
 		CBA6418B2A6CCB530067D0F4 /* DetailTrackingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA6418A2A6CCB530067D0F4 /* DetailTrackingView.swift */; };
+		CBAEECB92A70C0BF0094308D /* welcome.wav in Resources */ = {isa = PBXBuildFile; fileRef = CBAEECB82A70C0BF0094308D /* welcome.wav */; };
+		CBAEECBB2A70C0E50094308D /* beforeDayDefault1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CBAEECBA2A70C0E50094308D /* beforeDayDefault1.wav */; };
+		CBAEECBD2A70C0ED0094308D /* beforeDayDefault2.wav in Resources */ = {isa = PBXBuildFile; fileRef = CBAEECBC2A70C0ED0094308D /* beforeDayDefault2.wav */; };
+		CBAEECBF2A70C1400094308D /* morningDefault1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CBAEECBE2A70C1400094308D /* morningDefault1.wav */; };
+		CBAEECC22A70C1900094308D /* default1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CBAEECC12A70C1900094308D /* default1.wav */; };
+		CBAEECC42A70C1FD0094308D /* morningAngry1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CBAEECC32A70C1FD0094308D /* morningAngry1.wav */; };
+		CBAEECC62A70C2570094308D /* angry1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CBAEECC52A70C2570094308D /* angry1.wav */; };
+		CBAEECC82A70C2840094308D /* morningHappy1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CBAEECC72A70C2840094308D /* morningHappy1.wav */; };
+		CBAEECCA2A70C2DD0094308D /* happy1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CBAEECC92A70C2DD0094308D /* happy1.wav */; };
+		CBAEECCC2A70C3510094308D /* afternoonDefault1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CBAEECCB2A70C3510094308D /* afternoonDefault1.wav */; };
+		CBAEECCE2A70C3890094308D /* afternoonAngry1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CBAEECCD2A70C3890094308D /* afternoonAngry1.wav */; };
+		CBAEECD02A70C3AC0094308D /* afternoonHappy1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CBAEECCF2A70C3AB0094308D /* afternoonHappy1.wav */; };
+		CBAEECD22A70C42A0094308D /* eveningDefault1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CBAEECD12A70C42A0094308D /* eveningDefault1.wav */; };
+		CBAEECD42A70C4B90094308D /* eveningAngry1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CBAEECD32A70C4B90094308D /* eveningAngry1.wav */; };
+		CBAEECD62A70C5740094308D /* eveningHappy1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CBAEECD52A70C5740094308D /* eveningHappy1.wav */; };
+		CBAEECD92A70C5F20094308D /* afterDayDefault1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CBAEECD82A70C5F20094308D /* afterDayDefault1.wav */; };
+		CBAEECDE2A70C6570094308D /* sickDefault1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CBAEECDB2A70C6570094308D /* sickDefault1.wav */; };
+		CBAEECDF2A70C6570094308D /* sickDefault2.wav in Resources */ = {isa = PBXBuildFile; fileRef = CBAEECDC2A70C6570094308D /* sickDefault2.wav */; };
+		CBAEECE02A70C6570094308D /* sickAfter1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CBAEECDD2A70C6570094308D /* sickAfter1.wav */; };
+		CBAEECE42A70E5520094308D /* Badges.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAEECE32A70E5520094308D /* Badges.swift */; };
+		CBAEECE82A726BC80094308D /* Badges.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAEECE32A70E5520094308D /* Badges.swift */; };
+		CBAEECEA2A7287EF0094308D /* Achivement.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAEECE92A7287EF0094308D /* Achivement.swift */; };
+		CBAEECEC2A72884A0094308D /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAEECEB2A72884A0094308D /* BadgeView.swift */; };
 		CBB46C152A6B716500E9E0F8 /* BublbleArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB46C142A6B716500E9E0F8 /* BublbleArrow.swift */; };
 		CBB46C172A6B719500E9E0F8 /* RoundedShapeBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB46C162A6B719500E9E0F8 /* RoundedShapeBackground.swift */; };
 		CBB46C192A6B910200E9E0F8 /* VitaSkinModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB46C182A6B910200E9E0F8 /* VitaSkinModel.swift */; };
@@ -123,7 +132,7 @@
 		CBD2D8812A67BC6700F603C7 /* PhotoTakeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2D8802A67BC6700F603C7 /* PhotoTakeView.swift */; };
 		CBD2D8BE2A67C0FC00F603C7 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2D8BD2A67C0FC00F603C7 /* ChatView.swift */; };
 		CBD2D8C02A67C10E00F603C7 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2D8BF2A67C10E00F603C7 /* ChatViewModel.swift */; };
-		CBD2D8C52A682F8F00F603C7 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2D8C42A682F8F00F603C7 /* Message.swift */; };
+		CBD2D8C52A682F8F00F603C7 /* VitaMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2D8C42A682F8F00F603C7 /* VitaMessage.swift */; };
 		CBD2D8C72A682FD900F603C7 /* ChatBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2D8C62A682FD900F603C7 /* ChatBubbleView.swift */; };
 		CBD3E6922A6C324000665980 /* TrackingProgressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD3E6912A6C324000665980 /* TrackingProgressViewModel.swift */; };
 		CBE7BA202A66072C00E87AAA /* TabBarIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE7BA1F2A66072C00E87AAA /* TabBarIconView.swift */; };
@@ -236,28 +245,36 @@
 		CB0ACBFF2A6D9F4100D5DF4D /* BadgesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgesView.swift; sourceTree = "<group>"; };
 		CB2B5D982A66A0BA0099D404 /* MainSceneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSceneViewModel.swift; sourceTree = "<group>"; };
 		CB2B5D9A2A66B50B0099D404 /* VitachiMoodPhase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VitachiMoodPhase.swift; path = Vitagochi/Models/VitachiMoodPhase.swift; sourceTree = SOURCE_ROOT; };
-		CB2B5D9E2A66B96F0099D404 /* welcome.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = welcome.wav; sourceTree = "<group>"; };
-		CB2B5DA12A66BA7B0099D404 /* beforeDayDefault1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = beforeDayDefault1.wav; sourceTree = "<group>"; };
-		CB2B5DA32A66BABA0099D404 /* beforeDayDefault2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = beforeDayDefault2.wav; sourceTree = "<group>"; };
-		CB2B5DA62A66BAFC0099D404 /* morningDefault1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = morningDefault1.wav; sourceTree = "<group>"; };
 		CB84A9CD2A6FCD75003F1251 /* VitaWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VitaWidgetExtension.entitlements; sourceTree = "<group>"; };
 		CB84A9CE2A6FCE17003F1251 /* URL+Extend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extend.swift"; sourceTree = "<group>"; };
-		CB9AA20A2A69F1B500BF8D76 /* eveningDefault1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = eveningDefault1.wav; sourceTree = "<group>"; };
-		CB9AA20B2A69F1B500BF8D76 /* afternoonHappy1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = afternoonHappy1.wav; sourceTree = "<group>"; };
-		CB9AA20C2A69F1B500BF8D76 /* happy1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = happy1.wav; sourceTree = "<group>"; };
-		CB9AA20D2A69F1B500BF8D76 /* afternoonDefault1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = afternoonDefault1.wav; sourceTree = "<group>"; };
-		CB9AA20E2A69F1B500BF8D76 /* afternoonAngry1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = afternoonAngry1.wav; sourceTree = "<group>"; };
-		CB9AA20F2A69F1B500BF8D76 /* morningHappy1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = morningHappy1.wav; sourceTree = "<group>"; };
-		CB9AA2102A69F1B500BF8D76 /* angry1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = angry1.wav; sourceTree = "<group>"; };
-		CB9AA2112A69F1B500BF8D76 /* afterDayDefault1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = afterDayDefault1.wav; sourceTree = "<group>"; };
-		CB9AA2122A69F1B500BF8D76 /* eveningHappy1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = eveningHappy1.wav; sourceTree = "<group>"; };
-		CB9AA2132A69F1B500BF8D76 /* eveningAngry1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = eveningAngry1.wav; sourceTree = "<group>"; };
 		CB9AA2242A6A414400BF8D76 /* CoreDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRepository.swift; sourceTree = "<group>"; };
 		CB9AA2262A6AC9AB00BF8D76 /* TakePitcureButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakePitcureButton.swift; sourceTree = "<group>"; };
 		CB9FE2882A6932950091DE9C /* AppCoreContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AppCoreContainer.xcdatamodel; sourceTree = "<group>"; };
 		CB9FE28A2A6933950091DE9C /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		CB9FE28C2A6934BE0091DE9C /* CoreDataEnvirontment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataEnvirontment.swift; sourceTree = "<group>"; };
 		CBA6418A2A6CCB530067D0F4 /* DetailTrackingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTrackingView.swift; sourceTree = "<group>"; };
+		CBAEECB82A70C0BF0094308D /* welcome.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = welcome.wav; sourceTree = "<group>"; };
+		CBAEECBA2A70C0E50094308D /* beforeDayDefault1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = beforeDayDefault1.wav; sourceTree = "<group>"; };
+		CBAEECBC2A70C0ED0094308D /* beforeDayDefault2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = beforeDayDefault2.wav; sourceTree = "<group>"; };
+		CBAEECBE2A70C1400094308D /* morningDefault1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = morningDefault1.wav; sourceTree = "<group>"; };
+		CBAEECC12A70C1900094308D /* default1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = default1.wav; sourceTree = "<group>"; };
+		CBAEECC32A70C1FD0094308D /* morningAngry1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = morningAngry1.wav; sourceTree = "<group>"; };
+		CBAEECC52A70C2570094308D /* angry1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = angry1.wav; sourceTree = "<group>"; };
+		CBAEECC72A70C2840094308D /* morningHappy1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = morningHappy1.wav; sourceTree = "<group>"; };
+		CBAEECC92A70C2DD0094308D /* happy1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = happy1.wav; sourceTree = "<group>"; };
+		CBAEECCB2A70C3510094308D /* afternoonDefault1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = afternoonDefault1.wav; sourceTree = "<group>"; };
+		CBAEECCD2A70C3890094308D /* afternoonAngry1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = afternoonAngry1.wav; sourceTree = "<group>"; };
+		CBAEECCF2A70C3AB0094308D /* afternoonHappy1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = afternoonHappy1.wav; sourceTree = "<group>"; };
+		CBAEECD12A70C42A0094308D /* eveningDefault1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = eveningDefault1.wav; sourceTree = "<group>"; };
+		CBAEECD32A70C4B90094308D /* eveningAngry1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = eveningAngry1.wav; sourceTree = "<group>"; };
+		CBAEECD52A70C5740094308D /* eveningHappy1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = eveningHappy1.wav; sourceTree = "<group>"; };
+		CBAEECD82A70C5F20094308D /* afterDayDefault1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = afterDayDefault1.wav; sourceTree = "<group>"; };
+		CBAEECDB2A70C6570094308D /* sickDefault1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sickDefault1.wav; sourceTree = "<group>"; };
+		CBAEECDC2A70C6570094308D /* sickDefault2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sickDefault2.wav; sourceTree = "<group>"; };
+		CBAEECDD2A70C6570094308D /* sickAfter1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sickAfter1.wav; sourceTree = "<group>"; };
+		CBAEECE32A70E5520094308D /* Badges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Badges.swift; sourceTree = "<group>"; };
+		CBAEECE92A7287EF0094308D /* Achivement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Achivement.swift; sourceTree = "<group>"; };
+		CBAEECEB2A72884A0094308D /* BadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
 		CBB46C142A6B716500E9E0F8 /* BublbleArrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BublbleArrow.swift; sourceTree = "<group>"; };
 		CBB46C162A6B719500E9E0F8 /* RoundedShapeBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShapeBackground.swift; sourceTree = "<group>"; };
 		CBB46C182A6B910200E9E0F8 /* VitaSkinModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VitaSkinModel.swift; sourceTree = "<group>"; };
@@ -268,7 +285,7 @@
 		CBD2D8802A67BC6700F603C7 /* PhotoTakeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoTakeView.swift; sourceTree = "<group>"; };
 		CBD2D8BD2A67C0FC00F603C7 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		CBD2D8BF2A67C10E00F603C7 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatViewModel.swift; path = Vitagochi/ViewModels/ChatViewModel.swift; sourceTree = SOURCE_ROOT; };
-		CBD2D8C42A682F8F00F603C7 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		CBD2D8C42A682F8F00F603C7 /* VitaMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VitaMessage.swift; sourceTree = "<group>"; };
 		CBD2D8C62A682FD900F603C7 /* ChatBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBubbleView.swift; sourceTree = "<group>"; };
 		CBD3E6912A6C324000665980 /* TrackingProgressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingProgressViewModel.swift; sourceTree = "<group>"; };
 		CBE7BA1F2A66072C00E87AAA /* TabBarIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarIconView.swift; sourceTree = "<group>"; };
@@ -351,6 +368,8 @@
 				CBB46C222A6BDFFD00E9E0F8 /* TabBarSection.swift */,
 				CBB46C262A6BEECF00E9E0F8 /* CircularProgressSection.swift */,
 				CB0ACBFA2A6D615C00D5DF4D /* GalleryCard.swift */,
+				CBAEECE92A7287EF0094308D /* Achivement.swift */,
+				CBAEECEB2A72884A0094308D /* BadgeView.swift */,
 				2648466D2A5E5AE800396575 /* ContentInfo.txt */,
 			);
 			path = Components;
@@ -457,7 +476,6 @@
 		26BC97ED2A5D0FE4003125B5 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				CB9AA2092A69F1B500BF8D76 /* Audio-2 */,
 				CB2B5D9C2A66B8630099D404 /* Sound */,
 				26BC97EE2A5D0FEC003125B5 /* Fonts */,
 				26C7A8912A5D0015009F0EAF /* Assets.xcassets */,
@@ -563,7 +581,8 @@
 		CB2B5D9C2A66B8630099D404 /* Sound */ = {
 			isa = PBXGroup;
 			children = (
-				CB2B5D9E2A66B96F0099D404 /* welcome.wav */,
+				CBAEECB82A70C0BF0094308D /* welcome.wav */,
+				CBAEECC02A70C1700094308D /* Default */,
 				CB9AA21E2A69F20C00BF8D76 /* Angry */,
 				CB9AA21F2A69F2A300BF8D76 /* Happy */,
 				CB2B5D9D2A66B9250099D404 /* BeforeDay */,
@@ -571,6 +590,7 @@
 				CB9AA2202A69F36A00BF8D76 /* Afternoon */,
 				CB9AA2212A69F43D00BF8D76 /* Evening */,
 				CB9AA2222A69F51500BF8D76 /* AfterDay */,
+				CBAEECDA2A70C63E0094308D /* Sick */,
 			);
 			path = Sound;
 			sourceTree = "<group>";
@@ -578,8 +598,8 @@
 		CB2B5D9D2A66B9250099D404 /* BeforeDay */ = {
 			isa = PBXGroup;
 			children = (
-				CB2B5DA12A66BA7B0099D404 /* beforeDayDefault1.wav */,
-				CB2B5DA32A66BABA0099D404 /* beforeDayDefault2.wav */,
+				CBAEECBA2A70C0E50094308D /* beforeDayDefault1.wav */,
+				CBAEECBC2A70C0ED0094308D /* beforeDayDefault2.wav */,
 			);
 			path = BeforeDay;
 			sourceTree = "<group>";
@@ -587,23 +607,17 @@
 		CB2B5DA52A66BAD60099D404 /* Morning */ = {
 			isa = PBXGroup;
 			children = (
-				CB2B5DA62A66BAFC0099D404 /* morningDefault1.wav */,
-				CB9AA20F2A69F1B500BF8D76 /* morningHappy1.wav */,
+				CBAEECBE2A70C1400094308D /* morningDefault1.wav */,
+				CBAEECC32A70C1FD0094308D /* morningAngry1.wav */,
+				CBAEECC72A70C2840094308D /* morningHappy1.wav */,
 			);
 			path = Morning;
-			sourceTree = "<group>";
-		};
-		CB9AA2092A69F1B500BF8D76 /* Audio-2 */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Audio-2";
 			sourceTree = "<group>";
 		};
 		CB9AA21E2A69F20C00BF8D76 /* Angry */ = {
 			isa = PBXGroup;
 			children = (
-				CB9AA2102A69F1B500BF8D76 /* angry1.wav */,
+				CBAEECC52A70C2570094308D /* angry1.wav */,
 			);
 			path = Angry;
 			sourceTree = "<group>";
@@ -611,7 +625,7 @@
 		CB9AA21F2A69F2A300BF8D76 /* Happy */ = {
 			isa = PBXGroup;
 			children = (
-				CB9AA20C2A69F1B500BF8D76 /* happy1.wav */,
+				CBAEECC92A70C2DD0094308D /* happy1.wav */,
 			);
 			path = Happy;
 			sourceTree = "<group>";
@@ -619,9 +633,9 @@
 		CB9AA2202A69F36A00BF8D76 /* Afternoon */ = {
 			isa = PBXGroup;
 			children = (
-				CB9AA20D2A69F1B500BF8D76 /* afternoonDefault1.wav */,
-				CB9AA20E2A69F1B500BF8D76 /* afternoonAngry1.wav */,
-				CB9AA20B2A69F1B500BF8D76 /* afternoonHappy1.wav */,
+				CBAEECCB2A70C3510094308D /* afternoonDefault1.wav */,
+				CBAEECCD2A70C3890094308D /* afternoonAngry1.wav */,
+				CBAEECCF2A70C3AB0094308D /* afternoonHappy1.wav */,
 			);
 			path = Afternoon;
 			sourceTree = "<group>";
@@ -629,9 +643,9 @@
 		CB9AA2212A69F43D00BF8D76 /* Evening */ = {
 			isa = PBXGroup;
 			children = (
-				CB9AA20A2A69F1B500BF8D76 /* eveningDefault1.wav */,
-				CB9AA2132A69F1B500BF8D76 /* eveningAngry1.wav */,
-				CB9AA2122A69F1B500BF8D76 /* eveningHappy1.wav */,
+				CBAEECD12A70C42A0094308D /* eveningDefault1.wav */,
+				CBAEECD32A70C4B90094308D /* eveningAngry1.wav */,
+				CBAEECD52A70C5740094308D /* eveningHappy1.wav */,
 			);
 			path = Evening;
 			sourceTree = "<group>";
@@ -639,7 +653,7 @@
 		CB9AA2222A69F51500BF8D76 /* AfterDay */ = {
 			isa = PBXGroup;
 			children = (
-				CB9AA2112A69F1B500BF8D76 /* afterDayDefault1.wav */,
+				CBAEECD82A70C5F20094308D /* afterDayDefault1.wav */,
 			);
 			path = AfterDay;
 			sourceTree = "<group>";
@@ -659,6 +673,24 @@
 				CBA6418A2A6CCB530067D0F4 /* DetailTrackingView.swift */,
 			);
 			path = DetailTrackingProgress;
+			sourceTree = "<group>";
+		};
+		CBAEECC02A70C1700094308D /* Default */ = {
+			isa = PBXGroup;
+			children = (
+				CBAEECC12A70C1900094308D /* default1.wav */,
+			);
+			path = Default;
+			sourceTree = "<group>";
+		};
+		CBAEECDA2A70C63E0094308D /* Sick */ = {
+			isa = PBXGroup;
+			children = (
+				CBAEECDB2A70C6570094308D /* sickDefault1.wav */,
+				CBAEECDC2A70C6570094308D /* sickDefault2.wav */,
+				CBAEECDD2A70C6570094308D /* sickAfter1.wav */,
+			);
+			path = Sick;
 			sourceTree = "<group>";
 		};
 		CBB46C1C2A6BCA0300E9E0F8 /* LevelUp */ = {
@@ -693,8 +725,9 @@
 				CB05285B2A6531F600649F22 /* VitachiTimePhase.swift */,
 				CB2B5D9A2A66B50B0099D404 /* VitachiMoodPhase.swift */,
 				CBB46C182A6B910200E9E0F8 /* VitaSkinModel.swift */,
-				CBD2D8C42A682F8F00F603C7 /* Message.swift */,
+				CBD2D8C42A682F8F00F603C7 /* VitaMessage.swift */,
 				264FA0662A6EBB46006758A3 /* ReminderType.swift */,
+				CBAEECE32A70E5520094308D /* Badges.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -840,25 +873,30 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB9AA2172A69F1B500BF8D76 /* afternoonDefault1.wav in Resources */,
-				CB9AA2142A69F1B500BF8D76 /* eveningDefault1.wav in Resources */,
-				CB9AA21B2A69F1B500BF8D76 /* afterDayDefault1.wav in Resources */,
-				CB9AA2152A69F1B500BF8D76 /* afternoonHappy1.wav in Resources */,
-				CB2B5DA72A66BAFC0099D404 /* morningDefault1.wav in Resources */,
-				CB9AA2182A69F1B500BF8D76 /* afternoonAngry1.wav in Resources */,
-				CB9AA2162A69F1B500BF8D76 /* happy1.wav in Resources */,
-				CB2B5DA22A66BA7B0099D404 /* beforeDayDefault1.wav in Resources */,
+				CBAEECD62A70C5740094308D /* eveningHappy1.wav in Resources */,
+				CBAEECCA2A70C2DD0094308D /* happy1.wav in Resources */,
+				CBAEECD42A70C4B90094308D /* eveningAngry1.wav in Resources */,
+				CBAEECD22A70C42A0094308D /* eveningDefault1.wav in Resources */,
+				CBAEECBB2A70C0E50094308D /* beforeDayDefault1.wav in Resources */,
+				CBAEECBF2A70C1400094308D /* morningDefault1.wav in Resources */,
+				CBAEECC62A70C2570094308D /* angry1.wav in Resources */,
+				CBAEECC42A70C1FD0094308D /* morningAngry1.wav in Resources */,
 				2673E0142A5D014900429610 /* LICENSE.txt in Resources */,
 				2673E0122A5D014400429610 /* README.md in Resources */,
-				CB9AA21A2A69F1B500BF8D76 /* angry1.wav in Resources */,
-				CB9AA2192A69F1B500BF8D76 /* morningHappy1.wav in Resources */,
 				264846692A5E471400396575 /* COMMIT.md in Resources */,
-				CB2B5D9F2A66B96F0099D404 /* welcome.wav in Resources */,
-				CB2B5DA42A66BABA0099D404 /* beforeDayDefault2.wav in Resources */,
-				CB9AA21C2A69F1B500BF8D76 /* eveningHappy1.wav in Resources */,
+				CBAEECD02A70C3AC0094308D /* afternoonHappy1.wav in Resources */,
+				CBAEECCE2A70C3890094308D /* afternoonAngry1.wav in Resources */,
+				CBAEECDE2A70C6570094308D /* sickDefault1.wav in Resources */,
+				CBAEECC82A70C2840094308D /* morningHappy1.wav in Resources */,
+				CBAEECBD2A70C0ED0094308D /* beforeDayDefault2.wav in Resources */,
+				CBAEECB92A70C0BF0094308D /* welcome.wav in Resources */,
+				CBAEECC22A70C1900094308D /* default1.wav in Resources */,
 				26C7A8952A5D0015009F0EAF /* Preview Assets.xcassets in Resources */,
+				CBAEECDF2A70C6570094308D /* sickDefault2.wav in Resources */,
 				26C7A8922A5D0015009F0EAF /* Assets.xcassets in Resources */,
-				CB9AA21D2A69F1B500BF8D76 /* eveningAngry1.wav in Resources */,
+				CBAEECD92A70C5F20094308D /* afterDayDefault1.wav in Resources */,
+				CBAEECCC2A70C3510094308D /* afternoonDefault1.wav in Resources */,
+				CBAEECE02A70C6570094308D /* sickAfter1.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -884,7 +922,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0679307A2A6F9E4C008F853E /* VitachiMoodPhase.swift in Sources */,
-				067930792A6F9E31008F853E /* Message.swift in Sources */,
+				067930792A6F9E31008F853E /* VitaMessage.swift in Sources */,
 				067930782A6F9E2B008F853E /* VitaSkinModel.swift in Sources */,
 				067930772A6F9DF9008F853E /* AppCoreContainer.xcdatamodeld in Sources */,
 				067930762A6F9DC3008F853E /* Date+Extend.swift in Sources */,
@@ -909,6 +947,7 @@
 				067CB90B2A6D3BAD00D1B0C3 /* VitaMoodConfig.swift in Sources */,
 				06E47BAC2A66A36900EEC8AE /* VitaWidgetBundle.swift in Sources */,
 				CB84A9D02A6FD18F003F1251 /* URL+Extend.swift in Sources */,
+				CBAEECE82A726BC80094308D /* Badges.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -939,6 +978,7 @@
 				CB0ACBFB2A6D615C00D5DF4D /* GalleryCard.swift in Sources */,
 				CB0528612A653F9200649F22 /* RectangleBubleTextView.swift in Sources */,
 				CB0528632A6546BF00649F22 /* CircularProgressView.swift in Sources */,
+				CBAEECEA2A7287EF0094308D /* Achivement.swift in Sources */,
 				CB9FE2892A6932950091DE9C /* AppCoreContainer.xcdatamodeld in Sources */,
 				26B0A3222A657C0A0047FC6A /* Color+Hex.swift in Sources */,
 				26B0A3202A6578BE0047FC6A /* OnboardingThirdRevision.swift in Sources */,
@@ -946,7 +986,7 @@
 				26B0A3242A657CDC0047FC6A /* UIColor+Hex.swift in Sources */,
 				26BC97EC2A5D0ED0003125B5 /* Color+Extend.swift in Sources */,
 				26A77B012A5FAE6A00B1C3A7 /* OnboardingTimePicker.swift in Sources */,
-				CBD2D8C52A682F8F00F603C7 /* Message.swift in Sources */,
+				CBD2D8C52A682F8F00F603C7 /* VitaMessage.swift in Sources */,
 				CB9FE28D2A6934BE0091DE9C /* CoreDataEnvirontment.swift in Sources */,
 				2623C2322A5EF02200F820E8 /* VerticalPicker.swift in Sources */,
 				CBD3E6922A6C324000665980 /* TrackingProgressViewModel.swift in Sources */,
@@ -966,6 +1006,7 @@
 				26B0A3282A65893B0047FC6A /* CollectiveDayTimePicker.swift in Sources */,
 				2651459C2A697AF900042519 /* LevelUpProgressStyle.swift in Sources */,
 				2673E0272A5D056D00429610 /* GlobalEnvirontment.swift in Sources */,
+				CBAEECEC2A72884A0094308D /* BadgeView.swift in Sources */,
 				CBB46C212A6BCA7700E9E0F8 /* TrackingProgressView.swift in Sources */,
 				CB9FE28B2A6933950091DE9C /* CoreDataManager.swift in Sources */,
 				CBA6418B2A6CCB530067D0F4 /* DetailTrackingView.swift in Sources */,
@@ -980,6 +1021,7 @@
 				CB05285A2A6531A000649F22 /* Date+Extend.swift in Sources */,
 				264FA0672A6EBB46006758A3 /* ReminderType.swift in Sources */,
 				CBB46C152A6B716500E9E0F8 /* BublbleArrow.swift in Sources */,
+				CBAEECE42A70E5520094308D /* Badges.swift in Sources */,
 				CBB46C272A6BEECF00E9E0F8 /* CircularProgressSection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1210,18 +1252,21 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Vitagochi/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Vitagochi;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSCameraUsageDescription = "For Taking Picture";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.minusone.Vitagochi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1244,18 +1289,21 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Vitagochi/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Vitagochi;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSCameraUsageDescription = "For Taking Picture";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.minusone.Vitagochi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

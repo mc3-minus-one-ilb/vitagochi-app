@@ -17,7 +17,7 @@ struct PhotoTakeView: UIViewControllerRepresentable {
     
     func makeUIViewController(context: Context) -> UIImagePickerController {
         let controller = UIImagePickerController()
-        controller.sourceType = .photoLibrary
+        controller.sourceType = .camera
         controller.delegate = context.coordinator
         
         return controller

@@ -40,12 +40,28 @@ extension Date {
         return false
     }
     
+    func isDateYesterday(_ date: Date?) -> Bool {
+        let calendar = Calendar.current
+        let yesterday = calendar.date(byAdding: .day, value: -1, to: self)!
+        if let date = date {
+            return calendar.isDate(date, inSameDayAs: yesterday)
+        }
+        return false
+    }
+    
     func isItTodayOrPast(date: Date) -> Bool {
         let calendar = Calendar.current
         let today = calendar.startOfDay(for: self)
         let inputDate = calendar.startOfDay(for: date)
         
         return inputDate <= today
+    }
+    
+    func isItPast(date: Date) -> Bool {
+        let calendar = Calendar.current
+        let today = calendar.startOfDay(for: self)
+        let inputDate = calendar.startOfDay(for: date)
+        return inputDate < today
     }
     
     func getFormattedTime() -> String {
@@ -69,9 +85,9 @@ extension Date {
     
     func isItToday(date: Date) -> Bool {
         let calendar = Calendar.current
-        let currentDateComp =  calendar.dateComponents([.year, .month, .day], from: self)
-        let compareDateComp = calendar.dateComponents([.year, .month, .day], from: date)
-        return currentDateComp == compareDateComp
+        let today = calendar.startOfDay(for: self)
+        let inputDate = calendar.startOfDay(for: date)
+        return today == inputDate
     }
     
     func isPhaseAfterOneHour(_ value: VitachiTimePhase) -> Bool {

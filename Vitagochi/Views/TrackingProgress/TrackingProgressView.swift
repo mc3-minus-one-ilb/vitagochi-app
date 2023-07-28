@@ -80,7 +80,9 @@ struct TrackingProgressView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .onAppear{
+            
             trackingModel.daysCount = coreDataEnv.countHowManyDaySinceStart()
+            trackingModel.selection = coreDataEnv.getSectionBasedOnCurrentDay()
         }
         .onChange(of: trackingModel.selection) { newValue in
             trackingModel.changeRectPosition(value: newValue)

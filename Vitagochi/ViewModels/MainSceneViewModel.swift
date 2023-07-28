@@ -11,7 +11,7 @@ import AVFoundation
 class MainSceneViewModel: ObservableObject {
     @Published var phase: VitachiTimePhase = .beforeDayStart
     @Published var mood: VitachiMoodPhase = .idle
-    @Published var vitaSkinModel: VitaSkinModel = .casual
+    @Published var vitaSkin: VitaSkinModel = .casual
     @Published var message: String = ""
     @Published var isCompleted: [Bool] =  [true, false, false, false, true]
     @Published var isTapped: Bool = false
@@ -19,9 +19,9 @@ class MainSceneViewModel: ObservableObject {
     @Published var imageData: Data = Data(count: 0)
     @Published var currentTime: Date = Date()
     @Published var timer: Timer?
-    @Published var skinTimer: Timer? =  Timer()
+    @Published var skinTimer: Timer?
     @Published var skin: String = ""
-//    var charSound: AVAudioPlayer = AVAudioPlayer()
+    var charSound: AVAudioPlayer = AVAudioPlayer()
     var soundFileName: String = ""
     
     @Published var mealDatas: [ChallangeEntity] = []
@@ -32,38 +32,43 @@ class MainSceneViewModel: ObservableObject {
         CheckPhaseTime()
         print("Init VitaViewModel.Phase \(self.phase)")
         runAnimation()
+        let coreData = CoreDataEnvirontment.singleton
+        self.vitaSkin = coreData.vitaSkinModel
+        self.mood = coreData.checkYesterdayHasNoRecord() ? .sick : .idle
+        
     }
     
-//    func getMealRecordData() {
-//        DispatchQueue.main.async {
-//            self.mealDatas = self.mealRecordRepository.getChallanges()
-//            print("REPOPATTERN")
-//            print(self.mealDatas)
-//        }
-//    }
+    //    func getMealRecordData() {
+    //        DispatchQueue.main.async {
+    //            self.mealDatas = self.mealRecordRepository.getChallanges()
+    //            print("REPOPATTERN")
+    //            print(self.mealDatas)
+    //        }
+    //    }
     
     func runAnimation() {
         skinTimer?.invalidate()
         skinTimer = nil
         
-        DispatchQueue.main.async {
-            var index = 1
-            self.skinTimer = Timer.scheduledTimer(withTimeInterval: 0.083, repeats: true) { (Timer) in
-                self.skin = "\(self.vitaSkinModel.skin)-\(self.mood.skin)-\(index)"
-               
-                index += 1
-                if (index > self.vitaSkinModel.maxFrame(mood: self.mood)) {
-                    index = 1
-                }
+        var index = 1
+        
+        
+        self.skinTimer = Timer.scheduledTimer(withTimeInterval: 0.083, repeats: true) { (Timer) in
+            self.skin = "\(self.vitaSkin.skin)-\(self.mood.skin)-\(index)"
+            
+            index += 1
+            if (index > self.vitaSkin.maxFrame(mood: self.mood)) {
+                index = 1
             }
         }
+        
     }
     
     func CheckPhaseTime() {
         let now = Date()
         if now.isPhaseGreaterThan(.afterDay){
             self.phase = .afterDay
-        } else if now.isPhaseGreaterThan(.evening) {
+        } else if now.isPhaseGreaterThan(.evening){
             self.phase = .evening
         } else if now.isPhaseGreaterThan(.afternoon) {
             self.phase = .afternoon
@@ -72,41 +77,71 @@ class MainSceneViewModel: ObservableObject {
         } else if now.isPhaseGreaterThan(.beforeDayStart) {
             self.phase = .beforeDayStart
         }
+        //        if self.mood != .sick { self.mood = .idle }
+        //        if now.isPhaseGreaterThan(.afterDay){
+        //            self.phase = .afterDay
+        //        } else if now.isPhaseGreaterThan(time: envObj.dinnerReminder){
+        //            self.phase = .evening
+        //        } else if now.isPhaseGreaterThan(time: envObj.lunchReminder) {
+        //            self.phase = .afternoon
+        //        } else if now.isPhaseGreaterThan(time: envObj.breakfastReminder) {
+        //            self.phase = .morning
+        //        } else if now.isPhaseGreaterThan(.beforeDayStart) {
+        //            self.phase = .beforeDayStart
+        //        }
         //        print("CheckPasheTime VitaViewModel.Phase \(self.phase)")
     }
     
-    func GenerateMessage(for todayChallange: ChallangeEntity) {
-//        if charSound.isPlaying {
-//            return
-//        }
-        if phase == .afterDay {
-            self.message = phase.defaultMessage[isTapped ? 1 : 0].text
-            self.soundFileName = phase.defaultMessage[isTapped ? 1 : 0].soundFile
-            PlaySound()
+    func GenerateMessage(for todayChallange: ChallangeEntity?, isFirstTime: Bool = false) {
+        if charSound.isPlaying {
             return
         }
-        if phase == .beforeDayStart {
-            self.message = phase.defaultMessage[isTapped ? 1 : 0].text
-            self.soundFileName = phase.defaultMessage[isTapped ? 1 : 0].soundFile
+        //
+        if isFirstTime {
+            self.message = VitaFirstTimeApp.text
+            self.soundFileName = VitaFirstTimeApp.soundFile
             PlaySound()
             return
         }
         
-        if let records = todayChallange.records?.allObjects as? [MealRecordEntity] {
+        if let records = todayChallange?.records?.allObjects as? [MealRecordEntity] {
             let isComplete = records.contains{$0.timeStatus == phase.rawValue}
-            if Date().isPhaseAfterOneHour(phase) && !isComplete {
+            let countRecord = records.count
+            
+            if self.mood == .sick && countRecord == 0{
+                self.message = VitaSickMessage[isTapped ? 1 : 0].text
+                self.soundFileName = VitaSickMessage[isTapped ? 1 : 0].soundFile
+            } else if phase == .afterDay {
+                self.mood = .idle
+                self.message = phase.defaultMessage[isTapped ? 1 : 0].text
+                self.soundFileName = phase.defaultMessage[isTapped ? 1 : 0].soundFile
+            }else if phase == .beforeDayStart {
+                self.mood = .idle
+                self.message = phase.defaultMessage[isTapped ? 1 : 0].text
+                self.soundFileName = phase.defaultMessage[isTapped ? 1 : 0].soundFile
+            } else if Date().isPhaseAfterOneHour(phase) && !isComplete {
                 self.mood = .angry
                 self.message = phase.angryMessage[isTapped ? 1 : 0].text
                 self.soundFileName = phase.angryMessage[isTapped ? 1 : 0].soundFile
             } else if isComplete {
-                self.mood = .happy
-                self.message = phase.happyMessage[isTapped ? 1 : 0].text
-                self.soundFileName = phase.happyMessage[isTapped ? 1 : 0].soundFile
+                if self.mood == .sick && countRecord == 1{
+                    self.mood = .happy
+                    self.message =  VitaSickMessage[2].text
+                    self.soundFileName = VitaSickMessage[2].soundFile
+                } else {
+                    self.mood = .happy
+                    self.message = phase.happyMessage[isTapped ? 1 : 0].text
+                    self.soundFileName = phase.happyMessage[isTapped ? 1 : 0].soundFile
+                }
             } else {
                 self.mood = .idle
                 self.message = phase.defaultMessage[isTapped ? 1 : 0].text
                 self.soundFileName = phase.defaultMessage[isTapped ? 1 : 0].soundFile
             }
+        } else {
+            self.mood = .idle
+            self.message = phase.defaultMessage[isTapped ? 1 : 0].text
+            self.soundFileName = phase.defaultMessage[isTapped ? 1 : 0].soundFile
         }
         
         PlaySound()
@@ -115,25 +150,25 @@ class MainSceneViewModel: ObservableObject {
     
     func PlaySound() {
         
-//        var file = soundFileName
-//        if file == "" {
-//            file = "welcome"
-//        }
-//        guard let soundPath =  Bundle.main.path(forResource: file, ofType: "wav") else {
-//            print("Error file not found")
-//            return
-//        }
-//
-//        let fileURL = URL(filePath: soundPath)
-//
-//        do {
-//            charSound = try AVAudioPlayer(contentsOf: fileURL)
-//            charSound.prepareToPlay()
-//            charSound.volume = 1.0
-//            charSound.play()
-//        } catch {
-//            print("Error playing sound \(error.localizedDescription)")
-//        }
+        var file = soundFileName
+        if file == "" {
+            file = "welcome"
+        }
+        guard let soundPath =  Bundle.main.path(forResource: file, ofType: "wav") else {
+            print("Error file not found")
+            return
+        }
+        
+        let fileURL = URL(filePath: soundPath)
+        
+        do {
+            charSound = try AVAudioPlayer(contentsOf: fileURL)
+            charSound.prepareToPlay()
+            charSound.volume = 1.0
+            charSound.play()
+        } catch {
+            print("Error playing sound \(error.localizedDescription)")
+        }
     }
 }
 

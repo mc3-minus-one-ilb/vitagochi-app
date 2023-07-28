@@ -42,10 +42,17 @@ struct LevelUpView: View {
                         .font(.title3)
                         .fontDesign(.rounded)
                 } else {
-                    Text("Thanks to you, Vita can get \ncloser to become prettier! ")
-                        .multilineTextAlignment(.center)
-                        .font(.title3)
-                        .fontDesign(.rounded)
+                    if !coreDataEnv.isAnotherTodayMealRecord() {
+                        Text("Thanks to you, Vita can get \ncloser to become prettier! ")
+                            .multilineTextAlignment(.center)
+                            .font(.title3)
+                            .fontDesign(.rounded)
+                    } else  {
+                        Text("Thanks buddy! Note that\nyou've been level up today!")
+                            .multilineTextAlignment(.center)
+                            .font(.title3)
+                            .fontDesign(.rounded)
+                    }
                 }
                 
                 if !isLevelUp{
@@ -56,11 +63,7 @@ struct LevelUpView: View {
                     }).progressViewStyle(LevelUpProgressStyle( height: 16))
                         .padding([.horizontal], 48.0)
                         .padding([.vertical], 32.0)
-                    if coreDataEnv.isAnotherTodayMealRecord() {
-                        // TODO: Fix this
-                        Text("You already get EXP from today")
-                            .padding([.bottom], 32.0)
-                    }
+                    
                 } else  {
                     ProgressView(value: 0, total:20, label: {
                         VStack(alignment: .leading) {
@@ -109,7 +112,8 @@ struct LevelUpView: View {
                 }
             }
             
-            if !coreDataEnv.isAnotherTodayMealRecord() {
+            
+            if  !coreDataEnv.isAnotherTodayMealRecord(){
                 withAnimation(.easeInOut(duration: 1.5)) {
                     levelUpViewModel.levelProgress += progress
                 }
