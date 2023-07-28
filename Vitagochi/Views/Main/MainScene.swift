@@ -130,7 +130,6 @@ struct MainSceneView: View {
             })
             .onAppear {
                 vitaModel.GenerateMessage(for: coreDataEnv.todayChallange, isFirstTime: envObj.isFisrtTime)
-                
                 vitaModel.timer?.invalidate()
                 vitaModel.timer = nil
                 

@@ -30,8 +30,6 @@ struct RootView: View {
                         BadgesView()
                             .tag(2)
                     }
-                    .animation(.easeOut(duration: 1.0), value: selection)
-                    .transition(.slide)
                     .tabViewStyle(.page(indexDisplayMode: .never))
                     
                 }
@@ -50,7 +48,6 @@ struct RootView: View {
                             .transition(.slide)
                             .padding(.trailing, 50)
                     }
-                    .animation(.easeInOut, value: selection)
                     .background(Color.primaryWhite)
                 }
                 
