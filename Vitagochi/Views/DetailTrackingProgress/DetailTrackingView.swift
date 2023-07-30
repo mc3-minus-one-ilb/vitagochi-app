@@ -26,6 +26,7 @@ struct DetailTrackingView: View {
     }
     
     var body: some View {
+        
         VStack(alignment: .leading){
             Text("Day \(challange.day) 🎯")
                 .font(.system(.largeTitle, weight: .bold))
@@ -34,7 +35,6 @@ struct DetailTrackingView: View {
                 .font(.body)
                 .fontWeight(.semibold)
                 .padding(.horizontal)
-            
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(alignment: .center, spacing: 260) {
@@ -86,17 +86,20 @@ struct DetailTrackingView: View {
             
         }
         .navigationBarBackButtonHidden(true)
-        .navigationTitle("Today's Meal")
         .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                Button {
-                    self.envObj.path.removeLast(1)
-                } label: {
-                    Image(systemName: "chevron.left")
-                        .font(.system(size:17))
-                        .fontWeight(.semibold)
-                        .foregroundColor(.black)
-                }
+            ToolbarItemGroup(placement: .navigationBarLeading) {
+                    Button {
+                        self.envObj.path.removeLast(1)
+                    } label: {
+                        Image(systemName: "chevron.left")
+                            .font(.system(size:17))
+                            .fontWeight(.semibold)
+                            .foregroundColor(.black)
+                    }
+            }
+            ToolbarItem(placement: .principal){
+                Text("Today's Meal")
+                    .font(.system(size: 17, weight: .semibold, design: .rounded))
             }
         }
         .background {
@@ -108,6 +111,7 @@ struct DetailTrackingView: View {
                     .padding(.top, geo.size.height * 0.70)
             }
         }
+        .fontDesign(.rounded)
         .padding(.top, 24)
     }
     
@@ -137,3 +141,5 @@ struct DetailTrackingView_Previews: PreviewProvider {
             .environmentObject(GlobalEnvirontment.singleton)
     }
 }
+
+

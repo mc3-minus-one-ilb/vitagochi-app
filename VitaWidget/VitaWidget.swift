@@ -43,7 +43,7 @@ struct Provider: TimelineProvider {
             
             for timePhase in VitaWidgetTimePhase.allCases {
                 let entryDate = Date().makeDateFromTimePhase(timePhase)
-                let entry = SimpleEntry(date: entryDate, challange: challange ?? nil, timePhase: timePhase)
+                let entry = SimpleEntry(date: entryDate, challange: challange, timePhase: timePhase)
                 entries.append(entry)
                 if timePhase == .morning || timePhase == .afternoon || timePhase == .evening {
                     let entryDate = Date().makeDateFromTimePhasePlusHour(timePhase)

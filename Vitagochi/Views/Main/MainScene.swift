@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import WidgetKit
 
 //struct AdaptiveView<Content: View>: View {
 //    var content: Content
@@ -130,9 +131,10 @@ struct MainSceneView: View {
             })
             .onAppear {
                 vitaModel.GenerateMessage(for: coreDataEnv.todayChallange, isFirstTime: envObj.isFisrtTime)
+                WidgetCenter.shared.reloadAllTimelines()
                 vitaModel.timer?.invalidate()
                 vitaModel.timer = nil
-                
+                    
                 vitaModel.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
                     vitaModel.CheckPhaseTime()
                     vitaModel.currentTime = Date()

@@ -21,6 +21,7 @@ struct OnboardingSecond: View {
                     Text("Now, how should\nVita call you?")
                         .font(.title)
                         .fontWeight(.bold)
+                        .fontDesign(.rounded)
                     
                     CounteredTextView(input: $onboardingViewModel.nickname)
                         .onChange(of: onboardingViewModel.nickname, perform: { newValue in
@@ -34,6 +35,7 @@ struct OnboardingSecond: View {
                                 .foregroundColor(.red).opacity(1.0), alignment: .bottom)
                         })
                 }.padding([.bottom], 16.0)
+        
                 
                 Spacer()
                 
@@ -41,10 +43,12 @@ struct OnboardingSecond: View {
                     onboardingViewModel.saveUsername()
                     onboardingViewModel.navigate(route: .OnboardingThird)
                 }, input: "Right, just call me that!")
+                .fontDesign(.rounded)
                 
                 CancelButton(action: {
                     onboardingViewModel.back()
                 }, input: "Wait, go back please!")
+                .fontDesign(.rounded)
                 .padding(.top, 8.0)
                 .padding([.bottom], 32.0)
             }

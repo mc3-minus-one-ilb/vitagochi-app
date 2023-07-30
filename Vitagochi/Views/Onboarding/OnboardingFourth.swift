@@ -82,6 +82,7 @@ struct OnboardingFourth: View {
             .cornerRadius(20)
             .shadow(radius: 20)
         }
+        .fontDesign(.rounded)
         .edgesIgnoringSafeArea(.all)
         .background(Color.toHex(hexCode: "ED476B"))
     }

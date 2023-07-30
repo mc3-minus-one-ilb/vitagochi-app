@@ -70,6 +70,7 @@ struct TrackingProgressView: View {
                             .frame(width: UIScreen.main.bounds.size.width / 3, height: 6)
                     }
                 }
+                    .fontDesign(.rounded)
                     .background(Color.primaryWhite)
                     .padding(.top, 8)
                 

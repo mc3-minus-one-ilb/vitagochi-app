@@ -82,6 +82,7 @@ struct ChatView: View {
                                         .onTapGesture {
                                             chatModel.writeMessage(message)
                                             chatModel.showMyOptions.toggle()
+                                            chatModel.vitaAnswer = message.vitaAnswer!
                                             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                                                 chatModel.writeMessage(Message(id: Date(), text: message.vitaAnswer!.answer(name: envObj.username), isMyMessage: false, profilPic: vitaChatIcon, vitaAnswer: message.vitaAnswer!))
                                             }
@@ -131,6 +132,7 @@ struct ChatView: View {
             }
             
         }
+        .fontDesign(.rounded)
         .edgesIgnoringSafeArea(.bottom)
         .background(Color.primaryWhite)
         .edgesIgnoringSafeArea(.top)

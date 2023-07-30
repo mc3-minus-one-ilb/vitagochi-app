@@ -7,7 +7,7 @@
 
 import SwiftUI
 import NavigationTransitions
-import WidgetKit
+
 
 @main
 struct VitagochiApp: App {
@@ -50,9 +50,7 @@ struct VitagochiApp: App {
                         .defaultAppStorage(UserDefaults(suiteName: "group.com.minusone.Vitagochi")!)
                         .environmentObject(coreDataEnv)
                         .environmentObject(envObj)
-                        .onAppear{
-                            WidgetCenter.shared.reloadTimelines(ofKind: "VitaWidget")
-                        }
+                        
                 } else {
                     SplashScreen()
                         .onAppear {

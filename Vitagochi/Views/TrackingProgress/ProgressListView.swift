@@ -31,6 +31,7 @@ struct ProgressListView: View {
                                 envObj.path.append(item)
                             }
                         }
+                        .fontDesign(.rounded)
                     
                 }
             }

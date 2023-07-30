@@ -70,6 +70,8 @@ class CoreDataEnvirontment: ObservableObject {
     }
     
     func checkAndAddBadge() {
+        let daySinceStart = countHowManyDaySinceStart()
+        if daySinceStart < 11 { return }
         for type in BadgeType.allCases {
             var isAlreadeyHave = false
             for accquiredBadge in badges {

@@ -24,6 +24,7 @@ struct OnboardingThirdRevision: View {
             Spacer()
             
             CollectiveDayTimePicker(timeSelection: $onboardingViewModel.breakfastSelection, collectiveDayEatingType: .BREAKFAST, minHour: 7, maxHour: 11)
+
             
             
             CollectiveDayTimePicker(timeSelection: $onboardingViewModel.lunchSelection, collectiveDayEatingType: .LUNCH, minHour: 12, maxHour: 15)
@@ -47,6 +48,7 @@ struct OnboardingThirdRevision: View {
         }
         .padding([.horizontal], 32.0)
         .padding(.top, 32.0)
+        .fontDesign(.rounded)
         .ignoresSafeArea(.keyboard)
     }
 }

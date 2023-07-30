@@ -14,6 +14,7 @@ struct OnboardingFirst: View {
         VStack(spacing: 32.0) {
             Text("Vita is here \nfor you!")
                 .fontWeight(.bold)
+                .fontDesign(.rounded)
                 .font(.title)
                 .multilineTextAlignment(.center)
                 .foregroundColor(.white)
@@ -21,6 +22,7 @@ struct OnboardingFirst: View {
             
             Text("Do you need someone\n to remind you to eat \ngreens & fruits?")
                 .font(.title3)
+                .fontDesign(.rounded)
                 .foregroundColor(.white)
                 .multilineTextAlignment(.center)
             
@@ -31,6 +33,7 @@ struct OnboardingFirst: View {
             PrimaryButton(action: {
                 onboardingViewModel.navigate(route: .OnboardingSecond)
             }, input: "Absolutely, yes!")
+            .fontDesign(.rounded)
             .padding([.horizontal, .vertical], 32.0)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)

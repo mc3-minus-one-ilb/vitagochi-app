@@ -23,6 +23,7 @@ class MainSceneViewModel: ObservableObject {
     @Published var skin: String = ""
     var charSound: AVAudioPlayer = AVAudioPlayer()
     var soundFileName: String = ""
+    var isFirstTimeModel: Bool = true
     
     @Published var mealDatas: [ChallangeEntity] = []
     
@@ -97,7 +98,8 @@ class MainSceneViewModel: ObservableObject {
             return
         }
         //
-        if isFirstTime {
+        if isFirstTime && self.isFirstTimeModel {
+            self.isFirstTimeModel = false
             self.message = VitaFirstTimeApp.text
             self.soundFileName = VitaFirstTimeApp.soundFile
             PlaySound()
@@ -158,9 +160,9 @@ class MainSceneViewModel: ObservableObject {
             print("Error file not found")
             return
         }
-        
+
         let fileURL = URL(filePath: soundPath)
-        
+
         do {
             charSound = try AVAudioPlayer(contentsOf: fileURL)
             charSound.prepareToPlay()

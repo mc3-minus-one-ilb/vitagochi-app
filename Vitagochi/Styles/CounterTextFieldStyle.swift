@@ -23,6 +23,7 @@ struct CounterTextFieldStyle: TextFieldStyle {
                 Text("\(input.count)/\(maxLength)")
                     .foregroundColor(.labelColor)
                     .opacity(0.5)
+                    .fontDesign(.rounded)
             }
             .padding(.bottom, 8.0)
         }

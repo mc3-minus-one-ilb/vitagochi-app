@@ -28,7 +28,7 @@ struct TakePitcureButton: View {
                 Image(systemName: "camera.fill")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .foregroundColor(!isItPassMealTime && !isCompleted ? .gray : .inactiveIconTabBar )
+                    .foregroundColor(!isItPassMealTime && !isCompleted ? .pictureColor : .inactiveIconTabBar )
                     .frame(width: 46, height: 36, alignment: .center)
             }
             .overlay(alignment: .bottomTrailing) {

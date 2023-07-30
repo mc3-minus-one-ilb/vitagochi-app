@@ -80,7 +80,7 @@ struct ChatBubble: View {
                                     .padding(.bottom, 12)
                             }
                         }
-                        .padding(.all)
+                        .padding(.all, 12)
                         .background(Color.chatTopPinkColor)
                         .clipShape(BubbleArrow(isMyMessage: message.isMyMessage))
                     } else {
@@ -115,5 +115,7 @@ struct ChatBuble_Previews: PreviewProvider {
     static var previews: some View {
         //        ChatView(chatModel: ChatViewModel(photoData: Data()))
         ChatView(timePhase: .morning)
+            .environmentObject(GlobalEnvirontment.singleton)
+            .environmentObject(CoreDataEnvirontment.singleton)
     }
 }

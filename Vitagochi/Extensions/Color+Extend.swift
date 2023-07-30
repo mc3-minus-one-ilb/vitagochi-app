@@ -25,7 +25,7 @@ extension Color {
     public static let primaryBlack: Color = Color("PrimaryBlackColor")
     public static let labelColor: Color = Color("LabelColor")
 //    public static let imageIconColor: Color = Color(hex: 838383)
-//    public static let titleTextColor: Color = Color(hex: 272727)
+    public static let pictureColor: Color = Color(0x272727)
     public static let bubleTextBackgroundColor: Color = Color(0xED476B)
     public static let circularProgressOutline: Color = Color(0x47EDC9)
     public static let circularProgressBackground: Color = Color(0xC2F9ED)
