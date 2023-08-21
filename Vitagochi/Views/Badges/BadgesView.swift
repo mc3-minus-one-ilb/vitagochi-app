@@ -7,22 +7,14 @@
 
 import SwiftUI
 
-
 struct BadgesView: View {
     @EnvironmentObject private var coreData: CoreDataEnvirontment
+    @StateObject  private var badgesVM: BadgesViewModel = BadgesViewModel()
     
-    var items: [BadgeModel] = []
-    
-    let gridItems = [GridItem(.flexible()),GridItem(.flexible())]
-    
-    init() {
-        for badgeType in BadgeType.allCases {
-            items.append(BadgeModel(type: badgeType))
-        }
-    }
+    let gridItems = [GridItem(.flexible()), GridItem(.flexible())]
     
     var body: some View {
-        VStack(alignment: .leading){
+        VStack(alignment: .leading) {
             Text("Badges ✨")
                 .font(.title)
                 .fontDesign(.rounded)
@@ -30,12 +22,11 @@ struct BadgesView: View {
                 .padding(.leading, 16)
             ScrollView(.vertical, showsIndicators: false) {
                 LazyVGrid(columns: gridItems) {
-                    ForEach(items) { item in
+                    ForEach(badgesVM.items) { item in
                         if coreData.badges.contains(where: { badgeData in
-                            badgeData.badgeId == item.type.rawValue
-                        }) {
+                            badgeData.badgeId == item.type.rawValue }) {
                             BadgeView(badgeModel: item, isUnlocked: true)
-                        } else  {
+                        } else {
                             BadgeView(badgeModel: item)
                         }
                         

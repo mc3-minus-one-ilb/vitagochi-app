@@ -9,29 +9,20 @@ import SwiftUI
 
 struct DetailTrackingView: View {
     @EnvironmentObject var envObj: GlobalEnvirontment
-    @State private var flipped: [Bool] = [false, false, false]
-    @State private var waitFlipped: Bool = false
-    var challange: ChallangeEntity
-    var photos: [UIImage?] = []
-    var records: [MealRecordEntity] = []
+    @StateObject private var detailTrackingVM: DetailTrackingViewModel
     
-    init(challange: ChallangeEntity) {
-        self.challange =  challange
-        if let mealRecords = challange.records?.allObjects as? [MealRecordEntity] {
-            for record in mealRecords.sorted(by: {$0.timeStatus < $1.timeStatus}) {
-                self.photos.append(UIImage(contentsOfFile: getImagePath(name: record.photo ?? "") ?? ""))
-                self.records.append(record)
-            }
-        }
+    init(challenge: ChallangeEntity) {
+        let detailTrackingVM = DetailTrackingViewModel(challange: challenge)
+        self._detailTrackingVM = StateObject(wrappedValue: detailTrackingVM)
     }
     
     var body: some View {
         
-        VStack(alignment: .leading){
-            Text("Day \(challange.day) 🎯")
+        VStack(alignment: .leading) {
+            Text("Day \(detailTrackingVM.challange.day) 🎯")
                 .font(.system(.largeTitle, weight: .bold))
                 .padding(.horizontal)
-            Text(challange.date!.getFormattedDate())
+            Text(detailTrackingVM.challange.date!.getFormattedDate())
                 .font(.body)
                 .fontWeight(.semibold)
                 .padding(.horizontal)
@@ -40,38 +31,64 @@ struct DetailTrackingView: View {
                 HStack(alignment: .center, spacing: 260) {
                     ForEach(0..<3) { index in
                         GeometryReader { geometry in
-                            HStack{
-                                let recordExist = isRecordExist(timeStatus: index)
+                            HStack {
+                                let recordExist = detailTrackingVM.isRecordExist(timeStatus: index)
+                                let timePhase = VitaTimePhase(rawValue: Int16(index))!
                                 if recordExist.valid {
-                                    if flipped[index] {
-                                        GalleryCard(timePhase: VitachiTimePhase(rawValue: Int16(index))! ,isFlipped: true, vitaMessage: records[recordExist.index].vitaMessage!)
-                                            .rotation3DEffect(flipped[index]  ? Angle(degrees: 180) : .zero, axis: (x: 0.0 , y: 1.0, z: 0.0))
+                                    let vitaMessage = detailTrackingVM
+                                        .records[recordExist.index].vitaMessage!
+                                    let photo = detailTrackingVM
+                                        .photos[recordExist.index]
+                                    let time = detailTrackingVM
+                                        .records[recordExist.index].time!
+                                    if detailTrackingVM.cardsIsFlipped[index] {
+                                        GalleryCard(timePhase: timePhase,
+                                                    isFlipped: true,
+                                                    vitaMessage: vitaMessage)
+                                        .rotation3DEffect(
+                                            detailTrackingVM.cardsIsFlipped[index] ?
+                                            Angle(degrees: 180) : .zero,
+                                            axis: (x: 0.0, y: 1.0, z: 0.0))
                                     } else {
-                                        GalleryCard(photo: photos[recordExist.index], timePhase: VitachiTimePhase(rawValue: Int16(index))!, time: records[recordExist.index].time! ,isFlipped: false)
-                                        
+                                        GalleryCard(photo: photo,
+                                                    timePhase: timePhase,
+                                                    time: time,
+                                                    isFlipped: false)
                                     }
                                 } else {
-                                    if flipped[index] {
-                                        GalleryCard(timePhase: VitachiTimePhase(rawValue: Int16(index))! ,isFlipped: true,
-                                                    cardDate: challange.date!)
-                                            .rotation3DEffect(flipped[index]  ? Angle(degrees: 180) : .zero, axis: (x: 0.0 , y: 1.0, z: 0.0))
+                                    let cardDate = detailTrackingVM.challange.date!
+                                    if detailTrackingVM.cardsIsFlipped[index] {
+                                        GalleryCard(timePhase: timePhase,
+                                                    isFlipped: true,
+                                                    cardDate: cardDate)
+                                        .rotation3DEffect(
+                                            detailTrackingVM.cardsIsFlipped[index] ?
+                                            Angle(degrees: 180) : .zero,
+                                            axis: (x: 0.0, y: 1.0, z: 0.0))
                                         
                                     } else {
-                                        
-                                        GalleryCard(timePhase: VitachiTimePhase(rawValue: Int16(index))! ,isFlipped: false, cardDate: challange.date!)
+                                        GalleryCard(timePhase: timePhase,
+                                                    isFlipped: false,
+                                                    cardDate: cardDate)
                                         
                                     }
                                 }
                             }
-                            .frame(width: 269,height: 508, alignment: .center)
+                            .frame(width: 269, height: 508, alignment: .center)
                             .padding()
-                            .shadow(color: Color.black.opacity(0.08),radius: 12, x: -4, y: 4)
-                            .rotation3DEffect(flipped[index] ? Angle(degrees: 180) : .zero, axis: (x: 0.0, y: 1.0, z: 0.0))
-                            .animation(.default, value: flipped[index])
+                            .shadow(color: Color.black.opacity(0.08), radius: 12, x: -4, y: 4)
+                            .rotation3DEffect(
+                                detailTrackingVM.cardsIsFlipped[index] ?
+                                Angle(degrees: 180) : .zero,
+                                axis: (x: 0.0, y: 1.0, z: 0.0))
+                            .animation(.default, value: detailTrackingVM.cardsIsFlipped[index])
                             .onTapGesture {
-                                flipped[index].toggle()
+                                detailTrackingVM.cardsIsFlipped[index].toggle()
                             }
-                            .rotation3DEffect(Angle(degrees: Double(geometry.frame(in: .global).minX) - 45) / -20, axis: (x: 0, y: 1.0, z: 0))
+                            .rotation3DEffect(
+                                Angle(degrees: Double(geometry
+                                    .frame(in: .global).minX) - 45) / -20,
+                                axis: (x: 0, y: 1.0, z: 0))
                             
                         }
                         .padding(.horizontal, 30)
@@ -88,16 +105,16 @@ struct DetailTrackingView: View {
         .navigationBarBackButtonHidden(true)
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarLeading) {
-                    Button {
-                        self.envObj.path.removeLast(1)
-                    } label: {
-                        Image(systemName: "chevron.left")
-                            .font(.system(size:17))
-                            .fontWeight(.semibold)
-                            .foregroundColor(.black)
-                    }
+                Button {
+                    self.envObj.path.removeLast(1)
+                } label: {
+                    Image(systemName: "chevron.left")
+                        .font(.system(size: 17))
+                        .fontWeight(.semibold)
+                        .foregroundColor(.black)
+                }
             }
-            ToolbarItem(placement: .principal){
+            ToolbarItem(placement: .principal) {
                 Text("Today's Meal")
                     .font(.system(size: 17, weight: .semibold, design: .rounded))
             }
@@ -115,31 +132,15 @@ struct DetailTrackingView: View {
         .padding(.top, 24)
     }
     
-    func isRecordExist(timeStatus: Int) -> (valid:Bool,index:Int) {
-        var index = 0
-        for record in records {
-            if record.timeStatus == Int16(timeStatus) {
-                return (true, index)
-            }
-            index += 1
-        }
-        return (false, 0)
-    }
-    
-    func getImagePath(name: String) -> String? {
-        guard let imagePath =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent(name).path,
-              FileManager.default.fileExists(atPath: imagePath) else {
-            return nil
-        }
-        return imagePath
-    }
+//    func flipCard(index: Int) -> some View {
+//
+//    }
 }
 
 struct DetailTrackingView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailTrackingView(challange: CoreDataEnvirontment.singleton.todayChallange!)
+        let challenge = CoreDataEnvirontment.singleton.todayChallenge!
+        DetailTrackingView(challenge: challenge)
             .environmentObject(GlobalEnvirontment.singleton)
     }
 }
-
-

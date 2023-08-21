@@ -14,7 +14,7 @@ enum VitaSkinModel: Int {
     case white = 3
     
     var skin: String {
-        switch self{
+        switch self {
         case.casual:
             return "Pink"
         case.orange:
@@ -26,52 +26,68 @@ enum VitaSkinModel: Int {
         }
     }
     
-    func maxFrame(mood: VitachiMoodPhase)-> Int {
+    func maxFrame(mood: VitaMoodPhase) -> Int {
         switch self {
         case.casual:
-            switch mood {
-            case.idle:
-                return 16
-            case.happy:
-                return 20
-            case.angry:
-                return 16
-            case.sick:
-                return 18
-            }
+            return casualMaxFrame(mood: mood)
         case.orange:
-            switch mood {
-            case.idle:
-                return 16
-            case.happy:
-                return 19
-            case.angry:
-                return 16
-            case.sick:
-                return 18
-            }
+            return orangeMaxFrame(mood: mood)
         case.green:
-            switch mood {
-            case.idle:
-                return 16
-            case.happy:
-                return 20
-            case.angry:
-                return 16
-            case.sick:
-                return 18
-            }
+            return greenMaxFrame(mood: mood)
         case.white:
-            switch mood {
-            case.idle:
-                return 16
-            case.happy:
-                return 19
-            case.angry:
-                return 16
-            case.sick:
-                return 18
-            }
+            return whiteMaxFrame(mood: mood)
+        }
+    }
+    
+    private func casualMaxFrame(mood: VitaMoodPhase) -> Int {
+        switch mood {
+        case.idle:
+            return 16
+        case.happy:
+            return 20
+        case.angry:
+            return 16
+        case.sick:
+            return 18
+        }
+    }
+    
+    private func orangeMaxFrame(mood: VitaMoodPhase) -> Int {
+        switch mood {
+        case.idle:
+            return 16
+        case.happy:
+            return 19
+        case.angry:
+            return 16
+        case.sick:
+            return 18
+        }
+    }
+    
+    private func greenMaxFrame(mood: VitaMoodPhase) -> Int {
+        switch mood {
+        case.idle:
+            return 16
+        case.happy:
+            return 20
+        case.angry:
+            return 16
+        case.sick:
+            return 18
+        }
+    }
+    
+    private func whiteMaxFrame(mood: VitaMoodPhase) -> Int {
+        switch mood {
+        case.idle:
+            return 16
+        case.happy:
+            return 19
+        case.angry:
+            return 16
+        case.sick:
+            return 18
         }
     }
 }

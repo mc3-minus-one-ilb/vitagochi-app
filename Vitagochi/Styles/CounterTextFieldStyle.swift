@@ -12,6 +12,7 @@ struct CounterTextFieldStyle: TextFieldStyle {
     @Binding var input: String
     @State var maxLength: Int = 0
     
+    // swiftlint:disable all
     func _body(configuration: TextField<Self._Label>) -> some View {
         HStack {
             Group {
@@ -29,6 +30,7 @@ struct CounterTextFieldStyle: TextFieldStyle {
         }
         .overlay(Rectangle()
             .frame(width: nil, height: 1, alignment: .bottom)
-            .foregroundColor(.labelColor).opacity(input.count > 0 ? 1.0 : 0.5), alignment: .bottom)
+            .foregroundColor(.labelColor).opacity(input.isEmpty ? 1.0 : 0.5), alignment: .bottom)
+        // swiftlint:enable all
     }
 }

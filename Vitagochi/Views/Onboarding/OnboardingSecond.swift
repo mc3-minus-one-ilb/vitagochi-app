@@ -36,12 +36,11 @@ struct OnboardingSecond: View {
                         })
                 }.padding([.bottom], 16.0)
         
-                
                 Spacer()
                 
                 PrimaryButton(action: {
                     onboardingViewModel.saveUsername()
-                    onboardingViewModel.navigate(route: .OnboardingThird)
+                    onboardingViewModel.navigate(route: .onboardingThird)
                 }, input: "Right, just call me that!")
                 .fontDesign(.rounded)
                 

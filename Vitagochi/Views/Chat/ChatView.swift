@@ -11,31 +11,38 @@ import WidgetKit
 struct ChatView: View {
     @EnvironmentObject private var envObj: GlobalEnvirontment
     @EnvironmentObject private var coreData: CoreDataEnvirontment
-    @StateObject var chatModel = ChatViewModel(message: Message(id: Date(), text: "Photo", isMyMessage: true, profilPic: ""))
-    @State var isCompleted: Bool = false
-    var timePhase: VitachiTimePhase
-    var vitaChatIcon: String = "VitaChatIcon"
+    @StateObject var chatVM: ChatViewModel
+    
+    init(initialMessage: Message, photoData: Data?, timePhase: VitaTimePhase) {
+        let chatVM = ChatViewModel(
+            initialMessage,
+            photoData: photoData,
+            timePhase: timePhase
+        )
+        
+        self._chatVM = StateObject(wrappedValue: chatVM)
+    }
     
     var body: some View {
-        VStack{
-            HStack() {
+        VStack {
+            HStack {
                 Button {
                     envObj.mainPath[0].toggle()
                 } label: {
                     Image(systemName: "chevron.left")
-                        .font(.system(size:17))
+                        .font(.system(size: 17))
                         .fontWeight(.semibold)
                 }
                 .padding(.trailing, 2)
                 
-                Image(vitaChatIcon)
+                Image(chatVM.vitaIconImageName)
                     .resizable()
                     .background(Color.vitaProfileBackgroundColor)
                     .frame(width: 32, height: 32)
                     .clipShape(Circle())
-                VStack(alignment: .leading){
+                VStack(alignment: .leading) {
                     Text("My Vita 🍎🥬")
-                        .font(.system(size:17, weight: .semibold))
+                        .font(.system(size: 17, weight: .semibold))
                         .fontDesign(.rounded)
                     Text("Online")
                         .font(.system(.caption, weight: .semibold))
@@ -52,14 +59,15 @@ struct ChatView: View {
             
             Spacer()
             
-            VStack{
-                ScrollView(.vertical,showsIndicators: false) {
-                    ScrollViewReader{ reader in
+            VStack {
+                ScrollView(.vertical, showsIndicators: false) {
+                    ScrollViewReader { reader in
                         VStack(spacing: 20) {
-                            ForEach(chatModel.messages) { message in
-                                ChatBubble(isCompleted: $isCompleted, message: message)
+                            ForEach(chatVM.messages) { message in
+                                ChatBubble(isCompleted: $chatVM.isCompleted,
+                                           message: message)
                             }
-                            .onChange(of: chatModel.messages) { newValue in
+                            .onChange(of: chatVM.messages) { newValue in
                                 if newValue.last!.isMyMessage {
                                     reader.scrollTo(newValue.last?.id)
                                 }
@@ -68,66 +76,69 @@ struct ChatView: View {
                         }
                         .padding([.horizontal, .bottom])
                         .padding(.top, 25)
-                        .animation(.easeInOut, value: chatModel.messages)
+                        .animation(.easeInOut, value: chatVM.messages)
                     }
                 }
                 
                 HStack(spacing: 15) {
                     ScrollView(.horizontal, showsIndicators: false) {
-                        if chatModel.showMyOptions {
+                        if chatVM.isMyOptionsActive {
                             HStack {
-                                ForEach(chatModel.myOptionsMessages) {
-                                    message in
-                                    ChatBubble(isCompleted: $isCompleted, message: message, isHorizontalScroll: true)
-                                        .onTapGesture {
-                                            chatModel.writeMessage(message)
-                                            chatModel.showMyOptions.toggle()
-                                            chatModel.vitaAnswer = message.vitaAnswer!
-                                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                                                chatModel.writeMessage(Message(id: Date(), text: message.vitaAnswer!.answer(name: envObj.username), isMyMessage: false, profilPic: vitaChatIcon, vitaAnswer: message.vitaAnswer!))
+                                ForEach(chatVM.myOptionsMessages) { message in
+                                    ChatBubble(isCompleted: $chatVM.isCompleted,
+                                               message: message,
+                                               isHorizontalScroll: true)
+                                    .onTapGesture {
+                                        chatVM.writeMessage(message)
+                                        chatVM.isMyOptionsActive.toggle()
+                                        chatVM.vitaAnswer = message.vitaAnswer!
+                                        // Execute after 1.5 Second
+                                        DispatchQueue.main
+                                            .asyncAfter(deadline: .now() + 1.5) {
+                                                let vitaMessage = Message(
+                                                    id: Date(),
+                                                    text: message.vitaAnswer!
+                                                        .getAnswer(name: envObj.username),
+                                                    isMyMessage: false,
+                                                    profilPic: chatVM.vitaIconImageName,
+                                                    vitaAnswer: message.vitaAnswer!)
+                                                chatVM.writeMessage(vitaMessage)
                                             }
-                                        }
+                                    }
                                 }
                             }
                             .transition(.push(from: .bottom))
                         }
                     }
                     .padding(.vertical, 12)
-                    .animation(.easeInOut, value: chatModel.showMyOptions)
+                    .animation(.easeInOut, value: chatVM.isMyOptionsActive)
                 }
                 .padding(.horizontal)
             }
             .padding(.bottom, UIApplication.shared.windows.first?.safeAreaInsets.bottom)
             .clipShape(Rectangle())
-            .navigationDestination(isPresented: $envObj.mainPath[1]){
+            .navigationDestination(isPresented: $envObj.mainPath[1]) {
                 LevelUpView()
             }
-            .onChange(of: isCompleted) { newValue in
+            .onChange(of: chatVM.isCompleted) { newValue in
                 if newValue {
-                    guard let photoName = chatModel.savePhoto() else {return}
-
-                   coreData.addMealRecordToTodayCallange(name:envObj.username,mealStatus: chatModel.vitaAnswer, timeStatus: timePhase, photoName: photoName)
-
-                    coreData.checkAndAddBadge()
-
-                    let notificationHandler = NotificationHandler.singleton
-                    switch timePhase {
-                    case .morning:
-                        notificationHandler.removeNotificationById(identifier: ReminderType.BREAKFAST_NOT_YET.getString())
-                    case .afternoon:
-                        notificationHandler.removeNotificationById(identifier: ReminderType.LUNCH_NOT_YET.getString())
-                    case .evening:
-                        notificationHandler.removeNotificationById(identifier: ReminderType.DINNER_NOT_YET.getString())
-                    case .beforeDayStart: break
-
-                    case .afterDay: break
-
-                    }
-
-                    print(notificationHandler.showScheduledNotifications())
-                    WidgetCenter.shared.reloadAllTimelines()
-                    envObj.mainPath[1].toggle()
+                    guard let photoName = chatVM
+                        .savePhotoToFileManager() else {return}
                     
+                    coreData
+                        .addTodayMealRecord(name: envObj.username,
+                                            mealStatus: chatVM.vitaAnswer,
+                                            timeStatus: chatVM.timePhase,
+                                            photoName: photoName)
+                    
+                    coreData.checkAndAddBadge(phase: chatVM.timePhase)
+                    
+                    weak var notificationHandler = NotificationHandler.singleton
+                    notificationHandler?
+                        .removeNotificationNotYet(timePhase: chatVM.timePhase)
+                    
+                    WidgetCenter.shared.reloadAllTimelines()
+                    envObj.toggleLevelUpViewNav()
                 }
             }
             
@@ -137,16 +148,21 @@ struct ChatView: View {
         .background(Color.primaryWhite)
         .edgesIgnoringSafeArea(.top)
         .navigationBarBackButtonHidden(true)
-       
+        
     }
 }
-
-
 
 struct ChatView_Previews: PreviewProvider {
     static var previews: some View {
         //        ChatView(chatModel: ChatViewModel(photoData: Data()))
-        ChatView(timePhase: .morning)
+        let previewInitialMessage = Message(id: Date(),
+                                            text: "Photo",
+                                            isMyMessage: true,
+                                            profilPic: "")
+        
+        ChatView(initialMessage: previewInitialMessage,
+                 photoData: nil,
+                 timePhase: .morning)
             .environmentObject(GlobalEnvirontment.singleton)
             .environmentObject(CoreDataEnvirontment.singleton)
     }

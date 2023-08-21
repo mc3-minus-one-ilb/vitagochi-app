@@ -11,7 +11,20 @@ struct OnboardingFourth: View {
     @EnvironmentObject var onboardingViewModel: OnboardingViewModel
     
     var body: some View {
-        VStack(spacing: 0) {
+        let nickNameCap = onboardingViewModel.nickname.capitalized
+        let remindDesc = "In 66 days, Vita will reminds " +
+        "\(nickNameCap) " +
+        "to eat greens and fruits for " +
+        "every breakfast, lunch, and dinner 🍛"
+        let recieveMealDesc = "\(nickNameCap) " +
+        "should take a picture of the meals" +
+        "eaten and send it on time to Vita, " +
+        "so that Vita can check it 📸"
+        let remindAgainDesc = "By regularly taking healthy meal pictures, " +
+        "Vita will level up and there will " +
+        "be badges to be collected! ✨"
+        
+        return VStack(spacing: 0) {
             HStack(spacing: 0) {
                 Text("How does Vita work? 👀")
                     .foregroundColor(.primaryWhite)
@@ -31,12 +44,12 @@ struct OnboardingFourth: View {
                         Image(systemName: "bell.fill")
                             .resizable()
                             .frame(maxWidth: 50, maxHeight: 48)
-
+                        
                         VStack(alignment: .leading, spacing: 8.0) {
                             Text("Vita will remind you")
                                 .font(.title3)
                                 .fontWeight(.bold)
-                            Text("In 66 days, Vita will reminds \(onboardingViewModel.nickname.capitalized) to eat greens and fruits for every breakfast, lunch, and dinner 🍛")
+                            Text(remindDesc)
                         }
                     }
                     
@@ -48,7 +61,7 @@ struct OnboardingFourth: View {
                             Text("Vita receive the meal pictures")
                                 .font(.title3)
                                 .fontWeight(.bold)
-                            Text("\(onboardingViewModel.nickname.capitalized) should take a picture of the meals eaten and send it on time to Vita, so that Vita can check it 📸")
+                            Text(recieveMealDesc)
                         }
                     }
                     
@@ -60,7 +73,7 @@ struct OnboardingFourth: View {
                             Text("Vita will remind you")
                                 .font(.title3)
                                 .fontWeight(.bold)
-                            Text("By regularly taking healthy meal pictures, Vita will level up and there will be badges to be collected! ✨")
+                            Text(remindAgainDesc)
                         }
                     }.frame(maxWidth: .infinity)
                 }.padding([.vertical], 16.0)

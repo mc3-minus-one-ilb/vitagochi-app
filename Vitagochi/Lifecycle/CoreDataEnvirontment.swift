@@ -14,31 +14,33 @@ struct BadgeModelData {
 }
 
 class CoreDataEnvirontment: ObservableObject {
-    public static let singleton: CoreDataEnvirontment = CoreDataEnvirontment()
-    private let appCoreRepository: CoreDataRepository = CoreDataRepository.singleton
-    @Published var challanges: [ChallangeEntity] = []
+    public static let singleton: CoreDataEnvirontment = CoreDataEnvirontment(
+        repository: CoreDataRepository.singleton)
+    private var appCoreRepository: CoreDataRepository
+    @Published var challenges: [ChallangeEntity] = []
     @Published var mealRecords: [MealRecordEntity] = []
     @Published var badges: [BadgeEntity] = []
-    @Published var todayChallange: ChallangeEntity?
+    @Published var todayChallenge: ChallangeEntity?
     @Published var vitaSkinModel: VitaSkinModel = .casual
     @Published var newBadge: BadgeEntity?
     var isTomorrowStarting: Bool = false
     
-    init() {
+    init(repository: CoreDataRepository) {
+        self.appCoreRepository = repository
         fetchChallanges()
         fetchMealRecords()
-        if challanges.count > 0 {
-            print("Okay1")
-            getTodayChallange()
+        if !challenges.isEmpty {
+            setTodayChallange()
             getVitaModel()
         }
-        if challanges.count == 0 {
+        if challenges.isEmpty {
             add66DaysOfChallanges()
         }
+        
     }
     
     func fetchChallanges() {
-        self.challanges = appCoreRepository.getChallanges()
+        self.challenges = appCoreRepository.getChallanges()
     }
     
     func fetchMealRecords() {
@@ -46,44 +48,47 @@ class CoreDataEnvirontment: ObservableObject {
     }
     
     func getTodayCompletedChallange() -> Int {
-        return todayChallange?.records?.count ?? 0
+        return todayChallenge?.records?.count ?? 0
     }
     
-    func getTodayChallange() {
-        let today = Date()
-        var i = 1
-        for challange in challanges {
-            if let challangeDate = challange.date{
+    func setTodayChallange(_ date: Date = Date()) {
+        let today = date
+        var index = 1
+        for challange in challenges {
+            if let challangeDate = challange.date {
                 if  today.isItToday(date: challangeDate) {
-                    self.todayChallange = challange
+                    self.todayChallenge = challange
                     return
                 }
-                i+=1
+                index+=1
             } else {
-                i+=1
+                index+=1
             }
         }
-        if todayChallange == nil && !isTomorrowStarting{
-            self.todayChallange = appCoreRepository.addChallange(date: Date(), day: Int16(i))
+        if todayChallenge == nil && !isTomorrowStarting {
+            self.todayChallenge = appCoreRepository.addChallenge(date: date, day: Int16(index))
             save()
         }
     }
     
-    func checkAndAddBadge() {
-        let daySinceStart = countHowManyDaySinceStart()
-        if daySinceStart < 11 { return }
+    func checkAndAddBadge(phase: VitaTimePhase) {
+//        let daySinceStart = countHowManyDaySinceStart()
+//        if daySinceStart < 11 { return }
+// Fix This
+        
         for type in BadgeType.allCases {
             var isAlreadeyHave = false
-            for accquiredBadge in badges {
-                if accquiredBadge.badgeId == type.rawValue {
-                    isAlreadeyHave = true
-                    continue
-                }
+            
+            for accquiredBadge in badges
+            where accquiredBadge.badgeId == type.rawValue {
+                isAlreadeyHave = true
+                continue
             }
+            
             if isAlreadeyHave {
                 continue
             } else {
-                if type.isItAchieved(challanges: challanges) {
+                if type.checkIsItAchieved(challanges: challenges, phase: phase) {
                     newBadge = appCoreRepository.addBadge(for: type)
                     save()
                 }
@@ -92,11 +97,11 @@ class CoreDataEnvirontment: ObservableObject {
         
     }
     
-    func addMealRecordToTodayCallange(name: String,
-                                      mealStatus: VitaMessageAnswer,
-                                      timeStatus: VitachiTimePhase,
-                                      photoName: String) {
-        if let todayChallange = todayChallange {
+    func addTodayMealRecord(name: String,
+                            mealStatus: VitaChatAnswer,
+                            timeStatus: VitaTimePhase,
+                            photoName: String) {
+        if let todayChallange = todayChallenge {
             appCoreRepository
                 .addMealRecord(challange: todayChallange,
                                name: name, mealStatus: mealStatus,
@@ -108,10 +113,7 @@ class CoreDataEnvirontment: ObservableObject {
     }
     
     func add66DaysOfChallanges() {
-        
-             
-        
-        if challanges.count == 0 {
+        if challenges.isEmpty {
             let today = Date()
             let calendar = Calendar.current
             
@@ -119,24 +121,26 @@ class CoreDataEnvirontment: ObservableObject {
             
             if hour >= 21 {
                 self.isTomorrowStarting = true
-                for i in 0..<66 {
-                    appCoreRepository.addChallange(date: today.increaseDate(by: i+1)!, day: Int16(i+1))
+                for challangeDay in 0..<66 {
+                    _ = appCoreRepository
+                        .addChallenge(date: today.increaseDate(by: challangeDay+1)!,
+                                      day: Int16(challangeDay+1))
                 }
-            } else  {
-                for i in 0..<66 {
-                    appCoreRepository.addChallange(date: today.increaseDate(by: i)!, day: Int16(i+1))
+            } else {
+                for challangeDay in 0..<66 {
+                    _ = appCoreRepository
+                        .addChallenge(date: today.increaseDate(by: challangeDay)!,
+                                      day: Int16(challangeDay+1))
                 }
             }
-            
             save()
         }
     }
     
     func getVitaModel() {
-        let countChallange = challanges.filter{ ($0.records?.allObjects.count)! > 0 }.count
+        let countChallange = challenges.filter { ($0.records?.allObjects.count)! > 0 }.count
         
         if countChallange > 0 {
-            print("Core data countChallange \(countChallange)")
             let level = countChallange / 20
             if level >= 3 {
                 vitaSkinModel = .white
@@ -147,13 +151,15 @@ class CoreDataEnvirontment: ObservableObject {
             } else {
                 vitaSkinModel = .casual
             }
-            
         }
     }
     
     func checkYesterdayHasNoRecord() -> Bool {
         let today = Date()
-        let countRecordYesterday = challanges.filter { today.isDateYesterday($0.date) }.first?.records?.count ?? -1
+        let recordNilValue = -1
+        let countRecordYesterday = challenges
+            .filter { today.isDateYesterday($0.date) }
+            .first?.records?.count ?? recordNilValue
         if countRecordYesterday == 0 {
             return true
         }
@@ -161,7 +167,7 @@ class CoreDataEnvirontment: ObservableObject {
     }
     
     func levelProgress() -> Double {
-        let countChallange = challanges.filter{ ($0.records?.allObjects.count)! > 0 }.count
+        let countChallange = challenges.filter { ($0.records?.allObjects.count)! > 0 }.count
         if countChallange == 0 {return 0}
         let progress = Double(countChallange % 20)
         return progress == 0.0 ? 20.0 : progress
@@ -169,21 +175,24 @@ class CoreDataEnvirontment: ObservableObject {
     
     func countHowManyDaySinceStart() -> Int {
         let today = Date()
-        return challanges.filter{ (today.isItTodayOrPast(date: $0.date!)) }.count
+        return challenges.filter { (today.isItTodayOrPast(date: $0.date!)) }.count
     }
     
     func getChallangeBasedOnSection(section: Int) -> [ChallangeEntity] {
-        if section == 2{
-            return challanges.filter{$0.day >= 45 && $0.day <= 66}.sorted{ $0.day < $1.day }
-        } else if section == 1{
-            return challanges.filter{$0.day >= 23 && $0.day <= 44}.sorted{ $0.day < $1.day }
+        if section == 2 {
+            return challenges
+                .filter {$0.day >= 45 && $0.day <= 66}.sorted { $0.day < $1.day }
+        } else if section == 1 {
+            return challenges
+                .filter {$0.day >= 23 && $0.day <= 44}.sorted { $0.day < $1.day }
         } else {
-            return challanges.filter{$0.day >= 1 && $0.day <= 22}.sorted{ $0.day < $1.day }
+            return challenges
+                .filter {$0.day >= 1 && $0.day <= 22}.sorted { $0.day < $1.day }
         }
     }
     func getSectionBasedOnCurrentDay() -> Int {
         let today = Date()
-        let currentDaysCount = challanges.filter{ (today.isItTodayOrPast(date: $0.date!)) }.count
+        let currentDaysCount = challenges.filter { (today.isItTodayOrPast(date: $0.date!)) }.count
         if currentDaysCount >= 0 && currentDaysCount <= 22 {
             return 0
         } else if currentDaysCount >= 23 && currentDaysCount <= 44 {
@@ -193,9 +202,8 @@ class CoreDataEnvirontment: ObservableObject {
         }
     }
     
-    
     func isAnotherTodayMealRecord() -> Bool {
-        return (todayChallange?.records!.count)! > 1
+        return (todayChallenge?.records!.count)! > 1
     }
     
     func save() {

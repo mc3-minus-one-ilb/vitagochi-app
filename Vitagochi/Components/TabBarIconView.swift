@@ -12,13 +12,13 @@ struct TabBarIconView: View {
     let value: Int
     let iconName: String
     var body: some View {
-        ZStack{
-            if selection == value{
+        ZStack {
+            if selection == value {
                 Rectangle()
                     .foregroundColor(.circularProgressOutline)
                     .cornerRadius(20)
                     .frame(width: 64, height: 4, alignment: .center)
-                    .offset(y:-23)
+                    .offset(y: -23)
             }
             Button {
                 self.selection = value
@@ -27,7 +27,8 @@ struct TabBarIconView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 23, height: 21, alignment: .center)
-                    .foregroundColor(selection == value ? Color.activeIconTabBar : Color.inactiveIconTabBar)
+                    .foregroundColor(selection == value ?
+                                     Color.activeIconTabBar : Color.inactiveIconTabBar)
             }
         }
         .frame(width: 70, height: 50)

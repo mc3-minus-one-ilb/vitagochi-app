@@ -12,12 +12,12 @@ struct TimePickerView: UIViewRepresentable {
     var data: [[String]]
     @Binding var selections: [Int]
     
-    //makeCoordinator()
+    // makeCoordinator()
     func makeCoordinator() -> TimePickerView.Coordinator {
         Coordinator(self)
     }
 
-    //makeUIView(context:)
+    // makeUIView(context:)
     func makeUIView(context: UIViewRepresentableContext<TimePickerView>) -> UIPickerView {
         let picker = UIPickerView(frame: .zero)
         
@@ -27,10 +27,13 @@ struct TimePickerView: UIViewRepresentable {
         return picker
     }
 
-    //updateUIView(_:context:)
+    // updateUIView(_:context:)
     func updateUIView(_ view: UIPickerView, context: UIViewRepresentableContext<TimePickerView>) {
-        for i in 0...(self.selections.count - 1) {
-            view.selectRow(self.selections[i], inComponent: i, animated: false)
+        for index in 0...(self.selections.count - 1) {
+            view.selectRow(
+                self.selections[index],
+                inComponent: index,
+                animated: false)
         }
         context.coordinator.parent = self // fix
     }
@@ -38,30 +41,30 @@ struct TimePickerView: UIViewRepresentable {
     class Coordinator: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
         var parent: TimePickerView
         
-        //init(_:)
+        // init(_:)
         init(_ pickerView: TimePickerView) {
             self.parent = pickerView
         }
         
-        //numberOfComponents(in:)
+        // numberOfComponents(in:)
         func numberOfComponents(in pickerView: UIPickerView) -> Int {
             return self.parent.data.count
         }
         
-        //pickerView(_:numberOfRowsInComponent:)
+        // pickerView(_:numberOfRowsInComponent:)
         func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
             return self.parent.data[component].count
         }
         
-        //pickerView(_:titleForRow:forComponent:)
+        // pickerView(_:titleForRow:forComponent:)
         func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-            let transparent = UIColor(red: 255.0 , green: 255.0, blue: 255.0, alpha: 0.0)
+            let transparent = UIColor(red: 255.0, green: 255.0, blue: 255.0, alpha: 0.0)
             pickerView.subviews[1].backgroundColor = transparent
             
             return self.parent.data[component][row]
         }
         
-        //pickerView(_:didSelectRow:inComponent:)
+        // pickerView(_:didSelectRow:inComponent:)
         func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
             self.parent.selections[component] = row
         }
@@ -86,15 +89,16 @@ struct TimePickerView: UIViewRepresentable {
                 // Adjust the spacing between components
                 let attributedString = NSMutableAttributedString(string: title)
                 let range = NSRange(location: 0, length: title.count)
-                attributedString.addAttribute(NSAttributedString.Key.kern, value: -1.5, range: range)
+                attributedString.addAttribute(
+                    NSAttributedString.Key.kern,
+                    value: -1.5,
+                    range: range)
                 label.attributedText = attributedString
 
                 return label
             }
     }
 }
-
-import SwiftUI
 
 struct UIKitPickerView: View {
     private let data: [[String]] = [
@@ -109,8 +113,10 @@ struct UIKitPickerView: View {
         VStack {
             TimePickerView(data: self.data, selections: self.$selections)
 
-            Text("\(self.data[0][self.selections[0]]) \(self.data[1][self.selections[1]]) \(self.data[2][self.selections[2]])")
-        } //VStack
+            Text("\(self.data[0][self.selections[0]])" +
+                 "\(self.data[1][self.selections[1]])" +
+                 "\(self.data[2][self.selections[2]])")
+        }
     }
 }
 

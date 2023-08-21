@@ -10,7 +10,7 @@ import SwiftUI
 struct AchievementView: View {
     var badgeType: BadgeType
     @Binding var show: Bool
-    var body: some View{
+    var body: some View {
         ZStack(alignment: Alignment(horizontal: .trailing, vertical: .top)) {
             VStack(spacing: 25) {
                 Image(badgeType.image)
@@ -33,8 +33,7 @@ struct AchievementView: View {
             .cornerRadius(25)
             .shadow(color: .black.opacity(0.16), radius: 12, x: -4, y: 0)
             
-            .offset(y:-40)
-            
+            .offset(y: -40)
             
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)

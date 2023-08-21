@@ -80,7 +80,7 @@ enum VitaWidgetMood {
         }
     }
     
-    var message:String {
+    var message: String {
         switch self {
         case.idle: return "eat your food!"
         case.angry: return "eat your food baka"
@@ -91,46 +91,57 @@ enum VitaWidgetMood {
     func mediumMessage(phase: VitaWidgetTimePhase) -> String {
         switch self {
         case.idle:
-            switch phase {
-            case.beforeDayStart:
-                return "Let’s eat together when the times comes!✊🏻"
-            case.morning:
-                return "Rise and shine! Time for you to have breakfast☀️"
-            case.afternoon:
-                return "It’s noontime feast! Let’s have lunch!🌤️"
-            case.evening:
-                return "Finally! End this day with healthy dinner!🌙✨"
-            case.afterDay:
-                return ""
-            }
+            return mediumIdleMessage(phase: phase)
         case.angry:
-            switch phase {
-            case.beforeDayStart, .afterDay:
-                return ""
-            case.morning:
-                return "Knock knock! Please eat, so you can be energize!"
-            case.afternoon:
-                return "Let’s have lunch first, then you can continue your day!"
-            case.evening:
-                return "Don’t you feel hungry after this long day?"
-            }
+            return mediumAngryMessage(phase: phase)
         case.happy:
-            switch phase {
-            case.beforeDayStart, .afterDay:
-                return ""
-            case.morning:
-                return "Yeay! You are ready to ride this day!🥰"
-            case.afternoon:
-                return "Yumm! That’s such a healthy and fulfilling meals🥰"
-            case.evening:
-                return "I’m so full! Looking forward for tomorrow meals🥰"
-            }
+            return mediumHappyMessage(phase: phase)
         }
     }
     
+    private func mediumIdleMessage(phase: VitaWidgetTimePhase) -> String {
+        switch phase {
+        case.beforeDayStart:
+            return "Let’s eat together when the times comes!✊🏻"
+        case.morning:
+            return "Rise and shine! Time for you to have breakfast☀️"
+        case.afternoon:
+            return "It’s noontime feast! Let’s have lunch!🌤️"
+        case.evening:
+            return "Finally! End this day with healthy dinner!🌙✨"
+        case.afterDay:
+            return ""
+        }
+    }
+    
+    private func mediumAngryMessage(phase: VitaWidgetTimePhase) -> String {
+        switch phase {
+        case.beforeDayStart, .afterDay:
+            return ""
+        case.morning:
+            return "Knock knock! Please eat, so you can be energize!"
+        case.afternoon:
+            return "Let’s have lunch first, then you can continue your day!"
+        case.evening:
+            return "Don’t you feel hungry after this long day?"
+        }
+    }
+    
+    private func mediumHappyMessage(phase: VitaWidgetTimePhase) -> String {
+        switch phase {
+        case.beforeDayStart, .afterDay:
+            return ""
+        case.morning:
+            return "Yeay! You are ready to ride this day!🥰"
+        case.afternoon:
+            return "Yumm! That’s such a healthy and fulfilling meals🥰"
+        case.evening:
+            return "I’m so full! Looking forward for tomorrow meals🥰"
+        }
+    }
 }
 
-//struct VitaMoodConfig {
+// struct VitaMoodConfig {
 //    public static var singleton = VitaMoodConfig()
 //    var coreData: CoreDataEnvirontment =  CoreDataEnvirontment.singleton
 //    var mood: VitaMood = .angry
@@ -171,8 +182,4 @@ enum VitaWidgetMood {
 //        }
 //
 //    }
-//}
-
-
-
-
+// }

@@ -17,7 +17,7 @@ struct PhotoTakeView: UIViewControllerRepresentable {
     
     func makeUIViewController(context: Context) -> UIImagePickerController {
         let controller = UIImagePickerController()
-        controller.sourceType = .camera
+        controller.sourceType = .photoLibrary
         controller.delegate = context.coordinator
         
         return controller
@@ -35,9 +35,12 @@ struct PhotoTakeView: UIViewControllerRepresentable {
             self.parent = parent
         }
         
-        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        func imagePickerController(_ picker: UIImagePickerController,
+                                   didFinishPickingMediaWithInfo
+                                   info: [UIImagePickerController.InfoKey: Any]) {
             
-            if let imageData = (info[.originalImage] as! UIImage).jpegData(compressionQuality: 0.5) {
+            if let imageData = (info[.originalImage] as! UIImage)
+                .jpegData(compressionQuality: 0.5) {
                 parent.imageData = imageData
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                     self.parent.showPicker.toggle()
@@ -51,8 +54,8 @@ struct PhotoTakeView: UIViewControllerRepresentable {
     }
 }
 
-//struct PhotoTakeView_Previews: PreviewProvider {
+// struct PhotoTakeView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        PhotoTakeView()
 //    }
-//}
+// }

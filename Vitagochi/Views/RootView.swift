@@ -10,41 +10,40 @@ import SwiftUI
 struct RootView: View {
     @EnvironmentObject private var envObj: GlobalEnvirontment
     @EnvironmentObject private var coreData: CoreDataEnvirontment
-    @State private var selection: Int = 0
-    @State private var achievement: Bool = false
-    @State private var newBadge: BadgeType = .energizeLunch
-    
+    @StateObject private var rootVM: RootViewModel = RootViewModel()
     
     var body: some View {
-        
-        NavigationStack(path: $envObj.path){
+        NavigationStack(path: $envObj.path) {
             ZStack {
-                
-                ScrollView(.init()){
-                    
-                    TabView(selection: $selection) {
-                        MainSceneView()
-                            .tag(0)
+                ScrollView(.init()) {
+                    TabView(selection: $rootVM.selection) {
+                        MainView()
+                            .tag(rootVM.mainViewTag)
                         TrackingProgressView()
-                            .tag(1)
+                            .tag(rootVM.progressViewTag)
                         BadgesView()
-                            .tag(2)
+                            .tag(rootVM.badgesViewTag)
                     }
                     .tabViewStyle(.page(indexDisplayMode: .never))
-                    
                 }
                 .background(Image("Background").resizable().aspectRatio(contentMode: .fit))
                 .ignoresSafeArea()
                 .safeAreaInset(edge: .bottom) {
-                    HStack{
-                        TabBarIconView(selection: $selection, value: 0, iconName: "heart.fill")
+                    HStack {
+                        TabBarIconView(selection: $rootVM.selection,
+                                       value: rootVM.mainViewTag,
+                                       iconName: "heart.fill")
                             .transition(.slide)
                             .padding(.leading, 50)
                         Spacer()
-                        TabBarIconView(selection: $selection, value: 1, iconName: "heart.text.square.fill")
+                        TabBarIconView(selection: $rootVM.selection,
+                                       value: rootVM.progressViewTag,
+                                       iconName: "heart.text.square.fill")
                             .transition(.slide)
                         Spacer()
-                        TabBarIconView(selection: $selection, value: 2, iconName: "medal.fill")
+                        TabBarIconView(selection: $rootVM.selection,
+                                       value: rootVM.badgesViewTag,
+                                       iconName: "medal.fill")
                             .transition(.slide)
                             .padding(.trailing, 50)
                     }
@@ -59,8 +58,9 @@ struct RootView: View {
 //                    Text("Hello")
 //                }
 
-                if achievement {
-                    AchievementView(badgeType: newBadge,show: $achievement)
+                if rootVM.achievement {
+                    AchievementView(badgeType: rootVM.newBadge,
+                                    show: $rootVM.achievement)
                         .ignoresSafeArea()
                         .zIndex(2)
                 }
@@ -68,8 +68,8 @@ struct RootView: View {
             .onChange(of: coreData.newBadge) { newValue in
                 if let value = newValue {
                     if let badge = BadgeType(rawValue: value.badgeId) {
-                        achievement.toggle()
-                        newBadge = badge
+                        rootVM.achievement.toggle()
+                        rootVM.newBadge = badge
                     }
                 }
             }

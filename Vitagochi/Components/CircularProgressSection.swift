@@ -13,22 +13,32 @@ struct CircularProgressSection: View {
     var isLocked: Bool
     var isHighlighted: Bool
     var body: some View {
-        VStack{
+        VStack {
             if isLocked {
+                
                 Image("ProgressLockedIcon")
                     .resizable()
                     .frame(width: 40, height: 40)
+                
             } else if progress < 3 && progress >= 0 {
-                ZStack(alignment: .center){
-                    CircularProgressView(percentage: Double(progress * 34), lineWitdh: 6, whiteBackgroundColor: true, whiteOutlineColor: false)
+                
+                ZStack(alignment: .center) {
+                    CircularProgressView(
+                        percentage: Double(progress * 34),
+                        lineWitdh: 6,
+                        whiteBackgroundColor: true,
+                        whiteOutlineColor: false)
                         .frame(width: 40, height: 40)
                     Text("\(progress)/3")
-                        .font(.system(size:11))
+                        .font(.system(size: 11))
                 }
+                
             } else if progress >= 3 {
+                
                 Image("ProgressCompleteIcon")
                     .resizable()
                     .frame(width: 40, height: 40)
+                
             }
             
             HStack(alignment: .top) {
@@ -37,11 +47,10 @@ struct CircularProgressSection: View {
                         .foregroundColor(.chatTopPinkColor)
                         .frame(width: 4, height: 8)
                         .cornerRadius(8)
-                        .offset(x:5,y:4)
+                        .offset(x: 5, y: 4)
                 }
-                
                 Text("Day \(dayNumber)")
-                    .font(.system(size:11))
+                    .font(.system(size: 11))
                     .fontWeight(isHighlighted ? .bold : .regular)
                     .padding(.top, 4)
             }

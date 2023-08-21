@@ -16,23 +16,29 @@ struct OnboardingThirdRevision: View {
                 Text("Set your meals schedule!")
                     .font(.title)
                     .fontWeight(.bold)
-                Text("Vita will remind \(onboardingViewModel.nickname.capitalized) to eat greens and fruit on ...")
+                Text("Vita will remind \(onboardingViewModel.nickname.capitalized)" +
+                     " to eat greens and fruit on ...")
                     .font(.title3)
             }
             .padding(.top, 8.0)
             
             Spacer()
             
-            CollectiveDayTimePicker(timeSelection: $onboardingViewModel.breakfastSelection, collectiveDayEatingType: .BREAKFAST, minHour: 7, maxHour: 11)
-
+            CollectiveDayTimePicker(timeSelection: $onboardingViewModel.breakfastSelection,
+                                    collectiveDayEatingType: .BREAKFAST,
+                                    minHour: 7, maxHour: 11)
             
-            
-            CollectiveDayTimePicker(timeSelection: $onboardingViewModel.lunchSelection, collectiveDayEatingType: .LUNCH, minHour: 12, maxHour: 15)
+            CollectiveDayTimePicker(timeSelection: $onboardingViewModel.lunchSelection,
+                                    collectiveDayEatingType: .LUNCH,
+                                    minHour: 12,
+                                    maxHour: 15)
                 .padding([.vertical], 16.0)
             
-            
-            CollectiveDayTimePicker(timeSelection: $onboardingViewModel.dinnerSelection, collectiveDayEatingType: .DINNER, minHour: 17, maxHour: 21, hasDivider: false)
-            
+            CollectiveDayTimePicker(timeSelection: $onboardingViewModel.dinnerSelection,
+                                    collectiveDayEatingType: .DINNER,
+                                    minHour: 17,
+                                    maxHour: 21,
+                                    hasDivider: false)
             
             Spacer(minLength: 50)
             

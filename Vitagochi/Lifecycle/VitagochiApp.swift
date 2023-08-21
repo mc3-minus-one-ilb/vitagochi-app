@@ -8,7 +8,6 @@
 import SwiftUI
 import NavigationTransitions
 
-
 @main
 struct VitagochiApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
@@ -25,15 +24,15 @@ struct VitagochiApp: App {
                         .environmentObject(onboardingViewModel)
                         .navigationDestination(for: OnboardingRoute.self, destination: { routes in
                             switch routes {
-                            case .OnboardingSecond:
+                            case .onboardingSecond:
                                 OnboardingSecond()
                                     .environmentObject(onboardingViewModel)
                                     .navigationBarBackButtonHidden()
-                            case .OnboardingThird:
+                            case .onboardingThird:
                                 OnboardingThirdRevision()
                                     .environmentObject(onboardingViewModel)
                                     .navigationBarBackButtonHidden()
-                            case .OnboardingFourth:
+                            case .onboardingFourth:
                                 OnboardingFourth()
                                     .environmentObject(onboardingViewModel)
                                     .navigationBarBackButtonHidden()
@@ -66,9 +65,9 @@ struct VitagochiApp: App {
     }
 }
 
-//struct AppView_Previews: PreviewProvider {
+// struct AppView_Previews: PreviewProvider {
 //    static var previews: some Scene {
 //        //        ChatView(chatModel: ChatViewModel(photoData: Data()))
 //        VitagochiApp()
 //    }
-//}
+// }

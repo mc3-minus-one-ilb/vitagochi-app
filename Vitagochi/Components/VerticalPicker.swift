@@ -1,9 +1,9 @@
 import SwiftUI
 
 public enum HeightOption {
-    case VisibleCount(Int)
-    case Fixed(CGFloat)
-    case Ratio(CGFloat)
+    case visibleCount(Int)
+    case fixed(CGFloat)
+    case ratio(CGFloat)
 }
 
 public struct VerticalPicker<Content: View, Item>: View {
@@ -11,16 +11,16 @@ public struct VerticalPicker<Content: View, Item>: View {
     let contentBuilder: (Item) -> Content
     @Binding var position: Int
     @GestureState private var translation: CGFloat = 0
-    private var contentHeightOption: HeightOption = .VisibleCount(5)
+    private var contentHeightOption: HeightOption = .visibleCount(5)
     private var sizeFactor: CGFloat = 1
     private var alphaFactor: Double = 1
-    private var edgeTopView: AnyView? = nil
-    private var edgeTopHeight: HeightOption? = nil
-    private var edgeBottomView: AnyView? = nil
-    private var edgeBottomHeight: HeightOption? = nil
-    private var centerView: AnyView? = nil
-    private var centerViewHeight: HeightOption? = nil
-    private var onValueChanged: ((Item) -> Void)? = nil
+    private var edgeTopView: AnyView?
+    private var edgeTopHeight: HeightOption?
+    private var edgeBottomView: AnyView?
+    private var edgeBottomHeight: HeightOption?
+    private var centerView: AnyView?
+    private var centerViewHeight: HeightOption?
+    private var onValueChanged: ((Item) -> Void)?
     
     public init(_ position: Binding<Int>, items: Binding<[Item]>, @ViewBuilder content: @escaping (Item) -> Content) {
         self.items = items
@@ -43,14 +43,19 @@ public struct VerticalPicker<Content: View, Item>: View {
                     }
                 }
                 .frame(height: geometry.size.height, alignment: .top)
-                .offset(y: -CGFloat(self.position + 1) * self.calcContentHeight(geometry, option: contentHeightOption))
-                .offset(y: self.translation + (geometry.size.height / 2) + (self.calcContentHeight(geometry, option: contentHeightOption) / 2))
+                .offset(y: -CGFloat(self.position + 1) *
+                        self.calcContentHeight(geometry, option: contentHeightOption))
+                .offset(y: self.translation +
+                        (geometry.size.height / 2) +
+                        (self.calcContentHeight(geometry, option: contentHeightOption) / 2))
                 .animation(.interactiveSpring(), value: self.position + 1)
                 .animation(.interactiveSpring(), value: translation)
                 .clipped()
                 
                 if let view = edgeTopView, let height = edgeTopHeight {
-                    view.frame(width: geometry.size.width, height: calcContentHeight(geometry, option: height), alignment: .center)
+                    view.frame(width: geometry.size.width,
+                               height: calcContentHeight(geometry, option: height),
+                               alignment: .center)
                 }
                 
                 if let view = edgeBottomView, let heightOption = edgeBottomHeight {
@@ -73,12 +78,14 @@ public struct VerticalPicker<Content: View, Item>: View {
                 DragGesture().updating(self.$translation) { value, state, _ in
                     state = value.translation.height
                 }
-                .onEnded { value in
-                    let offset = value.translation.height / self.calcContentHeight(geometry, option: contentHeightOption)
-                    let newIndex = (CGFloat(self.position) - offset).rounded()
-                    self.position = min(max(Int(newIndex), 0), self.items.wrappedValue.count - 1)
-                    self.onValueChanged?(items.wrappedValue[self.position])
-                }
+                    .onEnded { value in
+                        let offset = value.translation.height /
+                        self.calcContentHeight(geometry, option: contentHeightOption)
+                        let newIndex = (CGFloat(self.position) - offset).rounded()
+                        self.position = min(max(Int(newIndex), 0),
+                                            self.items.wrappedValue.count - 1)
+                        self.onValueChanged?(items.wrappedValue[self.position])
+                    }
             )
         }
     }
@@ -159,21 +166,24 @@ public struct VerticalPicker<Content: View, Item>: View {
         return contentBuilder(item)
             .scaleEffect(sizeResult)
             .opacity(alphaResult)
-            .frame(width: geometry.size.width, height: self.calcContentHeight(geometry, option: contentHeightOption), alignment: .center)
+            .frame(width: geometry.size.width,
+                   height: self.calcContentHeight(geometry, option: contentHeightOption),
+                   alignment: .center)
     }
     
     private func maxVisible(_ geometry: GeometryProxy) -> CGFloat {
-        let visibleCount = geometry.size.height / self.calcContentHeight(geometry, option: contentHeightOption)
+        let visibleCount = geometry.size.height /
+        self.calcContentHeight(geometry, option: contentHeightOption)
         return min(visibleCount, CGFloat(self.items.wrappedValue.count))
     }
     
     private func calcContentHeight(_ geometry: GeometryProxy, option: HeightOption) -> CGFloat {
         switch option {
-        case .VisibleCount(let count):
+        case .visibleCount(let count):
             return geometry.size.height / CGFloat(count)
-        case .Fixed(let height):
+        case .fixed(let height):
             return height
-        case .Ratio(let ratio):
+        case .ratio(let ratio):
             return geometry.size.height * ratio
         }
     }
@@ -217,26 +227,40 @@ struct SizePreferenceKey: PreferenceKey {
 struct VerticalPickerView_Previews: PreviewProvider {
     
     @ViewBuilder static func preview() -> some View {
-        GeometryReader { geometry in
+        GeometryReader { _ in
             VStack(alignment: .center, spacing: 0) {
-                VerticalPicker(Binding.constant(5), items: Binding.constant([0, 1, 2, 3, 4, 5, 6, 7, 8 ,9, 10])) { value in
-                    GeometryReader { reader in
-                        Text("\(value)")
-                            .font(.title)
-                            .fontWeight(.bold)
-                            .frame(width: reader.size.width, height: reader.size.height, alignment: .center)
+                VerticalPicker(
+                    Binding.constant(5),
+                    items: Binding.constant(Array(0...10))) { value in
+                        GeometryReader { reader in
+                            Text("\(value)")
+                                .font(.title)
+                                .fontWeight(.bold)
+                                .frame(width: reader.size.width,
+                                       height: reader.size.height,
+                                       alignment: .center)
+                        }
                     }
-                }
-                .height(.Fixed(40))
-                .edgeTop(AnyView(
-                    LinearGradient(gradient: Gradient(colors: [Color.white.opacity(0.8), Color.white.opacity(0)]), startPoint: .top, endPoint: .bottom)
-                ), height: .Ratio(0.2))
-                .edgeBottom(AnyView(
-                    LinearGradient(gradient: Gradient(colors: [Color.white.opacity(0), Color.white.opacity(0.8)]), startPoint: .top, endPoint: .bottom)
-                ), height: .Ratio(0.2))
-                .scrollAlpha(0.2)
-                .scrollScale(0.6)
-                .frame(maxHeight: 150)
+                    .height(.fixed(40))
+                    .edgeTop(AnyView(
+                        LinearGradient(gradient:
+                                        Gradient(colors:
+                                                    [Color.white.opacity(0.8),
+                                                     Color.white.opacity(0)]),
+                                       startPoint: .top,
+                                       endPoint: .bottom)
+                    ), height: .ratio(0.2))
+                    .edgeBottom(AnyView(
+                        LinearGradient(gradient:
+                                        Gradient(colors:
+                                                    [Color.white.opacity(0),
+                                                     Color.white.opacity(0.8)]),
+                                       startPoint: .top,
+                                       endPoint: .bottom)
+                    ), height: .ratio(0.2))
+                    .scrollAlpha(0.2)
+                    .scrollScale(0.6)
+                    .frame(maxHeight: 150)
             }
         }
     }

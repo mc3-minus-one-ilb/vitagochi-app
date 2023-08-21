@@ -9,41 +9,70 @@ import SwiftUI
 
 class ChatViewModel: ObservableObject {
     @Published var messages: [Message] = []
-    @Published var vitaAnswer: VitaMessageAnswer = .exactly
-    @Published var showMyOptions: Bool = false
+    @Published var vitaAnswer: VitaChatAnswer = .exactly
+    @Published var isMyOptionsActive: Bool = false
     @Published var myOptionsMessages: [Message] = []
+    @Published var isCompleted: Bool = false
     var photoData: Data?
+    let vitaIconImageName: String = "VitaChatIcon"
+    var timePhase: VitaTimePhase
     
-    init(message: Message, photoData: Data? = nil) {
+    init(_ message: Message, photoData: Data? = nil, timePhase: VitaTimePhase) {
+        self.timePhase = timePhase
         
+        let vitaFirstMessage = "It looks good to me!, " +
+        "But are you sure to put some greens " +
+        "or fruit on your meals right ? " +
+        "Not only carbs and proteins 🧐"
+        
+        // Execute after 0.3 Second
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
             self.messages.append(message)
         }
         
+        // Execute after 2 Second
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.messages.append(Message(id: Date(), text: "It looks good to me!, But are you sure to put some greens or fruit on your meals right ? Not only carbs and proteins 🧐", isMyMessage: false, profilPic: "VitaChatIcon"))
+            self.messages.append(
+                Message(id: Date(),
+                        text: vitaFirstMessage,
+                        isMyMessage: false,
+                        profilPic: "VitaChatIcon")
+            )
         }
         
+        // Execute after 2.5 Second
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-            self.showMyOptions.toggle()
+            self.isMyOptionsActive.toggle()
         }
         
-        for answer in VitaMessageAnswer.allCases {
-            myOptionsMessages.append(Message(id: Date(), text: answer.myAnswer, isMyMessage: true, profilPic: "", vitaAnswer: answer))
+        for answer in VitaChatAnswer.allCases {
+            myOptionsMessages.append(
+                Message(id: Date(),
+                        text: answer.myAnswer,
+                        isMyMessage: true,
+                        profilPic: "",
+                        vitaAnswer: answer)
+            )
         }
         
         self.photoData = photoData
     }
     
     func writeMessage(id: Date, msg: String, photo: Data?, myMsg: Bool, profilPic: String) {
-        messages.append(Message(id: id, text: msg, isMyMessage: myMsg, profilPic: profilPic, photo: photo))
+        messages.append(
+            Message(id: id,
+                    text: msg,
+                    isMyMessage: myMsg,
+                    profilPic: profilPic,
+                    photo: photo)
+        )
     }
     
     func writeMessage(_ value: Message) {
         messages.append(value)
     }
     
-    func savePhoto() -> String? {
+    func savePhotoToFileManager() -> String? {
         guard let photoData else { return nil }
         do {
             let id = UUID().uuidString
@@ -53,19 +82,17 @@ class ChatViewModel: ObservableObject {
                 .first?.appendingPathComponent(id)
             else { return nil }
             
-            print(storageURL)
-            
             try photoData.write(to: storageURL)
             
             return id
         } catch {
-            print("Failed to save image:", error.localizedDescription)
+            print("Failed to save image: ", error.localizedDescription)
             return nil
         }
     }
 }
 
-//class ChatViewModel: ObservableObject {
+// class ChatViewModel: ObservableObject {
 //    @Published var messages: [Message] = []
 //    
 //    func writeMessage(id: Date, msg: String, photo: Data?, myMsg: Bool, profilPic: String) {
@@ -83,4 +110,4 @@ class ChatViewModel: ObservableObject {
 ////            self.photo = UIImage()
 ////        }
 ////    }
-//}
+// }

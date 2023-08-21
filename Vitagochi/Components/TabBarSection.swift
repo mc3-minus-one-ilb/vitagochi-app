@@ -12,7 +12,7 @@ struct TabBarSection: View {
     let value: Int
     let text: String
     var body: some View {
-        ZStack{
+        ZStack {
 //            if selection == value{
 //                Rectangle()
 //                    .foregroundColor(.circularProgressOutline)
@@ -28,7 +28,8 @@ struct TabBarSection: View {
                             .fontWeight(selection == value ? .semibold : .regular)
                             .foregroundColor(.black)
                     }
-                    .frame(width:UIScreen.main.bounds.size.width/3, height: 39 )
+                    .frame(width: UIScreen.main.bounds.size.width/3,
+                           height: 39 )
             }
         }
     }

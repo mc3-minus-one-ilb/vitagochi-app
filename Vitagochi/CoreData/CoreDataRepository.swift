@@ -9,7 +9,7 @@ import Foundation
 import CoreData
 
 class CoreDataRepository {
-    public static let singleton: CoreDataRepository = CoreDataRepository(manager: CoreDataManager.instance)
+    public static let singleton = CoreDataRepository(manager: CoreDataManager.instance)
     
     private let coreDataManager: CoreDataManager
     
@@ -60,7 +60,7 @@ class CoreDataRepository {
         return newBadge
     }
     
-    func addChallange(date: Date, day: Int16) -> ChallangeEntity {
+    func addChallenge(date: Date, day: Int16) -> ChallangeEntity {
         let newChallange = ChallangeEntity(context: coreDataManager.context)
         newChallange.date = date
         newChallange.day = day
@@ -69,14 +69,14 @@ class CoreDataRepository {
     
     func addMealRecord(challange: ChallangeEntity,
                        name: String,
-                       mealStatus: VitaMessageAnswer,
-                       timeStatus: VitachiTimePhase,
+                       mealStatus: VitaChatAnswer,
+                       timeStatus: VitaTimePhase,
                        photoName: String) {
         let newMealRecord = MealRecordEntity(context: coreDataManager.context)
         newMealRecord.mealStatus = mealStatus.rawValue
         newMealRecord.timeStatus = timeStatus.rawValue
         newMealRecord.photo = photoName
-        newMealRecord.vitaMessage =  mealStatus.answer(name: name)
+        newMealRecord.vitaMessage =  mealStatus.getAnswer(name: name)
         newMealRecord.challange = challange
         newMealRecord.time = Date()
         print(newMealRecord)

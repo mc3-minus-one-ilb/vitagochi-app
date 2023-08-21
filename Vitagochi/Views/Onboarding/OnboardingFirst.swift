@@ -31,7 +31,7 @@ struct OnboardingFirst: View {
                 .scaledToFit()
             
             PrimaryButton(action: {
-                onboardingViewModel.navigate(route: .OnboardingSecond)
+                onboardingViewModel.navigate(route: .onboardingSecond)
             }, input: "Absolutely, yes!")
             .fontDesign(.rounded)
             .padding([.horizontal, .vertical], 32.0)

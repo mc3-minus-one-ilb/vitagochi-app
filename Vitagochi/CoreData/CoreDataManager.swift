@@ -8,29 +8,44 @@
 import SwiftUI
 import CoreData
 
+enum StorageType {
+    case persistent, inMemory
+}
+
 class CoreDataManager {
     static let instance = CoreDataManager()
     let container: NSPersistentContainer
     let context: NSManagedObjectContext
     
-    init() {
-        container = NSPersistentContainer(name: "AppCoreContainer")
-        let url = URL.storeURL(for: "group.com.minusone.Vitagochi", databaseName: "AppCoreContainer")
-        let storeDescription = NSPersistentStoreDescription(url: url)
+    init(_ storageType: StorageType = .persistent) {
+        self.container = NSPersistentContainer(name: "AppCoreContainer")
         
-        container.persistentStoreDescriptions = [storeDescription]
+        switch storageType {
+        case.persistent:
+            let url = URL.storeURL(for: "group.com.minusone.Vitagochi",
+                                   databaseName: "AppCoreContainer")
+            let storeDescription = NSPersistentStoreDescription(url: url)
         
-        container.loadPersistentStores { description, error  in
+            self.container.persistentStoreDescriptions = [storeDescription]
+            
+        case.inMemory:
+            let storeDescription = NSPersistentStoreDescription()
+            storeDescription.type = NSInMemoryStoreType
+            
+            self.container.persistentStoreDescriptions = [storeDescription]
+        }
+        
+        self.container.loadPersistentStores { _, error  in
             if let error = error {
                 print("Error loading Core Data. \(error)")
             }
         }
-        context = container.viewContext
+        self.context = self.container.viewContext
     }
     
     func save() {
         do {
-            try context.save()
+            try self.context.save()
         } catch {
             print("Error saving core data . \(error.localizedDescription)")
         }

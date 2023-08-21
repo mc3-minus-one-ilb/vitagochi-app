@@ -30,7 +30,6 @@ struct StatusLevelView: View {
             Text("\(exp)/20")
         }).progressViewStyle(MainSceneLevelUpProgressStyle( height: 10))
         
-        
     }
 }
 

@@ -12,7 +12,6 @@ struct ChatBubble: View {
     var message: Message
     var isHorizontalScroll: Bool = false
     
-    
     var body: some View {
         var uiImagePhoto = UIImage()
         var photoWidth = CGFloat()
@@ -25,7 +24,7 @@ struct ChatBubble: View {
         
         return HStack(alignment: .bottom, spacing: 10) {
             if message.isMyMessage {
-                if !isHorizontalScroll{
+                if !isHorizontalScroll {
                     Spacer(minLength: 25)
                 }
                 
@@ -39,11 +38,11 @@ struct ChatBubble: View {
                 } else {
                     Image(uiImage: uiImagePhoto)
                         .resizable()
-                        .frame(width: photoWidth > photoHeight ? UIScreen.main.bounds.width - 150 : 182,
+                        .frame(width: photoWidth > photoHeight ?
+                               UIScreen.main.bounds.width - 150 : 182,
                                height: photoWidth > photoHeight ? 180 : 220)
                         .clipShape(BubbleArrow(isMyMessage: message.isMyMessage))
                 }
-                
                 
                 //                Image(message.profilPic)
                 //                    .resizable()
@@ -66,7 +65,7 @@ struct ChatBubble: View {
                                 .padding(.bottom, 12)
                             
                             Divider()
-                                .padding(.top,1)
+                                .padding(.top, 1)
                             //                            .fontWidth(22)
                                 .background(Color.white)
                             Button {
@@ -94,13 +93,13 @@ struct ChatBubble: View {
                     }
 
                 } else {
-                    Image(uiImage: UIImage(data:  message.photo!)!)
+                    Image(uiImage: UIImage(data: message.photo!)!)
                         .resizable()
-                        .frame(width: photoWidth > photoHeight ?  UIScreen.main.bounds.width - 150 : 182,
+                        .frame(width: photoWidth > photoHeight ?
+                               UIScreen.main.bounds.width - 150 : 182,
                                height: photoWidth > photoHeight ? 150 : 220)
                         .clipShape(BubbleArrow(isMyMessage: message.isMyMessage))
                 }
-                
                 
                 Spacer(minLength: 25)
             }
@@ -110,11 +109,17 @@ struct ChatBubble: View {
     }
 }
 
-
 struct ChatBuble_Previews: PreviewProvider {
     static var previews: some View {
         //        ChatView(chatModel: ChatViewModel(photoData: Data()))
-        ChatView(timePhase: .morning)
+        let initialMessagePreview = Message(id: Date(),
+                                            text: "Photo",
+                                            isMyMessage: true,
+                                            profilPic: "")
+        
+        ChatView(initialMessage: initialMessagePreview,
+                 photoData: nil,
+                 timePhase: .morning)
             .environmentObject(GlobalEnvirontment.singleton)
             .environmentObject(CoreDataEnvirontment.singleton)
     }

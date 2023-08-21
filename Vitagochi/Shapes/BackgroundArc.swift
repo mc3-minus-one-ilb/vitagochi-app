@@ -20,7 +20,8 @@ struct BackgroundArc: Shape {
         path.move(to: .zero)
         path.addLine(to: CGPoint(x: rect.maxX, y: 0))
         path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY - yOffset))
-        path.addQuadCurve(to: CGPoint(x: 0, y: rect.maxY - yOffset), control: CGPoint(x: rect.midX, y: rect.maxY + yOffset))
+        path.addQuadCurve(to: CGPoint(x: 0, y: rect.maxY - yOffset),
+                          control: CGPoint(x: rect.midX, y: rect.maxY + yOffset))
         path.closeSubpath()
         
         return path

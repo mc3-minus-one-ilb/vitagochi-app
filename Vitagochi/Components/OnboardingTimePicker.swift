@@ -22,7 +22,14 @@ struct OnboardingTimePicker: View {
     
     private var periods: [String] = ["AM", "PM"]
     
-    init(selectedHour: Binding<Int>, hours: Binding<[Int]>, selectedMinute: Binding<Int>, minutes: Binding<[Int]>, selectedPeriod: Binding<Int>,  hourSpacing: CGFloat = CGFloat(35), minuteSpacing: CGFloat = CGFloat(35), periodSpacing: CGFloat = CGFloat(22)) {
+    init(selectedHour: Binding<Int>,
+         hours: Binding<[Int]>,
+         selectedMinute: Binding<Int>,
+         minutes: Binding<[Int]>,
+         selectedPeriod: Binding<Int>,
+         hourSpacing: CGFloat = CGFloat(35),
+         minuteSpacing: CGFloat = CGFloat(35),
+         periodSpacing: CGFloat = CGFloat(22)) {
         self.hourSpacing = hourSpacing
         self.minuteSpacing = minuteSpacing
         self.periodSpacing = periodSpacing
@@ -41,10 +48,12 @@ struct OnboardingTimePicker: View {
                         Text((value.description.count == 1) ? "0\(value)" : "\(value)")
                             .font(.system(size: 48.0))
                             .fontWeight(.bold)
-                            .frame(width: reader.size.width, height: reader.size.height, alignment: .center)
+                            .frame(width: reader.size.width,
+                                   height: reader.size.height,
+                                   alignment: .center)
                     }
                 }
-                .height(.Fixed(hourSpacing))
+                .height(.fixed(hourSpacing))
                 .scrollAlpha(0.2)
                 .scrollScale(0.6)
                 .frame(maxWidth: geometry.size.width, maxHeight: geometry.size.height)
@@ -59,10 +68,12 @@ struct OnboardingTimePicker: View {
                         Text((value.description.count == 1) ? "0\(value)" : "\(value)")
                             .font(.system(size: 48.0))
                             .fontWeight(.bold)
-                            .frame(width: reader.size.width, height: reader.size.height, alignment: .center)
+                            .frame(width: reader.size.width,
+                                   height: reader.size.height,
+                                   alignment: .center)
                     }
                 }
-                .height(.Fixed(minuteSpacing))
+                .height(.fixed(minuteSpacing))
                 .scrollAlpha(0.2)
                 .scrollScale(0.6)
                 .frame(maxWidth: geometry.size.width / 3, maxHeight: geometry.size.height)
@@ -72,10 +83,12 @@ struct OnboardingTimePicker: View {
                         Text((value.description.count == 1) ? "0\(value)" : "\(value)")
                             .font(.title2)
                             .fontWeight(.bold)
-                            .frame(width: reader.size.width, height: reader.size.height, alignment: .center)
+                            .frame(width: reader.size.width,
+                                   height: reader.size.height,
+                                   alignment: .center)
                     }
                 }
-                .height(.Fixed(periodSpacing))
+                .height(.fixed(periodSpacing))
                 .scrollAlpha(0.2)
                 .scrollScale(0.8)
                 .frame(maxWidth: geometry.size.width / 3, maxHeight: geometry.size.height)
@@ -88,6 +101,11 @@ struct OnboardingTimePicker: View {
 struct OnboardingTimePicker_Previews: PreviewProvider {
     
     static var previews: some View {
-        OnboardingTimePicker(selectedHour: .constant(10), hours: .constant(Array(0...11)) , selectedMinute: .constant(5), minutes: .constant(Array(0...59)), selectedPeriod: .constant(0))
+        OnboardingTimePicker(
+            selectedHour: .constant(10),
+            hours: .constant(Array(0...11)),
+            selectedMinute: .constant(5),
+            minutes: .constant(Array(0...59)),
+            selectedPeriod: .constant(0))
     }
 }

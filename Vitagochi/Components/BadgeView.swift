@@ -32,4 +32,3 @@ struct BadgeView: View {
         .padding(.top, 20)
     }
 }
-

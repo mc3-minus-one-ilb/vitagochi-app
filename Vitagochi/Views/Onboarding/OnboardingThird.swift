@@ -29,13 +29,19 @@ struct OnboardingThird: View {
     @State private var selectedDinnerPeriod: Int = 1
     
     var body: some View {
-        VStack(alignment: .leading) {
+        let nickNameCap = onboardingViewModel.nickname.capitalized
+        let breakfastHour = [7, 8, 9, 10, 11]
+        let lunchHour = [12, 1, 2, 3]
+        let dinnerHour = [5, 6, 7, 8, 9]
+        let minutes = Array(0...59)
+        
+        return VStack(alignment: .leading) {
             Image("OnboardingUpperSecondary")
                 .padding([.bottom], 16.0)
             
             Group {
                 Group {
-                    Text("In 66 days, Vita will\nremind \(onboardingViewModel.nickname.capitalized) on")
+                    Text("In 66 days, Vita will\nremind \(nickNameCap) on")
                         .font(.title)
                         .fontWeight(.bold)
                 }.padding([.bottom], 16.0)
@@ -43,7 +49,9 @@ struct OnboardingThird: View {
                 HStack {
                     Text("Breakfast")
                         .padding(.bottom, 8)
-                        .if(selectedReminderTab == OnboardingReminderTabs.BREAKFAST, transform: { view in
+                        .if(
+                            selectedReminderTab == .BREAKFAST,
+                            transform: { view in
                             view.overlay(Rectangle()
                                 .frame(width: nil, height: 2, alignment: .bottom)
                                 .foregroundColor(.primaryColor)
@@ -56,7 +64,9 @@ struct OnboardingThird: View {
                     Spacer()
                     Text("Lunch")
                         .padding(.bottom, 8)
-                        .if(selectedReminderTab == OnboardingReminderTabs.LUNCH, transform: { view in
+                        .if(
+                            selectedReminderTab == .LUNCH,
+                            transform: { view in
                             view
                                 .overlay(Rectangle()
                                     .frame(width: nil, height: 2, alignment: .bottom)
@@ -70,7 +80,9 @@ struct OnboardingThird: View {
                     Spacer()
                     Text("Dinner")
                         .padding(.bottom, 8)
-                        .if(selectedReminderTab == OnboardingReminderTabs.DINNER, transform: { view in
+                        .if(
+                            selectedReminderTab == .DINNER,
+                            transform: { view in
                             view.overlay(Rectangle()
                                 .frame(width: nil, height: 2, alignment: .bottom)
                                 .foregroundColor(.primaryColor)
@@ -86,13 +98,28 @@ struct OnboardingThird: View {
                 .frame(maxWidth: .infinity)
                 
                 TabView(selection: $selectedReminderTab, content: {
-                    OnboardingTimePicker(selectedHour: $selectedBreakfastHour, hours: .constant([7, 8, 9, 10, 11]), selectedMinute: $selectedBreakfastMinute, minutes: .constant(Array(0...59)), selectedPeriod: .constant(0))
+                    OnboardingTimePicker(
+                        selectedHour: $selectedBreakfastHour,
+                        hours: .constant(breakfastHour),
+                        selectedMinute: $selectedBreakfastMinute,
+                        minutes: .constant(minutes),
+                        selectedPeriod: .constant(0))
                         .tag(OnboardingReminderTabs.BREAKFAST)
                         
-                    OnboardingTimePicker(selectedHour: $selectedLunchHour, hours: .constant([12, 1, 2, 3]), selectedMinute: $selectedLunchMinute, minutes: .constant(Array(0...59)), selectedPeriod: .constant(1))
+                    OnboardingTimePicker(
+                        selectedHour: $selectedLunchHour,
+                        hours: .constant(lunchHour),
+                        selectedMinute: $selectedLunchMinute,
+                        minutes: .constant(minutes),
+                        selectedPeriod: .constant(1))
                         .tag(OnboardingReminderTabs.LUNCH)
 
-                    OnboardingTimePicker(selectedHour: $selectedDinnerHour, hours: .constant([5, 6, 7, 8, 9]), selectedMinute: $selectedDinnerMinute, minutes: .constant(Array(0...59)), selectedPeriod: .constant(1))
+                    OnboardingTimePicker(
+                        selectedHour: $selectedDinnerHour,
+                        hours: .constant(dinnerHour),
+                        selectedMinute: $selectedDinnerMinute,
+                        minutes: .constant(minutes),
+                        selectedPeriod: .constant(1))
                         .tag(OnboardingReminderTabs.DINNER)
                         
                 })

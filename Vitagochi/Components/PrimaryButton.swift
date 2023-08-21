@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PrimaryButton: View {
-    var action: () -> ()
+    var action: () -> Void
     var input: String
     
     var body: some View {

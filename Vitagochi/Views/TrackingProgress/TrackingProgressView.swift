@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-
-
 struct TrackingProgressView: View {
     @EnvironmentObject var coreDataEnv: CoreDataEnvirontment
     
@@ -34,7 +32,6 @@ struct TrackingProgressView: View {
             .padding(.bottom, 16)
             Spacer()
             
-            
             TabView(selection: $trackingModel.selection) {
                 ProgressListView(selection: 0, daysCount: trackingModel.daysCount)
                     .tag(0)
@@ -46,7 +43,7 @@ struct TrackingProgressView: View {
             .tabViewStyle(.page(indexDisplayMode: .never))
 //            .animation(.spring(), value: trackingModel.selection)
             .overlay(
-                VStack{
+                VStack {
                     HStack {
                         TabBarSection(selection: $trackingModel.selection, value: 0, text: "Part 1")
                             .transition(.slide)
@@ -60,7 +57,7 @@ struct TrackingProgressView: View {
                             .transition(.slide)
                             .animation(.default, value: trackingModel.selection)
                     }
-                    ZStack(alignment: trackingModel.rectPosition.alignment){
+                    ZStack(alignment: trackingModel.rectPosition.alignment) {
                         Rectangle()
                             .foregroundColor(.shadowEclipseColor)
                             .frame(height: 3)
@@ -80,8 +77,7 @@ struct TrackingProgressView: View {
             
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .onAppear{
-            
+        .onAppear {
             trackingModel.daysCount = coreDataEnv.countHowManyDaySinceStart()
             trackingModel.selection = coreDataEnv.getSectionBasedOnCurrentDay()
         }

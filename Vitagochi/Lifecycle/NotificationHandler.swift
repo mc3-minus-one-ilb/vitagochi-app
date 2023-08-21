@@ -30,19 +30,14 @@ class NotificationHandler {
         dateComponents.hour = hourMinute.hour
         dateComponents.minute = hourMinute.minute
         
-        
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-        let request = UNNotificationRequest(identifier: type.getString(), content: type.getNotificationContent(), trigger: trigger)
+        let request = UNNotificationRequest(identifier: type.getString(),
+                                            content: type.getNotificationContent(),
+                                            trigger: trigger)
         center.add(request) { error in
             if let error = error {
                 print("Error: \(error)")
             }
-            
-            print(
-                """
-                Notification scheduled for \(type.getString()) at \(hourMinute.hour):\(hourMinute.minute)
-                """
-            )
         }
     }
     
@@ -52,7 +47,6 @@ class NotificationHandler {
         let center = UNUserNotificationCenter.current()
         center.removePendingNotificationRequests(withIdentifiers: [identifier])
     }
-    
     
     func removeNotification() {
         let center = UNUserNotificationCenter.current()
@@ -69,14 +63,42 @@ class NotificationHandler {
     }
     
     func scheduleAppReminderNotification() {
-        scheduleReminderNotification(hourMinute: globalEnv.breakfastReminder, type: ReminderType.BREAKFAST)
-        scheduleReminderNotification(hourMinute: HourAndMinute(hour: globalEnv.breakfastReminder.hour + 1, minute: globalEnv.breakfastReminder.minute), type: ReminderType.BREAKFAST_NOT_YET)
+        let breakfastHourMinute = HourAndMinute(hour: globalEnv.breakfastReminder.hour + 1,
+                                                minute: globalEnv.breakfastReminder.minute)
+        let lunchHourMinute = HourAndMinute(hour: globalEnv.lunchReminder.hour + 1,
+                                            minute: globalEnv.lunchReminder.minute)
+        let dinnerHourMinute = HourAndMinute(hour: globalEnv.dinnerReminder.hour + 1,
+                                             minute: globalEnv.dinnerReminder.minute)
         
-        scheduleReminderNotification(hourMinute: globalEnv.lunchReminder, type: ReminderType.LUNCH)
-        scheduleReminderNotification(hourMinute: HourAndMinute(hour: globalEnv.lunchReminder.hour + 1, minute: globalEnv.lunchReminder.minute), type: ReminderType.LUNCH_NOT_YET)
+        scheduleReminderNotification(hourMinute: globalEnv.breakfastReminder,
+                                     type: ReminderType.breakfast)
+        scheduleReminderNotification(hourMinute: breakfastHourMinute,
+                                     type: ReminderType.breakfastNotYet)
         
-        scheduleReminderNotification(hourMinute: globalEnv.dinnerReminder, type: ReminderType.DINNER)
-        scheduleReminderNotification(hourMinute: HourAndMinute(hour: globalEnv.dinnerReminder.hour + 1, minute: globalEnv.dinnerReminder.minute), type: ReminderType.DINNER_NOT_YET)
+        scheduleReminderNotification(hourMinute: globalEnv.lunchReminder,
+                                     type: ReminderType.lunch)
+        scheduleReminderNotification(hourMinute: lunchHourMinute, type:
+                                        ReminderType.lunchNotYet)
         
+        scheduleReminderNotification(hourMinute: globalEnv.dinnerReminder,
+                                     type: ReminderType.dinner)
+        scheduleReminderNotification(hourMinute: dinnerHourMinute,
+                                     type: ReminderType.dinnerNotYet)
+        
+    }
+    
+    func removeNotificationNotYet(timePhase: VitaTimePhase) {
+        switch timePhase {
+        case .morning:
+            removeNotificationById(
+                identifier: ReminderType.breakfastNotYet.getString())
+        case .afternoon:
+            removeNotificationById(
+                identifier: ReminderType.lunchNotYet.getString())
+        case .evening:
+            removeNotificationById(
+                identifier: ReminderType.dinnerNotYet.getString())
+        case .beforeDayStart, .afterDay: break
+        }
     }
 }

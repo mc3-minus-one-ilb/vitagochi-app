@@ -12,7 +12,7 @@ struct ProgressListView: View {
     @EnvironmentObject var coreDataEnv: CoreDataEnvirontment
     @State var items: [ChallangeEntity] = []
     
-    let gridItems = [GridItem(.flexible()),GridItem(.flexible()),
+    let gridItems = [GridItem(.flexible()), GridItem(.flexible()),
                      GridItem(.flexible()), GridItem(.flexible()),
                      GridItem(.flexible()), GridItem(.flexible())]
     
@@ -20,11 +20,14 @@ struct ProgressListView: View {
     var daysCount: Int
     
     var body: some View {
-        ScrollView{
+        ScrollView {
             LazyVGrid(columns: gridItems) {
                 ForEach(items) { item in
                     let day = Int(item.day)
-                    CircularProgressSection(dayNumber: day, progress: item.records?.count ?? 0, isLocked: day > daysCount, isHighlighted: day == daysCount)
+                    CircularProgressSection(dayNumber: day,
+                                            progress: item.records?.count ?? 0,
+                                            isLocked: day > daysCount,
+                                            isHighlighted: day == daysCount)
                         .padding(.vertical, 10)
                         .onTapGesture {
                             if !(Int(item.day) > daysCount) {
@@ -35,14 +38,15 @@ struct ProgressListView: View {
                     
                 }
             }
-            .padding(.horizontal,16)
+            .padding(.horizontal, 16)
             .padding(.top, 92)
         }
-        .navigationDestination(for: ChallangeEntity.self) { challange in
-            DetailTrackingView(challange: challange)
+        .navigationDestination(for: ChallangeEntity.self) { challenge in
+            DetailTrackingView(challenge: challenge)
         }
-        .onAppear{
-            items = coreDataEnv.getChallangeBasedOnSection(section: selection)
+        .onAppear {
+            items = coreDataEnv
+                .getChallangeBasedOnSection(section: selection)
         }
     }
     

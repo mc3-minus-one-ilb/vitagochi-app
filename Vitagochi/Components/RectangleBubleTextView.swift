@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-//struct Triangle: Shape {
+// struct Triangle: Shape {
 //    func path(in rect: CGRect) -> Path {
 //        var path = Path()
 //        path.move(to: CGPoint(x: rect.minX, y: rect.minY))
@@ -16,7 +16,7 @@ import SwiftUI
 //        path.closeSubpath()
 //        return path
 //    }
-//}
+// }
 
 struct RectangleBubleTextView: View {
     var text: String
@@ -31,7 +31,7 @@ struct RectangleBubleTextView: View {
             .overlay(alignment: .bottom) {
                 Image(systemName: "arrowtriangle.down.fill")
                     .font(.title)
-                    .offset(y:22)
+                    .offset(y: 22)
                     .foregroundColor(.bubleTextBackgroundColor)
             }
 //            .listSectionSeparator(.hidden)

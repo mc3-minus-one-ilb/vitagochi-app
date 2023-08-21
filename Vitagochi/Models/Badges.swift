@@ -90,60 +90,50 @@ enum BadgeType: Int16, CaseIterable {
         }
     }
     
-    func isItAchieved(breakfast: Int, lunch: Int,
-                      dinner: Int, fastLunch: Int,
-                      lunchDinner: Int, meals3: Int) -> Bool {
-        switch self {
-        case.morningTask:
-            return breakfast >= 11
-        case.energizeLunch:
-            return lunch >= 22
-        case.dinnertimeDelight:
-            return dinner >= 22
-        case.sunNoonFeast:
-            return fastLunch >= 33
-        case.twilightTasting:
-            return lunchDinner >= 33
-        case.meals3Times:
-            return meals3 >= 44
+    func checkIsItAchieved(challanges: [ChallangeEntity], phase: VitaTimePhase) -> Bool {
+        switch phase {
+        case.beforeDayStart, .afterDay: return false
+        case.morning:
+            return checkBadgesForMorning(challanges: challanges)
+        case.afternoon:
+            return checkBadgesForAfternoon(challanges: challanges)
+        case.evening:
+            return checkBadgesForEvening(challanges: challanges)
         }
     }
     
-    func isItAchieved(challanges: [ChallangeEntity]) -> Bool {
+    private func checkBadgesForMorning(challanges: [ChallangeEntity]) -> Bool {
         switch self {
         case.morningTask:
             let breakfast = challanges.filter { challange in
                 if let records = challange.records?.allObjects as? [MealRecordEntity] {
-                    if records.count == 0 {return false}
+                    if records.isEmpty {return false}
                     return records.contains { record in
                         record.mealStatus == 0
                     }
                 }
-                    return false
+                return false
             }.count
             return breakfast >= 11
+        
+        default:
+            return false
+        }
+    }
+    
+    private func checkBadgesForAfternoon(challanges: [ChallangeEntity]) -> Bool {
+        switch self {
         case.energizeLunch:
             let lunch = challanges.filter { challange in
                 if let records = challange.records?.allObjects as? [MealRecordEntity] {
-                    if records.count == 0 {return false}
+                    if records.isEmpty {return false}
                     return records.contains { record in
                         record.mealStatus == 1
                     }
                 }
-                    return false
-            }.count
-            return lunch >= 22
-        case.dinnertimeDelight:
-            let dinner = challanges.filter { challange in
-                if let records = challange.records?.allObjects as? [MealRecordEntity] {
-                    if records.count == 0 {return false}
-                    return records.contains { record in
-                        record.mealStatus == 2
-                    }
-                }
                 return false
             }.count
-            return dinner >= 22
+            return lunch >= 22
         case.sunNoonFeast:
             let fastLunch = challanges.filter { challange in
                 if let records = challange.records?.allObjects as? [MealRecordEntity] {
@@ -154,16 +144,33 @@ enum BadgeType: Int16, CaseIterable {
                         record.mealStatus == 1
                     }
                 }
-                    return false
+                return false
             }.count
             return fastLunch >= 33
+        default: return false
+        }
+    }
+    
+    private func checkBadgesForEvening(challanges: [ChallangeEntity]) -> Bool {
+        switch self {
+        case.dinnertimeDelight:
+            let dinner = challanges.filter { challange in
+                if let records = challange.records?.allObjects as? [MealRecordEntity] {
+                    if records.isEmpty {return false}
+                    return records.contains { record in
+                        record.mealStatus == 2
+                    }
+                }
+                return false
+            }.count
+            return dinner >= 22
         case.twilightTasting:
             let lunchDinner = challanges.filter { challange in
                 if let records = challange.records?.allObjects as? [MealRecordEntity] {
                     if records.count <= 1 {return false}
                     return records.contains { record in
                         record.mealStatus == 1
-                    } && records.contains{ record in
+                    } && records.contains { record in
                         record.mealStatus == 2
                     }
                 }
@@ -178,6 +185,7 @@ enum BadgeType: Int16, CaseIterable {
                 return false
             }.count
             return meals3 >= 44
+        default: return false
         }
     }
 }

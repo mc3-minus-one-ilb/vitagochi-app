@@ -13,25 +13,31 @@ struct Message: Identifiable, Equatable {
     var isMyMessage: Bool
     var profilPic: String
     var photo: Data?
-    var vitaAnswer: VitaMessageAnswer?
+    var vitaAnswer: VitaChatAnswer?
 }
 
-enum VitaMessageAnswer: Int16, CaseIterable {
+enum VitaChatAnswer: Int16, CaseIterable {
     case exactly = 0
     case greensOnly = 1
     case fruitsOnly = 2
     case sadlyNo = 3
     
-    func answer(name: String = "") -> String {
+    func getAnswer(name: String = "") -> String {
         switch self {
         case.exactly:
-            return "Excelent! Way to go, you fruit and veggie virtouso. Congratulation on take a lil step of embracing a healthy dietary habit 🎉"
+            return "Excelent! Way to go, you fruit and veggie virtouso. " +
+            "Congratulation on take a lil step of " +
+            "embracing a healthy dietary habit 🎉"
         case.greensOnly:
-            return "It's okay, take your time! I know fruits must be pricy, but consider to eat it later, okay? 😉"
+            return "It's okay, take your time! I know fruits must be pricy, " +
+            "but consider to eat it later, okay? 😉"
         case.fruitsOnly:
-            return "Yumm... fruits always be tasty but believe greens can be tasty too! Sot eat it later okay? 😉"
+            return "Yumm... fruits always be tasty but believe " +
+            "greens can be tasty too! Sot eat it later okay? 😉"
         case.sadlyNo:
-            return "Huft... \(name=="" ? "you" : name) can be disappointing at times, Just promise me you'll munch on greens and fruits next time, alright ? 😔"
+            return "Huft... \(name.isEmpty ? "you" : name) can be " +
+            "disappointing at times, Just promise me " +
+            "you'll munch on greens and fruits next time, alright ? 😔"
         }
     }
     
