@@ -93,6 +93,7 @@
 		CB84A9CF2A6FCE17003F1251 /* URL+Extend.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB84A9CE2A6FCE17003F1251 /* URL+Extend.swift */; };
 		CB84A9D02A6FD18F003F1251 /* URL+Extend.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB84A9CE2A6FCE17003F1251 /* URL+Extend.swift */; };
 		CB84A9D12A6FF6C8003F1251 /* LevelUpProgressStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2651459B2A697AF900042519 /* LevelUpProgressStyle.swift */; };
+		CB8CC5612A9368260070F79A /* TestBadgeCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CC5602A9368260070F79A /* TestBadgeCoreData.swift */; };
 		CB9AA2252A6A414400BF8D76 /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9AA2242A6A414400BF8D76 /* CoreDataRepository.swift */; };
 		CB9AA2272A6AC9AB00BF8D76 /* TakePitcureButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9AA2262A6AC9AB00BF8D76 /* TakePitcureButton.swift */; };
 		CB9FE2892A6932950091DE9C /* AppCoreContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CB9FE2872A6932950091DE9C /* AppCoreContainer.xcdatamodeld */; };
@@ -130,7 +131,6 @@
 		CBB46C252A6BEA3800E9E0F8 /* ProgressListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB46C242A6BEA3800E9E0F8 /* ProgressListView.swift */; };
 		CBB46C272A6BEECF00E9E0F8 /* CircularProgressSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB46C262A6BEECF00E9E0F8 /* CircularProgressSection.swift */; };
 		CBCEFB872A91E99C001F7A5C /* BadgesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCEFB862A91E99C001F7A5C /* BadgesViewModel.swift */; };
-		CBCEFB892A925282001F7A5C /* TestCoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCEFB882A925282001F7A5C /* TestCoreDataStack.swift */; };
 		CBCEFB8B2A9255A1001F7A5C /* TestChallengeCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCEFB8A2A9255A1001F7A5C /* TestChallengeCoreData.swift */; };
 		CBD2D8812A67BC6700F603C7 /* PhotoTakeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2D8802A67BC6700F603C7 /* PhotoTakeView.swift */; };
 		CBD2D8BE2A67C0FC00F603C7 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2D8BD2A67C0FC00F603C7 /* ChatView.swift */; };
@@ -251,6 +251,7 @@
 		CB2B5D9A2A66B50B0099D404 /* VitaMoodPhase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VitaMoodPhase.swift; path = Vitagochi/Models/VitaMoodPhase.swift; sourceTree = SOURCE_ROOT; };
 		CB84A9CD2A6FCD75003F1251 /* VitaWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VitaWidgetExtension.entitlements; sourceTree = "<group>"; };
 		CB84A9CE2A6FCE17003F1251 /* URL+Extend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extend.swift"; sourceTree = "<group>"; };
+		CB8CC5602A9368260070F79A /* TestBadgeCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestBadgeCoreData.swift; sourceTree = "<group>"; };
 		CB9AA2242A6A414400BF8D76 /* CoreDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRepository.swift; sourceTree = "<group>"; };
 		CB9AA2262A6AC9AB00BF8D76 /* TakePitcureButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakePitcureButton.swift; sourceTree = "<group>"; };
 		CB9FE2882A6932950091DE9C /* AppCoreContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AppCoreContainer.xcdatamodel; sourceTree = "<group>"; };
@@ -287,7 +288,6 @@
 		CBB46C242A6BEA3800E9E0F8 /* ProgressListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressListView.swift; sourceTree = "<group>"; };
 		CBB46C262A6BEECF00E9E0F8 /* CircularProgressSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressSection.swift; sourceTree = "<group>"; };
 		CBCEFB862A91E99C001F7A5C /* BadgesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgesViewModel.swift; sourceTree = "<group>"; };
-		CBCEFB882A925282001F7A5C /* TestCoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCoreDataStack.swift; sourceTree = "<group>"; };
 		CBCEFB8A2A9255A1001F7A5C /* TestChallengeCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestChallengeCoreData.swift; sourceTree = "<group>"; };
 		CBD2D8802A67BC6700F603C7 /* PhotoTakeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoTakeView.swift; sourceTree = "<group>"; };
 		CBD2D8BD2A67C0FC00F603C7 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
@@ -558,8 +558,8 @@
 			isa = PBXGroup;
 			children = (
 				26C7A89E2A5D0015009F0EAF /* VitagochiTests.swift */,
-				CBCEFB882A925282001F7A5C /* TestCoreDataStack.swift */,
 				CBCEFB8A2A9255A1001F7A5C /* TestChallengeCoreData.swift */,
+				CB8CC5602A9368260070F79A /* TestBadgeCoreData.swift */,
 			);
 			path = VitagochiTests;
 			sourceTree = "<group>";
@@ -1065,10 +1065,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB8CC5612A9368260070F79A /* TestBadgeCoreData.swift in Sources */,
 				264FA06E2A6F6F41006758A3 /* VitaTimePhase.swift in Sources */,
 				264FA06C2A6F6EDE006758A3 /* ReminderType.swift in Sources */,
 				26C7A89F2A5D0015009F0EAF /* VitagochiTests.swift in Sources */,
-				CBCEFB892A925282001F7A5C /* TestCoreDataStack.swift in Sources */,
 				CBCEFB8B2A9255A1001F7A5C /* TestChallengeCoreData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

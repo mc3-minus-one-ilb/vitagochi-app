@@ -79,7 +79,6 @@ class CoreDataRepository {
         newMealRecord.vitaMessage =  mealStatus.getAnswer(name: name)
         newMealRecord.challange = challange
         newMealRecord.time = Date()
-        print(newMealRecord)
     }
     
     func save() {

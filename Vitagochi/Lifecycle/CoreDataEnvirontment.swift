@@ -8,11 +8,6 @@
 import SwiftUI
 import CoreData
 
-struct BadgeModelData {
-    let badgeId: Int16
-    let achievedDate: Date
-}
-
 class CoreDataEnvirontment: ObservableObject {
     public static let singleton: CoreDataEnvirontment = CoreDataEnvirontment(
         repository: CoreDataRepository.singleton)
@@ -29,14 +24,12 @@ class CoreDataEnvirontment: ObservableObject {
         self.appCoreRepository = repository
         fetchChallanges()
         fetchMealRecords()
-        if !challenges.isEmpty {
-            setTodayChallange()
-            getVitaModel()
-        }
+        fetchBadges()
         if challenges.isEmpty {
             add66DaysOfChallanges()
         }
-        
+        setTodayChallange()
+        getVitaModel()
     }
     
     func fetchChallanges() {
@@ -45,6 +38,10 @@ class CoreDataEnvirontment: ObservableObject {
     
     func fetchMealRecords() {
         self.mealRecords = appCoreRepository.getMealRecords()
+    }
+    
+    func fetchBadges() {
+        self.badges = appCoreRepository.getBadges()
     }
     
     func getTodayCompletedChallange() -> Int {
@@ -72,9 +69,9 @@ class CoreDataEnvirontment: ObservableObject {
     }
     
     func checkAndAddBadge(phase: VitaTimePhase) {
-//        let daySinceStart = countHowManyDaySinceStart()
-//        if daySinceStart < 11 { return }
-// Fix This
+        //        let daySinceStart = countHowManyDaySinceStart()
+        //        if daySinceStart < 11 { return }
+        // Fix This
         
         for type in BadgeType.allCases {
             var isAlreadeyHave = false
@@ -113,28 +110,26 @@ class CoreDataEnvirontment: ObservableObject {
     }
     
     func add66DaysOfChallanges() {
-        if challenges.isEmpty {
-            let today = Date()
-            let calendar = Calendar.current
-            
-            let hour = calendar.component(.hour, from: today)
-            
-            if hour >= 21 {
-                self.isTomorrowStarting = true
-                for challangeDay in 0..<66 {
-                    _ = appCoreRepository
-                        .addChallenge(date: today.increaseDate(by: challangeDay+1)!,
-                                      day: Int16(challangeDay+1))
-                }
-            } else {
-                for challangeDay in 0..<66 {
-                    _ = appCoreRepository
-                        .addChallenge(date: today.increaseDate(by: challangeDay)!,
-                                      day: Int16(challangeDay+1))
-                }
+        let today = Date()
+        let calendar = Calendar.current
+        
+        let hour = calendar.component(.hour, from: today)
+        
+        if hour >= 21 {
+            self.isTomorrowStarting = true
+            for challangeDay in 0..<66 {
+                _ = appCoreRepository
+                    .addChallenge(date: today.increaseDate(by: challangeDay+1)!,
+                                  day: Int16(challangeDay+1))
             }
-            save()
+        } else {
+            for challangeDay in 0..<66 {
+                _ = appCoreRepository
+                    .addChallenge(date: today.increaseDate(by: challangeDay)!,
+                                  day: Int16(challangeDay+1))
+            }
         }
+        save()
     }
     
     func getVitaModel() {
@@ -206,9 +201,10 @@ class CoreDataEnvirontment: ObservableObject {
         return (todayChallenge?.records!.count)! > 1
     }
     
-    func save() {
+    private func save() {
         appCoreRepository.save()
         fetchChallanges()
         fetchMealRecords()
+        fetchBadges()
     }
 }

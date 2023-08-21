@@ -7,7 +7,6 @@
 
 import XCTest
 @testable import Vitagochi
-import CoreData
 
 final class TestChallengeCoreData: XCTestCase {
     var coreDataEnv: CoreDataEnvirontment!
@@ -33,101 +32,6 @@ final class TestChallengeCoreData: XCTestCase {
     }
     
     func testSetTodayChallenge() {
-        coreDataEnv.setTodayChallange()
         XCTAssertNotNil(coreDataEnv.todayChallenge)
-    }
-    
-    func testMorningTaskBadges() {
-        for index in 0...12 {
-            let today = Date()
-            coreDataEnv.setTodayChallange(today.increaseDate(by: index) ?? today)
-            coreDataEnv.addTodayMealRecord(name: "Tes",
-                                           mealStatus: .exactly,
-                                           timeStatus: .morning,
-                                           photoName: "")
-        }
-        coreDataEnv.checkAndAddBadge(phase: .morning)
-        XCTAssertEqual(coreDataEnv.newBadge?.badgeId, BadgeType.morningTask.rawValue)
-    }
-    
-    func testEnergizeLunchBadges() {
-        for index in 0...22 {
-            let today = Date()
-            coreDataEnv.setTodayChallange(today.increaseDate(by: index) ?? today)
-            coreDataEnv.addTodayMealRecord(name: "Tes",
-                                           mealStatus: .exactly,
-                                           timeStatus: .afternoon,
-                                           photoName: "")
-        }
-        coreDataEnv.checkAndAddBadge(phase: .afternoon)
-        XCTAssertEqual(coreDataEnv.newBadge?.badgeId, BadgeType.energizeLunch.rawValue)
-    }
-    
-    func testDinnerTimeDelightBadges() {
-        for index in 0...22 {
-            let today = Date()
-            coreDataEnv.setTodayChallange(today.increaseDate(by: index) ?? today)
-            coreDataEnv.addTodayMealRecord(name: "Tes",
-                                           mealStatus: .exactly,
-                                           timeStatus: .evening,
-                                           photoName: "")
-        }
-        coreDataEnv.checkAndAddBadge(phase: .evening)
-        XCTAssertEqual(coreDataEnv.newBadge?.badgeId, BadgeType.dinnertimeDelight.rawValue)
-    }
-    
-    func testSunNoonBadges() {
-        for index in 0...33 {
-            let today = Date()
-            coreDataEnv.setTodayChallange(today.increaseDate(by: index) ?? today)
-            coreDataEnv.addTodayMealRecord(name: "Tes",
-                                           mealStatus: .exactly,
-                                           timeStatus: .morning,
-                                           photoName: "")
-            coreDataEnv.addTodayMealRecord(name: "Tes",
-                                           mealStatus: .exactly,
-                                           timeStatus: .afternoon,
-                                           photoName: "")
-        }
-        coreDataEnv.checkAndAddBadge(phase: .afternoon)
-        XCTAssertEqual(coreDataEnv.newBadge?.badgeId, BadgeType.sunNoonFeast.rawValue)
-    }
-    
-    func testTwilightBadges() {
-        for index in 0...33 {
-            let today = Date()
-            coreDataEnv.setTodayChallange(today.increaseDate(by: index) ?? today)
-            coreDataEnv.addTodayMealRecord(name: "Tes",
-                                           mealStatus: .exactly,
-                                           timeStatus: .afternoon,
-                                           photoName: "")
-            coreDataEnv.addTodayMealRecord(name: "Tes",
-                                           mealStatus: .exactly,
-                                           timeStatus: .evening,
-                                           photoName: "")
-        }
-        coreDataEnv.checkAndAddBadge(phase: .evening)
-        XCTAssertEqual(coreDataEnv.newBadge?.badgeId, BadgeType.twilightTasting.rawValue)
-    }
-    
-    func test3TimesMealsBadges() {
-        for index in 0...44 {
-            let today = Date()
-            coreDataEnv.setTodayChallange(today.increaseDate(by: index) ?? today)
-            coreDataEnv.addTodayMealRecord(name: "Tes",
-                                           mealStatus: .exactly,
-                                           timeStatus: .morning,
-                                           photoName: "")
-            coreDataEnv.addTodayMealRecord(name: "Tes",
-                                           mealStatus: .exactly,
-                                           timeStatus: .afternoon,
-                                           photoName: "")
-            coreDataEnv.addTodayMealRecord(name: "Tes",
-                                           mealStatus: .exactly,
-                                           timeStatus: .evening,
-                                           photoName: "")
-        }
-        coreDataEnv.checkAndAddBadge(phase: .evening)
-        XCTAssertEqual(coreDataEnv.newBadge?.badgeId, BadgeType.meals3Times.rawValue)
     }
 }

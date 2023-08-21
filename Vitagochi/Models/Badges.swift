@@ -109,7 +109,7 @@ enum BadgeType: Int16, CaseIterable {
                 if let records = challange.records?.allObjects as? [MealRecordEntity] {
                     if records.isEmpty {return false}
                     return records.contains { record in
-                        record.mealStatus == 0
+                        record.timeStatus == VitaTimePhase.morning.rawValue
                     }
                 }
                 return false
@@ -128,7 +128,7 @@ enum BadgeType: Int16, CaseIterable {
                 if let records = challange.records?.allObjects as? [MealRecordEntity] {
                     if records.isEmpty {return false}
                     return records.contains { record in
-                        record.mealStatus == 1
+                        record.timeStatus == VitaTimePhase.afternoon.rawValue
                     }
                 }
                 return false
@@ -139,9 +139,9 @@ enum BadgeType: Int16, CaseIterable {
                 if let records = challange.records?.allObjects as? [MealRecordEntity] {
                     if records.count <= 1 {return false}
                     return records.contains { record in
-                        record.mealStatus == 0
+                        record.timeStatus == VitaTimePhase.morning.rawValue
                     } && records.contains { record in
-                        record.mealStatus == 1
+                        record.timeStatus == VitaTimePhase.afternoon.rawValue
                     }
                 }
                 return false
@@ -158,7 +158,7 @@ enum BadgeType: Int16, CaseIterable {
                 if let records = challange.records?.allObjects as? [MealRecordEntity] {
                     if records.isEmpty {return false}
                     return records.contains { record in
-                        record.mealStatus == 2
+                        record.timeStatus == VitaTimePhase.evening.rawValue
                     }
                 }
                 return false
@@ -169,9 +169,9 @@ enum BadgeType: Int16, CaseIterable {
                 if let records = challange.records?.allObjects as? [MealRecordEntity] {
                     if records.count <= 1 {return false}
                     return records.contains { record in
-                        record.mealStatus == 1
+                        record.timeStatus == VitaTimePhase.afternoon.rawValue
                     } && records.contains { record in
-                        record.mealStatus == 2
+                        record.timeStatus == VitaTimePhase.evening.rawValue
                     }
                 }
                 return false
