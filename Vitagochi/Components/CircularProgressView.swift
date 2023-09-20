@@ -17,30 +17,22 @@ struct CircularProgressView: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack {
-                //            Pulsation()
                 Track(size: geometry.size,
                       lineWidth: lineWitdh,
                       defaultBackgroundColor: whiteBackgroundColor,
                       defaultTrackColor: whiteOutlineColor)
                 Outline(percentage: percentage, size: geometry.size, lineWidth: lineWitdh)
-                
-            }
-            .scaleEffect(pulsate ? 1.05 : 1.0)
-            .animation( .easeInOut(duration: 1.3).repeatForever(autoreverses: true), value: pulsate)
-            //    //        .blur(radius: 30)
-            .onAppear {
-                if pulsate {
-                    self.pulsate.toggle()
-                }
             }
         }
-        
     }
 }
 
+
+
+
 struct Outline: View {
     var percentage: CGFloat
-    var colors: [Color] = [Color.circularProgressOutline]
+    var colors: [Color] = [Color.mintPrimary]
     var size: CGSize
     var lineWidth: CGFloat
     
@@ -66,19 +58,19 @@ struct Outline: View {
                         )
                         .rotationEffect(.init(degrees: 270))
                 )
-                .animation(
-                    .spring(response: 2.0,
-                            dampingFraction: 1.0,
-                            blendDuration: 1.0),
-                    value: percentage
-                )
+//                .animation(
+//                    .spring(response: 2.0,
+//                            dampingFraction: 1.0,
+//                            blendDuration: 1.0),
+//                    value: percentage
+//                )
         }
     }
 }
 
 struct Track: View {
     var size: CGSize
-    var colors: [Color] = [Color.circularProgressTrack]
+    var colors: [Color] = [Color.mintAccent3]
     var lineWidth: CGFloat
     var defaultBackgroundColor: Bool
     var defaultTrackColor: Bool
@@ -93,7 +85,7 @@ struct Track: View {
                         .stroke(style: StrokeStyle(lineWidth: lineWidth))
                         .fill(
                             AngularGradient(gradient: .init(
-                                colors: defaultTrackColor ? [Color.white] : colors),
+                                colors: defaultTrackColor ? [Color.whiteFull] : colors),
                                             center: .center )
                         )
                 }
@@ -116,6 +108,8 @@ struct Track: View {
 
 struct CircularProgressView_Previews: PreviewProvider {
     static var previews: some View {
+//        CircularProgressDetailedView(phasesStatus: [VitaTimePhase.morning, VitaTimePhase.afternoon, VitaTimePhase.evening])
+            
         CircularProgressView(percentage: 33)
             .frame(width: 250, height: 250)
     }

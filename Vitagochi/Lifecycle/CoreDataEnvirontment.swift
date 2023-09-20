@@ -21,6 +21,19 @@ class CoreDataEnvirontment: ObservableObject {
     var isTomorrowStarting: Bool = false
     
     init(repository: CoreDataRepository) {
+#if targetEnvironment(simulator)
+        let coreDataManager = CoreDataManager(.inMemory)
+        let coreDataRepository = CoreDataRepository(manager: coreDataManager)
+        self.appCoreRepository = coreDataRepository
+        fetchChallanges()
+        fetchMealRecords()
+        fetchBadges()
+        if challenges.isEmpty {
+            add66DaysOfChallanges()
+        }
+        setTodayChallange()
+        getVitaModel()
+#else
         self.appCoreRepository = repository
         fetchChallanges()
         fetchMealRecords()
@@ -30,6 +43,8 @@ class CoreDataEnvirontment: ObservableObject {
         }
         setTodayChallange()
         getVitaModel()
+#endif
+        
     }
     
     func fetchChallanges() {
@@ -68,32 +83,6 @@ class CoreDataEnvirontment: ObservableObject {
         }
     }
     
-    func checkAndAddBadge(phase: VitaTimePhase) {
-        //        let daySinceStart = countHowManyDaySinceStart()
-        //        if daySinceStart < 11 { return }
-        // Fix This
-        
-        for type in BadgeType.allCases {
-            var isAlreadeyHave = false
-            
-            for accquiredBadge in badges
-            where accquiredBadge.badgeId == type.rawValue {
-                isAlreadeyHave = true
-                continue
-            }
-            
-            if isAlreadeyHave {
-                continue
-            } else {
-                if type.checkIsItAchieved(challanges: challenges, phase: phase) {
-                    newBadge = appCoreRepository.addBadge(for: type)
-                    save()
-                }
-            }
-        }
-        
-    }
-    
     func addTodayMealRecord(name: String,
                             mealStatus: VitaChatAnswer,
                             timeStatus: VitaTimePhase,
@@ -115,7 +104,7 @@ class CoreDataEnvirontment: ObservableObject {
         
         let hour = calendar.component(.hour, from: today)
         
-        if hour >= 21 {
+        if hour >= VitaTimePhase.afterDay.time.hour {
             self.isTomorrowStarting = true
             for challangeDay in 0..<66 {
                 _ = appCoreRepository
@@ -199,6 +188,119 @@ class CoreDataEnvirontment: ObservableObject {
     
     func isAnotherTodayMealRecord() -> Bool {
         return (todayChallenge?.records!.count)! > 1
+    }
+    
+    // MARK: Badges Section
+    func checkAndAddBadge(phase: VitaTimePhase) {
+        let badgesThatCanBeAchieved = badgesThatCanBeAchieved(phase: phase)
+        for badge in badgesThatCanBeAchieved {
+            if isBadgesAlreadyHave(badge: badge) {
+                continue
+            }
+            if isBadgeAchieved(badge: badge) {
+                newBadge = appCoreRepository.addBadge(for: badge)
+                save()
+            }
+        }
+    }
+    
+    private func isBadgeAchieved(badge: BadgeType) -> Bool {
+        return countBadgesProgress(badge: badge) >= badge.daysToAchiveBadge
+    }
+    
+    private func isBadgesAlreadyHave(badge: BadgeType) -> Bool {
+        for accquiredBadge in badges
+        where accquiredBadge.badgeId == badge.rawValue {
+            return true
+        }
+        return false
+    }
+    
+    private func badgesThatCanBeAchieved(phase: VitaTimePhase) -> [BadgeType] {
+        switch phase {
+        case.morning:
+            return [BadgeType.morningTask]
+        case.afternoon:
+            return [BadgeType.happyLunch, BadgeType.doubleFeast]
+        case.evening:
+            return [BadgeType.delightDinner,
+                    BadgeType.twilightTaste,
+                    BadgeType.tripleMeals]
+        case.beforeDayStart, .afterDay:
+            return []
+        }
+    }
+    
+    func countBadgesProgress(badge: BadgeType) -> Int {
+        switch badge {
+        case.morningTask:
+            let breakfast = challenges.filter { challenge in
+                if let records = challenge.records?.allObjects as? [MealRecordEntity] {
+                    if records.isEmpty {return false}
+                    return records.contains { record in
+                        record.timeStatus == VitaTimePhase.morning.rawValue
+                    }
+                }
+                return false
+            }.count
+            return breakfast
+        case.happyLunch:
+            let lunch = challenges.filter { challenge in
+                if let records = challenge.records?.allObjects as? [MealRecordEntity] {
+                    if records.isEmpty {return false}
+                    return records.contains { record in
+                        record.timeStatus == VitaTimePhase.afternoon.rawValue
+                    }
+                }
+                return false
+            }.count
+            return lunch
+        case.delightDinner:
+            let dinner = challenges.filter { challenge in
+                if let records = challenge.records?.allObjects as? [MealRecordEntity] {
+                    if records.isEmpty {return false}
+                    return records.contains { record in
+                        record.timeStatus == VitaTimePhase.evening.rawValue
+                    }
+                }
+                return false
+            }.count
+            return dinner
+        case.doubleFeast:
+            let fastLunch = challenges.filter { challenge in
+                if let records = challenge.records?.allObjects as? [MealRecordEntity] {
+                    if records.count <= 1 {return false}
+                    return records.contains { record in
+                        record.timeStatus == VitaTimePhase.morning.rawValue
+                    } && records.contains { record in
+                        record.timeStatus == VitaTimePhase.afternoon.rawValue
+                    }
+                }
+                return false
+            }.count
+            return fastLunch
+        case.twilightTaste:
+            let lunchDinner = challenges.filter { challenge in
+                if let records = challenge.records?.allObjects as? [MealRecordEntity] {
+                    if records.count <= 1 {return false}
+                    return records.contains { record in
+                        record.timeStatus == VitaTimePhase.afternoon.rawValue
+                    } && records.contains { record in
+                        record.timeStatus == VitaTimePhase.evening.rawValue
+                    }
+                }
+                return false
+            }.count
+            return lunchDinner
+        case.tripleMeals:
+            let meals3 = challenges.filter { challenge in
+                if let records = challenge.records?.allObjects as? [MealRecordEntity] {
+                    return records.count >= 3
+                }
+                return false
+            }.count
+            return meals3
+        }
     }
     
     private func save() {

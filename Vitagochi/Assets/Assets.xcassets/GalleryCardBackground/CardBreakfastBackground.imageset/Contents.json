@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "CardA.png",
+      "filename" : "BreakfastBack-2 1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "CardA-2.png",
+      "filename" : "BreakfastBack-3 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "CardA-3.png",
+      "filename" : "BreakfastBack-4.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

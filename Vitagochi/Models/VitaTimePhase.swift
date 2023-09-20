@@ -17,6 +17,8 @@ struct VitaMessage: Equatable {
     let soundFileName: String
 }
 
+// TODO: Change Copy Writing
+
 enum VitaTimePhase: Int16, CaseIterable {
     case morning = 0
     case afternoon = 1
@@ -34,9 +36,9 @@ enum VitaTimePhase: Int16, CaseIterable {
         case.afternoon:
             return HourAndMinute(hour: 12, minute: 0)
         case.evening:
-            return HourAndMinute(hour: 17, minute: 0)
+            return HourAndMinute(hour: 18, minute: 0)
         case.afterDay:
-            return HourAndMinute(hour: 21, minute: 0)
+            return HourAndMinute(hour: 23, minute: 0)
         }
     }
     
@@ -84,11 +86,11 @@ enum VitaTimePhase: Int16, CaseIterable {
         case .beforeDayStart, .afterDay:
             return ""
         case.morning:
-            return "Rise and dine, it’s a perfect act \nto start the day with healthy \nfood!"
+            return "Breakfast is a perfect way\nto start the day"
         case.afternoon:
-            return "Here we go! Noontime feast! \nIt's a midday delight in hectic \ntimes"
+            return "Lunch is a delight moment\nin the middle of the day"
         case.evening:
-            return "A delicious finale, perfect way \nto end today’s journey!"
+            return "Dinner is a perfect finale\nthroughout the day"
         }
     }
     
@@ -175,76 +177,76 @@ enum VitaTimePhase: Int16, CaseIterable {
             return 4
         }
     }
+    
+    
 }
 
-let vitaFirstTimeAppMessage = VitaMessage(text: "Welcome! I'm Vita, " +
-                                  "i'm here to support your healthy eating. " +
-                                  "Tap me to speak to you.",
+
+let vitaFirstTimeAppMessage = VitaMessage(text: "Vita is here to remind " +
+                                  "you to eat healthy meals 3x a day!",
                                   soundFileName: "welcome")
 
-let vitaTapDefaultMessage = VitaMessage(text: "Vita hopes that you will be able " +
-                                        "to take pictures of healthy meals. 😋",
+let vitaTapDefaultMessage = VitaMessage(text: "Vita hopes you will take  " +
+                                        "a pictures of your healthy meals!",
                                         soundFileName: "default1")
 
 let vitaDefaultMessage: [VitaMessage] = [
-    VitaMessage(text: "Don’t forget to eat veggies " +
-                "and fruits or you will constipate!",
+    VitaMessage(text: "Make sure you put veggies and fruits " +
+                "on your meals!",
                 soundFileName: "beforeDayDefault1"),
-    VitaMessage(text: "When it is time to eat, press the " +
-                "camera icon to take a picture of the meal. 📸",
+    VitaMessage(text: "Take a picture of your healthy meals " +
+                "when it's time to eat!",
                 soundFileName: "beforeDayDefault2"),
-    VitaMessage(text: "Rise and shine! It's time for you to " +
-                "fill that empty belly. Be sure to take " +
-                "a picture of your meal before eating it. 📸",
+    VitaMessage(text: "Rise and dine! It's a breakfast time! " +
+                "Can Vita see your meal?",
                 soundFileName: "morningDefault1"),
-    VitaMessage(text: "What are you waiting for? Go eat now, " +
-                "make sure to have greens and fruits in it.",
+    VitaMessage(text: "What are you waiting for? " +
+                "Let's have a lunch with Vita",
                 soundFileName: "afternoonDefault1"),
-    VitaMessage(text: "Enjoy a full, delicious, " +
-                "and healthy meal before the day is over!",
+    VitaMessage(text: "Let's enjoy a healthy dinner " +
+                "before the day is over",
                 soundFileName: "eveningDefault1"),
-    VitaMessage(text: "Wow, the day went by so fast! I can't wait " +
-                "for the day when we can enjoy another meal together!",
+    VitaMessage(text: "Wow, the day flew by! " +
+                "Vita excited to see your next meal",
                 soundFileName: "afterDayDefault1")
 ]
 
-let vitaTapAngryMessage =  VitaMessage(text: "To make sure you are eating a healthy diet, " +
-                                       "please take a picture.",
+let vitaTapAngryMessage =  VitaMessage(text: "It's a piece of cake to take " +
+                                       "a picture of healthy meals",
                                        soundFileName: "angry1")
 
 let vitaAngryMessage: [VitaMessage] = [
-    VitaMessage(text: "I told you the day starts with breakfast. " +
-                "Otherwise you will be tired during the day. 🤕",
+    VitaMessage(text: "Have a breakfast first. If you skip it, " +
+                "you will regret it!",
                 soundFileName: "morningAngry1"),
-    VitaMessage(text: "No matter how busy you are. it is not " +
-                "a good idea to skip lunch!",
+    VitaMessage(text: "It's not a good idea to skip lunch " +
+                "even though you're busy",
                 soundFileName: "afternoonAngry1"),
-    VitaMessage(text: "It’s now or never for dinner! " +
-                "Eating late at night is a no-no for your health",
+    VitaMessage(text: "Dinner is now or never! " +
+                "Don't you dare to eat in a late of night",
                 soundFileName: "eveningAngry1")
 ]
 
-let vitaTapHappyMessage = VitaMessage(text: "Well done! Keep up the good work " +
-            "of improving your healthy dietary habits ✊🏻",
+let vitaTapHappyMessage = VitaMessage(text: "Keep up the good work to " +
+            "improve your healthy dietary!",
             soundFileName: "happy1")
 
 let vitaHappyMessage: [VitaMessage] = [
-    VitaMessage(text: "Yum! Feels like I'm having " +
-                "a taste of what you're eating",
+    VitaMessage(text: "Yum! Vita can taste " +
+                "of what you're eating",
                 soundFileName: "morningHappy1"),
     VitaMessage(text: "Well done, for not skipping a healthy lunch!",
                 soundFileName: "afternoonHappy1"),
-    VitaMessage(text: "Now, you are ready to wrap up the day after " +
-                "nourishing yourself with meals filled with greens and fruits",
+    VitaMessage(text: "Yeay! After eating a healthy meal, " +
+                "let's wrap up this day",
                 soundFileName: "eveningHappy1")
 ]
 
 let vitaSickMessage: [VitaMessage] = [
-    VitaMessage(text: "Yesterday, you didn’t eat any healthy meals, " +
-                "that’s why my condition become like this 😭",
+    VitaMessage(text: "Yesterday you didn’t eat any healthy meals! " +
+                "Soon you will become like this",
                 soundFileName: "sickDefault1"),
-    VitaMessage(text: "For today, please eat healthy food! " +
-                "It will be good for you and me 🥺",
+    VitaMessage(text: "For today, please eat healthy food.. ",
                 soundFileName: "sickDefault2"),
     VitaMessage(text: "As expected from healthy food! " +
                 "Let’s keep the pace like this!",

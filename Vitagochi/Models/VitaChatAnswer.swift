@@ -25,18 +25,18 @@ enum VitaChatAnswer: Int16, CaseIterable {
     func getAnswer(name: String = "") -> String {
         switch self {
         case.exactly:
-            return "Excelent! Way to go, you fruit and veggie virtouso. " +
-            "Congratulation on take a lil step of " +
-            "embracing a healthy dietary habit 🎉"
+            return "Finally you did it! Congratulations on " +
+            "take a little step of embracing a " +
+            "healthy dietary habit 🎉"
         case.greensOnly:
-            return "It's okay, take your time! I know fruits must be pricy, " +
-            "but consider to eat it later, okay? 😉"
+            return "Cool, you can eat fruit later! Vita knows that " +
+            "you can't afford fruits because it's kinda pricy 😉"
         case.fruitsOnly:
-            return "Yumm... fruits always be tasty but believe " +
-            "greens can be tasty too! Sot eat it later okay? 😉"
+            return "Wow, your palette just like a kid who dislike veggies. " +
+            "Show me you are an adult by eating it later, okay? 😉"
         case.sadlyNo:
             return "Huft... \(name.isEmpty ? "you" : name) can be " +
-            "disappointing at times, Just promise me " +
+            "disappointing at times. Promise me " +
             "you'll munch on greens and fruits next time, alright ? 😔"
         }
     }
@@ -51,6 +51,17 @@ enum VitaChatAnswer: Int16, CaseIterable {
             return "Only Fruits 🙃"
         case.sadlyNo:
             return "Sadly No 😔"
+        }
+    }
+    
+    var labelConfirmation: String {
+        switch self  {
+        case.exactly:
+            return "Thanks Vita!"
+        case.fruitsOnly, .greensOnly:
+            return "Okay Vita!"
+        case.sadlyNo:
+            return "Noted Vita!"
         }
     }
 }

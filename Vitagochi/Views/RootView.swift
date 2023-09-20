@@ -11,6 +11,7 @@ struct RootView: View {
     @EnvironmentObject private var envObj: GlobalEnvirontment
     @EnvironmentObject private var coreData: CoreDataEnvirontment
     @StateObject private var rootVM: RootViewModel = RootViewModel()
+    @Namespace private var tabBarNamespace
     
     var body: some View {
         NavigationStack(path: $envObj.path) {
@@ -31,23 +32,26 @@ struct RootView: View {
                 .safeAreaInset(edge: .bottom) {
                     HStack {
                         TabBarIconView(selection: $rootVM.selection,
+                                       tabBarNamespace: tabBarNamespace,
                                        value: rootVM.mainViewTag,
-                                       iconName: "heart.fill")
-                            .transition(.slide)
-                            .padding(.leading, 50)
+                                       iconName: "fork.knife",
+                                       label: "Meals")
+                            .padding(.leading, 40)
                         Spacer()
                         TabBarIconView(selection: $rootVM.selection,
+                                       tabBarNamespace: tabBarNamespace,
                                        value: rootVM.progressViewTag,
-                                       iconName: "heart.text.square.fill")
-                            .transition(.slide)
+                                       iconName: "doc.text.image.fill",
+                                       label: "Progress")
                         Spacer()
                         TabBarIconView(selection: $rootVM.selection,
+                                       tabBarNamespace: tabBarNamespace,
                                        value: rootVM.badgesViewTag,
-                                       iconName: "medal.fill")
-                            .transition(.slide)
-                            .padding(.trailing, 50)
+                                       iconName: "medal.fill",
+                                       label: "Badges")
+                            .padding(.trailing, 40)
                     }
-                    .background(Color.primaryWhite)
+                    .background(Color.white)
                 }
                 
 //                Button {
@@ -59,18 +63,39 @@ struct RootView: View {
 //                }
 
                 if rootVM.achievement {
-                    AchievementView(badgeType: rootVM.newBadge,
-                                    show: $rootVM.achievement)
-                        .ignoresSafeArea()
-                        .zIndex(2)
+                    if let newBadge = rootVM.newBadge {
+                        AchievementView(badgeType: newBadge,
+                                        show: $rootVM.achievement)
+                            .ignoresSafeArea()
+                            .zIndex(2)
+                    } else if let newAchievement = rootVM.newAchievement {
+                        AchievementView(achievementType: newAchievement,
+                                        show: $rootVM.achievement)
+                            .ignoresSafeArea()
+                            .zIndex(2)
+                    }
                 }
             }
+            .kerning(-0.8)
             .onChange(of: coreData.newBadge) { newValue in
                 if let value = newValue {
                     if let badge = BadgeType(rawValue: value.badgeId) {
                         rootVM.achievement.toggle()
                         rootVM.newBadge = badge
                     }
+                }
+            }
+            .onChange(of: envObj.achievement) { achievement in
+                if let achievement = achievement {
+                    rootVM.achievement.toggle()
+                    rootVM.newAchievement = achievement
+                }
+            }
+            .onChange(of: rootVM.achievement) { newValue in
+                if !newValue {
+                    rootVM.newBadge = nil
+                    rootVM.newAchievement = nil
+                    envObj.achievement = nil
                 }
             }
         }
@@ -80,10 +105,13 @@ struct RootView: View {
 struct RootView_Previews: PreviewProvider {
     
     static var previews: some View {
+        let coreDataManager = CoreDataManager(.inMemory)
+        let coreDataRepository = CoreDataRepository(manager: coreDataManager)
+        let coreDataEnv = CoreDataEnvirontment(repository: coreDataRepository)
         
         return RootView()
             .environmentObject(GlobalEnvirontment.singleton)
-            .environmentObject(CoreDataEnvirontment.singleton)
+            .environmentObject(coreDataEnv)
         
         //        RootView()
         //            .previewDevice(PreviewDevice(rawValue: "iPhone 14 Pro Max"))

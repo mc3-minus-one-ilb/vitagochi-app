@@ -20,7 +20,7 @@ class ChatViewModel: ObservableObject {
     init(_ message: Message, photoData: Data? = nil, timePhase: VitaTimePhase) {
         self.timePhase = timePhase
         
-        let vitaFirstMessage = "It looks good to me!, " +
+        let vitaFirstMessage = "It looks good to me. " +
         "But are you sure to put some greens " +
         "or fruit on your meals right ? " +
         "Not only carbs and proteins 🧐"

@@ -29,6 +29,7 @@ class TrackingProgressViewModel: ObservableObject {
     @Published var daysCount: Int = 0
     @Published var selection: Int = 0
     @Published var rectPosition: RectPosition = .leading
+    @Published var showingInformationSheet: Bool = false
     
     func changeRectPosition(value: Int) {
         withAnimation(.easeIn) {

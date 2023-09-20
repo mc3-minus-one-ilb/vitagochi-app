@@ -10,8 +10,8 @@ import SwiftUI
 struct CounteredTextView: View {
     @Binding var input: String
     var body: some View {
-        TextField("", text: $input, prompt: Text("Type your nickname"))
-            .textFieldStyle(CounterTextFieldStyle(input: $input, maxLength: 6))
+        TextField("", text: $input, prompt: Text("Type your nickname").font(.title3).fontWeight(.regular))
+            .textFieldStyle(CounterTextFieldStyle(input: $input, maxLength: 10))
             .autocorrectionDisabled()
     }
 }

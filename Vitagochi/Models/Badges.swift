@@ -14,27 +14,27 @@ struct BadgeModel: Identifiable {
 
 enum BadgeType: Int16, CaseIterable {
     case morningTask = 0
-    case energizeLunch = 1
-    case dinnertimeDelight = 2
-    case sunNoonFeast = 3
-    case twilightTasting = 4
-    case meals3Times = 5
+    case happyLunch = 1
+    case delightDinner = 2
+    case doubleFeast = 3
+    case twilightTaste = 4
+    case tripleMeals = 5
     
     var image: String {
         let type = "Badge"
         switch self {
         case.morningTask:
             return "\(type)MorningTask"
-        case.energizeLunch:
-            return "\(type)EnergizeLunch"
-        case.dinnertimeDelight:
-            return "\(type)Dinnertime"
-        case.sunNoonFeast:
-            return "\(type)SunNoon"
-        case.twilightTasting:
-            return "\(type)TwilightTasting"
-        case.meals3Times:
-            return "\(type)3TimesMeals"
+        case.happyLunch:
+            return "\(type)HappyLunch"
+        case.delightDinner:
+            return "\(type)DelightDinner"
+        case.doubleFeast:
+            return "\(type)DoubleFeast"
+        case.twilightTaste:
+            return "\(type)TwilightTaste"
+        case.tripleMeals:
+            return "\(type)TripleMeals"
         }
     }
     
@@ -42,150 +42,74 @@ enum BadgeType: Int16, CaseIterable {
         switch self {
         case.morningTask:
             return "Morning Task"
-        case.energizeLunch:
-            return "Energize Lunch"
-        case.dinnertimeDelight:
-            return "Dinnertime Delight"
-        case.sunNoonFeast:
-            return "Sun & Noon Feast"
-        case.twilightTasting:
-            return "Twlight Tasting"
-        case.meals3Times:
-            return "3 Times Meals"
+        case.happyLunch:
+            return "Happy Lunch"
+        case.delightDinner:
+            return "Delight Dinner"
+        case.doubleFeast:
+            return "Double Feast"
+        case.twilightTaste:
+            return "Twilight Taste"
+        case.tripleMeals:
+            return "Triple Meals"
         }
     }
     
     var description: String {
+        let daysToAchiveBadge = self.daysToAchiveBadge
         switch self {
         case.morningTask:
-            return "Eat Healthy Breakfast\nfor 11 times"
-        case.energizeLunch:
-            return "Eat Healthy Lunch\nfor 22 times"
-        case.dinnertimeDelight:
-            return "Eat Healthy Dinner\nfor 22 times"
-        case.sunNoonFeast:
-            return "Eat Healthy Breakfast & Lunch\nfor 33 times"
-        case.twilightTasting:
-            return "Eat Healthy Lunch & Dinner\nfor 33 times"
-        case.meals3Times:
-            return "3x Healthy Meals in a Day\nfor 44 times"
+            return "Eat Healthy Breakfast\nfor \(daysToAchiveBadge) times"
+        case.happyLunch:
+            return "Eat Healthy Lunch\nfor \(daysToAchiveBadge) times"
+        case.delightDinner:
+            return "Eat Healthy Dinner\nfor \(daysToAchiveBadge) times"
+        case.doubleFeast:
+            return "Eat Healthy Breakfast\n& Lunch for \(daysToAchiveBadge) times"
+        case.twilightTaste:
+            return "Eat Healthy Lunch\n& Dinner for \(daysToAchiveBadge) times"
+        case.tripleMeals:
+            return "Eat Healthy Meals\n3x Day for \(daysToAchiveBadge) times"
+        }
+    }
+    
+    var daysToAchiveBadge: Int {
+        switch self  {
+        case.morningTask:
+            return 11
+        case.happyLunch:
+            return 22
+        case.delightDinner:
+            return 22
+        case.doubleFeast:
+            return 33
+        case.twilightTaste:
+            return 33
+        case.tripleMeals:
+            return 44
         }
     }
     
     var achievementDescription: String {
-        let opening = "Excellent! You've already"
-        switch self {
-        case.morningTask:
-            return "\(opening) eat healthy\nfood for breakfast in 11 days! 👍"
-        case.energizeLunch:
-            return "\(opening) eat healthy\nfood for lunch in 22 days! 👍"
-        case.dinnertimeDelight:
-            return "\(opening) eat healthy\nfood for dinner in 22 days! 👍"
-        case.sunNoonFeast:
-            return "\(opening) eat healthy\nfood for breakfast & lunch in 33 days! 👍"
-        case.twilightTasting:
-            return "\(opening) eat healthy\nfood lunch & dinner in 33 days! 👍"
-        case.meals3Times:
-            return "\(opening) eat 3x healthy\nfood in a Day for 44 days! 👍"
-        }
-    }
-    
-    func checkIsItAchieved(challanges: [ChallangeEntity], phase: VitaTimePhase) -> Bool {
-        switch phase {
-        case.beforeDayStart, .afterDay: return false
-        case.morning:
-            return checkBadgesForMorning(challanges: challanges)
-        case.afternoon:
-            return checkBadgesForAfternoon(challanges: challanges)
-        case.evening:
-            return checkBadgesForEvening(challanges: challanges)
-        }
-    }
-    
-    private func checkBadgesForMorning(challanges: [ChallangeEntity]) -> Bool {
-        switch self {
-        case.morningTask:
-            let breakfast = challanges.filter { challange in
-                if let records = challange.records?.allObjects as? [MealRecordEntity] {
-                    if records.isEmpty {return false}
-                    return records.contains { record in
-                        record.timeStatus == VitaTimePhase.morning.rawValue
-                    }
-                }
-                return false
-            }.count
-            return breakfast >= 11
+        let opening = "badges is\ngrant to you after you eat a healthy\nmeal for "
+        var description = ""
+        let daysToAchiveBadge = self.daysToAchiveBadge
         
-        default:
-            return false
-        }
-    }
-    
-    private func checkBadgesForAfternoon(challanges: [ChallangeEntity]) -> Bool {
         switch self {
-        case.energizeLunch:
-            let lunch = challanges.filter { challange in
-                if let records = challange.records?.allObjects as? [MealRecordEntity] {
-                    if records.isEmpty {return false}
-                    return records.contains { record in
-                        record.timeStatus == VitaTimePhase.afternoon.rawValue
-                    }
-                }
-                return false
-            }.count
-            return lunch >= 22
-        case.sunNoonFeast:
-            let fastLunch = challanges.filter { challange in
-                if let records = challange.records?.allObjects as? [MealRecordEntity] {
-                    if records.count <= 1 {return false}
-                    return records.contains { record in
-                        record.timeStatus == VitaTimePhase.morning.rawValue
-                    } && records.contains { record in
-                        record.timeStatus == VitaTimePhase.afternoon.rawValue
-                    }
-                }
-                return false
-            }.count
-            return fastLunch >= 33
-        default: return false
+        case.morningTask:
+            description = "breakfast in \(daysToAchiveBadge) days"
+        case.happyLunch:
+            description = "lunch in \(daysToAchiveBadge) days"
+        case.delightDinner:
+            description = "dinner in \(daysToAchiveBadge) days"
+        case.doubleFeast:
+            description = "breakfast & lunch in \(daysToAchiveBadge)\ndays"
+        case.twilightTaste:
+            description = "lunch & dinner in \(daysToAchiveBadge)\ndays"
+        case.tripleMeals:
+            return "badges is grant\nto you after you eat a healthy meal\n" +
+            "3x a Day for \(daysToAchiveBadge) days"
         }
-    }
-    
-    private func checkBadgesForEvening(challanges: [ChallangeEntity]) -> Bool {
-        switch self {
-        case.dinnertimeDelight:
-            let dinner = challanges.filter { challange in
-                if let records = challange.records?.allObjects as? [MealRecordEntity] {
-                    if records.isEmpty {return false}
-                    return records.contains { record in
-                        record.timeStatus == VitaTimePhase.evening.rawValue
-                    }
-                }
-                return false
-            }.count
-            return dinner >= 22
-        case.twilightTasting:
-            let lunchDinner = challanges.filter { challange in
-                if let records = challange.records?.allObjects as? [MealRecordEntity] {
-                    if records.count <= 1 {return false}
-                    return records.contains { record in
-                        record.timeStatus == VitaTimePhase.afternoon.rawValue
-                    } && records.contains { record in
-                        record.timeStatus == VitaTimePhase.evening.rawValue
-                    }
-                }
-                return false
-            }.count
-            return lunchDinner >= 33
-        case.meals3Times:
-            let meals3 = challanges.filter { challange in
-                if let records = challange.records?.allObjects as? [MealRecordEntity] {
-                    return records.count >= 3
-                }
-                return false
-            }.count
-            return meals3 >= 44
-        default: return false
-        }
+        return opening + description
     }
 }

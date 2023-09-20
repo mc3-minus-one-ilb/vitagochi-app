@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct BadgesView: View {
-    @EnvironmentObject private var coreData: CoreDataEnvirontment
+    @EnvironmentObject private var coreDataEnv: CoreDataEnvirontment
     @StateObject  private var badgesVM: BadgesViewModel = BadgesViewModel()
     
     let gridItems = [GridItem(.flexible()), GridItem(.flexible())]
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text("Badges ✨")
+            Text("Badges 🏅")
                 .font(.title)
                 .fontDesign(.rounded)
                 .bold()
@@ -23,11 +23,15 @@ struct BadgesView: View {
             ScrollView(.vertical, showsIndicators: false) {
                 LazyVGrid(columns: gridItems) {
                     ForEach(badgesVM.items) { item in
-                        if coreData.badges.contains(where: { badgeData in
+                        if coreDataEnv.badges.contains(where: { badgeData in
                             badgeData.badgeId == item.type.rawValue }) {
                             BadgeView(badgeModel: item, isUnlocked: true)
                         } else {
-                            BadgeView(badgeModel: item)
+                            let progress = coreDataEnv
+                                .countBadgesProgress(badge: item.type)
+                            BadgeView(badgeModel: item,
+                                      progress: progress,
+                                      totalProgress: item.type.daysToAchiveBadge)
                         }
                         
                     }
@@ -37,7 +41,7 @@ struct BadgesView: View {
         }
         .padding()
         .padding(.top, 50)
-        .background(Color.white)
+        .background(Color.whiteGrayish)
         .ignoresSafeArea()
     }
 }

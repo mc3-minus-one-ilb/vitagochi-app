@@ -13,20 +13,23 @@ struct OnboardingThirdRevision: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             Group {
-                Text("Set your meals schedule!")
+                Text("Set meals schedule!")
                     .font(.title)
                     .fontWeight(.bold)
+                    .padding(.bottom, 8)
                 Text("Vita will remind \(onboardingViewModel.nickname.capitalized)" +
-                     " to eat greens and fruit on ...")
+                     " to eat greens and fruit on:")
                     .font(.title3)
             }
             .padding(.top, 8.0)
+            .foregroundColor(.blackGreen)
             
             Spacer()
             
             CollectiveDayTimePicker(timeSelection: $onboardingViewModel.breakfastSelection,
                                     collectiveDayEatingType: .BREAKFAST,
                                     minHour: 7, maxHour: 11)
+            
             
             CollectiveDayTimePicker(timeSelection: $onboardingViewModel.lunchSelection,
                                     collectiveDayEatingType: .LUNCH,
@@ -40,7 +43,7 @@ struct OnboardingThirdRevision: View {
                                     maxHour: 21,
                                     hasDivider: false)
             
-            Spacer(minLength: 50)
+            Spacer(minLength: 60)
             
             PrimaryButton(action: {
                 onboardingViewModel.handleReminderNotification()
@@ -56,6 +59,7 @@ struct OnboardingThirdRevision: View {
         .padding(.top, 32.0)
         .fontDesign(.rounded)
         .ignoresSafeArea(.keyboard)
+        .kerning(-0.8)
     }
 }
 

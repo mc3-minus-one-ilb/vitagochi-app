@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DetailTrackingView: View {
-    @EnvironmentObject var envObj: GlobalEnvirontment
+    @EnvironmentObject private var envObj: GlobalEnvirontment
     @StateObject private var detailTrackingVM: DetailTrackingViewModel
     
     init(challenge: ChallangeEntity) {
@@ -19,89 +19,102 @@ struct DetailTrackingView: View {
     var body: some View {
         
         VStack(alignment: .leading) {
-            Text("Day \(detailTrackingVM.challange.day) 🎯")
-                .font(.system(.largeTitle, weight: .bold))
+            Text("Day \(detailTrackingVM.challange.day) 🍴")
+                .font(.system(.title, weight: .semibold))
                 .padding(.horizontal)
+                .padding(.bottom, 1)
             Text(detailTrackingVM.challange.date!.getFormattedDate())
-                .font(.body)
-                .fontWeight(.semibold)
+                .font(.title3)
+                .fontWeight(.medium)
                 .padding(.horizontal)
             
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(alignment: .center, spacing: 260) {
-                    ForEach(0..<3) { index in
-                        GeometryReader { geometry in
-                            HStack {
-                                let recordExist = detailTrackingVM.isRecordExist(timeStatus: index)
-                                let timePhase = VitaTimePhase(rawValue: Int16(index))!
-                                if recordExist.valid {
-                                    let vitaMessage = detailTrackingVM
-                                        .records[recordExist.index].vitaMessage!
-                                    let photo = detailTrackingVM
-                                        .photos[recordExist.index]
-                                    let time = detailTrackingVM
-                                        .records[recordExist.index].time!
-                                    if detailTrackingVM.cardsIsFlipped[index] {
-                                        GalleryCard(timePhase: timePhase,
-                                                    isFlipped: true,
-                                                    vitaMessage: vitaMessage)
-                                        .rotation3DEffect(
-                                            detailTrackingVM.cardsIsFlipped[index] ?
-                                            Angle(degrees: 180) : .zero,
-                                            axis: (x: 0.0, y: 1.0, z: 0.0))
-                                    } else {
-                                        GalleryCard(photo: photo,
-                                                    timePhase: timePhase,
-                                                    time: time,
-                                                    isFlipped: false)
-                                    }
-                                } else {
-                                    let cardDate = detailTrackingVM.challange.date!
-                                    if detailTrackingVM.cardsIsFlipped[index] {
-                                        GalleryCard(timePhase: timePhase,
-                                                    isFlipped: true,
-                                                    cardDate: cardDate)
-                                        .rotation3DEffect(
-                                            detailTrackingVM.cardsIsFlipped[index] ?
-                                            Angle(degrees: 180) : .zero,
-                                            axis: (x: 0.0, y: 1.0, z: 0.0))
-                                        
-                                    } else {
-                                        GalleryCard(timePhase: timePhase,
-                                                    isFlipped: false,
-                                                    cardDate: cardDate)
-                                        
-                                    }
-                                }
+            //            SnapCaraousel(index: $detailTrackingVM.scrollIndex, items: detailTrackingVM.cards) { card in
+            //
+            //            }
+            
+            //            ScrollView(.horizontal, showsIndicators: false) {
+            //                ScrollViewReader { scrollProxy in
+            //                    HStack(alignment: .center, spacing: 260) {
+            TabView(selection: $detailTrackingVM.scrollIndex) {
+                ForEach(0...detailTrackingVM.cardsIsFlipped.count-1, id: \.self) { index in
+                    GeometryReader { geometry in
+                        HStack {
+                            if detailTrackingVM.cardsIsFlipped[index] {
+                                GalleryCard(card: detailTrackingVM.cards[index], isFlipped: true)
+                                    .rotation3DEffect(
+                                        detailTrackingVM.cardsIsFlipped[index] ?
+                                        Angle(degrees: 180) : .zero,
+                                        axis: (x: 0.0, y: 1.0, z: 0.0))
+                            } else {
+                                GalleryCard(card: detailTrackingVM.cards[index])
+                                
                             }
-                            .frame(width: 269, height: 508, alignment: .center)
-                            .padding()
-                            .shadow(color: Color.black.opacity(0.08), radius: 12, x: -4, y: 4)
-                            .rotation3DEffect(
-                                detailTrackingVM.cardsIsFlipped[index] ?
-                                Angle(degrees: 180) : .zero,
-                                axis: (x: 0.0, y: 1.0, z: 0.0))
-                            .animation(.default, value: detailTrackingVM.cardsIsFlipped[index])
-                            .onTapGesture {
-                                detailTrackingVM.cardsIsFlipped[index].toggle()
-                            }
-                            .rotation3DEffect(
-                                Angle(degrees: Double(geometry
-                                    .frame(in: .global).minX) - 45) / -20,
-                                axis: (x: 0, y: 1.0, z: 0))
-                            
                         }
-                        .padding(.horizontal, 30)
+                        .frame(width: 269, height: 508, alignment: .center)
                         
+                        .padding()
+                        .shadow(color: Color.black.opacity(0.08), radius: 12, x: -4, y: 4)
+                        .rotation3DEffect(
+                            detailTrackingVM.cardsIsFlipped[index] ?
+                            Angle(degrees: 180) : .zero,
+                            axis: (x: 0.0, y: 1.0, z: 0.0))
+                        .animation(.default, value: detailTrackingVM.cardsIsFlipped[index])
+                        .onTapGesture {
+                            detailTrackingVM.cardsIsFlipped[index].toggle()
+                        }
+                        .rotation3DEffect(
+                            Angle(degrees: Double(geometry
+                                .frame(in: .global).minX) - 45) / -20,
+                            axis: (x: 0, y: 1.0, z: 0))
+                        .position(x: geometry.frame(in: .local).midX, y: geometry.frame(in: .local).midY-50)
+                        .tag(index)
                     }
+                    .padding(.horizontal, 30)
+                    .padding(.top, 44)
+                    .frame(height: 600)
+                    
                     
                 }
-                .padding(.leading, 20)
-                .padding(.trailing, 300)
-                .padding(.top, 10)
+                
+            }
+            .overlay(alignment: .bottom) {
+                HStack {
+                    ForEach(0...detailTrackingVM.cardsIsFlipped.count-1, id: \.self) { index in
+                        GroupBox {
+                            Circle()
+                                .fill(detailTrackingVM.scrollIndex == index ?
+                                      Color.gray1 : Color.gray2)
+                                .frame(width: 8, height: 8)
+                        }
+                        .backgroundStyle(Color.whiteGrayish)
+                        .frame(width: 16, height: 16)
+                        .onTapGesture {
+                            withAnimation {
+                                detailTrackingVM.scrollIndex = index
+                            }
+                        }
+                        
+                    }
+                }
+                
+                .offset(y: -40)
             }
             
+            .tabViewStyle(.page(indexDisplayMode: .never))
+            
+            
+            
+            //                    }
+            //
+            //                }
+            //                .padding(.leading, 20)
+            //                .padding(.trailing, 300)
+            //                .padding(.top, 10)
+            //
+            //            }
+            
         }
+        .kerning(-0.8)
         .navigationBarBackButtonHidden(true)
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarLeading) {
@@ -115,26 +128,19 @@ struct DetailTrackingView: View {
                 }
             }
             ToolbarItem(placement: .principal) {
-                Text("Today's Meal")
-                    .font(.system(size: 17, weight: .semibold, design: .rounded))
-            }
-        }
-        .background {
-            GeometryReader { geo in
-                BackgroundArc()
-                    .rotation(.degrees(180))
-                    .foregroundColor(Color.backgrounCurveColor)
-                    .edgesIgnoringSafeArea(.bottom)
-                    .padding(.top, geo.size.height * 0.70)
+                Text("My Meals")
+                    .font(.headline)
+                    .fontWeight(.semibold)
             }
         }
         .fontDesign(.rounded)
-        .padding(.top, 24)
+        .padding(.top, 34)
+        .background(Color.whiteGrayish)
     }
     
-//    func flipCard(index: Int) -> some View {
-//
-//    }
+    //    func flipCard(index: Int) -> some View {
+    //
+    //    }
 }
 
 struct DetailTrackingView_Previews: PreviewProvider {

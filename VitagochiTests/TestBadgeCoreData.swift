@@ -27,7 +27,7 @@ final class TestBadgeCoreData: XCTestCase {
         coreDataManager = nil
     }
     
-    func testBadgesScenario() {
+    func testBadgesWholeScenario_shouldGetAppropriateBadgeID() {
         for index in 0...11 {
             let today = Date()
             coreDataEnv.setTodayChallange(today.increaseDate(by: index) ?? today)
@@ -65,12 +65,58 @@ final class TestBadgeCoreData: XCTestCase {
                                            photoName: "")
         }
         coreDataEnv.checkAndAddBadge(phase: .afternoon)
-        XCTAssertEqual(coreDataEnv.newBadge?.badgeId, BadgeType.energizeLunch.rawValue)
+        XCTAssertEqual(coreDataEnv.newBadge?.badgeId, BadgeType.happyLunch.rawValue)
         XCTAssertEqual(coreDataEnv.badges.count, 2)
         
         coreDataEnv.checkAndAddBadge(phase: .evening)
-        XCTAssertEqual(coreDataEnv.newBadge?.badgeId, BadgeType.dinnertimeDelight.rawValue)
+        XCTAssertEqual(coreDataEnv.newBadge?.badgeId, BadgeType.delightDinner.rawValue)
         XCTAssertEqual(coreDataEnv.badges.count, 3)
+        
+        for index in 22...32 {
+            let today = Date()
+            coreDataEnv.setTodayChallange(today.increaseDate(by: index) ?? today)
+            coreDataEnv.addTodayMealRecord(name: "Tes",
+                                           mealStatus: .exactly,
+                                           timeStatus: .morning,
+                                           photoName: "")
+            coreDataEnv.addTodayMealRecord(name: "Tes",
+                                           mealStatus: .exactly,
+                                           timeStatus: .afternoon,
+                                           photoName: "")
+            coreDataEnv.addTodayMealRecord(name: "Tes",
+                                           mealStatus: .exactly,
+                                           timeStatus: .evening,
+                                           photoName: "")
+        }
+        
+        coreDataEnv.checkAndAddBadge(phase: .afternoon)
+        XCTAssertEqual(coreDataEnv.newBadge?.badgeId, BadgeType.doubleFeast.rawValue)
+        XCTAssertEqual(coreDataEnv.badges.count, 4)
+        
+        coreDataEnv.checkAndAddBadge(phase: .evening)
+        XCTAssertEqual(coreDataEnv.newBadge?.badgeId, BadgeType.twilightTaste.rawValue)
+        XCTAssertEqual(coreDataEnv.badges.count, 5)
+        
+        for index in 33...43 {
+            let today = Date()
+            coreDataEnv.setTodayChallange(today.increaseDate(by: index) ?? today)
+            coreDataEnv.addTodayMealRecord(name: "Tes",
+                                           mealStatus: .exactly,
+                                           timeStatus: .morning,
+                                           photoName: "")
+            coreDataEnv.addTodayMealRecord(name: "Tes",
+                                           mealStatus: .exactly,
+                                           timeStatus: .afternoon,
+                                           photoName: "")
+            coreDataEnv.addTodayMealRecord(name: "Tes",
+                                           mealStatus: .exactly,
+                                           timeStatus: .evening,
+                                           photoName: "")
+        }
+        
+        coreDataEnv.checkAndAddBadge(phase: .evening)
+        XCTAssertEqual(coreDataEnv.newBadge?.badgeId, BadgeType.tripleMeals.rawValue)
+        XCTAssertEqual(coreDataEnv.badges.count, 6)
     }
 
     func testMorningTaskBadges() {
@@ -96,7 +142,7 @@ final class TestBadgeCoreData: XCTestCase {
                                            photoName: "")
         }
         coreDataEnv.checkAndAddBadge(phase: .afternoon)
-        XCTAssertEqual(coreDataEnv.newBadge?.badgeId, BadgeType.energizeLunch.rawValue)
+        XCTAssertEqual(coreDataEnv.newBadge?.badgeId, BadgeType.happyLunch.rawValue)
     }
     
     func testDinnerTimeDelightBadges() {
@@ -109,7 +155,7 @@ final class TestBadgeCoreData: XCTestCase {
                                            photoName: "")
         }
         coreDataEnv.checkAndAddBadge(phase: .evening)
-        XCTAssertEqual(coreDataEnv.newBadge?.badgeId, BadgeType.dinnertimeDelight.rawValue)
+        XCTAssertEqual(coreDataEnv.newBadge?.badgeId, BadgeType.delightDinner.rawValue)
     }
     
     func testSunNoonBadges() {
@@ -126,7 +172,7 @@ final class TestBadgeCoreData: XCTestCase {
                                            photoName: "")
         }
         coreDataEnv.checkAndAddBadge(phase: .afternoon)
-        XCTAssertEqual(coreDataEnv.newBadge?.badgeId, BadgeType.sunNoonFeast.rawValue)
+        XCTAssertEqual(coreDataEnv.newBadge?.badgeId, BadgeType.doubleFeast.rawValue)
     }
     
     func testTwilightBadges() {
@@ -143,7 +189,7 @@ final class TestBadgeCoreData: XCTestCase {
                                            photoName: "")
         }
         coreDataEnv.checkAndAddBadge(phase: .evening)
-        XCTAssertEqual(coreDataEnv.newBadge?.badgeId, BadgeType.twilightTasting.rawValue)
+        XCTAssertEqual(coreDataEnv.newBadge?.badgeId, BadgeType.twilightTaste.rawValue)
     }
     
     func test3TimesMealsBadges() {
@@ -164,7 +210,7 @@ final class TestBadgeCoreData: XCTestCase {
                                            photoName: "")
         }
         coreDataEnv.checkAndAddBadge(phase: .evening)
-        XCTAssertEqual(coreDataEnv.newBadge?.badgeId, BadgeType.meals3Times.rawValue)
+        XCTAssertEqual(coreDataEnv.newBadge?.badgeId, BadgeType.tripleMeals.rawValue)
     }
 
 }

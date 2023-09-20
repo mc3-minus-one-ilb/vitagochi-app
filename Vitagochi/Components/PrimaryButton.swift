@@ -16,10 +16,11 @@ struct PrimaryButton: View {
             action()
         } label: {
             Text(input)
+                .fontWeight(.medium)
                 .frame(maxWidth: .infinity)
-                .padding(8.0)
+                .padding(14.0)
                 .foregroundColor(.black)
-                .fontWeight(.semibold)
+                
         }
         .buttonStyle(.borderedProminent)
         .tint(.primaryColor)

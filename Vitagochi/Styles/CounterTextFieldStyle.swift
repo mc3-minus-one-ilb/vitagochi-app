@@ -24,13 +24,22 @@ struct CounterTextFieldStyle: TextFieldStyle {
                 Text("\(input.count)/\(maxLength)")
                     .foregroundColor(.labelColor)
                     .opacity(0.5)
+                    .font(.footnote)
+                    .fontWeight(.regular)
                     .fontDesign(.rounded)
+                
             }
             .padding(.bottom, 8.0)
         }
         .overlay(Rectangle()
+                 
             .frame(width: nil, height: 1, alignment: .bottom)
-            .foregroundColor(.labelColor).opacity(input.isEmpty ? 1.0 : 0.5), alignment: .bottom)
+            .offset(y: 8)
+            .foregroundColor(.labelColor)
+            .opacity(input.isEmpty ? 1.0 : 0.5)
+            
+                 , alignment: .bottom)
+        
         // swiftlint:enable all
     }
 }

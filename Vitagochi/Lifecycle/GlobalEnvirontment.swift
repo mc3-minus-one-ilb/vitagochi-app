@@ -21,6 +21,7 @@ class GlobalEnvirontment: ObservableObject {
     
     @Published var mainPath: [Bool] = [false, false, false]
     @Published var path: NavigationPath = NavigationPath()
+    @Published var achievement: AchievementEnum?
     
     init() {
         getOnboardingState()

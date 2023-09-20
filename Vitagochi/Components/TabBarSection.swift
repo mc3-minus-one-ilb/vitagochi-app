@@ -25,8 +25,8 @@ struct TabBarSection: View {
                 Color.clear
                     .overlay {
                         Text(text)
-                            .fontWeight(selection == value ? .semibold : .regular)
-                            .foregroundColor(.black)
+                            .fontWeight(selection == value ? .medium : .regular)
+                            .foregroundColor(selection == value ? .blackGreen : .gray1)
                     }
                     .frame(width: UIScreen.main.bounds.size.width/3,
                            height: 39 )

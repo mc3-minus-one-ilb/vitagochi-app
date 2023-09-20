@@ -13,6 +13,7 @@ final class TestChallengeCoreData: XCTestCase {
     var coreDataManager: CoreDataManager!
     var coreDataRepository: CoreDataRepository!
     
+    
     override func setUp() {
         super.setUp()
         coreDataManager = CoreDataManager(.inMemory)
@@ -27,11 +28,11 @@ final class TestChallengeCoreData: XCTestCase {
         coreDataManager = nil
     }
     
-    func testAdd66DayChallenges() {
+    func testAdd66DayChallenges_maximumChallengesNumberShould() {
         XCTAssertEqual(coreDataEnv.challenges.count, 66)
     }
     
-    func testSetTodayChallenge() {
+    func testSetTodayChallenge_shouldNotBeNil() {
         XCTAssertNotNil(coreDataEnv.todayChallenge)
     }
 }

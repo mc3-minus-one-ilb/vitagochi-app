@@ -185,12 +185,12 @@ struct SmallWidgetView: View {
                         .font(.system(size: 11, weight: .medium, design: .rounded))
                     //                        .fontDesign(.rounded)
                         .kerning(-0.4)
-                        .foregroundColor(.widgetDarkerFontColor)
+                        .foregroundColor(.blackGreen)
                 }, currentValueLabel: {
                     Text("\(mealCount)/3")
                         .font(.system(size: 11, weight: .medium, design: .rounded))
                     //                        .fontDesign(.rounded)
-                        .foregroundColor(.widgetDarkerFontColor)
+                        .foregroundColor(.blackGreen)
                     
                 }).progressViewStyle(WidgetSmallMealProgressStyle(height: 8))
                     .padding(.horizontal)
@@ -310,12 +310,12 @@ struct MediumWidgetView: View {
                         .font(.system(size: 11, weight: .medium, design: .rounded))
                     //                        .fontDesign(.rounded)
                         .kerning(-0.4)
-                        .foregroundColor(.widgetDarkerFontColor)
+                        .foregroundColor(.blackGreen)
                 }, currentValueLabel: {
                     Text("\(mealCount)/3")
                         .font(.system(size: 11, weight: .medium, design: .rounded))
                     //                        .fontDesign(.rounded)
-                        .foregroundColor(.widgetDarkerFontColor)
+                        .foregroundColor(.blackGreen)
                     
                 }).progressViewStyle(WidgetMediumMealProgressStyle(height: 6))
                     .padding(.trailing)

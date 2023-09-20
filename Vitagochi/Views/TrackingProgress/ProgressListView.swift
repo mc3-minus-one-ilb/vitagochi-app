@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct ProgressListView: View {
-    @EnvironmentObject var envObj: GlobalEnvirontment
-    @EnvironmentObject var coreDataEnv: CoreDataEnvirontment
+    @EnvironmentObject private var envObj: GlobalEnvirontment
+    @EnvironmentObject private var coreDataEnv: CoreDataEnvirontment
     @State var items: [ChallangeEntity] = []
     
     let gridItems = [GridItem(.flexible()), GridItem(.flexible()),
@@ -24,8 +24,10 @@ struct ProgressListView: View {
             LazyVGrid(columns: gridItems) {
                 ForEach(items) { item in
                     let day = Int(item.day)
+                    let mealRecords = item.records?.allObjects as? [MealRecordEntity]
+                   
                     CircularProgressSection(dayNumber: day,
-                                            progress: item.records?.count ?? 0,
+                                            mealRecords: mealRecords!,
                                             isLocked: day > daysCount,
                                             isHighlighted: day == daysCount)
                         .padding(.vertical, 10)
@@ -35,7 +37,6 @@ struct ProgressListView: View {
                             }
                         }
                         .fontDesign(.rounded)
-                    
                 }
             }
             .padding(.horizontal, 16)

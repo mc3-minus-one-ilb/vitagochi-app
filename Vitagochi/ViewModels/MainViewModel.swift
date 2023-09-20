@@ -17,12 +17,16 @@ class MainViewModel: ObservableObject {
     @Published var vitaMessage: VitaMessage = VitaMessage(text: "",
                                                           soundFileName: "")
     @Published var vitaSkinImageName: String = ""
+    @Published var todayProgress: Int = 0
+    @Published var levelProgress: Double = 0
     @Published var isTapped: Bool = false
     @Published var isCameraClicked: Bool = false
     @Published var imageData: Data = Data(count: 0)
-    @Published var currentTime: Date = Date()
+    @Published var onboardingTutorial: Bool = true
     @Published var timer: Timer?
     @Published var skinTimer: Timer?
+    @Published var isShowTutorial: Bool = false
+    @Published var tutorialStep: Int = 0
     var charSound: AVAudioPlayer = AVAudioPlayer()
     var isFirstTimeModel: Bool = true
     
@@ -116,7 +120,6 @@ class MainViewModel: ObservableObject {
         
         self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
             self.checkPhaseTime()
-            self.currentTime = Date()
         }
     }
     

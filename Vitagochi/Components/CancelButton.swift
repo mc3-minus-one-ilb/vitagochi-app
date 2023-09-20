@@ -16,10 +16,11 @@ struct CancelButton: View {
             action()
         } label: {
             Text(input)
+                .fontWeight(.thin)
                 .frame(maxWidth: .infinity)
                 .padding(8.0)
         }
-        .foregroundColor(.labelColor)
+        .foregroundColor(.BlackUnsignificant)
     }
 }
 

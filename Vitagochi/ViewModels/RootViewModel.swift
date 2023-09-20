@@ -11,7 +11,8 @@ extension RootView {
     class RootViewModel: ObservableObject {
         @Published var selection: Int = 0
         @Published var achievement: Bool = false
-        @Published var newBadge: BadgeType = .energizeLunch
+        @Published var newBadge: BadgeType?
+        @Published var newAchievement: AchievementEnum?
         let mainViewTag = 0
         let progressViewTag = 1
         let badgesViewTag = 2

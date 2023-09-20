@@ -39,12 +39,13 @@ struct PhotoTakeView: UIViewControllerRepresentable {
                                    didFinishPickingMediaWithInfo
                                    info: [UIImagePickerController.InfoKey: Any]) {
             
-            if let imageData = (info[.originalImage] as! UIImage)
-                .jpegData(compressionQuality: 0.5) {
-                parent.imageData = imageData
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                    self.parent.showPicker.toggle()
-                } 
+            if let image = info[.originalImage] as? UIImage {
+                if let imageData = image.jpegData(compressionQuality: 0.5) {
+                    parent.imageData = imageData
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                        self.parent.showPicker.toggle()
+                    }
+                }
             }
         }
         

@@ -12,6 +12,7 @@ struct ChatBubble: View {
     var message: Message
     var isHorizontalScroll: Bool = false
     
+    
     var body: some View {
         var uiImagePhoto = UIImage()
         var photoWidth = CGFloat()
@@ -22,7 +23,7 @@ struct ChatBubble: View {
             photoHeight = uiImagePhoto.size.height
         }
         
-        return HStack(alignment: .bottom, spacing: 10) {
+        return HStack(alignment: .bottom, spacing: 35) {
             if message.isMyMessage {
                 if !isHorizontalScroll {
                     Spacer(minLength: 25)
@@ -30,11 +31,23 @@ struct ChatBubble: View {
                 
                 if message.photo == nil {
                     Text(message.text)
-                        .font(.system(.subheadline, weight: .regular))
-                        .kerning(-0.4)
-                        .padding(.all)
-                        .background(Color.black.opacity(0.06))
+                        .font(.system(.subheadline, weight: isHorizontalScroll ? .semibold : .regular))
+                        .kerning(-0.8)
+                        .padding(.all, 16)
+                        .foregroundColor(isHorizontalScroll ? Color.mintDark : Color.blackGreen)
+                        .background(isHorizontalScroll ? Color.whiteGrayish : Color.whiteFull)
+                        .overlay(content: {
+                            if isHorizontalScroll {
+                                BubbleArrow(isMyMessage: message.isMyMessage)
+                                    .stroke(Color.mintDark, lineWidth: 2)
+                            }
+                        })
+                        
                         .clipShape(BubbleArrow(isMyMessage: message.isMyMessage))
+                        
+                        .shadow(color: .black.opacity(0.02),
+                                radius: 8, x: 2, y: 4)
+                        
                 } else {
                     Image(uiImage: uiImagePhoto)
                         .resizable()
@@ -49,21 +62,21 @@ struct ChatBubble: View {
                 //                    .frame(width: 30, height: 30)
                 //                    .clipShape(Circle())
             } else {
-                Image(message.profilPic)
-                    .resizable()
-                    .background(Color.vitaProfileBackgroundColor)
-                    .frame(width: 52, height: 52)
-                    .clipShape(Circle())
-                
+//                Image(message.profilPic)
+//                    .resizable()
+//                    .background(Color.vitaProfileBackgroundColor)
+//                    .frame(width: 52, height: 52)
+//                    .clipShape(Circle())
+//
                 if message.photo ==  nil {
                     if message.vitaAnswer != nil {
                         VStack {
                             Text(message.text)
                                 .font(.system(.subheadline, weight: .regular))
-                                .kerning(-0.4)
-                                .foregroundColor(.white)
+                                .kerning(-0.8)
+                                .foregroundColor(.blackGreen)
                                 .padding(.bottom, 12)
-                            
+                         
                             Divider()
                                 .padding(.top, 1)
                             //                            .fontWidth(22)
@@ -71,25 +84,29 @@ struct ChatBubble: View {
                             Button {
                                 isCompleted.toggle()
                             } label: {
-                                Text("Thanks Vita! 👍")
-                                    .font(.system(.subheadline, weight: .bold))
+                                Text(message.vitaAnswer!.labelConfirmation)
+                                    .font(.system(.headline, weight: .bold))
                                     .fontDesign(.rounded)
-                                    .foregroundColor(.white)
+                                    .foregroundColor(.mintDark)
+                                    .kerning(-0.8)
                                     .padding(.top, 16)
                                     .padding(.bottom, 12)
                             }
                         }
-                        .padding(.all, 12)
-                        .background(Color.chatTopPinkColor)
+                        .padding(.all, 16)
+                        .background(Color.whiteFull)
                         .clipShape(BubbleArrow(isMyMessage: message.isMyMessage))
+                        .shadow(color: .black.opacity(0.02),radius: 8, x: 2, y: 4)
                     } else {
                         Text(message.text)
                             .font(.system(.subheadline, weight: .regular))
-                            .kerning(-0.4)
-                            .foregroundColor(.white)
+                            .kerning(-0.8)
+                            .foregroundColor(.blackGreen)
                             .padding(.all)
-                            .background(Color.chatTopPinkColor)
+                            .background(Color.whiteFull)
                             .clipShape(BubbleArrow(isMyMessage: message.isMyMessage))
+                            .shadow(color: .black.opacity(0.02),
+                                    radius: 8, x: 2, y: 4)
                     }
 
                 } else {
@@ -101,7 +118,7 @@ struct ChatBubble: View {
                         .clipShape(BubbleArrow(isMyMessage: message.isMyMessage))
                 }
                 
-                Spacer(minLength: 25)
+                Spacer(minLength: 40)
             }
         }
         .id(message.id)

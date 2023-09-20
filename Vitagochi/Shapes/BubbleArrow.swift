@@ -14,7 +14,7 @@ struct BubbleArrow: Shape {
             roundedRect: rect,
             byRoundingCorners: isMyMessage ?
                 [.topLeft, .topRight, .bottomLeft] : [.topRight, .topLeft, .bottomRight],
-            cornerRadii: .init(width: 10, height: 10))
+            cornerRadii: .init(width: 12, height: 12))
         
         return Path(path.cgPath)
     }

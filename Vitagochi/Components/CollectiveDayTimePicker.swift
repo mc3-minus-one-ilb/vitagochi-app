@@ -84,6 +84,7 @@ struct CollectiveDayTimePicker: View {
                 }
                 .frame(alignment: .leading)
             }
+            .foregroundColor(.blackGreen)
             
             if hasDivider {
                 Rectangle()

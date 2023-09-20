@@ -10,8 +10,8 @@ import WidgetKit
 
 struct ChatView: View {
     @EnvironmentObject private var envObj: GlobalEnvirontment
-    @EnvironmentObject private var coreData: CoreDataEnvirontment
-    @StateObject var chatVM: ChatViewModel
+    @EnvironmentObject private var coreDataEnv: CoreDataEnvirontment
+    @StateObject private var chatVM: ChatViewModel
     
     init(initialMessage: Message, photoData: Data?, timePhase: VitaTimePhase) {
         let chatVM = ChatViewModel(
@@ -30,22 +30,23 @@ struct ChatView: View {
                     envObj.mainPath[0].toggle()
                 } label: {
                     Image(systemName: "chevron.left")
-                        .font(.system(size: 17))
-                        .fontWeight(.semibold)
+                        .font(.system(size: 25))
+                        .fontWeight(.regular)
                 }
-                .padding(.trailing, 2)
+//                .padding(.trailing, 2)
                 
                 Image(chatVM.vitaIconImageName)
                     .resizable()
                     .background(Color.vitaProfileBackgroundColor)
-                    .frame(width: 32, height: 32)
+                    .frame(width: 40, height: 40)
                     .clipShape(Circle())
                 VStack(alignment: .leading) {
-                    Text("My Vita 🍎🥬")
-                        .font(.system(size: 17, weight: .semibold))
+                    Text("Vita 🍎🥬")
+                        .font(.body)
+                        .fontWeight(.semibold)
                         .fontDesign(.rounded)
                     Text("Online")
-                        .font(.system(.caption, weight: .semibold))
+                        .font(.system(.caption2, weight: .regular))
                         .fontDesign(.rounded)
                 }
                 Spacer()
@@ -55,7 +56,8 @@ struct ChatView: View {
             .padding(.top, 44)
             .background(Color.primaryWhite)
             .clipped()
-            .shadow(color: Color.black.opacity(0.05), radius: 8, x: 0, y: 4)
+            .shadow(color: Color.black.opacity(0.05),
+                    radius: 8, x: 0, y: 4)
             
             Spacer()
             
@@ -125,27 +127,51 @@ struct ChatView: View {
                     guard let photoName = chatVM
                         .savePhotoToFileManager() else {return}
                     
-                    coreData
+                    coreDataEnv
                         .addTodayMealRecord(name: envObj.username,
                                             mealStatus: chatVM.vitaAnswer,
                                             timeStatus: chatVM.timePhase,
                                             photoName: photoName)
                     
-                    coreData.checkAndAddBadge(phase: chatVM.timePhase)
+                    coreDataEnv.checkAndAddBadge(phase: chatVM.timePhase)
                     
                     weak var notificationHandler = NotificationHandler.singleton
                     notificationHandler?
                         .removeNotificationNotYet(timePhase: chatVM.timePhase)
                     
                     WidgetCenter.shared.reloadAllTimelines()
-                    envObj.toggleLevelUpViewNav()
+                    
+                    let progress = coreDataEnv.levelProgress()
+                    let tempVitaModel = coreDataEnv.vitaSkinModel
+                    let level = tempVitaModel.rawValue + 1
+                    coreDataEnv.getVitaModel()
+                    
+                    // TODO: 66 Days
+                    if coreDataEnv.vitaSkinModel != tempVitaModel {
+                        if level == 2 {
+                            envObj.achievement = .level2
+                        } else if level == 3 {
+                            envObj.achievement = .level3
+                        } else if level >= 4 {
+                            envObj.achievement = .levelFinal
+                        }
+                        return
+                    }
+                    
+                    if  !coreDataEnv.isAnotherTodayMealRecord() {
+                        envObj.achievement = .firstMeal
+                    } else {
+                        envObj.achievement = .secondOrThirdMeal
+                    }
+                    
+                    envObj.toggleChatViewNav()
                 }
             }
             
         }
         .fontDesign(.rounded)
         .edgesIgnoringSafeArea(.bottom)
-        .background(Color.primaryWhite)
+        .background(Color.whiteGrayish)
         .edgesIgnoringSafeArea(.top)
         .navigationBarBackButtonHidden(true)
         

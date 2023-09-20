@@ -18,21 +18,28 @@ import SwiftUI
 //    }
 // }
 
+// TODO: DEFAULT KERNING
+let KERNING_SEMUA = -0.8
+
 struct RectangleBubleTextView: View {
     var text: String
     var body: some View {
         Text(text)
             .padding()
-            .font(.system(size: 17, weight: .regular, design: .rounded))
-            .background(Color.bubleTextBackgroundColor)
-            .foregroundColor(.white)
-            .kerning(-0.4)
-            .clipShape(RoundedRectangle(cornerRadius: 16.0, style: .continuous))
+            .background(Color.whiteGrayish)
+            .clipShape(RoundedRectangle(cornerRadius: 12.0, style: .continuous))
+            .padding(4)
+            .font(.system(.body, design: .rounded))
+            .fontWeight(.regular)
+            .background(Color.whiteFull)
+            .foregroundColor(.black)
+            .kerning(KERNING_SEMUA)
+            .clipShape(RoundedRectangle(cornerRadius: 12.0, style: .continuous))
             .overlay(alignment: .bottom) {
                 Image(systemName: "arrowtriangle.down.fill")
                     .font(.title)
                     .offset(y: 22)
-                    .foregroundColor(.bubleTextBackgroundColor)
+                    .foregroundColor(.whiteFull)
             }
 //            .listSectionSeparator(.hidden)
         //        VStack(spacing: 0){
@@ -53,6 +60,11 @@ struct RectangleBubleTextView: View {
 
 struct RectangleBubleTextView_Previews: PreviewProvider {
     static var previews: some View {
-        RectangleBubleTextView(text: "Hello")
+        VStack {
+            RectangleBubleTextView(text: "Hello adbansdnansdn")
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.green)
+        
     }
 }

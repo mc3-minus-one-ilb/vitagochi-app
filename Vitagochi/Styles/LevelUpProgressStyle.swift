@@ -14,7 +14,7 @@ struct LevelProgressBar: View {
     var geometry: GeometryProxy
     var body: some View {
         RoundedRectangle(cornerRadius: 20.0)
-            .fill(Color.toHex(hexCode: "FBECF0"))
+            .fill(.white)
             .frame(height: height)
             .frame(width: geometry.size.width)
             .overlay(alignment: .leading) {
@@ -68,7 +68,7 @@ struct LevelUpProgressStyle: ProgressViewStyle {
 struct MainSceneLevelUpProgressStyle: ProgressViewStyle {
     var color = Color.toHex(hexCode: "ED476B")
     var height = 16.0
-    var labelFontStyle: Font = .body
+    var labelFontStyle: Font = .subheadline
     
     func makeBody(configuration: Configuration) -> some View {
         
@@ -77,6 +77,7 @@ struct MainSceneLevelUpProgressStyle: ProgressViewStyle {
         HStack(alignment: .center, spacing: 10) {
             configuration.label
                 .font(labelFontStyle)
+                .fontWeight(.regular)
                 .fontDesign(.rounded)
             
             GeometryReader { geometry in
@@ -85,6 +86,8 @@ struct MainSceneLevelUpProgressStyle: ProgressViewStyle {
             
             if let currentValueLabel = configuration.currentValueLabel {
                 currentValueLabel
+                    .font(labelFontStyle)
+                    .fontWeight(.regular)
                     .fontDesign(.rounded)
             }
         }

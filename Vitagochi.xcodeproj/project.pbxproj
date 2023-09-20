@@ -54,7 +54,6 @@
 		264FA0652A6EB54A006758A3 /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264FA0642A6EB54A006758A3 /* NotificationHandler.swift */; };
 		264FA0672A6EBB46006758A3 /* ReminderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264FA0662A6EBB46006758A3 /* ReminderType.swift */; };
 		264FA06C2A6F6EDE006758A3 /* ReminderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264FA0662A6EBB46006758A3 /* ReminderType.swift */; };
-		264FA06E2A6F6F41006758A3 /* VitaTimePhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB05285B2A6531F600649F22 /* VitaTimePhase.swift */; };
 		265145942A69646F00042519 /* LevelUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265145932A69646F00042519 /* LevelUpView.swift */; };
 		2651459A2A69698F00042519 /* RoundedCornerShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265145992A69698F00042519 /* RoundedCornerShape.swift */; };
 		2651459C2A697AF900042519 /* LevelUpProgressStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2651459B2A697AF900042519 /* LevelUpProgressStyle.swift */; };
@@ -77,6 +76,7 @@
 		26C7A89F2A5D0015009F0EAF /* VitagochiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C7A89E2A5D0015009F0EAF /* VitagochiTests.swift */; };
 		26C7A8A92A5D0015009F0EAF /* VitagochiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C7A8A82A5D0015009F0EAF /* VitagochiUITests.swift */; };
 		26C7A8AB2A5D0015009F0EAF /* VitagochiUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C7A8AA2A5D0015009F0EAF /* VitagochiUITestsLaunchTests.swift */; };
+		CB04F1D12AA8899700D7A279 /* TestGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB04F1D02AA8899700D7A279 /* TestGeometry.swift */; };
 		CB05285A2A6531A000649F22 /* Date+Extend.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0528592A6531A000649F22 /* Date+Extend.swift */; };
 		CB05285C2A6531F600649F22 /* VitaTimePhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB05285B2A6531F600649F22 /* VitaTimePhase.swift */; };
 		CB05285E2A65323900649F22 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB05285D2A65323900649F22 /* MainView.swift */; };
@@ -87,6 +87,8 @@
 		CB0ACBFB2A6D615C00D5DF4D /* GalleryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0ACBFA2A6D615C00D5DF4D /* GalleryCard.swift */; };
 		CB0ACBFD2A6D7D8600D5DF4D /* BackgroundArc.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0ACBFC2A6D7D8600D5DF4D /* BackgroundArc.swift */; };
 		CB0ACC002A6D9F4100D5DF4D /* BadgesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0ACBFF2A6D9F4100D5DF4D /* BadgesView.swift */; };
+		CB2393DC2AA4911100D8B095 /* AchievmentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2393DB2AA4911100D8B095 /* AchievmentModel.swift */; };
+		CB2393DD2AA4917700D8B095 /* AchievmentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2393DB2AA4911100D8B095 /* AchievmentModel.swift */; };
 		CB2837F22A9102E000E6A3F6 /* DetailTrackingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2837F12A9102E000E6A3F6 /* DetailTrackingViewModel.swift */; };
 		CB2B5D992A66A0BA0099D404 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2B5D982A66A0BA0099D404 /* MainViewModel.swift */; };
 		CB2B5D9B2A66B50B0099D404 /* VitaMoodPhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2B5D9A2A66B50B0099D404 /* VitaMoodPhase.swift */; };
@@ -96,6 +98,7 @@
 		CB8CC5612A9368260070F79A /* TestBadgeCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CC5602A9368260070F79A /* TestBadgeCoreData.swift */; };
 		CB9AA2252A6A414400BF8D76 /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9AA2242A6A414400BF8D76 /* CoreDataRepository.swift */; };
 		CB9AA2272A6AC9AB00BF8D76 /* TakePitcureButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9AA2262A6AC9AB00BF8D76 /* TakePitcureButton.swift */; };
+		CB9F10F62AA09B4600502C1E /* InformationSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F10F52AA09B4600502C1E /* InformationSheetView.swift */; };
 		CB9FE2892A6932950091DE9C /* AppCoreContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CB9FE2872A6932950091DE9C /* AppCoreContainer.xcdatamodeld */; };
 		CB9FE28B2A6933950091DE9C /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9FE28A2A6933950091DE9C /* CoreDataManager.swift */; };
 		CB9FE28D2A6934BE0091DE9C /* CoreDataEnvirontment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9FE28C2A6934BE0091DE9C /* CoreDataEnvirontment.swift */; };
@@ -140,6 +143,7 @@
 		CBD3E6922A6C324000665980 /* TrackingProgressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD3E6912A6C324000665980 /* TrackingProgressViewModel.swift */; };
 		CBD422D92A8CB6A000E1E863 /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD422D82A8CB6A000E1E863 /* RootViewModel.swift */; };
 		CBE7BA202A66072C00E87AAA /* TabBarIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE7BA1F2A66072C00E87AAA /* TabBarIconView.swift */; };
+		CBF9ACE92AA9CB5900ED6211 /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF9ACE82AA9CB5900ED6211 /* TutorialView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -236,6 +240,7 @@
 		26C7A8A42A5D0015009F0EAF /* VitagochiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VitagochiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		26C7A8A82A5D0015009F0EAF /* VitagochiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VitagochiUITests.swift; sourceTree = "<group>"; };
 		26C7A8AA2A5D0015009F0EAF /* VitagochiUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VitagochiUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		CB04F1D02AA8899700D7A279 /* TestGeometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestGeometry.swift; sourceTree = "<group>"; };
 		CB0528592A6531A000649F22 /* Date+Extend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extend.swift"; sourceTree = "<group>"; };
 		CB05285B2A6531F600649F22 /* VitaTimePhase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VitaTimePhase.swift; path = Vitagochi/Models/VitaTimePhase.swift; sourceTree = SOURCE_ROOT; };
 		CB05285D2A65323900649F22 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -246,6 +251,7 @@
 		CB0ACBFA2A6D615C00D5DF4D /* GalleryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCard.swift; sourceTree = "<group>"; };
 		CB0ACBFC2A6D7D8600D5DF4D /* BackgroundArc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundArc.swift; sourceTree = "<group>"; };
 		CB0ACBFF2A6D9F4100D5DF4D /* BadgesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgesView.swift; sourceTree = "<group>"; };
+		CB2393DB2AA4911100D8B095 /* AchievmentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievmentModel.swift; sourceTree = "<group>"; };
 		CB2837F12A9102E000E6A3F6 /* DetailTrackingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTrackingViewModel.swift; sourceTree = "<group>"; };
 		CB2B5D982A66A0BA0099D404 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		CB2B5D9A2A66B50B0099D404 /* VitaMoodPhase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VitaMoodPhase.swift; path = Vitagochi/Models/VitaMoodPhase.swift; sourceTree = SOURCE_ROOT; };
@@ -254,6 +260,7 @@
 		CB8CC5602A9368260070F79A /* TestBadgeCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestBadgeCoreData.swift; sourceTree = "<group>"; };
 		CB9AA2242A6A414400BF8D76 /* CoreDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRepository.swift; sourceTree = "<group>"; };
 		CB9AA2262A6AC9AB00BF8D76 /* TakePitcureButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakePitcureButton.swift; sourceTree = "<group>"; };
+		CB9F10F52AA09B4600502C1E /* InformationSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationSheetView.swift; sourceTree = "<group>"; };
 		CB9FE2882A6932950091DE9C /* AppCoreContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AppCoreContainer.xcdatamodel; sourceTree = "<group>"; };
 		CB9FE28A2A6933950091DE9C /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		CB9FE28C2A6934BE0091DE9C /* CoreDataEnvirontment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataEnvirontment.swift; sourceTree = "<group>"; };
@@ -297,6 +304,7 @@
 		CBD3E6912A6C324000665980 /* TrackingProgressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingProgressViewModel.swift; sourceTree = "<group>"; };
 		CBD422D82A8CB6A000E1E863 /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
 		CBE7BA1F2A66072C00E87AAA /* TabBarIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarIconView.swift; sourceTree = "<group>"; };
+		CBF9ACE82AA9CB5900ED6211 /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -377,6 +385,7 @@
 				CB0ACBFA2A6D615C00D5DF4D /* GalleryCard.swift */,
 				CBAEECE92A7287EF0094308D /* Achivement.swift */,
 				CBAEECEB2A72884A0094308D /* BadgeView.swift */,
+				CBF9ACE82AA9CB5900ED6211 /* TutorialView.swift */,
 				2648466D2A5E5AE800396575 /* ContentInfo.txt */,
 			);
 			path = Components;
@@ -577,6 +586,7 @@
 			isa = PBXGroup;
 			children = (
 				CB05285D2A65323900649F22 /* MainView.swift */,
+				CB04F1D02AA8899700D7A279 /* TestGeometry.swift */,
 				CBD2D8802A67BC6700F603C7 /* PhotoTakeView.swift */,
 			);
 			path = Main;
@@ -718,6 +728,7 @@
 			isa = PBXGroup;
 			children = (
 				CBB46C202A6BCA7700E9E0F8 /* TrackingProgressView.swift */,
+				CB9F10F52AA09B4600502C1E /* InformationSheetView.swift */,
 				CBB46C242A6BEA3800E9E0F8 /* ProgressListView.swift */,
 			);
 			path = TrackingProgress;
@@ -740,6 +751,7 @@
 				CBD2D8C42A682F8F00F603C7 /* VitaChatAnswer.swift */,
 				264FA0662A6EBB46006758A3 /* ReminderType.swift */,
 				CBAEECE32A70E5520094308D /* Badges.swift */,
+				CB2393DB2AA4911100D8B095 /* AchievmentModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -829,7 +841,7 @@
 		26C7A8822A5D0014009F0EAF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				BuildIndependentTargetsInParallel = 1;
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
@@ -932,7 +944,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		CBD422D72A8B5AE300E1E863 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
+			buildActionMask = 8;
 			files = (
 			);
 			inputFileListPaths = (
@@ -943,7 +955,7 @@
 			);
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
@@ -970,6 +982,7 @@
 				0679306D2A6F9B64008F853E /* AppDelegate.swift in Sources */,
 				067CB9042A68E57A00D1B0C3 /* Color+Extend.swift in Sources */,
 				067CB9052A68E57A00D1B0C3 /* Color+Hex.swift in Sources */,
+				CB2393DD2AA4917700D8B095 /* AchievmentModel.swift in Sources */,
 				067CB9062A68E57A00D1B0C3 /* UIColor+Hex.swift in Sources */,
 				067CB9072A68E57A00D1B0C3 /* UIScreen+Compact.swift in Sources */,
 				067CB9082A68E57A00D1B0C3 /* View+ConditionalModifier.swift in Sources */,
@@ -995,6 +1008,7 @@
 				CBB46C172A6B719500E9E0F8 /* RoundedShapeBackground.swift in Sources */,
 				CB2B5D992A66A0BA0099D404 /* MainViewModel.swift in Sources */,
 				CB0528672A65712500649F22 /* RootView.swift in Sources */,
+				CBF9ACE92AA9CB5900ED6211 /* TutorialView.swift in Sources */,
 				CBD2D8812A67BC6700F603C7 /* PhotoTakeView.swift in Sources */,
 				CB2B5D9B2A66B50B0099D404 /* VitaMoodPhase.swift in Sources */,
 				264846742A5E5CF300396575 /* OnboardingSecond.swift in Sources */,
@@ -1002,6 +1016,7 @@
 				264846782A5E61C300396575 /* CancelButton.swift in Sources */,
 				06E47BB62A66A36A00EEC8AE /* VitaWidget.intentdefinition in Sources */,
 				CB0528652A656BB500649F22 /* StatusLevelView.swift in Sources */,
+				CB9F10F62AA09B4600502C1E /* InformationSheetView.swift in Sources */,
 				CB05285C2A6531F600649F22 /* VitaTimePhase.swift in Sources */,
 				2648467C2A5E643300396575 /* CounterTextFieldStyle.swift in Sources */,
 				26BC97F22A5D102E003125B5 /* OnboardingFirst.swift in Sources */,
@@ -1018,6 +1033,7 @@
 				26B0A3202A6578BE0047FC6A /* OnboardingThirdRevision.swift in Sources */,
 				265145942A69646F00042519 /* LevelUpView.swift in Sources */,
 				26B0A3242A657CDC0047FC6A /* UIColor+Hex.swift in Sources */,
+				CB2393DC2AA4911100D8B095 /* AchievmentModel.swift in Sources */,
 				CBCEFB872A91E99C001F7A5C /* BadgesViewModel.swift in Sources */,
 				26BC97EC2A5D0ED0003125B5 /* Color+Extend.swift in Sources */,
 				26A77B012A5FAE6A00B1C3A7 /* OnboardingTimePicker.swift in Sources */,
@@ -1042,6 +1058,7 @@
 				2651459C2A697AF900042519 /* LevelUpProgressStyle.swift in Sources */,
 				2673E0272A5D056D00429610 /* GlobalEnvirontment.swift in Sources */,
 				CBAEECEC2A72884A0094308D /* BadgeView.swift in Sources */,
+				CB04F1D12AA8899700D7A279 /* TestGeometry.swift in Sources */,
 				CBB46C212A6BCA7700E9E0F8 /* TrackingProgressView.swift in Sources */,
 				CB9FE28B2A6933950091DE9C /* CoreDataManager.swift in Sources */,
 				CBA6418B2A6CCB530067D0F4 /* DetailTrackingView.swift in Sources */,
@@ -1066,7 +1083,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB8CC5612A9368260070F79A /* TestBadgeCoreData.swift in Sources */,
-				264FA06E2A6F6F41006758A3 /* VitaTimePhase.swift in Sources */,
 				264FA06C2A6F6EDE006758A3 /* ReminderType.swift in Sources */,
 				26C7A89F2A5D0015009F0EAF /* VitagochiTests.swift in Sources */,
 				CBCEFB8B2A9255A1001F7A5C /* TestChallengeCoreData.swift in Sources */,

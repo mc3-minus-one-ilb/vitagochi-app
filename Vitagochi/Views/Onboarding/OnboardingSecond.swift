@@ -18,10 +18,11 @@ struct OnboardingSecond: View {
             
             Group {
                 Group {
-                    Text("Now, how should\nVita call you?")
+                    Text("How should Vita\ncall you?")
                         .font(.title)
                         .fontWeight(.bold)
                         .fontDesign(.rounded)
+                        
                     
                     CounteredTextView(input: $onboardingViewModel.nickname)
                         .onChange(of: onboardingViewModel.nickname, perform: { newValue in
@@ -32,9 +33,11 @@ struct OnboardingSecond: View {
                         .if(onboardingViewModel.isNicknameEmpty, transform: { view in
                             view.overlay(Rectangle()
                                 .frame(width: nil, height: 1, alignment: .bottom)
+                                .offset(y: 8)
                                 .foregroundColor(.red).opacity(1.0), alignment: .bottom)
+                            
                         })
-                }.padding([.bottom], 16.0)
+                }.padding([.bottom], 32.0)
         
                 Spacer()
                 
@@ -45,17 +48,22 @@ struct OnboardingSecond: View {
                 .fontDesign(.rounded)
                 
                 CancelButton(action: {
+                    onboardingViewModel.isNicknameEmpty =  false
                     onboardingViewModel.back()
                 }, input: "Wait, go back please!")
                 .fontDesign(.rounded)
                 .padding(.top, 8.0)
                 .padding([.bottom], 32.0)
+                
             }
             .padding([.horizontal], 32.0)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-        .edgesIgnoringSafeArea(.top)
         .ignoresSafeArea(.keyboard)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+        .kerning(-0.8)
+        .edgesIgnoringSafeArea(.top)
+        .foregroundColor(.blackGreen)
+        
     }
 }
 

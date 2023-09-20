@@ -12,6 +12,7 @@ struct MainView: View {
     @EnvironmentObject private var coreDataEnv: CoreDataEnvirontment
     @EnvironmentObject private var envObj: GlobalEnvirontment
     @StateObject private var mainVM: MainViewModel
+    @State private var tutorialPosition: CGPoint = CGPoint(x: 0, y: 0)
     
     let scaleSize: Double
     
@@ -30,132 +31,199 @@ struct MainView: View {
     }
     
     var body: some View {
-        let levelProgress = coreDataEnv.levelProgress()
+        
         let level = coreDataEnv.vitaSkinModel.rawValue + 1
         let oneProgress = 34
-        let countTodayProgress = coreDataEnv
-            .todayChallenge?.records?.count ?? 0
         let initialMessage = Message(id: Date(),
                                      text: "",
                                      isMyMessage: true,
                                      profilPic: "",
                                      photo: mainVM.imageData)
-        return VStack {
-            HStack {
-                VStack(alignment: .leading, spacing: 6) {
-                    Text("Hi, \(envObj.username)!")
-                        .font(.system(.title, design: .rounded))
-                        .fontWeight(.bold)
-                    
-                    HStack(spacing: 6) {
-                        Text("It's")
-                            .font(.system(.body, design: .rounded))
-                        Text(mainVM.currentTime.getFormattedTime())
-                            .font(.system(.headline, design: .rounded))
+        return GeometryReader { geo in
+            
+            VStack {
+                HStack {
+                    VStack(alignment: .leading, spacing: 6) {
+                        Text("Hi, \(envObj.username)!")
+                            .font(.system(.title, design: .rounded))
                             .fontWeight(.semibold)
+                        
+                        Text("It's a new day")
+                            .font(.system(.title3, design: .rounded))
+                            .fontWeight(.medium)
+                    }
+                    //
+                    Spacer()
+                    if let records = coreDataEnv
+                        .todayChallenge?.records?.allObjects as? [MealRecordEntity] {
+                        let isCompleted = records
+                            .contains {$0.timeStatus == mainVM.vitaPhase.rawValue}
+                        TakePitcureButton(
+                            isCameraClicked: $mainVM.isCameraClicked,
+                            timePhase: mainVM.vitaPhase,
+                            isCompleted: isCompleted
+                        )
+                    } else {
+                        TakePitcureButton(
+                            isCameraClicked: $mainVM.isCameraClicked,
+                            timePhase: mainVM.vitaPhase,
+                            isCompleted: false
+                        )
                     }
                 }
-                .padding(.top, 24)
+                .padding()
+                .padding(.horizontal, 8)
+                .padding(.top, 54)
+                .background {
+//                                    Color.black.opacity(0.3)
+//                                        .edgesIgnoringSafeArea([.top, .horizontal])
+//                                        .zIndex(0)
+                }
+                
                 Spacer()
-                if let records = coreDataEnv
-                    .todayChallenge?.records?.allObjects as? [MealRecordEntity] {
-                    let isCompleted = records
-                        .contains {$0.timeStatus == mainVM.vitaPhase.rawValue}
-                    TakePitcureButton(
-                        isCameraClicked: $mainVM.isCameraClicked,
-                        timePhase: mainVM.vitaPhase,
-                        isCompleted: isCompleted
-                    )
-                } else {
-                    TakePitcureButton(
-                        isCameraClicked: $mainVM.isCameraClicked,
-                        timePhase: mainVM.vitaPhase,
-                        isCompleted: false
-                    )
+                
+                
+                ZStack(alignment: .bottom) {
+                    
+                    GeometryReader { geo in
+                        BackgroundArc()
+                            .rotation(.degrees(180))
+                            .foregroundColor(Color.backgrounCurveColor)
+                            .offset(y: geo.size.height - 40)
+                            .frame(
+                                width: geo.size.width,
+                                height: geo.size.height,
+                                alignment: .bottom
+                            )
+                            .padding(.bottom, 100)
+                    }
+                    
+                    CircularProgressView(
+                        pulsate: false,
+                        percentage: CGFloat((mainVM.todayProgress) * oneProgress),
+                        whiteBackgroundColor: true,
+                        whiteOutlineColor: true)
+                    .frame(width: 305, height: 305)
+                    .offset(y: -85)
+//                    .zIndex(1)
+                  
+                    Ellipse()
+                        .fill(Color.mintAccent3)
+                        .frame(width: 99, height: 28)
+                        .offset(y: 7)
+                    
+                    showVitaModelCharacter()
+//                        .zIndex(1)
+                    
+                    StatusLevelView(level: level,
+                                    exp: Int(mainVM.levelProgress))
+//                    .zIndex(1)
+                    
+                    
+                    .frame(width: 200, height: 10)
+                    .offset(y: 30)
+                    
+//                                    Color.black.opacity(0.3)
+//                                        .edgesIgnoringSafeArea([.top, .horizontal])
+//                                        .zIndex(0)
+//                                    Color.black.opacity(0.3)
+//                                        .edgesIgnoringSafeArea([.top, .horizontal])
+//                                        .frame(maxWidth: .infinity, maxHeight: 150)
+//                                        .offset(y: 150)
+//                                        .zIndex(0)
                 }
+                .padding(.bottom, 34)
+                .frame(height: 390)
+                
+                .scaleEffect(scaleSize)
+//                .offset(y:-60)
+                Spacer()
+                Spacer()
             }
-            .padding()
-            .padding(.horizontal, 8)
-            .padding(.top, 34)
-            Spacer()
             
-            ZStack(alignment: .bottom) {
-                GeometryReader { geo in
-                    BackgroundArc()
-                        .rotation(.degrees(180))
-                        .foregroundColor(Color.backgrounCurveColor)
-                        .offset(y: geo.size.height - 40)
-                        .frame(
-                            width: geo.size.width,
-                            height: geo.size.height,
-                            alignment: .bottom
-                        )
-                        .padding(.bottom, 100)
+            .onChange(of: mainVM.vitaPhase) { _ in
+                mainVM.generateMessage(for: coreDataEnv.todayChallenge)
+            }
+            .onChange(of: mainVM.isTapped) { _ in
+                mainVM.generateMessage(for: coreDataEnv.todayChallenge)
+            }
+            .onChange(of: mainVM.vitaMood, perform: { _ in
+                mainVM.runAnimation()
+            })
+            .onChange(of: mainVM.imageData, perform: { _ in
+                envObj.toggleChatViewNav()
+            })
+            .onAppear {
+                if envObj.achievement != nil {
+                    mainVM.todayProgress = 0
+                    mainVM.levelProgress = 0
+                } else  {
+                    mainVM.todayProgress = coreDataEnv
+                        .todayChallenge?.records?.count ?? 0
+                    mainVM.levelProgress = coreDataEnv.levelProgress()
                 }
                 
-                CircularProgressView(
-                    pulsate: false,
-                    percentage: CGFloat((countTodayProgress) * oneProgress))
-                .frame(width: 300, height: 300)
-                .offset(y: -90)
+                mainVM.generateMessage(
+                    for: coreDataEnv.todayChallenge,
+                    isFirstTime: envObj.isFisrtTime
+                )
                 
-                Ellipse()
-                    .fill(Color.shadowEclipseColor)
-                    .frame(width: 150, height: 40)
-                    .offset(y: 15)
+                mainVM.runTimerForCheckPhaseTime()
                 
-                showVitaModelCharacter()
+                WidgetCenter.shared.reloadAllTimelines()
                 
-                StatusLevelView(level: level,
-                                exp: Int(levelProgress))
-                .frame(width: 200, height: 10)
-                .offset(y: 40)
             }
-            .padding(.bottom, 34)
-            .frame(height: 390)
-            .scaleEffect(scaleSize)
-            Spacer()
-            Spacer()
-        }
-        
-        .onChange(of: mainVM.vitaPhase) { _ in
-            mainVM.generateMessage(for: coreDataEnv.todayChallenge)
-        }
-        .onChange(of: mainVM.isTapped) { _ in
-            mainVM.generateMessage(for: coreDataEnv.todayChallenge)
-        }
-        .onChange(of: mainVM.vitaMood, perform: { _ in
-            mainVM.runAnimation()
-        })
-        .onChange(of: mainVM.imageData, perform: { _ in
-            envObj.toggleChatViewNav()
-        })
-        .onAppear {
-            mainVM.generateMessage(
-                for: coreDataEnv.todayChallenge,
-                isFirstTime: envObj.isFisrtTime
-            )
+            .onChange(of: envObj.achievement, perform: { newValue in
+                mainVM.todayProgress = 0
+                mainVM.levelProgress = 0
+                if newValue == nil {
+                    withAnimation(.easeOut(duration: 1.0)) {
+                        mainVM.todayProgress = coreDataEnv
+                            .todayChallenge?.records?.count ?? 0
+                        mainVM.levelProgress = coreDataEnv.levelProgress()
+                    }
+                }
+            })
+            .navigationDestination(isPresented: $envObj.mainPath[0]) {
+                ChatView(initialMessage: initialMessage,
+                         photoData: mainVM.imageData,
+                         timePhase: mainVM.vitaPhase)
+            }
+            .fullScreenCover(isPresented: $mainVM.isCameraClicked) {
+                PhotoTakeView(
+                    showPicker: $mainVM.isCameraClicked,
+                    imageData: $mainVM.imageData
+                )
+                .gesture(swipeDownGesture)
+                .ignoresSafeArea()
+                
+            }
+           
+            if mainVM.isShowTutorial {
+//                Color.black.opacity(0.3)
+//                    .edgesIgnoringSafeArea(.all)
+            }
             
-            mainVM.runTimerForCheckPhaseTime()
-            
-            WidgetCenter.shared.reloadAllTimelines()
-            
+            if mainVM.isShowTutorial {
+                TutorialView(isCompleted: $mainVM.isShowTutorial, stepNumber: $mainVM.tutorialStep)
+                    .frame(width: 236)
+                    .position(x: tutorialPosition.x, y: tutorialPosition.y)
+                    .onAppear {
+                        tutorialPosition = CGPoint(x: geo.frame(in: .global).midX, y: geo.frame(in: .global).height * 0.22)
+                    }
+                    .onChange(of: mainVM.tutorialStep) { new in
+                        withAnimation(.spring()) {
+                            if mainVM.tutorialStep == 1 {
+                                tutorialPosition = CGPoint(x: geo.frame(in: .global).width * 0.43, y: geo.frame(in: .global).height * 0.25)
+                            } else if mainVM.tutorialStep ==  2 {
+                                tutorialPosition = CGPoint(x: geo.frame(in: .global).midX, y: geo.frame(in: .global).height * 0.22)
+                            } else if mainVM.tutorialStep == 3 {
+                                tutorialPosition = CGPoint(x: geo.frame(in: .global).midX, y: geo.frame(in: .global).height * 0.70)
+                            }
+                        }
+                    }
+            }
         }
-        .navigationDestination(isPresented: $envObj.mainPath[0]) {
-            ChatView(initialMessage: initialMessage,
-                     photoData: mainVM.imageData,
-                     timePhase: mainVM.vitaPhase)
-        }
-        .fullScreenCover(isPresented: $mainVM.isCameraClicked) {
-            PhotoTakeView(
-                showPicker: $mainVM.isCameraClicked,
-                imageData: $mainVM.imageData
-            )
-            .gesture(swipeDownGesture)
-            .ignoresSafeArea()
-            
-        }
-        .edgesIgnoringSafeArea([.top, .horizontal])
     }
     
     static func scaleContentBasedHeight() -> Double {
@@ -173,12 +241,12 @@ struct MainView: View {
     func showVitaModelCharacter() -> some View {
         VStack {
             RectangleBubleTextView(text: mainVM.vitaMessage.text)
-                .frame(width: 300, height: 116)
+                .frame(width: 256, height: 116)
                 .animation(.easeInOut, value: mainVM.vitaMessage)
             Image(mainVM.vitaSkinImageName)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
-                .frame(width: 222, height: 390)
+                .frame(width: 222, height: 400)
                 .scaleEffect(1.08)
                 .onTapGesture {
                     mainVM.vitaIsTapped()
@@ -200,9 +268,16 @@ struct MainView: View {
 
 struct MainSceneView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
+        let coreDataManager = CoreDataManager(.inMemory)
+        let coreDataRepository = CoreDataRepository(manager: coreDataManager)
+        let coreDataEnv = CoreDataEnvirontment(repository: coreDataRepository)
+        
+        return RootView()
             .environmentObject(GlobalEnvirontment.singleton)
-            .environmentObject(CoreDataEnvirontment.singleton)
+            .environmentObject(coreDataEnv)
+//        MainView()
+//            .environmentObject(GlobalEnvirontment.singleton)
+//            .environmentObject(CoreDataEnvirontment.singleton)
         //        MainSceneView()
         //            .previewDevice(PreviewDevice(rawValue: "iPhone 14 Pro Max"))
         //            .previewDisplayName("iPhone 14 Pro Max")

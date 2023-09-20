@@ -23,33 +23,19 @@ struct TakePitcureButton: View {
                 }
                 
             } label: {
-                Image(systemName: "camera.fill")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .foregroundColor(!isItPassMealTime && !isCompleted ?
-                        .pictureColor : .inactiveIconTabBar )
-                    .frame(width: 46, height: 36, alignment: .center)
-            }
-            .overlay(alignment: .bottomTrailing) {
-                if !isItPassMealTime && !isCompleted {
-                    ZStack {
-                        Circle()
-                            .foregroundColor(.chatTopPinkColor)
-                            .frame(width: 19, height: 19)
-                        Circle()
-                        
-                            .stroke(style: .init(lineWidth: 2, dash: [8, 8]))
-                            .foregroundColor(.chatTopPinkColor)
-                            .frame(width: 80)
-                            .rotationEffect(animation ? Angle(degrees: 360.0) : .zero)
-                            .animation(.linear(duration: 20).repeatForever(autoreverses: true),
-                                       value: animation)
-                            .onAppear {
-                                animation.toggle()
-                            }
-                    }
-                    .offset(x: -6, y: 15)
+                // TODO: Blink Effect Animation
+                ZStack {
+                    Circle()
+                        .foregroundColor(!isItPassMealTime && !isCompleted ? .mintPrimary : .gray3)
+                        .frame(width: 66)
+                    Image(systemName: "camera.fill")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .foregroundColor(!isItPassMealTime && !isCompleted ?
+                            .blackGreen : .gray2 )
+                        .frame(width: 30, height: 24, alignment: .center)
                 }
+                
             }
             
                 //                Circle()
